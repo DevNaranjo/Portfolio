@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitly | Iriome - Desarrollador Multiplataforma</title>
+    <meta name="description" content="Detalle del proyecto Habitly, Gestor de Alquileres en Java con simulación interactiva de consola, desglose STAR y hoja de ruta de entregas.">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="src/assets/logo.jpg" alt="Logo" class="nav-logo-img">
+                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">habitly</span><span class="logo-parentheses">)</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-link-home">Inicio</a></li>
+                <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
+                <li class="dropdown">
+                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn active">Proyectos <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="proyectos.html">Ver todos</a></li>
+                        <li><a href="proyecto-habitly.html" class="active">Habitly (Java)</a></li>
+                        <li><a href="#" class="disabled-link">Más proyectos...</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="container">
+        <section id="projects-section">
+            <div style="margin-bottom: 30px;">
+                <a href="proyectos.html" style="color: var(--accent-rose); font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                    ← Volver a Mis Proyectos
+                </a>
+            </div>
+
+            <!-- Ficha de Proyecto Estrella -->
+            <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h3>Habitly: Gestor de Alquileres</h3>
+                    <div class="project-meta">
+                        <span class="tag">Java SE</span>
+                        <span class="tag">POO Avanzada</span>
+                        <span class="tag">Persistencia Binaria</span>
+                        <span class="tag">Cumplimiento Legal (LAU)</span>
+                        <span class="tag">Arquitectura de Roles</span>
+                    </div>
+                </div>
+                <a href="https://github.com/DevNaranjo/Habitly" target="_blank" class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    Ver en GitHub
+                </a>
+            </div>
+
+            <!-- Simulador de Terminal Retro -->
+            <div class="terminal-window" id="terminal-simulator">
+                <div class="terminal-bar">
+                    <div class="terminal-buttons">
+                        <span class="terminal-btn red"></span>
+                        <span class="terminal-btn yellow"></span>
+                        <span class="terminal-btn green"></span>
+                    </div>
+                    <div class="terminal-title">Habitly.java</div>
+                    <div></div> <!-- Espaciador derecho -->
+                </div>
+                <div class="terminal-body">
+                    <pre>Cargando simulación de consola Java..._</pre>
+                </div>
+            </div>
+
+            <!-- Metodología STAR -->
+            <div class="star-container" id="star-breakdown">
+                <div class="star-section">
+                    <div class="star-letter">S</div>
+                    <h3>Situación</h3>
+                    <p>
+                        La gestión y el cumplimiento legal en el arrendamiento de inmuebles suele ser propensa a disputas y multas. Los propietarios e inquilinos carecen de herramientas que centralicen las cuentas (ingresos vs. facturas de suministros de luz o agua) y que aseguren de forma estricta las normativas vigentes en España (como la <strong>LAU 2026</strong> y la <strong>Ley de Vivienda 12/2023</strong>), relativas a límites de renta (<strong>IRAV</strong>), depósitos de fianza (<strong>ICAVI</strong>) y duraciones mínimas de los contratos.
+                    </p>
+                </div>
+
+                <div class="star-section">
+                    <div class="star-letter">T</div>
+                    <h3>Tarea</h3>
+                    <p>
+                        Diseñar y programar un software de consola robusto en <strong>Java SE (v1.0.6)</strong> que centralice el inventario inmobiliario, automatice balances financieros en tiempo real y valide legalmente cada contrato formalizado según el tipo de arrendador, con un sistema seguro de roles (Propietario, Inquilino, Invitado) y persistencia sin servidores.
+                    </p>
+                </div>
+
+                <div class="star-section">
+                    <div class="star-letter">A</div>
+                    <h3>Acción</h3>
+                    <p>
+                        Modelé el dominio en base a Programación Orientada a Objetos con clases dedicadas (<code>Vivienda</code>, subclasificada en <code>Piso</code> y <code>Casa</code>; <code>ContratoAlquiler</code>, <code>Gasto</code>, y <code>Usuario</code> extendido a <code>Propietario</code> e <code>Inquilino</code>). Implementé un controlador central <code>GestorInventario</code> que valida reglas legales complejas:
+                        1. <strong>Duración legal:</strong> Mínimo obligatorio de 5 años si el arrendador es persona física (<code>FISICO</code>) o 7 años si es jurídica (<code>JURIDICO</code>).
+                        2. <strong>Fianza e ICAVI:</strong> Fianza exacta de 1 mes, garantías adicionales limitadas a 2 meses, y registro de alerta si expira el plazo legal de depósito de fianza ante el organismo ICAVI (30 días).
+                        3. <strong>Regulación de precios:</strong> Control de rentas en base al límite IRAV y actualizaciones con índices de referencia reales (IRAV 2026: 2,47%).
+                        Finalmente, diseñé una persistencia local ligera e incorruptible basada en la <strong>serialización binaria nativa</strong> de objetos en archivos de datos.
+                    </p>
+                </div>
+
+                <div class="star-section">
+                    <div class="star-letter">R</div>
+                    <h3>Resultado</h3>
+                    <p>
+                        Desarrollé la versión oficial de Habitly con un <strong>100% de cumplimiento legal automatizado</strong> en contratos y un robusto CLI interactivo con control estricto de excepciones de entrada. La persistencia binaria funciona perfectamente sin pérdida de datos, y los dashboards financieros de rentabilidad (beneficios netos de propietarios) y cumplimiento legal (fianzas fuera de plazo y preavisos de vencimiento a 4 meses) ofrecen a los usuarios el control absoluto de sus carteras de manera segura.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Roadmap (Hoja de Ruta) del Proyecto -->
+            <div class="roadmap" id="project-roadmap">
+                <h3>🗺️ Estado y Hoja de Ruta del Proyecto</h3>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
+                    Cómo aplico mi flujo de entregas incrementales a este desarrollo.
+                </p>
+                
+                <div class="timeline">
+                    <!-- Iteración 1 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Iteración 1: Motor Lógico & CLI <span class="status-badge">Entregado / MVP</span></h4>
+                            <p>Lógica del negocio en Java: registro de contratos, cálculo matemático de liquidaciones mensuales y sistema de reportes por consola.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Iteración 2 -->
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Iteración 2: Interfaz Gráfica (GUI) <span class="status-badge">En Progreso</span></h4>
+                            <p>Migración de la entrada/salida de datos de la consola hacia una UI de escritorio interactiva utilizando JavaFX.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Iteración 3 -->
+                    <div class="timeline-item planned">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Iteración 3: Persistencia con SQL <span class="status-badge">Planificado</span></h4>
+                            <p>Conexión de la interfaz gráfica a una base de datos local SQLite mediante JDBC para almacenar contratos y logs de incidencias de forma persistente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="sobre-mi.html">Sobre Mí</a>
+                <a href="proyectos.html">Proyectos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <p>© 2026 Iriome. Convirtiendo café en código.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de Modo Oscuro -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <!-- Sun Icon (SVG) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (SVG) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí | Iriome - Desarrollador Multiplataforma</title>
+    <meta name="description" content="Conoce la historia de Iriome: su superación rápida de Java y su filosofía de desarrollo orientada a la organización y cumplimiento de plazos.">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="src/assets/logo.jpg" alt="Logo" class="nav-logo-img">
+                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">profile</span><span class="logo-parentheses">)</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-link-home">Inicio</a></li>
+                <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
+                <li class="dropdown">
+                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn">Proyectos <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="proyectos.html">Ver todos</a></li>
+                        <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
+                        <li><a href="#" class="disabled-link">Más proyectos...</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="container">
+        <section id="about-section">
+            <h2 class="title-medium">Quién soy y cómo trabajo</h2>
+            
+            <div class="about-grid">
+                <!-- Historia -->
+                <div class="story-text">
+                    <p>
+                        ¡Hola! Soy <strong>Iriome</strong>, estudiante de primer año de <strong>Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>. Desde muy pequeño supe que lo mío era la informática, movido por la curiosidad de entender cómo funcionaba la tecnología. Sin embargo, nunca imaginé que la programación terminaría por convertirse en mi gran pasión.
+                        <br><br>
+                        Mi inicio no fue un camino de rosas. En mis primeras semanas con Java, las piezas no encajaban: los fundamentos se me resistían y los resultados no llegaban. En lugar de frustrarme, decidí cambiar la estrategia.
+                        <br>
+                    </p>
+                    
+                    <div class="story-highlight">
+                        "Me pasé cinco días completos pegado al editor, picando, probando y depurando código sin parar. Al quinto día, la lógica de la Programación Orientada a Objetos hizo clic y logré construir mi primer programa funcional."
+                    </div>
+
+                    <p>
+                        Ese momento lo cambió todo. Ahí descubrí que la verdadera clave de la ingeniería de software no es solo escribir código, sino saber estructurarse y tener la resiliencia necesaria para resolver problemas complejos. Actualmente me enfoco en crear soluciones limpias, organizadas y eficientes mientras sigo ampliando mi stack técnico.
+                        <br><br>
+                        Esta experiencia me enseñó dos cosas fundamentales: la primera, que <strong>tengo una enorme capacidad de aprendizaje cuando me enfoco</strong>; la segunda, que la mejor manera de dominar una tecnología es a través de la práctica y la resiliencia ante los errores.
+                        <br><br>
+                        Desde entonces, afronto mis proyectos con el mismo rigor y entusiasmo. Me apasiona resolver problemas del mundo real y asegurarme de que mis entregas sean sólidas y eficientes.
+                    </p>
+                </div>
+                <div class="sidebar-column">
+                    <!-- Tarjeta de Perfil -->
+                    <div class="card profile-card" id="profile-card">
+                        <div class="profile-img-container">
+                            <img src="src/assets/profile.png" alt="Foto de Iriome Naranjo" class="profile-img" onerror="this.src='src/assets/logo.jpg'; this.style.opacity='0.7';">
+                        </div>
+                        <h3>Iriome Naranjo</h3>
+                        <p class="profile-role">Estudiante de DAM</p>
+                        <p class="profile-location">📍 Las Palmas, España</p>
+                    </div>
+
+                    <!-- Tarjeta de Organización / Método -->
+                    <div class="card calendar-card" id="methodology-card">
+                        <h3>📅 Mi Superpoder: El Calendario</h3>
+                        <p>
+                            Para mí, un compromiso de fecha de entrega es sagrado. Mi flujo de trabajo se basa en la planificación metódica:
+                        </p>
+                        <div class="method-list">
+                            <div class="method-item">
+                                <span class="method-icon">✓</span>
+                                <p><strong>Gestión con Calendario:</strong> Divido el proyecto en tareas fechadas antes de tirar la primera línea de código.</p>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">✓</span>
+                                <p><strong>Enfoque MVP:</strong> Aseguro siempre un núcleo funcional (Minimum Viable Product) que garantice el cumplimiento del objetivo principal a tiempo.</p>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">✓</span>
+                                <p><strong>Desarrollo Iterativo:</strong> Si el tiempo es ajustado, priorizo lo crítico y planifico las mejoras secundarias en entregas posteriores ("parches").</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Fortalezas Técnicas y de Equipo -->
+                    <div class="card strengths-card" id="strengths-card">
+                        <h3>🛠️ Más Allá del Calendario</h3>
+                        <p>
+                            Completo mi enfoque organizativo con bases técnicas sólidas y habilidades interpersonales:
+                        </p>
+                        <div class="method-list">
+                            <div class="method-item">
+                                <span class="method-icon">✓</span>
+                                <p><strong>Código Limpio y Legible:</strong> Priorizo la legibilidad, modularidad y la arquitectura orientada a objetos clara para facilitar el mantenimiento a largo plazo.</p>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">✓</span>
+                                <p><strong>Documentación Rigurosa:</strong> Acompaño mis desarrollos con guías y diagramas técnicos detallados para facilitar la integración en cualquier equipo.</p>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">✓</span>
+                                <p><strong>Adaptabilidad en Equipo:</strong> Me integro con facilidad en equipos de trabajo, aportando proactividad, comunicación clara y respeto por los flujos de integración (Git/GitHub).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="sobre-mi.html">Sobre Mí</a>
+                <a href="proyectos.html">Proyectos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <p>© 2026 Iriome. Convirtiendo café en código.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de Modo Oscuro -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <!-- Sun Icon (SVG) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (SVG) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>

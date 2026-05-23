@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Iriome - Desarrollador Multiplataforma</title>
+    <meta name="description" content="Portfolio profesional de Iriome, estudiante de DAM. Comprometido con la puntualidad, el orden y la entrega de software robusto a tiempo.">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="src/assets/logo.jpg" alt="Logo" class="nav-logo-img">
+                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">portfolio</span><span class="logo-parentheses">)</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-link-home">Inicio</a></li>
+                <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
+                <li class="dropdown">
+                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn">Proyectos <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="proyectos.html">Ver todos</a></li>
+                        <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
+                        <li><a href="#" class="disabled-link">Más proyectos...</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Inicio -->
+    <main class="container">
+        <section class="hero" id="hero-section">
+            <div class="hero-logo-wrapper">
+                <img src="src/assets/logo.jpg" alt="Iriome Dev Logo" class="hero-logo-img">
+            </div>
+            <span class="hero-tag">Desarrollador DAM en formación</span>
+            <h1 class="title-large">Código estructurado.<br>Entrega puntual.</h1>
+            <p>
+                Me especializo en diseñar soluciones lógicas bien planificadas. Mi mayor habilidad no es solo resolver el problema, sino asegurar que esté listo exactamente cuando se necesita.
+            </p>
+            <div class="hero-buttons">
+                <a href="proyectos.html" class="btn btn-primary" id="hero-btn-projects">Ver Proyectos</a>
+                <a href="sobre-mi.html" class="btn btn-secondary" id="hero-btn-about">Conóceme más</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="sobre-mi.html">Sobre Mí</a>
+                <a href="proyectos.html">Proyectos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <p>© 2026 Iriome. Convirtiendo café en código.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de Modo Oscuro -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <!-- Sun Icon (SVG) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (SVG) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>
