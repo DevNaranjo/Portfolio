@@ -13,10 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Simulador de Terminal de Java (Interactivo - Habitly)
-    const terminalBody = document.querySelector('.terminal-body pre');
-    if (terminalBody) {
-        runTerminalSimulation(terminalBody);
+    // 2. Simuladores de Terminal de Java (Interactivos)
+    const habitlyTerminal = document.querySelector('#terminal-simulator .terminal-body pre');
+    if (habitlyTerminal) {
+        runTerminalSimulation(habitlyTerminal);
+    }
+
+    const calculatorTerminal = document.querySelector('#terminal-calculator .terminal-body pre');
+    if (calculatorTerminal) {
+        runCalculatorSimulation(calculatorTerminal);
     }
 
     // 3. Copiado de Correo al Portapapeles
@@ -444,4 +449,139 @@ function setupPrivateTemplateShortcut() {
             window.location.href = 'plantilla_correo.html';
         }
     });
+}
+
+/**
+ * Simula el comportamiento de la Calculadora de Propinas.
+ */
+function runCalculatorSimulation(element) {
+    const lines = [
+        "c:\\Users\\iriom\\Propinas> java com.tipcalc.Main",
+        "[INFO] Inicializando Calculadora de Propinas e Impuestos (Java SE 17)...",
+        "[OK] Módulo cargado correctamente.",
+        "",
+        "Introduce el total de la cuenta (EUR): _"
+    ];
+
+    let currentLine = 0;
+    element.innerHTML = "";
+
+    function typeLine() {
+        if (currentLine < lines.length) {
+            let lineText = lines[currentLine];
+            
+            if (lineText.startsWith("c:\\Users")) {
+                lineText = `<span style="color: var(--accent-sage)">${lineText}</span>`;
+            } else if (lineText.startsWith("[INFO]")) {
+                lineText = `<span style="color: var(--accent-blue)">${lineText}</span>`;
+            } else if (lineText.startsWith("[OK]")) {
+                lineText = `<span style="color: var(--accent-sage); font-weight: bold;">${lineText}</span>`;
+            }
+
+            element.innerHTML += lineText + "\n";
+            currentLine++;
+            
+            let delay = 120;
+            if (currentLine === 1) delay = 250;
+            if (currentLine > 2) delay = 40;
+            
+            element.scrollTop = element.scrollHeight;
+            setTimeout(typeLine, delay);
+        } else {
+            addCalculatorInteractivePrompt(element);
+        }
+    }
+
+    setTimeout(typeLine, 300);
+}
+
+function addCalculatorInteractivePrompt(element) {
+    const terminalWindow = document.querySelector('#terminal-calculator');
+    if (!terminalWindow) return;
+    
+    // Si ya existen controles, no duplicarlos
+    const oldControls = terminalWindow.querySelector('.terminal-controls');
+    if (oldControls) oldControls.remove();
+
+    const controls = document.createElement('div');
+    controls.className = 'terminal-controls';
+    controls.style.padding = '15px 24px';
+    controls.style.backgroundColor = '#2D2D34';
+    controls.style.borderTop = '1px solid #1E1E24';
+    controls.style.display = 'flex';
+    controls.style.gap = '10px';
+    controls.style.flexWrap = 'wrap';
+    
+    const options = [
+        { 
+            label: "Simular Cuenta 52.50€ (3 comensales / 15% propina)", 
+            response: "52.50\nIntroduce el porcentaje de propina (ej. 10, 15, 20): 15\nIntroduce el número de personas: 3\n\n========================================\n           TICKET DE COMPRA\n========================================\nCuenta Base:        52.50 EUR\nPropina (15.0%):     7.88 EUR\nTotal General:      60.38 EUR\n----------------------------------------\nComensales:         3 personas\nPago por Persona:   20.13 EUR\n========================================\n\nIntroduce el total de la cuenta (EUR): _"
+        },
+        { 
+            label: "Simular Cuenta 120.00€ (5 comensales / 10% propina)", 
+            response: "120.00\nIntroduce el porcentaje de propina (ej. 10, 15, 20): 10\nIntroduce el número de personas: 5\n\n========================================\n           TICKET DE COMPRA\n========================================\nCuenta Base:       120.00 EUR\nPropina (10.0%):    12.00 EUR\nTotal General:     132.00 EUR\n----------------------------------------\nComensales:         5 personas\nPago por Persona:   26.40 EUR\n========================================\n\nIntroduce el total de la cuenta (EUR): _"
+        }
+    ];
+    
+    options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.innerText = opt.label;
+        btn.style.backgroundColor = '#1E1E24';
+        btn.style.color = '#F4F6FC';
+        btn.style.border = '1px solid #A9A9B3';
+        btn.style.padding = '6px 14px';
+        btn.style.borderRadius = '6px';
+        btn.style.cursor = 'pointer';
+        btn.style.fontFamily = 'var(--font-sans)';
+        btn.style.fontSize = '0.85rem';
+        btn.style.transition = 'var(--transition-smooth)';
+        
+        btn.addEventListener('mouseenter', () => {
+            btn.style.borderColor = 'var(--accent-rose)';
+            btn.style.color = 'var(--accent-rose)';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.borderColor = '#A9A9B3';
+            btn.style.color = '#F4F6FC';
+        });
+        
+        btn.addEventListener('click', () => {
+            element.innerHTML = element.innerHTML.replace("_", "");
+            element.innerHTML += opt.response;
+            element.scrollTop = element.scrollHeight;
+        });
+        
+        controls.appendChild(btn);
+    });
+
+    // Agregar botón de reinicio
+    const resetBtn = document.createElement('button');
+    resetBtn.innerText = "Reiniciar";
+    resetBtn.style.backgroundColor = '#1E1E24';
+    resetBtn.style.color = '#F4F6FC';
+    resetBtn.style.border = '1px solid #A9A9B3';
+    resetBtn.style.padding = '6px 14px';
+    resetBtn.style.borderRadius = '6px';
+    resetBtn.style.cursor = 'pointer';
+    resetBtn.style.fontFamily = 'var(--font-sans)';
+    resetBtn.style.fontSize = '0.85rem';
+    resetBtn.style.transition = 'var(--transition-smooth)';
+    resetBtn.style.marginLeft = 'auto';
+    
+    resetBtn.addEventListener('mouseenter', () => {
+        resetBtn.style.borderColor = 'var(--accent-sage)';
+        resetBtn.style.color = 'var(--accent-sage)';
+    });
+    resetBtn.addEventListener('mouseleave', () => {
+        resetBtn.style.borderColor = '#A9A9B3';
+        resetBtn.style.color = '#F4F6FC';
+    });
+    
+    resetBtn.addEventListener('click', () => {
+        controls.remove();
+        runCalculatorSimulation(element);
+    });
+    
+    controls.appendChild(resetBtn);
+    terminalWindow.appendChild(controls);
 }
