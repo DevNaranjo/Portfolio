@@ -22,7 +22,7 @@
     <header class="header">
         <div class="container nav">
             <a href="index.html" class="logo" id="nav-logo">
-                <img src="src/assets/logo.jpg" alt="Logo" class="nav-logo-img">
+                <img src="src/assets/logo.webp" alt="Logo de Iriome.build" class="nav-logo-img">
                 <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">calculadora</span><span class="logo-parentheses">)</span></span>
             </a>
             <ul class="nav-links">
@@ -33,7 +33,7 @@
                     <ul class="dropdown-content">
                         <li><a href="proyectos.html">Ver todos</a></li>
                         <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
-                        <li><a href="proyecto-calculadora.html" class="active">Calculadora (Java)</a></li>
+                        <li><a href="proyecto-calculadora.html">Calculadora P&I (Java)</a></li>
                         <li><a href="#" class="disabled-link">Más proyectos...</a></li>
                     </ul>
                 </li>
@@ -54,7 +54,7 @@
             <!-- Ficha de Proyecto -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h3>Calculadora de Propinas e Impuestos</h3>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary);">Calculadora de Propinas e Impuestos</h1>
                     <div class="project-meta">
                         <span class="tag">Java SE</span>
                         <span class="tag">Secuencial</span>
@@ -107,9 +107,11 @@
                     <h3>Acción</h3>
                     <p>
                         Diseñé un flujo lógico secuencial robusto:
-                        1. <strong>Gestión de flujos de entrada:</strong> Captura estructurada de datos mediante la clase <code>Scanner</code>, controlando la entrada del total de la cuenta, porcentaje de propina y cantidad de comensales.
-                        2. <strong>Tipado estricto:</strong> Selección óptima de tipos primitivos utilizando <code>double</code> para magnitudes monetarias y de propina, e <code>int</code> para contadores discretos de comensales.
-                        3. <strong>Formateo de datos:</strong> Implementación de especificadores de formato con precisión decimal (<code>%.2f</code>) mediante <code>System.out.printf</code> para evitar la distorsión visual de los decimales de coma flotante en el ticket impreso.
+                        <ol style="margin-left: 20px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 10px;">
+                            <li><strong>Gestión de flujos de entrada:</strong> Captura estructurada de datos mediante la clase <code>Scanner</code>, controlando la entrada del total de la cuenta, porcentaje de propina y cantidad de comensales.</li>
+                            <li><strong>Tipado estricto:</strong> Selección óptima de tipos primitivos utilizando <code>double</code> para magnitudes monetarias y de propina, e <code>int</code> para contadores discretos de comensales.</li>
+                            <li><strong>Formateo de datos:</strong> Implementación de especificadores de formato con precisión decimal (<code>%.2f</code>) mediante <code>System.out.printf</code> para evitar la distorsión visual de los decimales de coma flotante en el ticket impreso.</li>
+                        </ol>
                     </p>
                 </div>
 
@@ -149,6 +151,15 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Sección de Llamada a la Acción (CTA) -->
+            <div class="card" style="text-align: center; margin-top: 60px; padding: 45px 30px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <h3 style="font-family: var(--font-serif); font-size: 1.75rem; margin-bottom: 5px;">¿Quieres desarrollar una solución robusta similar?</h3>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 15px; font-size: 1rem; line-height: 1.6;">
+                    Me especializo en diseñar lógica limpia, modular y persistencia local eficiente. Cuéntame tu idea y garanticemos una entrega puntual.
+                </p>
+                <a href="contacto.html" class="btn btn-primary" style="width: auto;">Hablemos de tu proyecto</a>
+            </div>
         </section>
     </main>
 
@@ -156,6 +167,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-links">
+                <a href="index.html">Inicio</a>
                 <a href="sobre-mi.html">Sobre Mí</a>
                 <a href="proyectos.html">Proyectos</a>
                 <a href="contacto.html">Contacto</a>

@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href');
-        if (pageName === linkPath || (pageName === '' && linkPath === 'index.html')) {
+        const isProjectDetail = pageName.startsWith('proyecto-') && linkPath === 'proyectos.html';
+        if (pageName === linkPath || (pageName === '' && linkPath === 'index.html') || isProjectDetail) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
@@ -95,7 +96,7 @@ function runTerminalSimulation(element) {
 }
 
 function addInteractivePrompt(element, state) {
-    const terminalWindow = document.querySelector('.terminal-window');
+    const terminalWindow = element.closest('.terminal-window');
     if (!terminalWindow) return;
     
     // Si ya existen controles, no duplicarlos
@@ -430,7 +431,12 @@ function setupThemeToggle() {
     const toggleBtn = document.getElementById('theme-toggle');
     if (!toggleBtn) return;
 
+    let transitionTimeout;
+
     toggleBtn.addEventListener('click', () => {
+        // Añadir clase temporal para transición suave y gradual
+        document.documentElement.classList.add('theme-transitioning');
+        
         const currentTheme = document.documentElement.getAttribute('data-theme');
         let newTheme = 'light';
         if (currentTheme !== 'dark') {
@@ -438,6 +444,16 @@ function setupThemeToggle() {
         }
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+
+        // Limpiar el timeout anterior si el usuario hace clic rápidamente
+        if (transitionTimeout) {
+            clearTimeout(transitionTimeout);
+        }
+
+        // Remover la clase después de que la transición (0.8s) se complete
+        transitionTimeout = setTimeout(() => {
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 800);
     });
 
 }

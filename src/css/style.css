@@ -7,8 +7,8 @@
     --text-secondary: #5C6B89;
     --accent-rose: #4F46E5;
     --accent-rose-hover: #3B31D6;
-    --accent-sage: #F59E0B;
-    --accent-blue: #0EA5E9;
+    --accent-sage: #D97706; /* Oscurecido para accesibilidad en tema claro */
+    --accent-blue: #0284C7; /* Oscurecido para accesibilidad en tema claro */
     --border-color: #E2E8F0;
     --shadow-subtle: 0 8px 30px rgba(31, 36, 56, 0.04);
     --shadow-hover: 0 12px 40px rgba(79, 70, 229, 0.12);
@@ -24,10 +24,25 @@
     --bg-secondary: #1E293B;
     --text-primary: #F8FAFC;
     --text-secondary: #94A3B8;
+    --accent-rose: #818CF8; /* Aclarado para excelente contraste en tema oscuro */
+    --accent-rose-hover: #A5B4FC;
+    --accent-sage: #F59E0B; /* Mantiene el tono brillante original en tema oscuro */
+    --accent-blue: #0EA5E9; /* Mantiene el tono brillante original en tema oscuro */
     --border-color: #334155;
     --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.25);
     --shadow-hover: 0 12px 40px rgba(79, 70, 229, 0.2);
     --header-bg: rgba(15, 23, 42, 0.85);
+}
+
+/* Clase temporal para realizar transiciones graduales y fluidas de todo el sitio al cambiar de tema */
+.theme-transitioning,
+.theme-transitioning * {
+    transition: background-color 0.8s ease !important,
+                color 0.8s ease !important,
+                border-color 0.8s ease !important,
+                box-shadow 0.8s ease !important,
+                fill 0.8s ease !important,
+                stroke 0.8s ease !important;
 }
 
 * {
@@ -43,12 +58,30 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.header,
+.footer,
+.terminal-window,
+.terminal-bar,
+.contact-icon-wrapper,
+.contact-link,
+h1, h2, h3, h4, p, span {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 a {
     color: inherit;
     text-decoration: none;
     transition: var(--transition-smooth);
+}
+
+a:focus-visible,
+button:focus-visible,
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent-rose);
+    outline-offset: 4px;
 }
 
 .container {
@@ -533,8 +566,9 @@ h1, h2, h3, h4 {
 }
 
 .terminal-body pre {
-    white-space: pre-wrap;
-    word-break: break-all;
+    white-space: pre;
+    overflow-x: auto;
+    word-break: normal;
 }
 
 .terminal-prompt {
@@ -828,7 +862,11 @@ code {
     top: 110%;
     left: 50%;
     transform: translateX(-50%) translateY(-10px);
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.3s, 
+                background-color 0.4s ease, 
+                border-color 0.4s ease;
 }
 
 .dropdown-content li {
@@ -854,7 +892,8 @@ code {
     color: var(--accent-rose);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
@@ -864,6 +903,7 @@ code {
     color: var(--text-secondary);
     opacity: 0.6;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .dropdown-content li a.disabled-link:hover {
@@ -1086,4 +1126,46 @@ code {
 .project-status-badge.planned {
     background-color: rgba(92, 107, 137, 0.08);
     color: var(--text-secondary);
+}
+
+.project-card-upcoming {
+    border-style: dashed;
+    background-color: rgba(92, 107, 137, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.project-card-upcoming-content {
+    padding: 20px 0;
+}
+
+.project-card-upcoming .upcoming-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.project-card-upcoming .project-card-title,
+.project-card-upcoming p {
+    color: var(--text-secondary);
+}
+
+.project-card-upcoming .project-card-title {
+    margin-bottom: 10px;
+}
+
+.project-card-upcoming p {
+    font-size: 0.9rem;
+    max-width: 200px;
+    margin: 0 auto 20px;
+}
+
+.project-card-upcoming .btn {
+    font-size: 0.8rem;
+    padding: 8px 16px;
 }
