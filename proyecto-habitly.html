@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habitly | Iriome - Desarrollador Multiplataforma</title>
+    <title>Habitly | Iriome - Desarrollador Backend Java | DAM</title>
     <meta name="description" content="Detalle del proyecto Habitly, Gestor de Alquileres en Java con simulación interactiva de consola, desglose STAR y hoja de ruta de entregas.">
     <script>
         (function() {
@@ -33,11 +33,18 @@
                     <ul class="dropdown-content">
                         <li><a href="proyectos.html">Ver todos</a></li>
                         <li><a href="proyecto-habitly.html" class="active">Habitly (Java)</a></li>
-                        <li><a href="proyecto-calculadora.html">Calculadora (Java)</a></li>
+                        <li><a href="proyecto-calculadora.html">Calculadora P&I (Java)</a></li>
                         <li><a href="#" class="disabled-link">Más proyectos...</a></li>
                     </ul>
                 </li>
                 <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+                <li class="dropdown">
+                    <a href="#" id="nav-link-cv" class="dropbtn nav-cv-btn">CV <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" class="disabled-link">Descargar PDF (próximamente)</a></li>
+                        <li><a href="contacto.html?reason=cv">Solicitar Completo</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </header>
@@ -54,19 +61,26 @@
             <!-- Ficha de Proyecto Estrella -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary);">Habitly: Gestor de Alquileres</h1>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: habitly-title;">Habitly: Gestión Inmobiliaria &amp; Compliance</h1>
                     <div class="project-meta">
                         <span class="tag">Java SE</span>
+                        <span class="tag">JUnit 5 (Tests Automáticos)</span>
                         <span class="tag">POO Avanzada</span>
-                        <span class="tag">Persistencia Binaria</span>
-                        <span class="tag">Cumplimiento Legal (LAU)</span>
-                        <span class="tag">Arquitectura de Roles</span>
+                        <span class="tag">Cumplimiento Legal (LAU / Ley 12/2023)</span>
+                        <span class="tag">Estructuras de Datos</span>
                     </div>
                 </div>
-                <a href="https://github.com/DevNaranjo/Habitly" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                    Ver en GitHub
-                </a>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://github.com/DevNaranjo/Habitly" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        Ver en GitHub
+                    </a>
+
+                    <a href="https://github.com/DevNaranjo/Habitly/tree/main/tests" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; border: 1px solid var(--accent-rose); color: var(--accent-rose); background: transparent;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Ver Tests JUnit
+                    </a>
+                </div>
             </div>
 
             <!-- Simulador de Terminal Retro -->
@@ -91,7 +105,7 @@
                     <div class="star-letter">S</div>
                     <h3>Situación</h3>
                     <p>
-                        La gestión y el cumplimiento legal en el arrendamiento de inmuebles suele ser propensa a disputas y multas. Los propietarios e inquilinos carecen de herramientas que centralicen las cuentas (ingresos vs. facturas de suministros de luz o agua) y que aseguren de forma estricta las normativas vigentes en España (como la <strong>LAU 2026</strong> y la <strong>Ley de Vivienda 12/2023</strong>), relativas a límites de renta (<strong>IRAV</strong>), depósitos de fianza (<strong>ICAVI</strong>) y duraciones mínimas de los contratos.
+                        La administración de carteras inmobiliarias y el cumplimiento de leyes como la LAU o la Ley de Vivienda (Ley 12/2023) resultan muy complejos para propietarios y gestores. La falta de herramientas centralizadas intuitivas para visualizar balances de rentabilidad netos y gestionar la liquidación de suministros se suma a la dificultad de asegurar de manera estricta los límites del IRAV y las obligaciones fiscales y de depósitos del ICAVI.
                     </p>
                 </div>
 
@@ -99,7 +113,7 @@
                     <div class="star-letter">T</div>
                     <h3>Tarea</h3>
                     <p>
-                        Diseñar y programar un software de consola robusto en <strong>Java SE (v1.0.6)</strong> que centralice el inventario inmobiliario, automatice balances financieros en tiempo real y valide legalmente cada contrato formalizado según el tipo de arrendador, con un sistema seguro de roles (Propietario, Inquilino, Invitado) y persistencia sin servidores.
+                        Desarrollar un <strong>MVP de consola en Java</strong> que automatizara el ciclo completo de gestión inmobiliaria: registro de propiedades, cálculo de liquidaciones mensuales, control de vencimientos de contrato y validación estricta de la normativa legal vigente (LAU, IRAV, ICAVI), aplicando <strong>Programación Orientada a Objetos (POO)</strong> y buenas prácticas de modularidad.
                     </p>
                 </div>
 
@@ -107,11 +121,12 @@
                     <div class="star-letter">A</div>
                     <h3>Acción</h3>
                     <p>
-                        Modelé el dominio en base a Programación Orientada a Objetos con clases dedicadas (<code>Vivienda</code>, subclasificada en <code>Piso</code> y <code>Casa</code>; <code>ContratoAlquiler</code>, <code>Gasto</code>, y <code>Usuario</code> extendido a <code>Propietario</code> e <code>Inquilino</code>). Implementé un controlador central <code>GestorInventario</code> que valida reglas legales complejas:
-                        1. <strong>Duración legal:</strong> Mínimo obligatorio de 5 años si el arrendador es persona física (<code>FISICO</code>) o 7 años si es jurídica (<code>JURIDICO</code>).
-                        2. <strong>Fianza e ICAVI:</strong> Fianza exacta de 1 mes, garantías adicionales limitadas a 2 meses, y registro de alerta si expira el plazo legal de depósito de fianza ante el organismo ICAVI (30 días).
-                        3. <strong>Regulación de precios:</strong> Control de rentas en base al límite IRAV y actualizaciones con índices de referencia reales (IRAV 2026: 2,47%).
-                        Finalmente, diseñé una persistencia local ligera e incorruptible basada en la <strong>serialización binaria nativa</strong> de objetos en archivos de datos.
+                        Para construir este proyecto apliqué los siguientes pilares de arquitectura:
+                        <br><strong>1. Diseño Orientado a Objetos:</strong> Estructuré el sistema en clases especializadas (Propiedad, Contrato, Inquilino, Liquidación) con responsabilidades bien definidas, aprovechando herencia, encapsulamiento y polimorfismo.
+                        <br><strong>2. Motor de Cumplimiento Legal:</strong> Implementé el ciclo de vida del contrato de alquiler bajo la LAU y Ley 12/2023 (duración, prórrogas automáticas, aviso de preaviso de vencimiento, límites IRAV por zonas tensionadas).
+                        <br><strong>3. Fiscalidad y Finanzas:</strong> Integré un motor financiero con exención del <strong>IGIC (0%)</strong> para viviendas de alquiler habitual, alertas de depósitos en el ICAVI y cálculo de rentabilidad neta.
+                        <br><strong>4. Flujo de Control Robusto:</strong> Diseñé la consola interactiva con validación de entradas, manejo de excepciones y estructuras de datos para garantizar la integridad del estado de la aplicación.
+                        <br><strong>5. Control de Versiones:</strong> Gestioné el desarrollo con flujos estructurados en <strong>Git / GitHub</strong> con commits atómicos y mensajes descriptivos.
                     </p>
                 </div>
 
@@ -119,16 +134,41 @@
                     <div class="star-letter">R</div>
                     <h3>Resultado</h3>
                     <p>
-                        Desarrollé la versión oficial de Habitly con un <strong>100% de cumplimiento legal automatizado</strong> en contratos y un robusto CLI interactivo con control estricto de excepciones de entrada. La persistencia binaria funciona perfectamente sin pérdida de datos, y los dashboards financieros de rentabilidad (beneficios netos de propietarios) y cumplimiento legal (fianzas fuera de plazo y preavisos de vencimiento a 4 meses) ofrecen a los usuarios el control absoluto de sus carteras de manera segura.
+                        Mitigué al 100% las desviaciones legales (LAU/IRAV/ICAVI) y reduje a 0 los errores críticos financieros mediante la <strong>refactorización</strong> y el diseño de una arquitectura modular basada en <strong>patrones de diseño</strong> orientados a objetos en Java, respaldada por pruebas automatizadas con JUnit 5 y control de versiones en Git.
                     </p>
                 </div>
+            </div>
+
+            <!-- Tarjeta de Calidad de Código (JUnit 5) -->
+            <div class="card" id="junit-quality-card" style="margin-top: 40px; padding: 30px; border-left: 4px solid #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.04) 0%, transparent 100%);">
+                <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    🧪 Calidad de Código &amp; Automatización (JUnit 5)
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0 0 15px 0;">
+                    Para garantizar la estabilidad absoluta del núcleo financiero e inmobiliario, implementé una suite completa de <strong>pruebas unitarias automatizadas</strong> con JUnit 5. Esto me permite validar los flujos críticos del negocio en bloque con un solo clic:
+                </p>
+                <ul style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0 0 0 20px; padding: 0;">
+                    <li><strong>Lógica Legal Dinámica:</strong> Verificación automática de la duración mínima estricta de contratos según el tipo de arrendador (5 años para personas físicas y 7 años para personas jurídicas bajo la LAU).</li>
+                    <li><strong>Flujos de Estado:</strong> Validación automatizada del ciclo de vida de los depósitos bancarios y estados de registro de fianzas.</li>
+                    <li><strong>Integridad de Datos:</strong> Control del formato algorítmico estricto en la asignación de identificadores únicos de contratos (formato <code>CON-A-</code>).</li>
+                </ul>
+            </div>
+
+            <!-- Nota de Aprendizaje & Uso Profesional de IA -->
+            <div class="card" id="ai-learning-note" style="margin-top: 20px; padding: 30px; border-left: 4px solid var(--accent-rose); background: linear-gradient(135deg, rgba(79,70,229,0.04) 0%, transparent 100%);">
+                <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    🤖 Aprendizaje &amp; Uso Profesional de IA
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0;">
+                    Para la generación del instalador ejecutable (<code>.exe</code>) nativo para Windows y el armazón de configuración inicial del entorno de pruebas unitarias en JUnit 5, decidí apoyarme en herramientas de Inteligencia Artificial. En lugar de copiar código a ciegas, utilicé la IA como un <strong>tutor técnico</strong> para analizar la lógica de empaquetado con <code>jpackage</code> y el ciclo de vida de las aserciones de prueba (<code>Assertions</code>). Esto me ha permitido asentar bases metodológicas avanzadas de segundo año de DAM, utilizando la tecnología para <strong>acelerar el autoaprendizaje y optimizar el flujo de trabajo técnico</strong>.
+                </p>
             </div>
 
             <!-- Roadmap (Hoja de Ruta) del Proyecto -->
             <div class="roadmap" id="project-roadmap">
                 <h3>🗺️ Estado y Hoja de Ruta del Proyecto</h3>
                 <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
-                    Cómo aplico mi flujo de entregas incrementales a este desarrollo.
+                    Planificación de la evolución incremental de este desarrollo.
                 </p>
                 
                 <div class="timeline">
@@ -136,26 +176,35 @@
                     <div class="timeline-item completed">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Iteración 1: Motor Lógico & CLI <span class="status-badge">Entregado / MVP</span></h4>
-                            <p>Lógica del negocio en Java: registro de contratos, cálculo matemático de liquidaciones mensuales y sistema de reportes por consola.</p>
+                            <h4>Iteración 1: Lógica Inmobiliaria &amp; CLI <span class="status-badge">Completado (MVP Consola)</span></h4>
+                            <p>Desarrollo del MVP de consola con motor de validaciones LAU, cálculo de liquidaciones mensuales, gestión de contratos y consola interactiva aplicando <strong>POO</strong> y estructuras de datos.</p>
                         </div>
                     </div>
                     
                     <!-- Iteración 2 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Iteración 2: Interfaz Gráfica (GUI) &amp; Despliegue <span class="status-badge">Completado (v1.1.0-F)</span></h4>
+                            <p>Evolución hacia una interfaz de escritorio en <strong>Java Swing</strong> con tema visual Slate-Dark, motor de cumplimiento legal IRAV/ICAVI, adaptación fiscal canaria (IGIC) y distribución mediante instalador nativo para Windows (asistido por IA para el empaquetado con <code>jpackage</code>).</p>
+                        </div>
+                    </div>
+
+                    <!-- Iteración 3 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Iteración 3: Control de Calidad con JUnit 5 <span class="status-badge">Completado</span></h4>
+                            <p>Diseño e implementación de una batería de pruebas unitarias automatizadas para asegurar la integridad de las reglas lógicas del negocio inmobiliario y mitigar regresiones en el código fuente.</p>
+                        </div>
+                    </div>
+
+                    <!-- Iteración 4 -->
                     <div class="timeline-item active">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Iteración 2: Interfaz Gráfica (GUI) <span class="status-badge">En Progreso</span></h4>
-                            <p>Migración de la entrada/salida de datos de la consola hacia una UI de escritorio interactiva utilizando JavaFX.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Iteración 3 -->
-                    <div class="timeline-item planned">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>Iteración 3: Persistencia con SQL <span class="status-badge">Planificado</span></h4>
-                            <p>Conexión de la interfaz gráfica a una base de datos local SQLite mediante JDBC para almacenar contratos y logs de incidencias de forma persistente.</p>
+                            <h4>Iteración 4: Persistencia SQL con SQLite <span class="status-badge">Siguiente Paso</span></h4>
+                            <p>Migración de la serialización binaria de objetos hacia una base de datos local <strong>SQLite</strong> utilizando JDBC para un almacenamiento relacional robusto e histórico. Objetivo vinculado al temario de 2º de DAM.</p>
                         </div>
                     </div>
                 </div>
@@ -174,19 +223,58 @@
 
     <!-- Pie de Página -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="index.html">Inicio</a>
-                <a href="sobre-mi.html">Sobre Mí</a>
-                <a href="proyectos.html">Proyectos</a>
-                <a href="contacto.html">Contacto</a>
+        <div class="container footer-grid">
+            <!-- Columna 1: Marca y Redes -->
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-code">iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
+                </div>
+                <p class="footer-brand-desc">Desarrollador DAM enfocado en Java Backend. Diseñando software con precisión matemática y código limpio.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
             </div>
-            <p>© 2026 Iriome. Convirtiendo café en código.</p>
+            
+            <!-- Columna 2: Navegación -->
+            <div class="footer-nav">
+                <h4>Navegación</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="privacidad.html">Privacidad</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna 3: Estado y Disponibilidad -->
+            <div class="footer-status">
+                <h4>Estado Actual</h4>
+                <div class="status-indicator">
+                    <span class="status-dot-green"></span>
+                    <span class="status-text">Disponible para proyectos</span>
+                </div>
+                <p class="status-location">📍 Las Palmas de Gran Canaria, España</p>
+                <p class="status-quote">"Convirtiendo café en código estructurado."</p>
+            </div>
+        </div>
+        
+        <!-- Línea de copyright inferior -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>© 2026 Iriome Naranjo Rodríguez. Todos los derechos reservados.</p>
+                <p class="made-with">Hecho con <span class="heart">❤️</span> y pasión por el backend</p>
+            </div>
         </div>
     </footer>
 
     <!-- Botón Flotante de Modo Oscuro -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema visual claro y oscuro">
         <!-- Sun Icon (SVG) -->
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         <!-- Moon Icon (SVG) -->

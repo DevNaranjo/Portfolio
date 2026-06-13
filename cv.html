@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae | Iriome Naranjo Rodríguez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4F46E5; /* Indigo */
+            --text-color: #1E293B; /* Slate 800 */
+            --text-secondary: #475569; /* Slate 600 */
+            --accent-sage: #D97706; /* Amber */
+            --border-color: #E2E8F0; /* Slate 200 */
+            --bg-secondary: #F8FAFC; /* Slate 50 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ECEFF4;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Controles no imprimibles */
+        .controls-bar {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-print {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-print:hover {
+            background-color: #3B31D6;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            background-color: transparent;
+            color: var(--text-secondary);
+            border: 1.5px solid var(--border-color);
+        }
+
+        .btn-back:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hoja de CV */
+        .cv-page {
+            width: 100%;
+            max-width: 820px;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Cabecera del CV */
+        .cv-header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-main h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0F172A;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .header-main .subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+
+        .header-contact {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .header-contact a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .header-contact a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Secciones del CV */
+        .cv-section {
+            margin-bottom: 25px;
+        }
+
+        .cv-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #0F172A;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Listas de Educación y Experiencia (Línea de tiempo) */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .timeline-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #0F172A;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            background-color: #EEF2F6;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .timeline-date.completed {
+            color: var(--accent-sage);
+            background-color: #FFFBEB;
+        }
+
+        .timeline-date.planned {
+            color: var(--text-secondary);
+            background-color: #F1F5F9;
+        }
+
+        .timeline-org {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .timeline-bullets {
+            margin-top: 5px;
+            padding-left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .timeline-bullets li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Habilidades Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .skills-category h3 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 6px;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .skills-list li strong {
+            color: var(--text-color);
+        }
+
+        /* Pie de página del CV */
+        .cv-footer {
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Adaptaciones para impresión */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .controls-bar {
+                display: none !important;
+            }
+
+            .cv-page {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
+            }
+
+            .cv-header {
+                border-bottom-color: #000000 !important;
+            }
+
+            .timeline-date {
+                background-color: transparent !important;
+                border: 1px solid var(--border-color) !important;
+                color: #000000 !important;
+                padding: 1px 6px !important;
+            }
+
+            a {
+                text-decoration: none !important;
+                color: black !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+        }
+
+        /* Adaptación móvil */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .cv-page {
+                padding: 25px 20px;
+            }
+            .cv-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-contact {
+                text-align: left;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Controles (No imprimible) -->
+    <div class="controls-bar">
+        <a href="sobre-mi.html" class="btn-action btn-back">← Volver al Portfolio</a>
+        <button onclick="window.print()" class="btn-action btn-print">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+
+    <!-- Página del CV -->
+    <div class="cv-page">
+        <!-- Cabecera -->
+        <header class="cv-header">
+            <div class="header-main">
+                <h1>Iriome Naranjo Rodríguez</h1>
+                <div class="subtitle">Desarrollador Backend Java & Multiplataforma</div>
+            </div>
+            <div class="header-contact">
+                <span>📍 Las Palmas de Gran Canaria, España</span>
+                <a href="mailto:inaranjordgz@gmail.com">✉ inaranjordgz@gmail.com</a>
+                <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer">🔗 linkedin.com/in/inaranjorodriguez</a>
+                <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer">🐙 github.com/DevNaranjo</a>
+                <a href="https://devnaranjo.github.io/Portfolio" target="_blank" rel="noopener noreferrer">🌐 devnaranjo.github.io/Portfolio</a>
+            </div>
+        </header>
+
+        <!-- Perfil Profesional -->
+        <section class="cv-section">
+            <h2>👤 Perfil Profesional</h2>
+            <p class="profile-desc">
+                Desarrollador de Aplicaciones Multiplataforma (DAM) especializado en desarrollo backend con Java. Con una sólida mentalidad lógica y un alto ritmo de aprendizaje, me enfoco en diseñar código modular, mantenible y robusto. Cuento con una base en administración de sistemas y redes (SMR), lo que me proporciona una comprensión integral de los entornos de ejecución. Comprometido con la planificación metódica, la seguridad de la información y la entrega puntual de software estructurado bajo metodologías ágiles (MVP).
+            </p>
+        </section>
+
+        <!-- Formación Académica -->
+        <section class="cv-section">
+            <h2>🎓 Formación Académica</h2>
+            <div class="timeline">
+                <!-- DAM -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</span>
+                        <span class="timeline-date">2025 - Presente (En curso)</span>
+                    </div>
+                    <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
+                    <p class="timeline-desc">
+                         Estudios enfocados en la arquitectura orientada a objetos modular (POO) en Java, diseño e introducción a bases de datos relacionales, lógica de negocio y control de versiones mediante flujos estructurados en Git.
+                    </p>
+                </div>
+
+                <!-- SMR -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Técnico en Sistemas Microinformáticos y Redes (SMR)</span>
+                        <span class="timeline-date completed">Completado</span>
+                    </div>
+                    <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
+                    <p class="timeline-desc">
+                        Adquisición de bases firmes en redes locales y protocolos, administración y mantenimiento de sistemas operativos corporativos (Windows/Linux), servicios de infraestructura y configuración de servidores locales.
+                    </p>
+                </div>
+
+                <!-- DAW -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Web (DAW)</span>
+                        <span class="timeline-date planned">Especialización Planificada</span>
+                    </div>
+                    <div class="timeline-org">IES El Rincón (Las Palmas, España)</div>
+                    <p class="timeline-desc">
+                        Proyección académica enfocada a consolidar un perfil Full-Stack, complementando el desarrollo backend con el dominio de arquitecturas web dinámicas, diseño de APIs REST y tecnologías de cliente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiencia en Proyectos -->
+        <section class="cv-section">
+            <h2>🛠️ Experiencia en Proyectos de Software</h2>
+            <div class="timeline">
+                <!-- Habitly -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Desarrollador Backend Principal - Habitly (Sistema Inmobiliario & Compliance)</span>
+                        <span class="timeline-date">Proyecto Destacado (v1.1.0-F)</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Software de gestión inmobiliaria modular desarrollado en Java enfocado a asegurar de forma automatizada las regulaciones legales vigentes de arrendamiento en España (LAU, IRAV, ICAVI).
+                    </p>
+                    <ul class="timeline-bullets">
+                        <li><strong>[X]</strong> Mitigué al 100% las desviaciones legales (LAU/IRAV/ICAVI) y reduje a 0 los errores críticos financieros mediante la <strong>refactorización</strong> y diseño de una arquitectura modular basada en <strong>patrones de diseño</strong> orientados a objetos en Java.</li>
+                        <li><strong>[X]</strong> Elevé la fiabilidad del núcleo del software mediante una suite de más de 20 aserciones unitarias automatizadas implementando <strong>JUnit 5</strong> y Maven para el control preciso del <strong>ciclo de vida</strong> de los objetos y contratos.</li>
+                        <li><strong>[X]</strong> Aseguré la trazabilidad e integridad histórica del código en un equipo unipersonal mediante el uso estricto de commits atómicos en <strong>Git / GitHub</strong> y la planificación iterativa bajo metodología MVP.</li>
+                    </ul>
+                </div>
+
+                <!-- Calculadora -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Desarrollador de Software - Calculadora de Propinas e Impuestos</span>
+                        <span class="timeline-date">Desarrollo Secuencial</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Aplicación secuencial estructurada en Java SE para procesamiento aritmético tolerante a fallos y desglose contable de precisión.
+                    </p>
+                    <ul class="timeline-bullets">
+                        <li><strong>[X]</strong> Garanticé un 100% de precisión decimal en cálculos financieros complejos implementando un control riguroso de excepciones (Try-Catch) y validación estricta de flujos de entrada de usuario.</li>
+                        <li><strong>[X]</strong> Eliminé conflictos en el historial de código al 100% aplicando un flujo estructurado de ramificaciones y merges limpios mediante control de versiones con <strong>Git</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habilidades Técnicas -->
+        <section class="cv-section">
+            <h2>💻 Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <!-- Desarrollo & Datos -->
+                <div class="skills-category">
+                    <h3>Desarrollo & Datos</h3>
+                    <ul class="skills-list">
+                        <li>Lenguajes: <strong>Java, Python, SQL, HTML/CSS, JS</strong></li>
+                        <li>BBDD: <strong>PostgreSQL, MongoDB (NoSQL), MySQL</strong></li>
+                        <li>Análisis: <strong>Visual Paradigm (UML), Estructuras</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Sistemas & Soporte -->
+                <div class="skills-category">
+                    <h3>Sistemas & Soporte TI</h3>
+                    <ul class="skills-list">
+                        <li>Sistemas: <strong>Windows Server, Linux, Active Directory</strong></li>
+                        <li>Soporte: <strong>Soporte remoto/presencial, Incidencias</strong></li>
+                        <li>Mant.: <strong>Hardware, Backups, Antivirus/Malware</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Redes & Virtualización -->
+                <div class="skills-category">
+                    <h3>Redes & Virtualización</h3>
+                    <ul class="skills-list">
+                        <li>Protocolos: <strong>TCP/IP, LAN-WAN, VLAN, Wi-Fi</strong></li>
+                        <li>Equipos: <strong>Cisco Routers/Switches, Packet Tracer</strong></li>
+                        <li>Virtualización: <strong>VMware, VirtualBox</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Entorno & Metodologías -->
+                <div class="skills-category">
+                    <h3>Entorno & Metodologías</h3>
+                    <ul class="skills-list">
+                        <li>Flujos & Git: <strong>Git, GitHub, GitFlow, JUnit, Maven</strong></li>
+                        <li>Herramientas: <strong>IntelliJ, VS Code, MS Office</strong></li>
+                        <li>Soft Skills: <strong>Trabajo en equipo, MVP, Planificación</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pie de página del CV -->
+        <footer class="cv-footer">
+            <span>Iriome Naranjo Rodríguez</span>
+            <span>Estudiante de DAM - Especialización Backend Java</span>
+        </footer>
+    </div>
+
+</body>
+</html>

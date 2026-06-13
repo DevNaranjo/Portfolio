@@ -1,21 +1,10 @@
-# Compilación de Java (para tus proyectos en desarrollo)
-*.class
-*.log
-*.ctxt
-.mtj.tmp/
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store
 
-# Directorios de compilación e IDEs
-bin/
-build/
-out/
-.gradle/
+# IDE / Editor configuration
+.vscode/
 .idea/
 *.iml
 *.ipr
@@ -25,15 +14,40 @@ out/
 .project
 .metadata/
 .recommenders/
-.vscode/
+*.code-workspace
 
-# Archivos del sistema y temporales
-Thumbs.db
-desktop.ini
-.DS_Store
+# Build output (Java / generic)
+bin/
+build/
+out/
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Java specific temporary files
+*.ctxt
+.mtj.tmp/
+
+# Logs & temporary files
+*.log
 *.tmp
 *.bak
 *.swp
 
-# Plantilla de correo privada
+# Node / frontend artifacts (if present)
+node_modules/
+dist/
+public/
+
+# Sensitive configuration files
+.env
+.env.*
+
+# Project specific ignored files
 plantilla_correo.html

@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupThemeToggle();
 
     setupPrivateTemplateShortcut();
+    setupProjectDetailsZoom();
 });
 
 /**
@@ -42,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function runTerminalSimulation(element) {
     const lines = [
-        "c:\\Users\\iriom\\Habitly> java com.habitly.ui.Habitly",
+        "c:\\Users\\DevNaranjo\\Habitly> java com.habitly.ui.Habitly",
         "[INFO] Cargando módulo Habitly - Gestión de Alquileres (Java SE 17)...",
         "[INFO] Inicializando base de datos binaria serializada...",
         "[OK] Datos cargados con éxito.",
         "",
         "========================================",
-        "       BIENVENIDO A HABITLY (v1.0 OFICIAL)",
+        "       BIENVENIDO A HABITLY",
         "========================================",
         "1. Registrarme como PROPIETARIO",
         "2. Registrarme como INQUILINO",
@@ -146,7 +147,7 @@ function addInteractivePrompt(element, state) {
             { 
                 label: "2. Salir (Cerrar Sesión)", 
                 val: "2", 
-                response: "2\n\nCerrando sesión de invitado...\n¡Hasta pronto!\n\n========================================\n       BIENVENIDO A HABITLY (v1.0 OFICIAL)\n========================================\n1. Registrarme como PROPIETARIO\n2. Registrarme como INQUILINO\n3. Acceder como INVITADO (Solo lectura)\n4. Acceder con mi DNI (Login)\n0. Salir de la aplicación\n----------------------------------------\n¿Cómo quieres empezar hoy?: _",
+                response: "2\n\nCerrando sesión de invitado...\n¡Hasta pronto!\n\n========================================\n       BIENVENIDO A HABITLY\n========================================\n1. Registrarme como PROPIETARIO\n2. Registrarme como INQUILINO\n3. Acceder como INVITADO (Solo lectura)\n4. Acceder con mi DNI (Login)\n0. Salir de la aplicación\n----------------------------------------\n¿Cómo quieres empezar hoy?: _",
                 nextState: "INITIAL"
             }
         ];
@@ -173,7 +174,7 @@ function addInteractivePrompt(element, state) {
             { 
                 label: "10. Salir y Guardar", 
                 val: "10", 
-                response: "10\n\nGuardando cambios y cerrando sesión...\n¡Hasta pronto, IRIOME NARANJO!\n\n========================================\n       BIENVENIDO A HABITLY (v1.0 OFICIAL)\n========================================\n1. Registrarme como PROPIETARIO\n2. Registrarme como INQUILINO\n3. Acceder como INVITADO (Solo lectura)\n4. Acceder con mi DNI (Login)\n0. Salir de la aplicación\n----------------------------------------\n¿Cómo quieres empezar hoy?: _",
+                response: "10\n\nGuardando cambios y cerrando sesión...\n¡Hasta pronto, IRIOME NARANJO!\n\n========================================\n       BIENVENIDO A HABITLY\n========================================\n1. Registrarme como PROPIETARIO\n2. Registrarme como INQUILINO\n3. Acceder como INVITADO (Solo lectura)\n4. Acceder con mi DNI (Login)\n0. Salir de la aplicación\n----------------------------------------\n¿Cómo quieres empezar hoy?: _",
                 nextState: "INITIAL"
             }
         ];
@@ -322,11 +323,27 @@ function setupContactForm() {
     const form = document.querySelector('.contact-form');
     if (!form) return;
 
+    // Pre-rellenar mensaje si viene de la solicitud de CV
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('reason') === 'cv') {
+        const messageInput = form.querySelector('#message');
+        if (messageInput) {
+            messageInput.value = "Hola Iriome, he visto tu portfolio y me gustaría solicitar tu CV completo en PDF para un proceso de selección.";
+        }
+    }
+
     const card = document.getElementById('contact-card');
     const submitBtn = document.getElementById('btn-submit-contact');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault(); 
+
+        // Validar checkbox de privacidad
+        const privacyCheckbox = form.querySelector('#privacy');
+        if (privacyCheckbox && !privacyCheckbox.checked) {
+            alert('Debes aceptar la Política de Privacidad para poder enviar el mensaje.');
+            return;
+        }
 
         // 1. Mostrar estado de carga en el botón
         submitBtn.classList.add('btn-loading');
@@ -467,16 +484,22 @@ function setupPrivateTemplateShortcut() {
     });
 }
 
+
 /**
  * Simula el comportamiento de la Calculadora de Propinas.
  */
 function runCalculatorSimulation(element) {
     const lines = [
-        "c:\\Users\\iriom\\Propinas> java com.tipcalc.Main",
-        "[INFO] Inicializando Calculadora de Propinas e Impuestos (Java SE 17)...",
-        "[OK] Módulo cargado correctamente.",
-        "",
-        "Introduce el total de la cuenta (EUR): _"
+        `<span style="color: var(--accent-sage)">c:\\Users\\DevNaranjo\\Calculadora-Propinas&gt; java com.rivas.gestion.Main</span>`,
+        `<span style="color: var(--accent-blue)">==================================================</span>`,
+        `<span style="color: #FFFFFF; font-weight: bold;">            GRUPO GASTRONÓMICO RIVAS              </span>`,
+        `<span style="color: #FFFFFF;">       SISTEMA DE FACTURACIÓN Y ARQUEO            </span>`,
+        `<span style="color: var(--accent-blue)">==================================================</span>`,
+        `Bienvenido. Siga las instrucciones en pantalla para`,
+        `desglosar y dividir las cuentas de manera exacta.`,
+        ``,
+        `<span style="color: var(--accent-blue)">--- Nueva Mesa ---</span>`,
+        `<span style="color: var(--accent-sage)">1. Ingrese el importe total de la base imponible (€): </span>_`
     ];
 
     let currentLine = 0;
@@ -485,21 +508,13 @@ function runCalculatorSimulation(element) {
     function typeLine() {
         if (currentLine < lines.length) {
             let lineText = lines[currentLine];
-            
-            if (lineText.startsWith("c:\\Users")) {
-                lineText = `<span style="color: var(--accent-sage)">${lineText}</span>`;
-            } else if (lineText.startsWith("[INFO]")) {
-                lineText = `<span style="color: var(--accent-blue)">${lineText}</span>`;
-            } else if (lineText.startsWith("[OK]")) {
-                lineText = `<span style="color: var(--accent-sage); font-weight: bold;">${lineText}</span>`;
-            }
-
             element.innerHTML += lineText + "\n";
             currentLine++;
             
-            let delay = 120;
-            if (currentLine === 1) delay = 250;
-            if (currentLine > 2) delay = 40;
+            let delay = 100;
+            if (currentLine === 1) delay = 200;
+            if (currentLine > 2 && currentLine < 8) delay = 30;
+            if (currentLine >= 8) delay = 100;
             
             element.scrollTop = element.scrollHeight;
             setTimeout(typeLine, delay);
@@ -530,12 +545,12 @@ function addCalculatorInteractivePrompt(element) {
     
     const options = [
         { 
-            label: "Simular Cuenta 52.50€ (3 comensales / 15% propina)", 
-            response: "52.50\nIntroduce el porcentaje de propina (ej. 10, 15, 20): 15\nIntroduce el número de personas: 3\n\n========================================\n           TICKET DE COMPRA\n========================================\nCuenta Base:        52.50 EUR\nPropina (15.0%):     7.88 EUR\nTotal General:      60.38 EUR\n----------------------------------------\nComensales:         3 personas\nPago por Persona:   20.13 EUR\n========================================\n\nIntroduce el total de la cuenta (EUR): _"
+            label: "Simular Cuenta 52.50€ (3 comensales / 15% propina / IVA)", 
+            response: "52.50\n<span style=\"color: var(--accent-sage)\">2. Seleccione el tipo de impuesto aplicable:</span>\n   [1] IGIC (7%)\n   [2] IVA (21%)\n<span style=\"color: var(--accent-sage)\">Selección (1 o 2): </span>2\n<span style=\"color: var(--accent-sage)\">3. Seleccione el porcentaje de propina (0%, 5%, 10%, 15%): </span>15\n<span style=\"color: var(--accent-sage)\">4. Ingrese el número de comensales entre los que dividir la cuenta: </span>3\n\n<span style=\"color: var(--accent-blue)\">===============================================</span>\n<span style=\"color: #FFFFFF; font-weight: bold;\">            GRUPO GASTRONÓMICO RIVAS           </span>\n<span style=\"color: #FFFFFF;\">               TICKET DE CIERRE                </span>\n<span style=\"color: var(--accent-blue)\">===============================================</span>\nSubtotal (Base Imponible):             52,50 €\nImpuestos (IVA 21,00%):                11,03 €\nPropina (15%):                          7,88 €\n<span style=\"color: var(--accent-blue)\">-----------------------------------------------</span>\n<span style=\"color: var(--accent-sage); font-weight: bold;\">TOTAL DE LA FACTURA:                   71,41 €</span>\n<span style=\"color: var(--accent-blue)\">===============================================</span>\nComensales:                                  3\n<span style=\"color: var(--accent-blue)\">-----------------------------------------------</span>\n<span style=\"color: #FFFFFF; font-weight: bold;\">Detalle de pago por comensal:</span>\n  1 comensal paga:                     23,81 €\n  2 comensales pagan:                  23,80 € cada uno\n<span style=\"color: var(--accent-blue)\">  (Se ha distribuido el céntimo restante del redondeo)</span>\n<span style=\"color: var(--accent-blue)\">-----------------------------------------------</span>\nSuma total de los comensales:          71,41 €\n<span style=\"color: var(--accent-sage); font-weight: bold;\">✓ El cuadre de caja es exacto (Diferencia: 0.00 €)</span>\n<span style=\"color: var(--accent-blue)\">===============================================</span>\n\n<span style=\"color: var(--accent-sage)\">¿Desea procesar la cuenta de otra mesa? (S/N): </span>_"
         },
         { 
-            label: "Simular Cuenta 120.00€ (5 comensales / 10% propina)", 
-            response: "120.00\nIntroduce el porcentaje de propina (ej. 10, 15, 20): 10\nIntroduce el número de personas: 5\n\n========================================\n           TICKET DE COMPRA\n========================================\nCuenta Base:       120.00 EUR\nPropina (10.0%):    12.00 EUR\nTotal General:     132.00 EUR\n----------------------------------------\nComensales:         5 personas\nPago por Persona:   26.40 EUR\n========================================\n\nIntroduce el total de la cuenta (EUR): _"
+            label: "Simular Cuenta 120.00€ (5 comensales / 10% propina / IGIC)", 
+            response: "120.00\n<span style=\"color: var(--accent-sage)\">2. Seleccione el tipo de impuesto aplicable:</span>\n   [1] IGIC (7%)\n   [2] IVA (21%)\n<span style=\"color: var(--accent-sage)\">Selección (1 o 2): </span>1\n<span style=\"color: var(--accent-sage)\">3. Seleccione el porcentaje de propina (0%, 5%, 10%, 15%): </span>10\n<span style=\"color: var(--accent-sage)\">4. Ingrese el número de comensales entre los que dividir la cuenta: </span>5\n\n<span style=\"color: var(--accent-blue)\">===============================================</span>\n<span style=\"color: #FFFFFF; font-weight: bold;\">            GRUPO GASTRONÓMICO RIVAS           </span>\n<span style=\"color: #FFFFFF;\">               TICKET DE CIERRE                </span>\n<span style=\"color: var(--accent-blue)\">===============================================</span>\nSubtotal (Base Imponible):            120,00 €\nImpuestos (IGIC  7,00%):                8,40 €\nPropina (10%):                         12,00 €\n<span style=\"color: var(--accent-blue)\">-----------------------------------------------</span>\n<span style=\"color: var(--accent-sage); font-weight: bold;\">TOTAL DE LA FACTURA:                  140,40 €</span>\n<span style=\"color: var(--accent-blue)\">===============================================</span>\nComensales:                                  5\n<span style=\"color: var(--accent-blue)\">-----------------------------------------------</span>\n<span style=\"color: #FFFFFF; font-weight: bold;\">Detalle de pago por comensal:</span>\n  Cada comensal paga:                  28,08 € (5 comensales)\n<span style=\"color: var(--accent-blue)\">-----------------------------------------------</span>\nSuma total de los comensales:         140,40 €\n<span style=\"color: var(--accent-sage); font-weight: bold;\">✓ El cuadre de caja es exacto (Diferencia: 0.00 €)</span>\n<span style=\"color: var(--accent-blue)\">===============================================</span>\n\n<span style=\"color: var(--accent-sage)\">¿Desea procesar la cuenta de otra mesa? (S/N): </span>_"
         }
     ];
     
@@ -600,4 +615,36 @@ function addCalculatorInteractivePrompt(element) {
     
     controls.appendChild(resetBtn);
     terminalWindow.appendChild(controls);
+}
+
+/**
+ * Agrega un efecto de zoom y desvanecimiento al hacer clic en "Ver Detalles"
+ * de los proyectos para dar una transición más fluida e inmersiva.
+ */
+function setupProjectDetailsZoom() {
+    const detailButtons = document.querySelectorAll('.project-card-actions a.btn-primary');
+    detailButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const href = btn.getAttribute('href');
+            if (href && href.startsWith('proyecto-')) {
+                e.preventDefault();
+                
+                const card = btn.closest('.project-card');
+                const mainContainer = document.querySelector('main');
+                
+                // Aplicar efectos visuales
+                if (card) {
+                    card.classList.add('project-card-zoom-exit');
+                }
+                if (mainContainer) {
+                    mainContainer.classList.add('page-zoom-exit');
+                }
+                
+                // Navegar una vez finalice la animación
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 450);
+            }
+        });
+    });
 }

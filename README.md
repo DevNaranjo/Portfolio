@@ -1,20 +1,75 @@
-# Portfolio Profesional - Desarrollador Multiplataforma
+# 🧑‍💻 Portfolio Profesional — Iriome Naranjo Rodríguez
 
-¡Bienvenido/a a mi portfolio profesional! Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM). Este repositorio contiene el código de mi portfolio personal y la documentación de mis proyectos técnicos.
+[![GitHub Pages](https://img.shields.io/badge/Live-devnaranjo.github.io%2FPortfolio-4F46E5?style=flat&logo=github)](https://devnaranjo.github.io/Portfolio)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-inaranjorodriguez-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/inaranjorodriguez)
 
-## Estructura del Repositorio
-
-El proyecto está organizado siguiendo las mejores prácticas de Git y desarrollo de software:
-
-*   `src/`: Contiene los recursos de la web del portfolio (estilos CSS, lógica en JS e imágenes).
-*   `doc/`: Contiene la documentación de ingeniería de software de mis proyectos (diagramas, análisis de requisitos, esquemas de bases de datos).
-*   `index.html`, `sobre-mi.html`, `proyectos.html`, `contacto.html`: Páginas principales del sitio web.
-
-## Objetivos del Portfolio
-
-1.  Demostrar mi compromiso con la **puntualidad y la organización** en el desarrollo de software.
-2.  Mostrar mi capacidad de **aprendizaje rápido y resiliencia** (como mi dominio de las bases de Java).
-3.  Exponer mis proyectos bajo la metodología **STAR** (Situación, Tarea, Acción, Resultado) para evidenciar mi proceso de resolución de problemas.
+> Desarrollador de Aplicaciones Multiplataforma (DAM) | Especialización Backend Java  
+> Developer of Multiplatform Applications (DAM) | Java Backend Specialization
 
 ---
-*Desarrollado con orden y pasión por el código.*
+
+## 🇪🇸 Español
+
+Portfolio web profesional y personal. Diseñado bajo una estética premium, optimizado para sistemas de cribado curricular (ATS) y desarrollado en HTML5, CSS3 y JavaScript vanilla para garantizar un rendimiento sobresaliente sin dependencias externas.
+
+### 🗂️ Estructura del Repositorio
+
+| Ruta | Descripción |
+|---|---|
+| `index.html` | Portada principal con propuesta de valor y tarjetas de proyectos destacados. |
+| `sobre-mi.html` | Trayectoria educativa, fortalezas profesionales y desglose de stack técnico (SMR/DAM). |
+| `proyectos.html` | Catálogo de proyectos con filtros de estado y acceso a código fuente. |
+| `proyecto-habitly.html` | Detalle del software de gestión inmobiliaria (POO, JUnit 5, persistencia). |
+| `proyecto-calculadora.html` | Detalle del software de división de cuentas (Java 25, `BigDecimal`, compensación de redondeo). |
+| `contacto.html` | Formulario de contacto seguro integrado con Web3Forms y anti-spam. |
+| `privacidad.html` | Página legal de Política de Privacidad de datos (cumplimiento RGPD). |
+| `cv.html` | Currículum interactivo adaptado para lectura digital y optimizado para impresión A4. |
+| `src/assets/` | Recursos gráficos, foto de perfil e icono de marca, junto al PDF del CV. |
+| `src/css/style.css` | Sistema de diseño unificado, variables de tema y responsive layout. |
+| `src/js/script.js` | Motor de UI, simulador de terminal retro, gestión de cookies/tema y atajos globales. |
+| `doc/` | Documentos de arquitectura y especificaciones funcionales de los proyectos. |
+| `plantilla_correo.html` | Herramienta local privada de respuesta rápida para Gmail (ignorado en Git). |
+
+### 🛠️ Características Principales
+
+1. **Simulador de Terminal Retro Interactivo**: Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java (con simulación matemática exacta en la división de cuentas del Grupo Gastronómico Rivas).
+2. **Cumplimiento RGPD y Seguridad**: Formulario de contacto con checkbox de consentimiento explícito obligatorio enlazado a la **Política de Privacidad** de datos y protección anti-spam mediante **hCaptcha** con Web3Forms.
+3. **Navegación Dinámica de Código**: Cabecera corporativa con el logotipo interactivo `Iriome.build(parámetro)` donde el parámetro cambia dinámicamente según la sección en la que navega el usuario.
+4. **Modo Oscuro sin Parpadeo (Flicker-Free)**: Alternador de tema visual claro/oscuro que almacena la preferencia en `localStorage`, evaluada en la cabecera del documento para evitar el parpadeo blanco al cargar la página.
+5. **Utilidad de Trabajo Local**: Acceso directo al generador de correo corporativo mediante el atajo de teclado global **`Ctrl + Alt + I`** ejecutado en local.
+
+---
+
+## 🇬🇧 English
+
+Personal and professional web portfolio. Designed with a premium look and feel, optimized for Applicant Tracking Systems (ATS), and built using native HTML5, CSS3, and JavaScript to guarantee exceptional loading speed with zero dependencies.
+
+### 🗂️ Repository Structure
+
+| Path | Description |
+|---|---|
+| `index.html` | Main home page showcasing the value proposition and featured project cards. |
+| `sobre-mi.html` | Profile, academic background, key strengths, and technical stack (SMR/DAM). |
+| `proyectos.html` | Projects directory with status badges and links to source repositories. |
+| `proyecto-habitly.html` | Details of the real-estate management software (OOP, JUnit 5, persistence). |
+| `proyecto-calculadora.html` | Details of the bill-splitter console app (Java 25, `BigDecimal`, rounding compensation). |
+| `contacto.html` | Secure contact form integrated with Web3Forms API and anti-spam protection. |
+| `privacidad.html` | Privacy Policy page (fully compliant with GDPR regulations). |
+| `cv.html` | Interactive web CV, designed for digital viewing and optimized for A4 printing. |
+| `src/assets/` | Graphic resources, profile photo, brand icons, and CV PDF. |
+| `src/css/style.css` | Unified design system, CSS variables, and fully responsive layout. |
+| `src/js/script.js` | UI core engine, retro CLI simulator, cookies/theme handling, and global keyboard shortcuts. |
+| `doc/` | Technical documentation and architecture specifications. |
+| `plantilla_correo.html` | Local private tool for generating formal Gmail responses (ignored by Git). |
+
+### 🛠️ Core Features
+
+1. **Interactive CLI Terminal Simulator**: Realistic JavaScript terminal emulating the actual console outputs of Java programs (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas).
+2. **GDPR Compliance & Anti-Spam**: Contact form featuring a mandatory consent checkbox pointing to the **Privacy Policy**, backed by **hCaptcha** spam protection integrated with Web3Forms.
+3. **Dynamic Code Logo**: A custom navigation bar logo `Iriome.build(parameter)` where the method parameter changes dynamically to reflect the current page.
+4. **Flicker-Free Dark Mode**: Sleek dark/light theme toggle saved in `localStorage`, resolved early in the `<head>` to prevent white flashes during page loads.
+5. **Local Workspace Shortcut**: Instantly open the private Gmail template generator locally from any page using the keyboard shortcut **`Ctrl + Alt + I`**.
+
+---
+
+*Desarrollado con orden y pasión por el código. / Built with order and passion for code.* 🚀

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora | Iriome - Desarrollador Multiplataforma</title>
+    <title>Calculadora | Iriome - Desarrollador Backend Java | DAM</title>
     <meta name="description" content="Detalle del proyecto Calculadora de Propinas, aplicación en Java con simulación interactiva de consola, desglose STAR y hoja de ruta.">
     <script>
         (function() {
@@ -38,6 +38,13 @@
                     </ul>
                 </li>
                 <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+                <li class="dropdown">
+                    <a href="#" id="nav-link-cv" class="dropbtn nav-cv-btn">CV <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" class="disabled-link">Descargar PDF (próximamente)</a></li>
+                        <li><a href="contacto.html?reason=cv">Solicitar Completo</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </header>
@@ -54,18 +61,25 @@
             <!-- Ficha de Proyecto -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary);">Calculadora de Propinas e Impuestos</h1>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: calculator-title;">Calculadora de Propinas e Impuestos</h1>
                     <div class="project-meta">
-                        <span class="tag">Java SE</span>
-                        <span class="tag">Secuencial</span>
-                        <span class="tag">Scanner</span>
-                        <span class="tag">Formateo (printf)</span>
+                        <span class="tag">Java 25</span>
+                        <span class="tag">BigDecimal (Precisión)</span>
+                        <span class="tag">JUnit 5 (Tests)</span>
+                        <span class="tag">Compensación de Redondeo</span>
                     </div>
                 </div>
-                <button class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; opacity: 0.6; cursor: not-allowed;" disabled>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                    En Construcción (GitHub próximamente)
-                </button>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://github.com/DevNaranjo/Calculadora-Propinas" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        Ver en GitHub
+                    </a>
+
+                    <a href="https://github.com/DevNaranjo/Calculadora-Propinas/blob/main/src/test/java/com/rivas/gestion/TicketTest.java" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; border: 1px solid var(--accent-rose); color: var(--accent-rose); background: transparent;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Ver Tests JUnit
+                    </a>
+                </div>
             </div>
 
             <!-- Simulador de Terminal Retro -->
@@ -90,7 +104,7 @@
                     <div class="star-letter">S</div>
                     <h3>Situación</h3>
                     <p>
-                        Dividir una factura de restaurante de forma justa y rápida entre varios comensales, aplicando un porcentaje de propina correcto, suele requerir cálculos manuales propensos a errores. Además, al desarrollar aplicaciones en consola, es habitual cometer errores de precisión al usar tipos decimales flotantes genéricos que desbordan la pantalla de usuario con excesivos decimales.
+                        Dividir una factura de restaurante de forma justa y rápida entre varios comensales, aplicando un porcentaje de propina correcto, suele requerir cálculos manuales propensos a errores. Para el <strong>Grupo Gastronómico Rivas</strong>, el redondeo inconsistente generaba desajustes en el arqueo diario de la caja y pérdidas de tiempo en el servicio al cliente al calcular los desgloses en mesas de gran volumen.
                     </p>
                 </div>
 
@@ -98,7 +112,7 @@
                     <div class="star-letter">T</div>
                     <h3>Tarea</h3>
                     <p>
-                        Crear una aplicación de consola en <strong>Java SE</strong> ágil y precisa que capture de manera dinámica los datos de la factura, aplique los incrementos correspondientes y genere un desglose limpio con un formato que imite un ticket físico real, asegurando un redondeo estricto de dos decimales.
+                        Crear una aplicación de consola en <strong>Java 25</strong> ágil y precisa que capture de manera dinámica los datos de la factura, aplique los incrementos correspondientes (impuesto IGIC/IVA y propina sobre base neta) y genere un desglose limpio con un formato que imite un ticket físico real, asegurando un cuadre exacto de caja de 0.00 € sin pérdida de céntimos.
                     </p>
                 </div>
 
@@ -106,11 +120,11 @@
                     <div class="star-letter">A</div>
                     <h3>Acción</h3>
                     <p>
-                        Diseñé un flujo lógico secuencial robusto:
+                        Diseñé e implementé una arquitectura orientada a objetos en Java con las siguientes características clave:
                         <ol style="margin-left: 20px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 10px;">
-                            <li><strong>Gestión de flujos de entrada:</strong> Captura estructurada de datos mediante la clase <code>Scanner</code>, controlando la entrada del total de la cuenta, porcentaje de propina y cantidad de comensales.</li>
-                            <li><strong>Tipado estricto:</strong> Selección óptima de tipos primitivos utilizando <code>double</code> para magnitudes monetarias y de propina, e <code>int</code> para contadores discretos de comensales.</li>
-                            <li><strong>Formateo de datos:</strong> Implementación de especificadores de formato con precisión decimal (<code>%.2f</code>) mediante <code>System.out.printf</code> para evitar la distorsión visual de los decimales de coma flotante en el ticket impreso.</li>
+                            <li><strong>Tipado financiero preciso:</strong> Sustituí los tipos primitivos flotantes genéricos (como <code>double</code>) por <code>BigDecimal</code> con escala 2 y modos de redondeo explícitos (<code>RoundingMode.HALF_UP</code> y <code>RoundingMode.DOWN</code>), eliminando cualquier error de precisión aritmética en el cálculo de impuestos y propinas.</li>
+                            <li><strong>Algoritmo de Compensación de Redondeo (Penny Distribution):</strong> Desarrollé una lógica matemática en la división que calcula el pago base redondeando hacia abajo y distribuye de forma secuencial los céntimos residuales sobrantes (+0.01 €) entre los primeros comensales, garantizando que la suma de los pagos individuales coincida exactamente con el total facturado.</li>
+                            <li><strong>Separación de Responsabilidades y Pruebas:</strong> Modularicé el código en paquetes limpios: validación segura de entradas de consola (<code>LectorConsola</code>), formateo visual del ticket corporativo (<code>TicketImpresor</code>) y cálculos de negocio encapsulados (<code>Ticket</code>). Diseñé pruebas unitarias completas con <strong>JUnit 5</strong> (<code>TicketTest.java</code>) para verificar las reglas y el algoritmo de redondeo.</li>
                         </ol>
                     </p>
                 </div>
@@ -119,9 +133,34 @@
                     <div class="star-letter">R</div>
                     <h3>Resultado</h3>
                     <p>
-                        Un programa ligero, rápido y sin dependencias externas que soluciona de forma limpia y transparente la división de facturas. El software garantiza un redondeo matemático exacto de dos decimales para cada comensal e imprime en consola un desglose económico profesional en formato ticket.
+                        Garanticé un 100% de precisión decimal y un arqueo de caja exacto (Diferencia de 0,00 €) en todas las simulaciones y pruebas unitarias de la aplicación. La solución agiliza la gestión de cobro en mesas reduciendo el tiempo de cálculo de minutos a segundos y está implementada de forma nativa sin dependencias externas para una máxima compatibilidad.
                     </p>
                 </div>
+            </div>
+
+            <!-- Tarjeta de Calidad de Código (JUnit 5) -->
+            <div class="card" id="junit-quality-card" style="margin-top: 40px; padding: 30px; border-left: 4px solid #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.04) 0%, transparent 100%);">
+                <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    🧪 Calidad de Código &amp; Automatización (JUnit 5)
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0 0 15px 0;">
+                    Para garantizar la estabilidad y la precisión matemática del núcleo de cálculo de facturas, implementé un suite completo de <strong>pruebas unitarias automatizadas</strong> con JUnit 5:
+                </p>
+                <ul style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0 0 0 20px; padding: 0;">
+                    <li><strong>Algoritmo de Compensación de Redondeo:</strong> Verificación de que la suma de los pagos de cada comensal coincida exactamente con el total facturado, distribuyendo el céntimo sobrante de forma secuencial.</li>
+                    <li><strong>Cálculo de Impuestos y Propinas:</strong> Validación de la aplicación estricta del IVA (21%) e IGIC (7%) y de que las propinas autorizadas (0%, 5%, 10% o 15%) se apliquen únicamente sobre el importe neto sin impuestos.</li>
+                    <li><strong>Seguridad frente a Desbordamiento:</strong> Pruebas automáticas de límites del sistema (límites de 1 a 200 comensales y un tope de 1.000.000,00 € para la base imponible).</li>
+                </ul>
+            </div>
+
+            <!-- Nota de Aprendizaje & Refactorización Estructurada -->
+            <div class="card" id="refactoring-learning-note" style="margin-top: 20px; padding: 30px; border-left: 4px solid var(--accent-rose); background: linear-gradient(135deg, rgba(79,70,229,0.04) 0%, transparent 100%);">
+                <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    🔄 Refactorización Estructurada &amp; Autoaprendizaje
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0;">
+                    La solución inicial utilizaba un script lineal plano y tipos primitivos de coma flotante (<code>double</code>), que causaban pérdidas de precisión por redondeo flotante de la JVM. Refactoricé la aplicación hacia una <strong>arquitectura orientada a objetos modular</strong> para separar la captura de inputs (<code>LectorConsola</code>), el formateo visual (<code>TicketImpresor</code>) y el cálculo de negocio (<code>Ticket</code>). Para estructurar el algoritmo de reparto de céntimos residuales y diseñar el suite de pruebas en JUnit 5, utilicé la Inteligencia Artificial como un <strong>tutor y evaluador técnico</strong>, lo que me permitió dominar aserciones y afianzar conceptos clave de programación financiera.
+                </p>
             </div>
 
             <!-- Roadmap (Hoja de Ruta) del Proyecto -->
@@ -133,20 +172,20 @@
                 
                 <div class="timeline">
                     <!-- Iteración 1 -->
-                    <div class="timeline-item active">
+                    <div class="timeline-item completed">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Iteración 1: Motor Secuencial & CLI <span class="status-badge progress">En Construcción</span></h4>
-                            <p>Desarrollo del núcleo en Java: lectura de flujos con Scanner, cálculo aritmético de propinas y formateo del ticket en consola.</p>
+                            <h4>Iteración 1: Motor Secuencial &amp; CLI <span class="status-badge">Completado</span></h4>
+                            <p>Desarrollo del núcleo en Java: captura y validación estricta de datos con BigDecimal, aplicación del algoritmo de compensación de redondeo y suite de pruebas unitarias automatizadas con JUnit 5.</p>
                         </div>
                     </div>
                     
                     <!-- Iteración 2 -->
-                    <div class="timeline-item planned">
+                    <div class="timeline-item active">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Iteración 2: Versión Móvil Android <span class="status-badge planned">Planificado</span></h4>
-                            <p>Migración de la lógica secuencial a una aplicación nativa para Android (Java/Kotlin) con interfaz móvil minimalista.</p>
+                            <h4>Iteración 2: Versión Móvil Android <span class="status-badge">Siguiente Paso</span></h4>
+                            <p>Migración de la lógica secuencial a una aplicación nativa para Android (Java/Kotlin) con interfaz móvil minimalista. Objetivo planificado para enriquecer el perfil multiplataforma.</p>
                         </div>
                     </div>
                 </div>
@@ -165,19 +204,58 @@
 
     <!-- Pie de Página -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="index.html">Inicio</a>
-                <a href="sobre-mi.html">Sobre Mí</a>
-                <a href="proyectos.html">Proyectos</a>
-                <a href="contacto.html">Contacto</a>
+        <div class="container footer-grid">
+            <!-- Columna 1: Marca y Redes -->
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-code">iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
+                </div>
+                <p class="footer-brand-desc">Desarrollador DAM enfocado en Java Backend. Diseñando software con precisión matemática y código limpio.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
             </div>
-            <p>© 2026 Iriome. Convirtiendo café en código.</p>
+            
+            <!-- Columna 2: Navegación -->
+            <div class="footer-nav">
+                <h4>Navegación</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="privacidad.html">Privacidad</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna 3: Estado y Disponibilidad -->
+            <div class="footer-status">
+                <h4>Estado Actual</h4>
+                <div class="status-indicator">
+                    <span class="status-dot-green"></span>
+                    <span class="status-text">Disponible para proyectos</span>
+                </div>
+                <p class="status-location">📍 Las Palmas de Gran Canaria, España</p>
+                <p class="status-quote">"Convirtiendo café en código estructurado."</p>
+            </div>
+        </div>
+        
+        <!-- Línea de copyright inferior -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>© 2026 Iriome Naranjo Rodríguez. Todos los derechos reservados.</p>
+                <p class="made-with">Hecho con <span class="heart">❤️</span> y pasión por el backend</p>
+            </div>
         </div>
     </footer>
 
     <!-- Botón Flotante de Modo Oscuro -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema visual claro y oscuro">
         <!-- Sun Icon (SVG) -->
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         <!-- Moon Icon (SVG) -->
