@@ -36,8 +36,6 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 2. **Cumplimiento RGPD y Seguridad**: Formulario de contacto con checkbox de consentimiento explícito obligatorio enlazado a la **Política de Privacidad** de datos y protección anti-spam mediante **hCaptcha** con Web3Forms.
 3. **Navegación Dinámica de Código**: Cabecera corporativa con el logotipo interactivo `Iriome.build(parámetro)` donde el parámetro cambia dinámicamente según la sección en la que navega el usuario.
 4. **Modo Oscuro sin Parpadeo (Flicker-Free)**: Alternador de tema visual claro/oscuro que almacena la preferencia en `localStorage`, evaluada en la cabecera del documento para evitar el parpadeo blanco al cargar la página.
-5. **Utilidad de Trabajo Local**: Acceso directo al generador de correo corporativo mediante el atajo de teclado global **`Ctrl + Alt + I`** ejecutado en local.
-
 ---
 
 ## 🇬🇧 English
@@ -68,8 +66,6 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 2. **GDPR Compliance & Anti-Spam**: Contact form featuring a mandatory consent checkbox pointing to the **Privacy Policy**, backed by **hCaptcha** spam protection integrated with Web3Forms.
 3. **Dynamic Code Logo**: A custom navigation bar logo `Iriome.build(parameter)` where the method parameter changes dynamically to reflect the current page.
 4. **Flicker-Free Dark Mode**: Sleek dark/light theme toggle saved in `localStorage`, resolved early in the `<head>` to prevent white flashes during page loads.
-5. **Local Workspace Shortcut**: Instantly open the private Gmail template generator locally from any page using the keyboard shortcut **`Ctrl + Alt + I`**.
-
 ---
 
 *Desarrollado con orden y pasión por el código. / Built with order and passion for code.* 🚀
