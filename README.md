@@ -32,6 +32,7 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 
 ### 🛠️ Características Principales
 
+<<<<<<< HEAD
 | Característica | Detalle |
 |---|---|
 | **Experiencia real en producción** | Incluye flujo PAD en producción (Power Automate Desktop, Microsoft 365, PowerApps) desarrollado en entorno empresarial real. |
@@ -41,6 +42,12 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 | **Navegación Dinámica de Código** | Logotipo interactivo `Iriome.build(sección)` que actualiza su método según la navegación del usuario. |
 | **Atajo de Trabajo Local** | Acceso al generador corporativo de correo local privado usando el atajo global `Ctrl + Alt + I`. |
 
+=======
+1. **Simulador de Terminal Retro Interactivo**: Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java (con simulación matemática exacta en la división de cuentas del Grupo Gastronómico Rivas).
+2. **Cumplimiento RGPD y Seguridad**: Formulario de contacto con checkbox de consentimiento explícito obligatorio enlazado a la **Política de Privacidad** de datos y protección anti-spam mediante **hCaptcha** con Web3Forms.
+3. **Navegación Dinámica de Código**: Cabecera corporativa con el logotipo interactivo `Iriome.build(parámetro)` donde el parámetro cambia dinámicamente según la sección en la que navega el usuario.
+4. **Modo Oscuro sin Parpadeo (Flicker-Free)**: Alternador de tema visual claro/oscuro que almacena la preferencia en `localStorage`, evaluada en la cabecera del documento para evitar el parpadeo blanco al cargar la página.
+>>>>>>> 37fdb0783530157eed9563b0d96bfba6f3ae73d5
 ---
 
 ## 🇬🇧 English
@@ -67,6 +74,7 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 
 ### 🛠️ Core Features
 
+<<<<<<< HEAD
 | Feature | Detail |
 |---|---|
 | **Production Experience** | Includes a live RPA flow (Power Automate Desktop, Microsoft 365, PowerApps) deployed in a real-world enterprise environment. |
@@ -76,6 +84,12 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 | **Dynamic Code Logo** | Interactive logo `Iriome.build(section)` that dynamically updates its parameter based on navigation. |
 | **Local Workspace Shortcut** | Direct access to the private local Gmail template generator using `Ctrl + Alt + I` shortcut. |
 
+=======
+1. **Interactive CLI Terminal Simulator**: Realistic JavaScript terminal emulating the actual console outputs of Java programs (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas).
+2. **GDPR Compliance & Anti-Spam**: Contact form featuring a mandatory consent checkbox pointing to the **Privacy Policy**, backed by **hCaptcha** spam protection integrated with Web3Forms.
+3. **Dynamic Code Logo**: A custom navigation bar logo `Iriome.build(parameter)` where the method parameter changes dynamically to reflect the current page.
+4. **Flicker-Free Dark Mode**: Sleek dark/light theme toggle saved in `localStorage`, resolved early in the `<head>` to prevent white flashes during page loads.
+>>>>>>> 37fdb0783530157eed9563b0d96bfba6f3ae73d5
 ---
 
 *Desarrollado con orden y pasión por el código. / Built with order and passion for code.* 🚀
