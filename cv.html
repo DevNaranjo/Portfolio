@@ -93,6 +93,15 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.04);
             border-radius: 16px;
             border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            min-height: 1160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cv-page:last-child {
+            margin-bottom: 0;
         }
 
         /* Cabecera del CV */
@@ -175,12 +184,38 @@
             display: flex;
             flex-direction: column;
             gap: 18px;
+            border-left: 2px solid var(--border-color);
+            padding-left: 20px;
+            margin-left: 8px;
         }
 
         .timeline-item {
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: 4px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border: 2px solid white;
+            border-radius: 50%;
+            left: -26px;
+            top: 7px;
+            box-shadow: 0 0 0 1.5px var(--border-color);
+            z-index: 2;
+        }
+
+        .timeline-item.completed::before {
+            background-color: var(--accent-sage);
+        }
+
+        .timeline-item.planned::before {
+            background-color: var(--text-secondary);
         }
 
         .timeline-header {
@@ -283,8 +318,12 @@
         /* Adaptaciones para impresión */
         @media print {
             body {
-                background: white;
-                padding: 0;
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                width: auto !important;
+                height: auto !important;
             }
 
             .controls-bar {
@@ -292,22 +331,136 @@
             }
 
             .cv-page {
+                margin: 0 !important;
                 box-shadow: none !important;
                 border: none !important;
-                padding: 0 !important;
-                max-width: 100% !important;
+                padding: 0.5cm 0.7cm !important; /* Margen interior ultra optimizado */
+                width: 210mm !important;
+                height: 297mm !important; /* Altura exacta de A4 */
+                min-height: 297mm !important;
+                max-height: 297mm !important;
                 border-radius: 0 !important;
+                box-sizing: border-box !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                background: white !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                overflow: hidden !important;
             }
 
-            .cv-header {
-                border-bottom-color: #000000 !important;
+            .cv-page + .cv-page {
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+
+            .cv-footer {
+                margin-top: 10px !important;
+                border-top: 1px solid #E2E8F0 !important;
+                padding-top: 5px !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                page-break-before: avoid !important;
+                break-before: avoid !important;
+            }
+
+            .timeline {
+                gap: 4px !important;
+                border-left-color: #CBD5E1 !important;
+            }
+
+            .timeline-item {
+                display: block !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid-page !important;
+                margin-bottom: 4px !important;
+            }
+
+            .timeline-item:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            .timeline-title {
+                font-size: 0.82rem !important;
+            }
+
+            .timeline-org {
+                font-size: 0.76rem !important;
             }
 
             .timeline-date {
-                background-color: transparent !important;
-                border: 1px solid var(--border-color) !important;
-                color: #000000 !important;
-                padding: 1px 6px !important;
+                font-size: 0.74rem !important;
+                padding: 1px 4px !important;
+            }
+
+            .timeline-desc {
+                font-size: 0.74rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .timeline-bullets {
+                margin-top: 2px !important;
+                gap: 1px !important;
+            }
+
+            .timeline-bullets li {
+                font-size: 0.74rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .cv-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin-bottom: 8px !important;
+            }
+
+            .cv-section h2 {
+                font-size: 0.84rem !important;
+                margin-bottom: 4px !important;
+                padding-bottom: 2px !important;
+            }
+
+            .profile-desc {
+                font-size: 0.74rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .skills-category {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .skills-grid {
+                gap: 8px !important;
+            }
+
+            .skills-category h3 {
+                font-size: 0.74rem !important;
+                margin-bottom: 2px !important;
+            }
+
+            .skills-list {
+                font-size: 0.72rem !important;
+                gap: 1px !important;
+            }
+
+            .cv-header {
+                padding-bottom: 8px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .header-main h1 {
+                font-size: 1.45rem !important;
+            }
+
+            .header-main .subtitle {
+                font-size: 0.82rem !important;
+            }
+
+            .header-contact {
+                font-size: 0.72rem !important;
+                gap: 2px !important;
             }
 
             a {
@@ -317,7 +470,7 @@
 
             @page {
                 size: A4;
-                margin: 1.5cm;
+                margin: 0; /* Oculta las cabeceras/pies de página nativos del navegador */
             }
         }
 
@@ -328,6 +481,8 @@
             }
             .cv-page {
                 padding: 25px 20px;
+                min-height: auto !important;
+                margin-bottom: 20px;
             }
             .cv-header {
                 flex-direction: column;
@@ -350,160 +505,212 @@
         <button onclick="window.print()" class="btn-action btn-print">🖨️ Imprimir / Guardar PDF</button>
     </div>
 
-    <!-- Página del CV -->
+    <!-- Página del CV - Página 1 -->
     <div class="cv-page">
-        <!-- Cabecera -->
-        <header class="cv-header">
-            <div class="header-main">
-                <h1>Iriome Naranjo Rodríguez</h1>
-                <div class="subtitle">Desarrollador Backend Java & Multiplataforma</div>
-            </div>
-            <div class="header-contact">
-                <span>📍 Las Palmas de Gran Canaria, España</span>
-                <a href="mailto:inaranjordgz@gmail.com">✉ inaranjordgz@gmail.com</a>
-                <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer">🔗 linkedin.com/in/inaranjorodriguez</a>
-                <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer">🐙 github.com/DevNaranjo</a>
-                <a href="https://devnaranjo.github.io/Portfolio" target="_blank" rel="noopener noreferrer">🌐 devnaranjo.github.io/Portfolio</a>
-            </div>
-        </header>
+        <div>
+            <!-- Cabecera -->
+            <header class="cv-header">
+                <div class="header-main">
+                    <h1>Iriome Naranjo Rodríguez</h1>
+                    <div class="subtitle">Desarrollador de Aplicaciones Multiplataforma (DAM) | Backend Java</div>
+                </div>
+                <div class="header-contact">
+                    <span>📍 Las Palmas de Gran Canaria, España</span>
+                    <a href="mailto:inaranjordgz@gmail.com">✉ inaranjordgz@gmail.com</a>
+                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer">🔗 linkedin.com/in/inaranjorodriguez</a>
+                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer">🐙 github.com/DevNaranjo</a>
+                    <a href="https://devnaranjo.github.io/Portfolio" target="_blank" rel="noopener noreferrer">🌐 devnaranjo.github.io/Portfolio</a>
+                </div>
+            </header>
 
-        <!-- Perfil Profesional -->
-        <section class="cv-section">
-            <h2>👤 Perfil Profesional</h2>
-            <p class="profile-desc">
-                Desarrollador de Aplicaciones Multiplataforma (DAM) especializado en desarrollo backend con Java. Con una sólida mentalidad lógica y un alto ritmo de aprendizaje, me enfoco en diseñar código modular, mantenible y robusto. Cuento con una base en administración de sistemas y redes (SMR), lo que me proporciona una comprensión integral de los entornos de ejecución. Comprometido con la planificación metódica, la seguridad de la información y la entrega puntual de software estructurado bajo metodologías ágiles (MVP).
-            </p>
-        </section>
+            <!-- Perfil Profesional -->
+            <section class="cv-section">
+                <h2>👤 Perfil Profesional</h2>
+                <p class="profile-desc">
+                    Desarrollador de Aplicaciones Multiplataforma (DAM) especializado en backend Java y automatización de procesos empresariales (RPA). Con experiencia real en entornos de consultoría IT, diseño flujos end-to-end con <strong>Power Automate Desktop</strong> sobre ecosistemas <strong>Microsoft 365</strong> y portales <strong>PowerApps</strong>. Actualmente enfocado en el aprendizaje y desarrollo activo de proyectos web corporativos utilizando <strong>Spring Boot, APIs REST y JPA/Hibernate</strong>. Mi base en Sistemas Microinformáticos y Redes (SMR) aporta una visión de infraestructura de sistemas. Disponible a jornada completa — estudios DAM compatibles con empleo. Orientado a resultados medibles y entrega bajo metodología MVP.
 
-        <!-- Formación Académica -->
-        <section class="cv-section">
-            <h2>🎓 Formación Académica</h2>
-            <div class="timeline">
-                <!-- DAM -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</span>
-                        <span class="timeline-date">2025 - Presente (En curso)</span>
+                </p>
+            </section>
+
+
+
+            <!-- Experiencia Laboral -->
+            <section class="cv-section">
+                <h2>💼 Experiencia Laboral</h2>
+                <div class="timeline">
+                    <!-- Noray -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Técnico de Soporte &amp; Automatización RPA</span>
+                            <span class="timeline-date completed">Mayo 2026 – Junio 2026</span>
+                        </div>
+                        <div class="timeline-org">Noray · Las Palmas de Gran Canaria · Prácticas Híbrido</div>
+                        <ul class="timeline-bullets">
+                            <li>Logré <strong>eliminar 25+ horas de gestión manual semanal</strong> — medido por la reducción de tiempo invertido en seguimiento de incidencias — diseñando e implementando un flujo de automatización end-to-end con <strong>Power Automate Desktop</strong> que procesa +75 casos diarios en el portal de soporte al cliente (<strong>PowerApps / Microsoft 365</strong>).</li>
+                            <li>Logré <strong>reducir a cero los recordatorios omitidos</strong> a clientes en estado <em>Waiting for details</em> — medido por cobertura del 100% de casos con ≥14 días sin respuesta — automatizando la extracción de datos del portal Noray, el filtrado por estado/fecha y el envío de comunicaciones vía Outlook, integrando <strong>browser automation</strong> con scraping estructurado.</li>
+                            <li>Logré <strong>entregar el flujo en producción dentro del período de prácticas</strong> — medido por validación con el equipo técnico — aplicando metodología iterativa <strong>MVP</strong> con documentación técnica del proceso.</li>
+                        </ul>
                     </div>
-                    <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
-                    <p class="timeline-desc">
-                         Estudios enfocados en la arquitectura orientada a objetos modular (POO) en Java, diseño e introducción a bases de datos relacionales, lógica de negocio y control de versiones mediante flujos estructurados en Git.
-                    </p>
-                </div>
 
-                <!-- SMR -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-title">Técnico en Sistemas Microinformáticos y Redes (SMR)</span>
-                        <span class="timeline-date completed">Completado</span>
+                    <!-- Multiópticas jornada completa -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Técnico de Soporte de TI</span>
+                            <span class="timeline-date completed">Julio 2025 – Noviembre 2025</span>
+                        </div>
+                        <div class="timeline-org">Multiópticas · Las Palmas de Gran Canaria · Jornada Completa Presencial</div>
+                        <ul class="timeline-bullets">
+                            <li>Logré <strong>mantener la continuidad operativa de la oficina central sin incidencias críticas</strong> — medido por resolución ágil del 100% de tickets escalados durante el período — gestionando soporte TI integral: diagnóstico de red (<strong>LAN/VLAN, TCP/IP</strong>), mantenimiento correctivo/preventivo y administración de sistemas <strong>Windows/Linux</strong>.</li>
+                        </ul>
                     </div>
-                    <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
-                    <p class="timeline-desc">
-                        Adquisición de bases firmes en redes locales y protocolos, administración y mantenimiento de sistemas operativos corporativos (Windows/Linux), servicios de infraestructura y configuración de servidores locales.
-                    </p>
-                </div>
 
-                <!-- DAW -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Web (DAW)</span>
-                        <span class="timeline-date planned">Especialización Planificada</span>
+                    <!-- Multiópticas prácticas -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Técnico de Soporte de TI (Prácticas)</span>
+                            <span class="timeline-date completed">Febrero 2025 – Mayo 2025</span>
+                        </div>
+                        <div class="timeline-org">Multiópticas · Las Palmas de Gran Canaria · Presencial</div>
+                        <ul class="timeline-bullets">
+                            <li>Logré <strong>reducir el tiempo de puesta en marcha de nuevos equipos</strong> — medido por la estandarización del proceso de instalación de SO corporativo — ejecutando el despliegue y configuración de infraestructura de red empresarial y realizando mantenimiento físico preventivo.</li>
+                        </ul>
                     </div>
-                    <div class="timeline-org">IES El Rincón (Las Palmas, España)</div>
-                    <p class="timeline-desc">
-                        Proyección académica enfocada a consolidar un perfil Full-Stack, complementando el desarrollo backend con el dominio de arquitecturas web dinámicas, diseño de APIs REST y tecnologías de cliente.
-                    </p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Experiencia en Proyectos -->
-        <section class="cv-section">
-            <h2>🛠️ Experiencia en Proyectos de Software</h2>
-            <div class="timeline">
-                <!-- Habitly -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-title">Desarrollador Backend Principal - Habitly (Sistema Inmobiliario & Compliance)</span>
-                        <span class="timeline-date">Proyecto Destacado (v1.1.0-F)</span>
-                    </div>
-                    <p class="timeline-desc">
-                        Software de gestión inmobiliaria modular desarrollado en Java enfocado a asegurar de forma automatizada las regulaciones legales vigentes de arrendamiento en España (LAU, IRAV, ICAVI).
-                    </p>
-                    <ul class="timeline-bullets">
-                        <li><strong>[X]</strong> Mitigué al 100% las desviaciones legales (LAU/IRAV/ICAVI) y reduje a 0 los errores críticos financieros mediante la <strong>refactorización</strong> y diseño de una arquitectura modular basada en <strong>patrones de diseño</strong> orientados a objetos en Java.</li>
-                        <li><strong>[X]</strong> Elevé la fiabilidad del núcleo del software mediante una suite de más de 20 aserciones unitarias automatizadas implementando <strong>JUnit 5</strong> y Maven para el control preciso del <strong>ciclo de vida</strong> de los objetos y contratos.</li>
-                        <li><strong>[X]</strong> Aseguré la trazabilidad e integridad histórica del código en un equipo unipersonal mediante el uso estricto de commits atómicos en <strong>Git / GitHub</strong> y la planificación iterativa bajo metodología MVP.</li>
-                    </ul>
-                </div>
-
-                <!-- Calculadora -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-title">Desarrollador de Software - Calculadora de Propinas e Impuestos</span>
-                        <span class="timeline-date">Desarrollo Secuencial</span>
-                    </div>
-                    <p class="timeline-desc">
-                        Aplicación secuencial estructurada en Java SE para procesamiento aritmético tolerante a fallos y desglose contable de precisión.
-                    </p>
-                    <ul class="timeline-bullets">
-                        <li><strong>[X]</strong> Garanticé un 100% de precisión decimal en cálculos financieros complejos implementando un control riguroso de excepciones (Try-Catch) y validación estricta de flujos de entrada de usuario.</li>
-                        <li><strong>[X]</strong> Eliminé conflictos en el historial de código al 100% aplicando un flujo estructurado de ramificaciones y merges limpios mediante control de versiones con <strong>Git</strong>.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Habilidades Técnicas -->
-        <section class="cv-section">
-            <h2>💻 Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <!-- Desarrollo & Datos -->
-                <div class="skills-category">
-                    <h3>Desarrollo & Datos</h3>
-                    <ul class="skills-list">
-                        <li>Lenguajes: <strong>Java, Python, SQL, HTML/CSS, JS</strong></li>
-                        <li>BBDD: <strong>PostgreSQL, MongoDB (NoSQL), MySQL</strong></li>
-                        <li>Análisis: <strong>Visual Paradigm (UML), Estructuras</strong></li>
-                    </ul>
-                </div>
-
-                <!-- Sistemas & Soporte -->
-                <div class="skills-category">
-                    <h3>Sistemas & Soporte TI</h3>
-                    <ul class="skills-list">
-                        <li>Sistemas: <strong>Windows Server, Linux, Active Directory</strong></li>
-                        <li>Soporte: <strong>Soporte remoto/presencial, Incidencias</strong></li>
-                        <li>Mant.: <strong>Hardware, Backups, Antivirus/Malware</strong></li>
-                    </ul>
-                </div>
-
-                <!-- Redes & Virtualización -->
-                <div class="skills-category">
-                    <h3>Redes & Virtualización</h3>
-                    <ul class="skills-list">
-                        <li>Protocolos: <strong>TCP/IP, LAN-WAN, VLAN, Wi-Fi</strong></li>
-                        <li>Equipos: <strong>Cisco Routers/Switches, Packet Tracer</strong></li>
-                        <li>Virtualización: <strong>VMware, VirtualBox</strong></li>
-                    </ul>
-                </div>
-
-                <!-- Entorno & Metodologías -->
-                <div class="skills-category">
-                    <h3>Entorno & Metodologías</h3>
-                    <ul class="skills-list">
-                        <li>Flujos & Git: <strong>Git, GitHub, GitFlow, JUnit, Maven</strong></li>
-                        <li>Herramientas: <strong>IntelliJ, VS Code, MS Office</strong></li>
-                        <li>Soft Skills: <strong>Trabajo en equipo, MVP, Planificación</strong></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <!-- Pie de página del CV -->
         <footer class="cv-footer">
             <span>Iriome Naranjo Rodríguez</span>
-            <span>Estudiante de DAM - Especialización Backend Java</span>
+            <span>DAM en curso · compatible con jornada completa · disponibilidad inmediata</span>
+            <span>Currículum Vitae — Página 1 de 2</span>
+        </footer>
+    </div>
+
+    <!-- Página del CV - Página 2 -->
+    <div class="cv-page">
+        <div>
+            <!-- Experiencia en Proyectos -->
+            <section class="cv-section">
+                <h2>🛠️ Experiencia en Proyectos de Software</h2>
+                <div class="timeline">
+                    <!-- Habitly -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Desarrollador Backend Principal - Habitly (Sistema Inmobiliario &amp; Compliance)</span>
+                            <span class="timeline-date">Proyecto Destacado (v1.1.0-F)</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Software de gestión inmobiliaria modular desarrollado en Java enfocado a asegurar el cumplimiento automatizado de regulaciones de arrendamiento (LAU, IRAV, ICAVI).
+                        </p>
+                        <ul class="timeline-bullets">
+                            <li><strong>[X]</strong> Refactoricé el software bajo patrones de diseño en Java, mitigando desviaciones legales (LAU/IRAV/ICAVI) y errores financieros.</li>
+                            <li><strong>[X]</strong> Diseñé una suite de pruebas con JUnit 5 y Maven para validar el ciclo de vida de objetos y contratos.</li>
+                            <li><strong>[X]</strong> Gestioné el ciclo de vida del código con commits atómicos en Git/GitHub y planificación iterativa bajo MVP.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Calculadora -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Desarrollador Backend - Calculadora de Propinas &amp; División de Cuentas</span>
+                            <span class="timeline-date completed">v1.0.0-CLI</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Aplicación modular en Java SE para el procesamiento de facturas y división de cuentas con precisión aritmética y control de redondeo.
+                        </p>
+                        <ul class="timeline-bullets">
+                            <li><strong>[X]</strong> Garanticé precisión aritmética (0.00 € de desviación) mediante BigDecimal y algoritmo de distribución de céntimos.</li>
+                            <li><strong>[X]</strong> Diseñé una arquitectura OOP modular: validación de consola (LectorConsola), ticket (TicketImpresor) y negocio (Ticket).</li>
+                            <li><strong>[X]</strong> Validé la robustez de la lógica de negocio mediante pruebas unitarias automatizadas con JUnit 5.</li>
+                            <li><strong>[X]</strong> Aseguré la trazabilidad y control de versiones con flujo ordenado de ramas en Git/GitHub.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formación Académica -->
+            <section class="cv-section">
+                <h2>🎓 Formación Académica</h2>
+                <div class="timeline">
+                    <!-- DAM -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</span>
+                            <span class="timeline-date">septiembre 2025 – junio 2027 (En curso)</span>
+                        </div>
+                        <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
+                        <p class="timeline-desc">
+                            Enfoque en programación orientada a objetos (Java), diseño de bases de datos (SQL/NoSQL), calidad de software (JUnit 5) y Git/GitFlow.
+                        </p>
+                    </div>
+
+                    <!-- SMR -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Técnico en Sistemas Microinformáticos y Redes (SMR)</span>
+                            <span class="timeline-date completed">septiembre 2023 – junio 2025 (Completado)</span>
+                        </div>
+                        <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
+                        <p class="timeline-desc">
+                            Administración de sistemas (Windows/Linux), redes locales (VLAN, TCP/IP, Cisco Packet Tracer), virtualización y ciberseguridad.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Habilidades Técnicas -->
+            <section class="cv-section">
+                <h2>💻 Habilidades Técnicas</h2>
+                <div class="skills-grid">
+                    <!-- Desarrollo & Backend -->
+                    <div class="skills-category">
+                        <h3>Desarrollo &amp; Backend</h3>
+                        <ul class="skills-list">
+                            <li>Lenguajes: <strong>Java, SQL, Python, JavaScript, HTML5/CSS</strong></li>
+                            <li>Bases de Datos &amp; ORM: <strong>PostgreSQL, MySQL, JPA/Hibernate, JDBC</strong></li>
+                            <li>Frameworks &amp; APIs: <strong>Spring Boot, REST APIs (En curso)</strong></li>
+                            <li>Metodologías: <strong>POO, Estructuras de Datos, Modularidad</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Redes y Sistemas -->
+                    <div class="skills-category">
+                        <h3>Redes &amp; Sistemas</h3>
+                        <ul class="skills-list">
+                            <li>Redes: <strong>LAN-WAN, VLAN, TCP/IP, Wi-Fi, Cableado Estructurado</strong></li>
+                            <li>Hardware/Sim.: <strong>Cisco Router/Switch, Packet Tracer</strong></li>
+                            <li>Sistemas: <strong>Active Directory, Windows/Linux OS, VM, Soporte</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Herramientas y Automatización -->
+                    <div class="skills-category">
+                        <h3>Herramientas &amp; Automatización</h3>
+                        <ul class="skills-list">
+                            <li>Automatización: <strong>Power Automate Desktop (PAD), RPA, Flujos M365</strong></li>
+                            <li>Flujos &amp; Git: <strong>Git, GitHub, GitFlow, JUnit 5, Maven, Visual Paradigm</strong></li>
+                            <li>IDEs: <strong>IntelliJ IDEA, VS Code, MS Office</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="skills-category">
+                        <h3>Aptitudes Interpersonales</h3>
+                        <ul class="skills-list">
+                            <li>Productividad: <strong>Gestión del Tiempo, Resol. Problemas</strong></li>
+                            <li>Colaboración: <strong>Trabajo en Equipo, Adaptabilidad, Cliente, MVP</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pie de página del CV -->
+        <footer class="cv-footer">
+            <span>Iriome Naranjo Rodríguez</span>
+            <span>DAM en curso · compatible con jornada completa · disponibilidad inmediata</span>
+            <span>Currículum Vitae — Página 2 de 2</span>
         </footer>
     </div>
 
