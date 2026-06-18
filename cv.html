@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae | Iriome Naranjo Rodríguez</title>
+    <title>CV · Iriome Naranjo - Desarrollador Java & RPA</title>
+    <meta name="description" content="Desarrollador Java con experiencia en automatización de procesos (RPA/PAD). Especialista en optimizar flujos empresariales y construir código estructurado.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="CV · Iriome Naranjo - Desarrollador Java & RPA">
+    <meta property="og:description" content="Portfolio con proyectos reales en producción, simulador interactivo de consola y soluciones de automatización.">
+    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.png">
+    <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/cv.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://devnaranjo.github.io/Portfolio/cv.html">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,6 +33,107 @@
             --accent-sage: #D97706; /* Amber */
             --border-color: #E2E8F0; /* Slate 200 */
             --bg-secondary: #F8FAFC; /* Slate 50 */
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #818CF8; /* Indigo claro para contraste */
+            --text-color: #F1F5F9; /* Slate 100 */
+            --text-secondary: #94A3B8; /* Slate 400 */
+            --accent-sage: #F59E0B; /* Amber brillante */
+            --border-color: #334155; /* Slate 700 */
+            --bg-secondary: #1E293B; /* Slate 800 */
+        }
+
+        /* Transición suave global (misma que la página principal) */
+        .theme-transitioning,
+        .theme-transitioning * {
+            transition: background-color 0.8s ease !important,
+                        color 0.8s ease !important,
+                        border-color 0.8s ease !important,
+                        box-shadow 0.8s ease !important,
+                        fill 0.8s ease !important,
+                        stroke 0.8s ease !important;
+        }
+
+        /* Transiciones base para elementos del CV */
+        body, .cv-page, .controls-bar, .cv-header, .cv-section,
+        .cv-section h2, .timeline-title, .timeline-date,
+        .timeline-org, .timeline-desc, .timeline-bullets li,
+        .skills-category h3, .skills-list, .skills-list li,
+        .cv-footer, .profile-desc, .header-main h1,
+        .header-main .subtitle, .header-contact, .header-contact a,
+        .btn-action, .btn-back, .btn-print,
+        .timeline-item::before {
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        [data-theme="dark"] body {
+            background-color: #0F172A; /* Slate 900 */
+        }
+        
+        [data-theme="dark"] .cv-page,
+        [data-theme="dark"] .controls-bar {
+            background-color: #1E293B; /* Slate 800 */
+            border-color: #334155;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Textos con color hardcoded → variable */
+        [data-theme="dark"] .header-main h1,
+        [data-theme="dark"] .cv-section h2,
+        [data-theme="dark"] .timeline-title,
+        [data-theme="dark"] .skills-category h3 {
+            color: #F1F5F9;
+        }
+
+        /* Fecha badges → fondo oscuro */
+        [data-theme="dark"] .timeline-date {
+            background-color: #1E293B;
+            border: 1px solid #334155;
+        }
+
+        [data-theme="dark"] .timeline-date.completed {
+            color: #F59E0B;
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        [data-theme="dark"] .timeline-date.planned {
+            color: #94A3B8;
+            background-color: rgba(148, 163, 184, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        /* Punto del timeline → borde oscuro en vez de blanco */
+        [data-theme="dark"] .timeline-item::before {
+            border-color: #1E293B;
+        }
+
+        /* strong dentro de listas → legible */
+        [data-theme="dark"] .timeline-bullets li strong,
+        [data-theme="dark"] .profile-desc strong {
+            color: #E2E8F0;
+        }
+
+        /* Botón volver */
+        [data-theme="dark"] .btn-back {
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .btn-back:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Perfil imagen borde */
+        [data-theme="dark"] .cv-profile-img {
+            border-color: var(--primary-color);
+        }
+
+        /* Links en modo oscuro */
+        [data-theme="dark"] .header-contact a:hover {
+            color: var(--primary-color);
         }
 
         * {
@@ -84,6 +205,63 @@
             color: var(--primary-color);
         }
 
+        /* Botón flotante de modo oscuro (idéntico al de style.css) */
+        .theme-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(31, 36, 56, 0.04), 0 4px 12px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1100;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background-color: #1E293B;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 12px 40px rgba(79, 70, 229, 0.12);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .theme-toggle svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Modo claro: mostrar luna, ocultar sol */
+        .theme-toggle .sun-icon { display: none; }
+        .theme-toggle .moon-icon { display: block; }
+
+        /* Modo oscuro: mostrar sol, ocultar luna */
+        [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+
         /* Hoja de CV */
         .cv-page {
             width: 100%;
@@ -107,13 +285,26 @@
         /* Cabecera del CV */
         .cv-header {
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 25px;
+            padding-bottom: 20px;
             margin-bottom: 25px;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cv-header-top {
+            display: flex;
+            align-items: center;
             gap: 20px;
+            width: 100%;
+        }
+
+        .cv-profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
         }
 
         .header-main h1 {
@@ -133,16 +324,19 @@
         }
 
         .header-contact {
-            text-align: right;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-secondary);
             display: flex;
-            flex-direction: column;
-            gap: 5px;
+            flex-wrap: wrap;
+            gap: 8px 20px;
         }
 
+        .header-contact span,
         .header-contact a {
-            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
         }
@@ -311,8 +505,34 @@
             padding-top: 15px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             font-size: 0.8rem;
             color: var(--text-secondary);
+        }
+
+        .footer-email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .footer-email-link:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            background-color: rgba(79, 70, 229, 0.05);
+            transform: translateY(-1px);
+        }
+
+        [data-theme="dark"] .footer-email-link:hover {
+            background-color: rgba(129, 140, 248, 0.1);
         }
 
         /* Adaptaciones para impresión */
@@ -326,7 +546,8 @@
                 height: auto !important;
             }
 
-            .controls-bar {
+            .controls-bar,
+            .theme-toggle {
                 display: none !important;
             }
 
@@ -448,6 +669,12 @@
             .cv-header {
                 padding-bottom: 8px !important;
                 margin-bottom: 8px !important;
+                gap: 6px !important;
+            }
+
+            .cv-profile-img {
+                width: 60px !important;
+                height: 60px !important;
             }
 
             .header-main h1 {
@@ -460,7 +687,15 @@
 
             .header-contact {
                 font-size: 0.72rem !important;
-                gap: 2px !important;
+                gap: 4px 10px !important;
+            }
+
+            .footer-email-link {
+                border: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+                color: black !important;
+                pointer-events: none !important;
             }
 
             a {
@@ -485,14 +720,26 @@
                 margin-bottom: 20px;
             }
             .cv-header {
+                gap: 12px;
+            }
+            .cv-header-top {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 12px;
             }
             .header-contact {
-                text-align: left;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
             }
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+            .cv-footer {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+                text-align: left;
             }
         }
     </style>
@@ -505,14 +752,25 @@
         <button onclick="window.print()" class="btn-action btn-print">🖨️ Imprimir / Guardar PDF</button>
     </div>
 
+    <!-- Botón Flotante de Modo Oscuro (idéntico al de la página principal) -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema visual claro y oscuro">
+        <!-- Sun Icon (SVG) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (SVG) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
     <!-- Página del CV - Página 1 -->
     <div class="cv-page">
         <div>
             <!-- Cabecera -->
             <header class="cv-header">
-                <div class="header-main">
-                    <h1>Iriome Naranjo Rodríguez</h1>
-                    <div class="subtitle">Desarrollador de Aplicaciones Multiplataforma (DAM) | Backend Java</div>
+                <div class="cv-header-top">
+                    <img src="src/assets/profile.png" alt="Foto de Iriome Naranjo" class="cv-profile-img">
+                    <div class="header-main">
+                        <h1>Iriome Naranjo Rodríguez</h1>
+                        <div class="subtitle">Desarrollador Java &amp; Automatización · DAM</div>
+                    </div>
                 </div>
                 <div class="header-contact">
                     <span>📍 Las Palmas de Gran Canaria, España</span>
@@ -527,7 +785,7 @@
             <section class="cv-section">
                 <h2>👤 Perfil Profesional</h2>
                 <p class="profile-desc">
-                    Desarrollador de Aplicaciones Multiplataforma (DAM) especializado en backend Java y automatización de procesos empresariales (RPA). Con experiencia real en entornos de consultoría IT, diseño flujos end-to-end con <strong>Power Automate Desktop</strong> sobre ecosistemas <strong>Microsoft 365</strong> y portales <strong>PowerApps</strong>. Actualmente enfocado en el aprendizaje y desarrollo activo de proyectos web corporativos utilizando <strong>Spring Boot, APIs REST y JPA/Hibernate</strong>. Mi base en Sistemas Microinformáticos y Redes (SMR) aporta una visión de infraestructura de sistemas. Disponible a jornada completa — estudios DAM compatibles con empleo. Orientado a resultados medibles y entrega bajo metodología MVP.
+                    Desarrollador de Aplicaciones Multiplataforma (DAM) especializado en backend Java y automatización de procesos empresariales (RPA). Con experiencia real en entornos de consultoría IT, diseño flujos end-to-end con <strong>Power Automate Desktop</strong> sobre ecosistemas <strong>Microsoft 365</strong> y portales <strong>PowerApps</strong>. Actualmente enfocado en profundizar en el desarrollo backend con <strong>Java</strong>, estructuras de datos y buenas prácticas de diseño de software. Mi base en Sistemas Microinformáticos y Redes (SMR) aporta una visión de infraestructura de sistemas. Disponible a jornada completa — estudios DAM compatibles con empleo. Orientado a resultados medibles y entrega bajo metodología MVP.
 
                 </p>
             </section>
@@ -668,8 +926,7 @@
                         <h3>Desarrollo &amp; Backend</h3>
                         <ul class="skills-list">
                             <li>Lenguajes: <strong>Java, SQL, Python, JavaScript, HTML5/CSS</strong></li>
-                            <li>Bases de Datos &amp; ORM: <strong>PostgreSQL, MySQL, JPA/Hibernate, JDBC</strong></li>
-                            <li>Frameworks &amp; APIs: <strong>Spring Boot, REST APIs (En curso)</strong></li>
+                            <li>Bases de Datos &amp; ORM: <strong>PostgreSQL, MySQL, MongoDB</strong></li>
                             <li>Metodologías: <strong>POO, Estructuras de Datos, Modularidad</strong></li>
                         </ul>
                     </div>
@@ -714,5 +971,30 @@
         </footer>
     </div>
 
+    <script>
+        // Lógica de toggle idéntica a la página principal (con transición suave)
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            let transitionTimeout;
+            toggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.add('theme-transitioning');
+
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let newTheme = 'light';
+                if (currentTheme !== 'dark') {
+                    newTheme = 'dark';
+                }
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+
+                if (transitionTimeout) {
+                    clearTimeout(transitionTimeout);
+                }
+                transitionTimeout = setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transitioning');
+                }, 800);
+            });
+        }
+    </script>
 </body>
 </html>

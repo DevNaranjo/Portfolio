@@ -39,8 +39,9 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 | **Experiencia real en producción** | Incluye flujo PAD en producción (Power Automate Desktop, Microsoft 365, PowerApps) desarrollado en entorno empresarial real. |
 | **Simulador de Terminal Retro** | Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java. |
 | **Cumplimiento RGPD y Seguridad** | Formulario con checkbox de consentimiento explícito obligatorio y protección anti-spam mediante hCaptcha con Web3Forms. |
-| **Modo Oscuro sin Parpadeo** | Alternador de tema en local con localStorage, evaluado en el head para evitar destello blanco al cargar la página. |
+| **Modo Oscuro sin Parpadeo** | Alternador de tema en local con localStorage, evaluado en el head para evitar destello blanco al cargar la página (extendido a `cv.html` con transiciones fluidas de 0.8s). |
 | **Navegación Dinámica de Código** | Logotipo interactivo `Iriome.build(sección)` que actualiza su método según la navegación del usuario. |
+| **Copiado Inteligente de Email** | Botones de Gmail en pie de página y contacto que copian el correo al portapapeles y muestran una notificación emergente interactiva. |
 | **Atajo de Trabajo Local** | Acceso al generador corporativo de correo local privado usando el atajo global `Ctrl + Alt + I`. |
 
 ---
@@ -76,8 +77,9 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 | **Production Experience** | Includes live RPA flows (Power Automate Desktop, Microsoft 365, PowerApps, ChatGPT Enterprise) deployed in real-world enterprise environments. |
 | **Retro Terminal Simulator** | Faithful JavaScript simulation of actual Java console execution (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas). |
 | **GDPR Compliance & Anti-Spam** | Contact form featuring a mandatory consent checkbox pointing to the Privacy Policy, backed by hCaptcha spam protection integrated with Web3Forms. |
-| **Flicker-Free Dark Mode** | Sleek theme toggle using localStorage, resolved early in the head to prevent white flashes. |
+| **Flicker-Free Dark Mode** | Sleek theme toggle using localStorage, resolved early in the head to prevent white flashes (now active on `cv.html` with smooth 0.8s transitions). |
 | **Dynamic Code Logo** | Interactive logo `Iriome.build(section)` that dynamically updates its parameter based on navigation. |
+| **Smart Email Copy** | Gmail buttons in footer and contact page that copy the email address to clipboard and show an interactive toast notification. |
 | **Local Workspace Shortcut** | Direct access to the private local Gmail template generator using `Ctrl + Alt + I` shortcut. |
 
 ---

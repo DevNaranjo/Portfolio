@@ -286,32 +286,38 @@ function copyTextToClipboard(text) {
  * Gestiona el copiado del correo al portapapeles para evitar problemas con clientes de mail locales.
  */
 function setupEmailCopy() {
-    const emailLink = document.getElementById('contact-mail');
-    if (!emailLink) return;
+    // Buscar el botón de contacto principal y cualquier enlace de correo del pie de página
+    const emailLinks = document.querySelectorAll('#contact-mail, .footer-socials a[href^="mailto:"]');
+    if (emailLinks.length === 0) return;
 
-    // Crear el Toast en el documento
-    const toast = document.createElement('div');
-    toast.className = 'toast-notification';
-    toast.innerHTML = '<span>✉</span> ¡Correo copiado al portapapeles!';
-    document.body.appendChild(toast);
+    // Crear el Toast en el documento si no existe
+    let toast = document.querySelector('.toast-notification');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.innerHTML = '<span>✉</span> ¡Correo copiado al portapapeles!';
+        document.body.appendChild(toast);
+    }
 
-    emailLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Evitar abrir aplicaciones externas
-        const emailAddress = "inaranjordgz@gmail.com";
+    emailLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Evitar abrir aplicaciones de correo locales
+            const emailAddress = "inaranjordgz@gmail.com";
 
-        // Usar la función robusta de copiado
-        copyTextToClipboard(emailAddress).then(() => {
-            // Mostrar Toast
-            toast.classList.add('show');
-            
-            // Ocultar Toast tras 3 segundos
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }).catch(err => {
-            console.error('Error al copiar correo: ', err);
-            // Fallback extremo: si todo falla, abrimos el mailto
-            window.location.href = `mailto:${emailAddress}`;
+            // Usar la función robusta de copiado
+            copyTextToClipboard(emailAddress).then(() => {
+                // Mostrar Toast
+                toast.classList.add('show');
+                
+                // Ocultar Toast tras 3 segundos
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('Error al copiar correo: ', err);
+                // Fallback: abrir el mailto tradicional si falla el portapapeles
+                window.location.href = `mailto:${emailAddress}`;
+            });
         });
     });
 }
