@@ -21,6 +21,8 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 | `proyectos.html` | Catálogo de proyectos con filtros de estado y acceso a código fuente. |
 | `proyecto-habitly.html` | Detalle del software de gestión inmobiliaria (POO, JUnit 5, persistencia). |
 | `proyecto-calculadora.html` | Detalle del software de división de cuentas (Java 25, `BigDecimal`, compensación de redondeo). |
+| `proyecto-rpa.html` | Detalle de la automatización RPA de incidencias (Dynamics 365 Business Central, M365, Outlook). |
+| `proyecto-rpa-resumen.html` | Detalle del generador de resúmenes de incidencias semanales con IA (Teams, OneDrive, PAD, ChatGPT Enterprise). |
 | `contacto.html` | Formulario de contacto seguro integrado con Web3Forms y anti-spam. |
 | `privacidad.html` | Página legal de Política de Privacidad de datos (cumplimiento RGPD). |
 | `cv.html` | Currículum interactivo adaptado para lectura digital y optimizado para impresión A4. |
@@ -32,7 +34,6 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 
 ### 🛠️ Características Principales
 
-<<<<<<< HEAD
 | Característica | Detalle |
 |---|---|
 | **Experiencia real en producción** | Incluye flujo PAD en producción (Power Automate Desktop, Microsoft 365, PowerApps) desarrollado en entorno empresarial real. |
@@ -42,12 +43,6 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 | **Navegación Dinámica de Código** | Logotipo interactivo `Iriome.build(sección)` que actualiza su método según la navegación del usuario. |
 | **Atajo de Trabajo Local** | Acceso al generador corporativo de correo local privado usando el atajo global `Ctrl + Alt + I`. |
 
-=======
-1. **Simulador de Terminal Retro Interactivo**: Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java (con simulación matemática exacta en la división de cuentas del Grupo Gastronómico Rivas).
-2. **Cumplimiento RGPD y Seguridad**: Formulario de contacto con checkbox de consentimiento explícito obligatorio enlazado a la **Política de Privacidad** de datos y protección anti-spam mediante **hCaptcha** con Web3Forms.
-3. **Navegación Dinámica de Código**: Cabecera corporativa con el logotipo interactivo `Iriome.build(parámetro)` donde el parámetro cambia dinámicamente según la sección en la que navega el usuario.
-4. **Modo Oscuro sin Parpadeo (Flicker-Free)**: Alternador de tema visual claro/oscuro que almacena la preferencia en `localStorage`, evaluada en la cabecera del documento para evitar el parpadeo blanco al cargar la página.
->>>>>>> 37fdb0783530157eed9563b0d96bfba6f3ae73d5
 ---
 
 ## 🇬🇧 English
@@ -63,6 +58,8 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 | `proyectos.html` | Projects directory with status badges and links to source repositories. |
 | `proyecto-habitly.html` | Details of the real-estate management software (OOP, JUnit 5, persistence). |
 | `proyecto-calculadora.html` | Details of the bill-splitter console app (Java 25, `BigDecimal`, rounding compensation). |
+| `proyecto-rpa.html` | Technical details of the RPA support ticket automation (Dynamics 365 Business Central, Outlook). |
+| `proyecto-rpa-resumen.html` | Technical details of the AI-powered weekly incident summarization flow (Teams, OneDrive, PAD, ChatGPT). |
 | `contacto.html` | Secure contact form integrated with Web3Forms API and anti-spam protection. |
 | `privacidad.html` | Privacy Policy page (fully compliant with GDPR regulations). |
 | `cv.html` | Interactive web CV, designed for digital viewing and optimized for A4 printing. |
@@ -74,22 +71,15 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 
 ### 🛠️ Core Features
 
-<<<<<<< HEAD
 | Feature | Detail |
 |---|---|
-| **Production Experience** | Includes a live RPA flow (Power Automate Desktop, Microsoft 365, PowerApps) deployed in a real-world enterprise environment. |
-| **Retro Terminal Simulator** | Faithful JavaScript simulation of actual Java console execution. |
-| **GDPR Compliance & Anti-Spam** | Contact form with mandatory consent checkbox and anti-spam protection via hCaptcha with Web3Forms. |
+| **Production Experience** | Includes live RPA flows (Power Automate Desktop, Microsoft 365, PowerApps, ChatGPT Enterprise) deployed in real-world enterprise environments. |
+| **Retro Terminal Simulator** | Faithful JavaScript simulation of actual Java console execution (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas). |
+| **GDPR Compliance & Anti-Spam** | Contact form featuring a mandatory consent checkbox pointing to the Privacy Policy, backed by hCaptcha spam protection integrated with Web3Forms. |
 | **Flicker-Free Dark Mode** | Sleek theme toggle using localStorage, resolved early in the head to prevent white flashes. |
 | **Dynamic Code Logo** | Interactive logo `Iriome.build(section)` that dynamically updates its parameter based on navigation. |
 | **Local Workspace Shortcut** | Direct access to the private local Gmail template generator using `Ctrl + Alt + I` shortcut. |
 
-=======
-1. **Interactive CLI Terminal Simulator**: Realistic JavaScript terminal emulating the actual console outputs of Java programs (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas).
-2. **GDPR Compliance & Anti-Spam**: Contact form featuring a mandatory consent checkbox pointing to the **Privacy Policy**, backed by **hCaptcha** spam protection integrated with Web3Forms.
-3. **Dynamic Code Logo**: A custom navigation bar logo `Iriome.build(parameter)` where the method parameter changes dynamically to reflect the current page.
-4. **Flicker-Free Dark Mode**: Sleek dark/light theme toggle saved in `localStorage`, resolved early in the `<head>` to prevent white flashes during page loads.
->>>>>>> 37fdb0783530157eed9563b0d96bfba6f3ae73d5
 ---
 
 *Desarrollado con orden y pasión por el código. / Built with order and passion for code.* 🚀

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAD-AUTO-001 | Iriome - Desarrollador Backend Java &amp; RPA | DAM</title>
+    <meta name="description" content="Explicación del flujo RPA automatizado desarrollado con Power Automate Desktop integrado en el ecosistema Microsoft 365 y Business Central.">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
+    <style>
+        /* Estilos personalizados para el diagrama de flujo */
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .flowchart-step {
+            width: 100%;
+            max-width: 550px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .flowchart-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.08);
+            border-color: var(--primary-color);
+        }
+
+        .flowchart-step-num {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 800;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .flowchart-step-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .flowchart-step-content {
+            flex-grow: 1;
+        }
+
+        .flowchart-step-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .flowchart-step-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Líneas de conexión */
+        .flowchart-connector {
+            width: 2px;
+            height: 25px;
+            background: var(--border-color);
+            position: relative;
+        }
+
+        .flowchart-connector::after {
+            content: '▼';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(1.2);
+            font-size: 8px;
+            color: var(--border-color);
+        }
+
+        /* Nodos de decisión y salidas alternativas */
+        .decision-gate {
+            border-left: 3px solid var(--accent-sage);
+        }
+
+        .decision-paths {
+            display: flex;
+            width: 100%;
+            max-width: 550px;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: -5px;
+            margin-bottom: -5px;
+        }
+
+        .decision-path {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .decision-path.yes {
+            background-color: rgba(16, 185, 129, 0.08);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .decision-path.no {
+            background-color: rgba(239, 68, 68, 0.08);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* Badge explicativo de privacidad */
+        .privacy-badge {
+            background: rgba(79, 70, 229, 0.05);
+            border: 1.5px dashed var(--primary-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .privacy-badge-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .privacy-badge-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .privacy-badge-text strong {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="src/assets/logo.webp" alt="Logo de Iriome.build" class="nav-logo-img">
+                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">rpa</span><span class="logo-parentheses">)</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-link-home">Inicio</a></li>
+                <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
+                <li class="dropdown">
+                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn active">Proyectos <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
+                        <li><a href="proyecto-calculadora.html">Calculadora P&I (Java)</a></li>
+                        <li><a href="proyecto-rpa.html">Automatización RPA (PAD)</a></li>
+                        <li><a href="proyectos.html">Ver todos</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+                <li class="dropdown">
+                    <a href="#" id="nav-link-cv" class="dropbtn nav-cv-btn">CV <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="src/assets/cv-iriome-naranjo.pdf" download="CV_Iriome_Naranjo.pdf">Descargar PDF</a></li>
+                        <li><a href="contacto.html?reason=cv">Solicitar Completo</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="container">
+        <section id="projects-section">
+            <div style="margin-bottom: 30px;">
+                <a href="proyectos.html" style="color: var(--accent-rose); font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                    ← Volver a Mis Proyectos
+                </a>
+            </div>
+
+            <!-- Ficha de Proyecto -->
+            <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 35px;">
+                <div>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary);">PAD-AUTO-001: Automatización RPA de Incidencias</h1>
+                    <div class="project-meta">
+                        <span class="tag">Power Automate Desktop (PAD)</span>
+                        <span class="tag">RPA (Robotic Process Automation)</span>
+                        <span class="tag">Business Central API</span>
+                        <span class="tag">Microsoft 365 / Outlook</span>
+                        <span class="tag">Flujo en Producción</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <span class="btn btn-secondary" style="cursor: default; opacity: 0.8; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
+                        🤖 Flujo Activo en Producción (2026)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Badge de Privacidad (Explicación de por qué no hay código expuesto) -->
+            <div class="privacy-badge">
+                <span class="privacy-badge-icon">🔒</span>
+                <div class="privacy-badge-text">
+                    <strong>Nota de Confidencialidad:</strong> Al tratarse de un desarrollo implementado en el entorno de producción real de una compañía de software y operar sobre su ERP e infraestructura corporativa privada, <strong>el código fuente y la base de datos de este flujo de automatización no se hará público</strong> por acuerdo de confidencialidad (NDA). A continuación, se presenta un <strong>desglose técnico general de su estructura lógica, condiciones y arquitectura de funcionamiento</strong>.
+                </div>
+            </div>
+
+            <!-- Esquema Visual del Flujo de Trabajo (Interactivo/CSS) -->
+            <div class="card" style="padding: 30px; margin-bottom: 40px;">
+                <h2 style="font-family: var(--font-serif); text-align: center; margin-bottom: 10px; color: var(--text-primary);">Diagrama del Flujo de Trabajo</h2>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; max-width: 600px; margin: 0 auto 30px;">
+                    Representación lógica secuencial del recorrido diario que realiza el bot RPA.
+                </p>
+
+                <div class="flowchart-container">
+                    
+                    <!-- Paso 1 -->
+                    <div class="flowchart-step">
+                        <div class="flowchart-step-num">1</div>
+                        <div class="flowchart-step-icon">⏰</div>
+                        <div class="flowchart-step-content">
+                            <h3 class="flowchart-step-title">Disparador del Sistema (Trigger)</h3>
+                            <p class="flowchart-step-desc">Se ejecuta un disparador de periodicidad de forma automática todos los días laborables al iniciar la jornada (<strong>8:00 AM</strong>).</p>
+                        </div>
+                    </div>
+
+                    <div class="flowchart-connector"></div>
+
+                    <!-- Paso 2 -->
+                    <div class="flowchart-step">
+                        <div class="flowchart-step-num">2</div>
+                        <div class="flowchart-step-icon">☁️</div>
+                        <div class="flowchart-step-content">
+                            <h3 class="flowchart-step-title">Llamada API &amp; Extracción ERP</h3>
+                            <p class="flowchart-step-desc">El bot interactúa con la <strong>API de Microsoft Dynamics 365 Business Central</strong> para descargar la tabla de incidencias activas y extraer los <strong>IDs (nº de caso)</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="flowchart-connector"></div>
+
+                    <!-- Paso 3 (Decisión 1) -->
+                    <div class="flowchart-step decision-gate">
+                        <div class="flowchart-step-num">3</div>
+                        <div class="flowchart-step-icon">⚖️</div>
+                        <div class="flowchart-step-content">
+                            <h3 class="flowchart-step-title">Condición 1: Comprobación de Respuesta Interna</h3>
+                            <p class="flowchart-step-desc">El bot analiza la incidencia en una tabla interna: <strong>¿Algún trabajador de soporte ha respondido ya al ticket?</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="decision-paths">
+                        <div class="decision-path yes">Sí (Sigue el flujo)</div>
+                        <div class="decision-path no">No / Resuelto (Fin 🛑)</div>
+                    </div>
+
+                    <div class="flowchart-connector"></div>
+
+                    <!-- Paso 4 (Decisión 2) -->
+                    <div class="flowchart-step decision-gate">
+                        <div class="flowchart-step-num">4</div>
+                        <div class="flowchart-step-icon">📅</div>
+                        <div class="flowchart-step-content">
+                            <h3 class="flowchart-step-title">Condición 2: Ventana de Inactividad del Cliente</h3>
+                            <p class="flowchart-step-desc">El bot calcula el tiempo desde la última respuesta: <strong>¿Lleva el cliente más de 14 días en estado "Waiting for details"?</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="decision-paths">
+                        <div class="decision-path yes">Sí (Sigue el flujo)</div>
+                        <div class="decision-path no">No / Menos de 14 días (Fin 🛑)</div>
+                    </div>
+
+                    <div class="flowchart-connector"></div>
+
+                    <!-- Paso 5 -->
+                    <div class="flowchart-step">
+                        <div class="flowchart-step-num">5</div>
+                        <div class="flowchart-step-icon">✉️</div>
+                        <div class="flowchart-step-content">
+                            <h3 class="flowchart-step-title">Acción: Envío de Alerta &amp; Programación de Cierre</h3>
+                            <p class="flowchart-step-desc">Se extrae el email del cliente. El bot genera y envía un recordatorio automático vía <strong>Outlook</strong>. Si tras la alerta no se recibe respuesta, el ticket se programa para cierre automático.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Metodología STAR -->
+            <div class="star-container" id="star-breakdown">
+                <div class="star-section">
+                    <div class="star-letter">S</div>
+                    <h3>Situación</h3>
+                    <p>
+                        En el departamento de soporte técnico, el seguimiento de incidencias con clientes requería un gran esfuerzo administrativo manual. El personal de TI debía buscar diariamente en el ERP de <strong>Business Central</strong> qué tickets estaban pendientes de la respuesta de un cliente (estado <em>Esperando Detalles</em>), filtrar aquellos que llevaban demasiado tiempo inactivos y redactar de forma individual correos electrónicos de recordatorio, consumiendo más de (aproximadamente) <strong>25 horas semanales de gestión manual repetitiva</strong> y corriendo el riesgo de omitir seguimientos importantes.
+                    </p>
+                </div>
+
+                <div class="star-section">
+                    <div class="star-letter">T</div>
+                    <h3>Tarea</h3>
+                    <p>
+                        Diseñar e implementar un flujo de automatización robótica de procesos (<strong>RPA</strong>) end-to-end que se ejecutara diariamente de forma programada a primera hora de la mañana. El objetivo era recopilar de forma autónoma los casos del ERP, evaluar las reglas de negocio (inactividad de clientes de soporte por más de 14 días tras respuesta de un técnico) y enviar recordatorios automatizados por correo electrónico, reduciendo a cero los recordatorios omitidos y el tiempo de gestión administrativa del equipo de soporte.
+                    </p>
+                </div>
+
+                <div class="star-section">
+                    <div class="star-letter">A</div>
+                    <h3>Acción</h3>
+                    <p>
+                        Desarrollé una solución automatizada con <strong>Power Automate Desktop</strong> y las siguientes fases de integración de sistemas:
+                        <ol style="margin-left: 20px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                            <li><strong>Integración y llamadas API:</strong> Programé llamadas seguras a las APIs internas de Business Central para obtener datos tabulares en tiempo real estructurando los IDs de los tickets de soporte.</li>
+                            <li><strong>Evaluación lógica multinivel:</strong> Diseñé un bloque de condiciones secuenciales. El bot evalúa el estado del ticket y verifica la existencia de respuestas del personal de soporte técnico. Si se cumplen las condiciones de espera, pasa a validar si la inactividad supera el umbral de 14 días.</li>
+                            <li><strong>Automatización del Correo Corporativo (Outlook):</strong> Diseñé la extracción dinámica de la dirección del cliente para alimentar la plantilla de correo corporativa en Microsoft Outlook. Programé la redacción, adjunción de firmas institucionales y el envío directo.</li>
+                        </ol>
+                    </p>
+                </div>
+
+                <div class="star-section">
+                    <div class="star-letter">R</div>
+                    <h3>Resultado</h3>
+                    <p>
+                        El bot se desplegó exitosamente en el entorno de producción empresarial. Logró procesar de forma semanal una media de <strong>+75 incidencias automatizadas</strong>, lo que eliminó las +25 horas de trabajo administrativo manual semanal del equipo técnico. Además, la tasa de recordatorios omitidos se redujo al <strong>0%</strong>, mejorando los tiempos de respuesta y la experiencia general de los clientes de la compañía.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ficha Técnica y Tecnologías -->
+            <div class="card" style="margin-top: 40px; padding: 30px; border-left: 4px solid var(--accent-sage); background: linear-gradient(135deg, rgba(217,119,6,0.04) 0%, transparent 100%);">
+                <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    ⚙️ Detalles de la Infraestructura de Automatización
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0 0 15px 0;">
+                    Este desarrollo ejemplifica la automatización RPA interactuando con infraestructura de gestión empresarial (ERP) y software de oficina M365:
+                </p>
+                <ul style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin: 0 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 6px;">
+                    <li><strong>Microsoft Dynamics 365 Business Central API:</strong> Punto de acceso REST seguro para el bot, garantizando consistencia en las lecturas de los datos de tickets corporativos.</li>
+                    <li><strong>Power Automate Desktop:</strong> Motor RPA que controla la navegación, el filtrado condicional y la orquestación lógica del sistema de recordatorios.</li>
+                    <li><strong>Ecosistema M365 (Outlook/Microsoft Exchange):</strong> Canal de salida integrado para comunicaciones masivas de soporte con plantillas en formato HTML y formato corporativo.</li>
+                    <li><strong>Metodología de Desarrollo MVP:</strong> El flujo se diseñó, testeó localmente con registros simulados y desplegó en producción cumpliendo estrictamente con el cronograma y los entregables iterativos.</li>
+                </ul>
+            </div>
+
+            <!-- Roadmap (Hoja de Ruta) del Proyecto -->
+            <div class="roadmap" id="project-roadmap" style="margin-top: 40px;">
+                <h3>🗺️ Hoja de Ruta del Proyecto</h3>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
+                    Planificación estructurada y entregas incrementales para esta automatización.
+                </p>
+                
+                <div class="timeline">
+                    <!-- Iteración 1 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Fase 1: Motor RPA &amp; Envío Local <span class="status-badge">Completado</span></h4>
+                            <p>Desarrollo y testeo en local de la lógica del bot. Pruebas con bases de datos simuladas y verificación de condiciones temporales con tickets de prueba.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Iteración 2 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Fase 2: Integración ERP &amp; Producción <span class="status-badge">Completado</span></h4>
+                            <p>Conexión segura con la API de Business Central e integración con cuentas de correo institucionales. Despliegue del bot programado a las 8:00 AM.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Llamada a la Acción (CTA) -->
+            <div class="card" style="text-align: center; margin-top: 60px; padding: 45px 30px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <h3 style="font-family: var(--font-serif); font-size: 1.75rem; margin-bottom: 5px;">¿Quieres automatizar procesos repetitivos en tu compañía?</h3>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 15px; font-size: 1rem; line-height: 1.6;">
+                    Diseño flujos de trabajo RPA y APIs backend a medida para ahorrar tiempo de gestión manual y eliminar errores de entrada de datos.
+                </p>
+                <a href="contacto.html" class="btn btn-primary" style="width: auto;">Hablemos de automatización</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Columna 1: Marca y Redes -->
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-code">iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
+                </div>
+                <p class="footer-brand-desc">Desarrollador DAM enfocado en Java Backend. Diseñando software con precisión matemática y código limpio.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Columna 2: Navegación -->
+            <div class="footer-nav">
+                <h4>Navegación</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="privacidad.html">Privacidad</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna 3: Estado y Disponibilidad -->
+            <div class="footer-status">
+                <h4>Estado Actual</h4>
+                <div class="status-indicator">
+                    <span class="status-dot-green"></span>
+                    <span class="status-text">Disponible para proyectos</span>
+                </div>
+                <p class="status-location">📍 Las Palmas de Gran Canaria, España</p>
+                <p class="status-quote">"Convirtiendo café en código estructurado."</p>
+            </div>
+        </div>
+        
+        <!-- Línea de copyright inferior -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>© 2026 Iriome Naranjo Rodríguez. Todos los derechos reservados.</p>
+                <p class="made-with">Hecho con <span class="heart">❤️</span> y pasión por el backend</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de Modo Oscuro -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema visual claro y oscuro">
+        <!-- Sun Icon (SVG) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (SVG) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>

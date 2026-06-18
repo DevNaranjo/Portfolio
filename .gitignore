@@ -51,3 +51,5 @@ public/
 
 # Project specific ignored files
 plantilla_correo.html
+.agents/
+.gemini/
