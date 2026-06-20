@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         runCalculatorSimulation(calculatorTerminal);
     }
 
-    // 3. Copiado de Correo al Portapapeles
+    // 3. Copiado de Correo y Teléfono al Portapapeles
     setupEmailCopy();
+    setupPhoneCopy();
 
     // 4. Formulario de Contacto Animado e Interactivo
     setupContactForm();
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupPrivateTemplateShortcut();
     setupProjectDetailsZoom();
+    initConsentManagement();
 });
 
 /**
@@ -283,21 +285,35 @@ function copyTextToClipboard(text) {
 }
 
 /**
- * Gestiona el copiado del correo al portapapeles para evitar problemas con clientes de mail locales.
+ * Muestra una notificación Toast flotante con contenido HTML.
  */
-function setupEmailCopy() {
-    // Buscar el botón de contacto principal y cualquier enlace de correo del pie de página
-    const emailLinks = document.querySelectorAll('#contact-mail, .footer-socials a[href^="mailto:"]');
-    if (emailLinks.length === 0) return;
-
-    // Crear el Toast en el documento si no existe
+let toastTimeout;
+function showToast(htmlContent) {
     let toast = document.querySelector('.toast-notification');
     if (!toast) {
         toast = document.createElement('div');
         toast.className = 'toast-notification';
-        toast.innerHTML = '<span>✉</span> ¡Correo copiado al portapapeles!';
         document.body.appendChild(toast);
     }
+    toast.innerHTML = htmlContent;
+    toast.classList.add('show');
+    
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+    
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+/**
+ * Gestiona el copiado del correo al portapapeles para evitar problemas con clientes de mail locales.
+ */
+function setupEmailCopy() {
+    // Buscar cualquier enlace de correo
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    if (emailLinks.length === 0) return;
 
     emailLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -306,13 +322,7 @@ function setupEmailCopy() {
 
             // Usar la función robusta de copiado
             copyTextToClipboard(emailAddress).then(() => {
-                // Mostrar Toast
-                toast.classList.add('show');
-                
-                // Ocultar Toast tras 3 segundos
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
+                showToast('<span>✉</span> ¡Correo copiado al portapapeles!');
             }).catch(err => {
                 console.error('Error al copiar correo: ', err);
                 // Fallback: abrir el mailto tradicional si falla el portapapeles
@@ -321,6 +331,40 @@ function setupEmailCopy() {
         });
     });
 }
+
+/**
+ * Gestiona el copiado del teléfono al portapapeles.
+ */
+function setupPhoneCopy() {
+    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+    if (phoneLinks.length === 0) return;
+
+    phoneLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const phoneNumber = "+34 627 328 887";
+
+            copyTextToClipboard(phoneNumber).then(() => {
+                showToast('<span>📞</span> ¡Teléfono copiado al portapapeles!');
+            }).catch(err => {
+                console.error('Error al copiar teléfono: ', err);
+                window.location.href = `tel:+34627328887`;
+            });
+        });
+    });
+}
+
+// Escuchar el evento pageshow para limpiar clases de animación de salida cuando se regresa con el botón de "Atrás" del navegador
+window.addEventListener('pageshow', (event) => {
+    const mainContainer = document.querySelector('main');
+    if (mainContainer) {
+        mainContainer.classList.remove('page-zoom-exit');
+    }
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        card.classList.remove('project-card-zoom-exit');
+    });
+});
 
 /**
  * Agrega animaciones y estados de carga/éxito interactivos al formulario de contacto.
@@ -652,5 +696,200 @@ function setupProjectDetailsZoom() {
                 }, 450);
             }
         });
+    });
+}
+
+/**
+ * =======================================================
+ * Lógica de Banner de Consentimiento y Google Consent Mode v2
+ * =======================================================
+ */
+const GA_MEASUREMENT_ID = 'G-M8P0Z9L7Y1';
+const consentKey = 'user-consent-preferences';
+
+function initConsentManagement() {
+    // Registrar el listener del pie de página y botones
+    const footerCookiesLinks = document.querySelectorAll('footer a[href="politica-cookies.html"], footer a[href$="politica-cookies.html"]');
+    footerCookiesLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            openConsentSettingsModal();
+        });
+    });
+
+    const pageTrigger = document.getElementById('btn-trigger-cst-page');
+    if (pageTrigger) {
+        pageTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openConsentSettingsModal();
+        });
+    }
+
+    const savedConsent = localStorage.getItem(consentKey);
+    if (savedConsent) {
+        try {
+            const consent = JSON.parse(savedConsent);
+            applyConsent(consent);
+        } catch (e) {
+            console.error("Error al parsear el consentimiento:", e);
+            showConsentBanner();
+        }
+    } else {
+        showConsentBanner();
+    }
+}
+
+function applyConsent(consent) {
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+            'analytics_storage': consent.analytics ? 'granted' : 'denied'
+        });
+    }
+    
+    if (consent.analytics) {
+        loadGoogleAnalytics();
+    }
+}
+
+function loadGoogleAnalytics() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script1);
+    
+    const script2 = document.createElement('script');
+    script2.text = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_MEASUREMENT_ID}', { 'anonymize_ip': true });
+    `;
+    document.head.appendChild(script2);
+}
+
+function showConsentBanner() {
+    if (document.getElementById('cst-banner')) return;
+    
+    const banner = document.createElement('div');
+    banner.id = 'cst-banner';
+    banner.className = 'cst-banner';
+    banner.innerHTML = `
+        <div class="cst-banner-title">Preferencias de Privacidad</div>
+        <div class="cst-banner-text">
+            Este sitio web utiliza cookies técnicas para recordar tus preferencias de tema visual y cookies analíticas para comprender cómo navegas. Puedes aceptar todas, rechazarlas o configurar tus preferencias de forma detallada. Consulta nuestra <a href="politica-cookies.html">Política de Cookies</a> para más información.
+        </div>
+        <div class="cst-banner-buttons">
+            <button class="btn btn-accept" id="btn-accept-all-cst">Aceptar todas</button>
+            <button class="btn btn-reject" id="btn-reject-all-cst">Rechazar todas</button>
+            <button class="btn btn-settings" id="btn-settings-cst">Configurar</button>
+        </div>
+    `;
+    document.body.appendChild(banner);
+    
+    setTimeout(() => {
+        banner.classList.add('show');
+    }, 100);
+    
+    document.getElementById('btn-accept-all-cst').addEventListener('click', () => {
+        saveConsentSetting({ analytics: true });
+    });
+    
+    document.getElementById('btn-reject-all-cst').addEventListener('click', () => {
+        saveConsentSetting({ analytics: false });
+    });
+    
+    document.getElementById('btn-settings-cst').addEventListener('click', () => {
+        openConsentSettingsModal();
+    });
+}
+
+function saveConsentSetting(consent) {
+    localStorage.setItem(consentKey, JSON.stringify(consent));
+    applyConsent(consent);
+    
+    const banner = document.getElementById('cst-banner');
+    if (banner) {
+        banner.classList.remove('show');
+        setTimeout(() => banner.remove(), 500);
+    }
+    
+    const modal = document.getElementById('cst-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 400);
+    }
+}
+
+function openConsentSettingsModal() {
+    let modal = document.getElementById('cst-modal');
+    if (modal) {
+        modal.classList.add('show');
+        return;
+    }
+    
+    const currentConsent = localStorage.getItem(consentKey) 
+        ? JSON.parse(localStorage.getItem(consentKey)) 
+        : { analytics: false };
+        
+    modal = document.createElement('div');
+    modal.id = 'cst-modal';
+    modal.className = 'cst-modal';
+    modal.innerHTML = `
+        <div class="cst-modal-content">
+            <div class="cst-modal-header">
+                <div class="cst-modal-title">Ajustes de Cookies</div>
+                <button class="cst-modal-close" id="btn-close-cst-modal">&times;</button>
+            </div>
+            <div class="cst-modal-body">
+                <div class="cst-option">
+                    <div class="cst-option-info">
+                        <div class="cst-option-name">Cookies Técnicas (Necesarias)</div>
+                        <div class="cst-option-desc">Permiten recordar preferencias de visualización como el modo claro/oscuro y garantizar el correcto funcionamiento del sitio. Siempre activas.</div>
+                    </div>
+                    <label class="cst-switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="cst-slider"></span>
+                    </label>
+                </div>
+                <div class="cst-option">
+                    <div class="cst-option-info">
+                        <div class="cst-option-name">Cookies de Analítica</div>
+                        <div class="cst-option-desc">Recopilan información estadística anónima sobre la navegación para que podamos optimizar el rendimiento y contenido del portafolio.</div>
+                    </div>
+                    <label class="cst-switch">
+                        <input type="checkbox" id="chk-analytics-cst" ${currentConsent.analytics ? 'checked' : ''}>
+                        <span class="cst-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="cst-modal-footer">
+                <button class="btn btn-reject" id="btn-modal-reject-all" style="flex:1;">Rechazar todas</button>
+                <button class="btn btn-save" id="btn-modal-save" style="flex:1;">Guardar ajustes</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 50);
+    
+    document.getElementById('btn-close-cst-modal').addEventListener('click', () => {
+        modal.classList.remove('show');
+        if (!localStorage.getItem(consentKey) && !document.getElementById('cst-banner')) {
+            showConsentBanner();
+        }
+    });
+    
+    document.getElementById('btn-modal-reject-all').addEventListener('click', () => {
+        saveConsentSetting({ analytics: false });
+    });
+    
+    document.getElementById('btn-modal-save').addEventListener('click', () => {
+        const analyticsConsent = document.getElementById('chk-analytics-cst').checked;
+        saveConsentSetting({ analytics: analyticsConsent });
     });
 }

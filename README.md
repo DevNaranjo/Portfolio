@@ -3,8 +3,8 @@
 [![GitHub Pages](https://img.shields.io/badge/Live-devnaranjo.github.io%2FPortfolio-4F46E5?style=flat&logo=github)](https://devnaranjo.github.io/Portfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-inaranjorodriguez-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/inaranjorodriguez)
 
-> Desarrollador de Aplicaciones Multiplataforma (DAM) | Backend Java & Automatización RPA  
-> Developer of Multiplatform Applications (DAM) | Java Backend & RPA Automation
+> Desarrollador de Aplicaciones Multiplataforma (DAM) | Desarrollador Backend Java  
+> Developer of Multiplatform Applications (DAM) | Java Backend Developer
 
 ---
 
@@ -20,15 +20,15 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 | `sobre-mi.html` | Trayectoria educativa, fortalezas profesionales y desglose de stack técnico (SMR/DAM). |
 | `proyectos.html` | Catálogo de proyectos con filtros de estado y acceso a código fuente. |
 | `proyecto-habitly.html` | Detalle del software de gestión inmobiliaria (POO, JUnit 5, persistencia). |
-| `proyecto-calculadora.html` | Detalle del software de división de cuentas (Java 25, `BigDecimal`, compensación de redondeo). |
+| `proyecto-calculadora.html` | Detalle del software de división de cuentas (Java 25, `BigDecimal`, compensación de redondeo) - **Completado (MVP)**. |
 | `proyecto-rpa.html` | Detalle de la automatización RPA de incidencias (Dynamics 365 Business Central, M365, Outlook). |
 | `proyecto-rpa-resumen.html` | Detalle del generador de resúmenes de incidencias semanales con IA (Teams, OneDrive, PAD, ChatGPT Enterprise). |
 | `contacto.html` | Formulario de contacto seguro integrado con Web3Forms y anti-spam. |
 | `privacidad.html` | Página legal de Política de Privacidad de datos (cumplimiento RGPD). |
 | `cv.html` | Currículum interactivo adaptado para lectura digital y optimizado para impresión A4. |
-| `src/assets/` | Recursos gráficos, foto de perfil e icono de marca, junto al PDF del CV. |
+| `src/assets/` | Recursos gráficos, fotos de perfil, vistas previas de proyectos e icono de marca, junto al PDF del CV. |
 | `src/css/style.css` | Sistema de diseño unificado, variables de tema y responsive layout. |
-| `src/js/script.js` | Motor de UI, simulador de terminal retro, gestión de cookies/tema y atajos globales. |
+| `src/js/script.js` | Motor de UI, simulador de terminal retro, gestión de consentimiento/tema y atajos globales. |
 | `doc/` | Documentos de arquitectura y especificaciones funcionales de los proyectos. |
 | `plantilla_correo.html` | Herramienta local privada de respuesta rápida para Gmail (ignorado en Git). |
 
@@ -36,12 +36,12 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 
 | Característica | Detalle |
 |---|---|
-| **Experiencia real en producción** | Incluye flujo PAD en producción (Power Automate Desktop, Microsoft 365, PowerApps) desarrollado en entorno empresarial real. |
-| **Simulador de Terminal Retro** | Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java. |
-| **Cumplimiento RGPD y Seguridad** | Formulario con checkbox de consentimiento explícito obligatorio y protección anti-spam mediante hCaptcha con Web3Forms. |
+| **Experiencia real en producción** | Incluye flujo RPA en producción (Power Automate Desktop, Microsoft 365, PowerApps) desarrollado en entorno empresarial real. |
+| **Simulador de Terminal Retro** | Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java (Habitly y Calculadora). |
+| **Consentimiento Anti-Bloqueo** | Formulario con hCaptcha, y banner de consentimiento dinámico (Consent Mode v2) optimizado con nomenclatura genérica para evitar bloqueos falsos positivos de Adblockers. |
 | **Modo Oscuro sin Parpadeo** | Alternador de tema en local con localStorage, evaluado en el head para evitar destello blanco al cargar la página (extendido a `cv.html` con transiciones fluidas de 0.8s). |
 | **Navegación Dinámica de Código** | Logotipo interactivo `Iriome.build(sección)` que actualiza su método según la navegación del usuario. |
-| **Copiado Inteligente de Email** | Botones de Gmail en pie de página y contacto que copian el correo al portapapeles y muestran una notificación emergente interactiva. |
+| **Copiado de Contacto y Redes** | Copiado automático de correo y teléfono al portapapeles con toasts interactivos, e integración de enlaces a redes sociales (GitHub, LinkedIn, Instagram). |
 | **Atajo de Trabajo Local** | Acceso al generador corporativo de correo local privado usando el atajo global `Ctrl + Alt + I`. |
 
 ---
@@ -58,15 +58,15 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 | `sobre-mi.html` | Profile, academic background, key strengths, and technical stack (SMR/DAM). |
 | `proyectos.html` | Projects directory with status badges and links to source repositories. |
 | `proyecto-habitly.html` | Details of the real-estate management software (OOP, JUnit 5, persistence). |
-| `proyecto-calculadora.html` | Details of the bill-splitter console app (Java 25, `BigDecimal`, rounding compensation). |
+| `proyecto-calculadora.html` | Details of the bill-splitter console app (Java 25, `BigDecimal`, rounding compensation) - **Completed (MVP)**. |
 | `proyecto-rpa.html` | Technical details of the RPA support ticket automation (Dynamics 365 Business Central, Outlook). |
 | `proyecto-rpa-resumen.html` | Technical details of the AI-powered weekly incident summarization flow (Teams, OneDrive, PAD, ChatGPT). |
 | `contacto.html` | Secure contact form integrated with Web3Forms API and anti-spam protection. |
 | `privacidad.html` | Privacy Policy page (fully compliant with GDPR regulations). |
 | `cv.html` | Interactive web CV, designed for digital viewing and optimized for A4 printing. |
-| `src/assets/` | Graphic resources, profile photo, brand icons, and CV PDF. |
+| `src/assets/` | Graphic resources, profile photo, project previews, brand icons, and CV PDF. |
 | `src/css/style.css` | Unified design system, CSS variables, and fully responsive layout. |
-| `src/js/script.js` | UI core engine, retro CLI simulator, cookies/theme handling, and global keyboard shortcuts. |
+| `src/js/script.js` | UI core engine, retro CLI simulator, consent/theme handling, and global keyboard shortcuts. |
 | `doc/` | Technical documentation and architecture specifications. |
 | `plantilla_correo.html` | Local private tool for generating formal Gmail responses (ignored by Git). |
 
@@ -76,10 +76,10 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 |---|---|
 | **Production Experience** | Includes live RPA flows (Power Automate Desktop, Microsoft 365, PowerApps, ChatGPT Enterprise) deployed in real-world enterprise environments. |
 | **Retro Terminal Simulator** | Faithful JavaScript simulation of actual Java console execution (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas). |
-| **GDPR Compliance & Anti-Spam** | Contact form featuring a mandatory consent checkbox pointing to the Privacy Policy, backed by hCaptcha spam protection integrated with Web3Forms. |
+| **Adblocker-Resistant Consent** | Contact form featuring hCaptcha, and dynamic consent banner (Consent Mode v2) optimized with generic naming to bypass false-positive adblocker hiding. |
 | **Flicker-Free Dark Mode** | Sleek theme toggle using localStorage, resolved early in the head to prevent white flashes (now active on `cv.html` with smooth 0.8s transitions). |
 | **Dynamic Code Logo** | Interactive logo `Iriome.build(section)` that dynamically updates its parameter based on navigation. |
-| **Smart Email Copy** | Gmail buttons in footer and contact page that copy the email address to clipboard and show an interactive toast notification. |
+| **Contact Copy & Social Links** | Automatic email and phone copy to clipboard with interactive toasts, and integration of key social media links (GitHub, LinkedIn, Instagram). |
 | **Local Workspace Shortcut** | Direct access to the private local Gmail template generator using `Ctrl + Alt + I` shortcut. |
 
 ---

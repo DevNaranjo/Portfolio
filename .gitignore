@@ -54,3 +54,5 @@ plantilla_correo.html
 .agents/
 .gemini/
 .tempmediaStorage/
+__pycache__/
+*.pyc
