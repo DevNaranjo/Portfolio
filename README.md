@@ -43,6 +43,8 @@ Portfolio web profesional y personal. Diseñado bajo una estética premium, opti
 | **Navegación Dinámica de Código** | Logotipo interactivo `Iriome.build(sección)` que actualiza su método según la navegación del usuario. |
 | **Copiado de Contacto y Redes** | Copiado automático de correo y teléfono al portapapeles con toasts interactivos, e integración de enlaces a redes sociales (GitHub, LinkedIn, Instagram). |
 | **Atajo de Trabajo Local** | Acceso al generador corporativo de correo local privado usando el atajo global `Ctrl + Alt + I`. |
+| **Menú Móvil Colapsable** | Navegación responsive mediante un botón hamburguesa generado dinámicamente por JavaScript, con transiciones y animaciones fluidas en CSS. |
+| **Optimización de Assets (WebP)** | Imágenes de proyectos RPA y fotos de perfil comprimidas en formato `.webp` de alta eficiencia (calidad 80%), reduciendo el peso de descarga inicial en más de 2.75 MB. |
 
 ---
 
@@ -81,6 +83,8 @@ Personal and professional web portfolio. Designed with a premium look and feel, 
 | **Dynamic Code Logo** | Interactive logo `Iriome.build(section)` that dynamically updates its parameter based on navigation. |
 | **Contact Copy & Social Links** | Automatic email and phone copy to clipboard with interactive toasts, and integration of key social media links (GitHub, LinkedIn, Instagram). |
 | **Local Workspace Shortcut** | Direct access to the private local Gmail template generator using `Ctrl + Alt + I` shortcut. |
+| **Collapsible Mobile Menu** | Fully responsive navigation using a dynamically generated JavaScript hamburger button with smooth CSS transitions. |
+| **Asset Optimization (WebP)** | Main project previews and profile photos compressed into high-efficiency `.webp` format (80% quality), reducing initial load size by over 2.75 MB. |
 
 ---
 

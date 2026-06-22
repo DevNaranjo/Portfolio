@@ -38,7 +38,82 @@ document.addEventListener('DOMContentLoaded', () => {
     setupPrivateTemplateShortcut();
     setupProjectDetailsZoom();
     initConsentManagement();
+    setupMobileMenu();
 });
+
+/**
+ * Configura el menú de navegación móvil colapsable (hamburguesa).
+ */
+function setupMobileMenu() {
+    const nav = document.querySelector('.container.nav');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (nav && navLinks) {
+        // Crear el botón toggle dinámicamente
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'nav-toggle';
+        toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.innerHTML = '<span class="hamburger"></span>';
+        
+        // Insertarlo antes de los enlaces
+        nav.insertBefore(toggleBtn, navLinks);
+        
+        // Obtener elementos del desplegable de proyectos
+        const dropdown = navLinks.querySelector('.dropdown');
+        const dropbtn = navLinks.querySelector('.dropbtn');
+
+        // Manejar el clic del menú hamburguesa
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = toggleBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            toggleBtn.setAttribute('aria-expanded', isActive);
+            toggleBtn.setAttribute('aria-label', isActive ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+        });
+
+        // Prevenir navegación del botón principal de Proyectos e interceptarlo en móvil
+        if (dropdown && dropbtn) {
+            dropbtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropdown.classList.toggle('open');
+                }
+            });
+        }
+        
+        // Cerrar al hacer clic fuera del menú
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                toggleBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
+                
+                if (dropdown) {
+                    dropdown.classList.remove('open');
+                }
+            }
+        });
+
+        // Cerrar el menú al pulsar la tecla Escape (Accesibilidad)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
+                toggleBtn.focus();
+                
+                if (dropdown) {
+                    dropdown.classList.remove('open');
+                }
+            }
+        });
+    }
+}
+
 
 /**
  * Simula el comportamiento de la aplicación Habitly por consola.
