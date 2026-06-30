@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio · Iriome Naranjo - Desarrollador Backend Java</title>
-    <meta name="description" content="Desarrollador Backend Java especializado en construir código estructurado y escalable, con experiencia complementaria en automatización de procesos (RPA/PAD).">
-    
+    <meta name="description"
+        content="Desarrollador Backend Java especializado en construir código estructurado y escalable, con experiencia complementaria en automatización de procesos (RPA/PAD).">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KGFHGSRH');</script>
+    <!-- End Google Tag Manager -->
+
     <!-- Open Graph -->
     <meta property="og:title" content="Iriome Naranjo - Desarrollador Backend Java">
-    <meta property="og:description" content="Portfolio con proyectos reales en producción, simulador interactivo de consola y soluciones de automatización.">
+    <meta property="og:description"
+        content="Portfolio con proyectos reales en producción, simulador interactivo de consola y soluciones de automatización.">
     <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.png">
     <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/">
     <meta property="og:type" content="website">
-    
+
     <!-- Canonical -->
     <link rel="canonical" href="https://devnaranjo.github.io/Portfolio/index.html">
 
-        <!-- Google Consent Mode v2 -->
+    <!-- Google Consent Mode v2 -->
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('consent', 'default', {
             'analytics_storage': 'denied',
             'ad_storage': 'denied',
@@ -28,9 +42,9 @@
         });
     </script>
     <script>
-        (function() {
+        (function () {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
+            if (savedTheme !== 'light') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
         })();
@@ -38,20 +52,28 @@
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
 </head>
+
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGFHGSRH" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Menú de Navegación -->
     <header class="header">
         <div class="container nav">
             <a href="index.html" class="logo" id="nav-logo">
                 <img src="src/assets/logo.webp" alt="Logo de Iriome.build" class="nav-logo-img">
-                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">portfolio</span><span class="logo-parentheses">)</span></span>
+                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span
+                        class="logo-parentheses">(</span><span class="logo-parameter">portfolio</span><span
+                        class="logo-parentheses">)</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" id="nav-link-home">Inicio</a></li>
                 <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
                 <li class="dropdown">
-                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn">Proyectos <span class="arrow">▾</span></a>
+                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn">Proyectos <span
+                            class="arrow">▾</span></a>
                     <ul class="dropdown-content">
                         <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
                         <li><a href="proyecto-calculadora.html">Calculadora P&I (Java)</a></li>
@@ -72,9 +94,11 @@
                 <img src="src/assets/logo.webp" alt="Logotipo Iriome.build" class="hero-logo-img">
             </div>
             <span class="hero-tag">Desarrollador Backend Java &bull; Experiencia en RPA</span>
-            <h1 class="title-large" style="margin-bottom: 20px;">Código estructurado. Entrega puntual.<br><span style="color: var(--accent-rose);">Arquitectura sólida y desarrollo escalable.</span></h1>
+            <h1 class="title-large" style="margin-bottom: 20px;">Código estructurado. Entrega puntual.<br><span
+                    style="color: var(--accent-rose);">Arquitectura sólida y desarrollo escalable.</span></h1>
             <p>
-                Desarrollador Backend Java con experiencia en automatización de procesos (RPA) y soporte en entornos empresariales reales. Disponible para incorporación inmediata a jornada completa.
+                Desarrollador Backend Java con experiencia en automatización de procesos (RPA) y soporte en entornos
+                empresariales reales. Disponible para incorporación inmediata a jornada completa.
             </p>
             <div class="hero-buttons">
                 <a href="proyectos.html" class="btn btn-primary" id="hero-btn-projects">Ver Proyectos</a>
@@ -84,8 +108,9 @@
             <div class="scroll-indicator">
                 <a href="#featured-projects" class="scroll-trigger" aria-label="Desplazarse hacia abajo">
                     <div class="chevron-wrapper">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m6 9 6 6 6-6"/>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6" />
                         </svg>
                     </div>
                 </a>
@@ -93,22 +118,31 @@
         </section>
 
         <!-- Proyectos Destacados (Teaser Visual) -->
-        <section id="featured-projects" class="featured-projects" style="margin-top: 40px; margin-bottom: 40px; scroll-margin-top: 100px;">
+        <section id="featured-projects" class="featured-projects"
+            style="margin-top: 40px; margin-bottom: 40px; scroll-margin-top: 100px;">
             <h2 class="title-medium" style="text-align: center; margin-bottom: 35px;">🛠️ Proyectos Destacados</h2>
             <div class="projects-grid">
                 <!-- Tarjeta 1: Habitly -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/habitly-preview.png" alt="Captura de Habitly - gestor de hábitos en Java" loading="lazy" width="600" height="338">
+                        <img src="src/assets/projects/habitly-preview.png"
+                            alt="Captura de Habitly - gestor inmobiliario en Java" loading="lazy" width="600"
+                            height="338">
                     </div>
-                    <div class="project-card-content" style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed" style="align-self: flex-start; margin-bottom: 15px;">v1.1.0-F</span>
+                    <div class="project-card-content"
+                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
+                        <span class="project-status-badge completed"
+                            style="align-self: flex-start; margin-bottom: 15px;">v1.1.5</span>
                         <div class="project-card-header">
                             <span class="project-card-icon">🏠</span>
-                            <h3 class="project-card-title" style="view-transition-name: habitly-title;">Habitly: Inmobiliaria & Legal</h3>
+                            <h3 class="project-card-title" style="view-transition-name: habitly-title;">Habitly:
+                                Inmobiliaria & Legal</h3>
                         </div>
                         <p class="project-card-desc">
-                            Software de <strong>Desarrollo Backend</strong> en Java que automatiza la gestión inmobiliaria, logrando un 100% de cumplimiento legal con la normativa (LAU/Ley de Vivienda) mediante una <strong>arquitectura orientada a objetos modular (POO)</strong> y lógica de negocio estructurada.
+                            Software de <strong>Desarrollo Backend</strong> en Java que automatiza la gestión
+                            inmobiliaria, logrando un 100% de cumplimiento legal con la normativa (LAU/Ley de Vivienda)
+                            mediante una <strong>arquitectura orientada a objetos modular (POO)</strong> y lógica de
+                            negocio estructurada.
                         </p>
                         <div class="project-card-tags">
                             <span class="tag">Java SE</span>
@@ -119,7 +153,8 @@
                         </div>
                         <div class="project-card-actions">
                             <a href="proyecto-habitly.html" class="btn btn-primary">Ver Detalles</a>
-                            <a href="https://github.com/DevNaranjo/Habitly" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+                            <a href="https://github.com/DevNaranjo/Habitly" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-secondary">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -127,16 +162,23 @@
                 <!-- Tarjeta 2: Calculadora de Propinas -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/calculator-preview.png" alt="Captura de Calculadora de Propinas" loading="lazy" width="600" height="338">
+                        <img src="src/assets/projects/calculator-preview.png" alt="Captura de Calculadora de Propinas"
+                            loading="lazy" width="600" height="338">
                     </div>
-                    <div class="project-card-content" style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed" style="align-self: flex-start; margin-bottom: 15px;">Completado (MVP)</span>
+                    <div class="project-card-content"
+                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
+                        <span class="project-status-badge completed"
+                            style="align-self: flex-start; margin-bottom: 15px;">Completado (MVP)</span>
                         <div class="project-card-header">
                             <span class="project-card-icon">🧮</span>
-                            <h3 class="project-card-title" style="view-transition-name: calculator-title;">Calculadora de Propinas</h3>
+                            <h3 class="project-card-title" style="view-transition-name: calculator-title;">Calculadora
+                                de Propinas</h3>
                         </div>
                         <p class="project-card-desc">
-                            Aplicación en Java que garantiza el 100% de precisión matemática en la división de facturas usando <strong>BigDecimal</strong> y mitigando errores de redondeo mediante un <strong>algoritmo de compensación de céntimos</strong>, verificado con <strong>JUnit 5</strong>.
+                            Aplicación en Java que garantiza el 100% de precisión matemática en la división de facturas
+                            usando <strong>BigDecimal</strong> y mitigando errores de redondeo mediante un
+                            <strong>algoritmo de compensación de céntimos</strong>, verificado con <strong>JUnit
+                                5</strong>.
                         </p>
                         <div class="project-card-tags">
                             <span class="tag">Java 25</span>
@@ -146,7 +188,8 @@
                         </div>
                         <div class="project-card-actions">
                             <a href="proyecto-calculadora.html" class="btn btn-primary">Ver Detalles</a>
-                            <a href="https://github.com/DevNaranjo/Calculadora-Propinas" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+                            <a href="https://github.com/DevNaranjo/Calculadora-Propinas" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -154,16 +197,22 @@
                 <!-- Tarjeta 3: PAD-AUTO-001 -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/rpa-preview.webp" alt="Diagrama de flujo RPA" loading="lazy" width="600" height="338">
+                        <img src="src/assets/projects/rpa-preview.webp" alt="Diagrama de flujo RPA" loading="lazy"
+                            width="600" height="338">
                     </div>
-                    <div class="project-card-content" style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed" style="align-self: flex-start; margin-bottom: 15px;">Noray, 2026</span>
+                    <div class="project-card-content"
+                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
+                        <span class="project-status-badge completed"
+                            style="align-self: flex-start; margin-bottom: 15px;">Noray, 2026</span>
                         <div class="project-card-header">
                             <span class="project-card-icon">🤖</span>
                             <h3 class="project-card-title">FLUJO-PAD-AUTOMÁTICO: RPA Soporte</h3>
                         </div>
                         <p class="project-card-desc">
-                            Flujo RPA end-to-end desarrollado con <strong>Power Automate Desktop</strong> sobre <strong>Microsoft 365</strong> y <strong>PowerApps</strong>. Automatiza la gestión de soporte al cliente, filtrando y enviando recordatorios automáticos vía Outlook, eliminando <strong>25h/semana</strong> de trabajo manual.
+                            Flujo RPA end-to-end desarrollado con <strong>Power Automate Desktop</strong> sobre
+                            <strong>Microsoft 365</strong> y <strong>PowerApps</strong>. Automatiza la gestión de
+                            soporte al cliente, filtrando y enviando recordatorios automáticos vía Outlook, eliminando
+                            <strong>25h/semana</strong> de trabajo manual.
                         </p>
                         <div class="project-card-tags">
                             <span class="tag">Power Automate</span>
@@ -180,16 +229,21 @@
                 <!-- Tarjeta 4: PAD-AUTO-002 -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/rpa-resumen-preview.webp" alt="Esquema AI RPA" loading="lazy" width="600" height="338">
+                        <img src="src/assets/projects/rpa-resumen-preview.webp" alt="Esquema AI RPA" loading="lazy"
+                            width="600" height="338">
                     </div>
-                    <div class="project-card-content" style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed" style="align-self: flex-start; margin-bottom: 15px;">Noray, 2026</span>
+                    <div class="project-card-content"
+                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
+                        <span class="project-status-badge completed"
+                            style="align-self: flex-start; margin-bottom: 15px;">Noray, 2026</span>
                         <div class="project-card-header">
                             <span class="project-card-icon">🧠</span>
                             <h3 class="project-card-title">FLUJO-PAD-AUTOMÁTICO: Resúmenes IA</h3>
                         </div>
                         <p class="project-card-desc">
-                            Flujo híbrido que extrae semanalmente logs de Teams, los almacena en OneDrive y ejecuta un bot local en Power Automate Desktop para limpiar el marcado HTML y generar resúmenes automáticos clasificados por gravedad mediante ChatGPT Enterprise.
+                            Flujo híbrido que extrae semanalmente logs de Teams, los almacena en OneDrive y ejecuta un
+                            bot local en Power Automate Desktop para limpiar el marcado HTML y generar resúmenes
+                            automáticos clasificados por gravedad mediante ChatGPT Enterprise.
                         </p>
                         <div class="project-card-tags">
                             <span class="tag">Power Automate</span>
@@ -212,28 +266,57 @@
             <!-- Columna 1: Marca y Redes -->
             <div class="footer-brand">
                 <div class="logo">
-                    <span class="logo-code">iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
+                    <span class="logo-code">iriome<span class="logo-dot">.</span><span
+                            class="logo-method">build</span><span class="logo-parentheses">(</span><span
+                            class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
                 </div>
-                <p class="footer-brand-desc">Iriome Naranjo · Desarrollador Java. Diseñando software con código limpio.</p>
+                <p class="footer-brand-desc">Iriome Naranjo · Desarrollador Java. Diseñando software con código limpio.
+                </p>
                 <div class="footer-socials">
-                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                            <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
                     </a>
-                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
                     </a>
-                    <a href="https://www.instagram.com/devnaranjo25/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <a href="https://www.instagram.com/devnaranjo25/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
                     </a>
                     <a href="tel:+34627328887" aria-label="Teléfono" id="footer-phone">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
                     </a>
                     <a href="mailto:inaranjordgz@gmail.com" aria-label="Email (Gmail)">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
                     </a>
                 </div>
             </div>
-            
+
             <!-- Columna 2: Navegación -->
             <div class="footer-nav">
                 <h4>Navegación</h4>
@@ -247,7 +330,7 @@
                     <li><a href="politica-cookies.html">Cookies</a></li>
                 </ul>
             </div>
-            
+
             <!-- Columna 3: Estado y Disponibilidad -->
             <div class="footer-status">
                 <h4>Estado Actual</h4>
@@ -259,15 +342,18 @@
                 <p class="status-quote">"Convirtiendo café en código estructurado."</p>
             </div>
         </div>
-        
+
         <!-- Línea de copyright inferior -->
         <div class="footer-bottom">
             <div class="container footer-bottom-content">
                 <div class="footer-copyright-info">
                     <p>© 2026 Iriome Naranjo Rodríguez. Todos los derechos reservados.</p>
-                    <p class="footer-easter-egg" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px; opacity: 0.75; transition: opacity 0.3s ease;">
-                        ¿Quieres escuchar lo que escucho mientras programo? 🎧 
-                        <a href="https://www.youtube.com/watch?v=pq3fC9Oc-uo" target="_blank" rel="noopener noreferrer" style="color: var(--accent-rose); text-decoration: underline; font-weight: 500;">Coding & Focus by Iriome</a>
+                    <p class="footer-easter-egg"
+                        style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px; opacity: 0.75; transition: opacity 0.3s ease;">
+                        ¿Quieres escuchar lo que escucho mientras programo? 🎧
+                        <a href="https://www.youtube.com/playlist?list=PL2VJPU_YK0GsWpElVDiiEvzj0VpH7Hd2J" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent-rose); text-decoration: underline; font-weight: 500;">Coding &
+                            Focus by Iriome</a>
                     </p>
                 </div>
                 <p class="made-with">Hecho con <span class="heart">❤️</span> y pasión por el backend</p>
@@ -278,11 +364,26 @@
     <!-- Botón Flotante de Modo Oscuro -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema visual claro y oscuro">
         <!-- Sun Icon (SVG) -->
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
         <!-- Moon Icon (SVG) -->
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
     </button>
 
     <script src="src/js/script.js"></script>
 </body>
+
 </html>

@@ -56,3 +56,5 @@ plantilla_correo.html
 .tempmediaStorage/
 __pycache__/
 *.pyc
+implementationPlan.md
+Github.md

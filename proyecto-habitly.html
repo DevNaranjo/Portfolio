@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habitly · Iriome Naranjo - Desarrollador Backend Java</title>
     <meta name="description" content="Desarrollador Backend Java especializado en construir código estructurado y escalable, con experiencia complementaria en automatización de procesos (RPA/PAD).">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KGFHGSRH');</script>
+    <!-- End Google Tag Manager -->
     
     <!-- Open Graph -->
     <meta property="og:title" content="Habitly · Iriome Naranjo - Desarrollador Backend Java">
@@ -30,7 +41,7 @@
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
+            if (savedTheme !== 'light') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
         })();
@@ -39,6 +50,10 @@
     <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGFHGSRH" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Menú de Navegación -->
     <header class="header">
@@ -77,13 +92,14 @@
             <!-- Ficha de Proyecto Estrella -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: habitly-title;">Habitly: Gestión Inmobiliaria &amp; Compliance</h1>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: habitly-title;">Habitly: Gestión Inmobiliaria &amp; Compliance (v1.1.5 GUI)</h1>
                     <div class="project-meta">
                         <span class="tag">Java SE</span>
+                        <span class="tag">Java Swing GUI (Dark Mode)</span>
                         <span class="tag">JUnit 5 (Tests Automáticos)</span>
-                        <span class="tag">POO Avanzada</span>
                         <span class="tag">Cumplimiento Legal (LAU / Ley 12/2023)</span>
-                        <span class="tag">Estructuras de Datos</span>
+                        <span class="tag">Seguridad (AES-GCM)</span>
+                        <span class="tag">Instalador (.exe)</span>
                     </div>
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -99,6 +115,18 @@
                 </div>
             </div>
 
+            <!-- Viñeta de Curiosidad sobre el nombre -->
+            <div class="name-curiosity-banner" onclick="this.classList.toggle('active')">
+                <div class="curiosity-header">
+                    <span class="curiosity-icon">💡</span>
+                    <span class="curiosity-title">Curiosidad sobre el nombre</span>
+                    <span class="curiosity-arrow">▸</span>
+                </div>
+                <div class="curiosity-content">
+                    El nombre <strong>Habitly</strong> nace de la fusión entre la raíz <em>"Habitar"</em> (el núcleo del sector residencial) y el sufijo anglosajón <em>"-ly"</em> (característico de startups tecnológicas de referencia como Calendly o Grammarly). Conceptualmente significa <strong>"Habitar de forma inteligente y automatizada"</strong>, transformando la compleja gestión legal y fiscal en un proceso rutinario, fluido y eficiente.
+                </div>
+            </div>
+
             <!-- Simulador de Terminal Retro -->
             <div class="terminal-window" id="terminal-simulator">
                 <div class="terminal-bar">
@@ -107,7 +135,7 @@
                         <span class="terminal-btn yellow"></span>
                         <span class="terminal-btn green"></span>
                     </div>
-                    <div class="terminal-title">Habitly.java</div>
+                    <div class="terminal-title">Habitly.java (MVP original en consola)</div>
                     <div></div> <!-- Espaciador derecho -->
                 </div>
                 <div class="terminal-body">
@@ -115,32 +143,66 @@
                 </div>
             </div>
             <p class="terminal-hint" style="margin-top: -20px; margin-bottom: 40px;">
-                <kbd>Opciones 1-4</kbd> · <kbd>0. Salir</kbd> — Haz clic en los botones de control inferiores para interactuar con la consola.
+                💡 <strong>Simulación de consola interactiva:</strong> Esta recreación representa el <strong>MVP original</strong> del proyecto. La versión actual v1.1.5 se ejecuta con una interfaz gráfica completa (GUI).<br>
+                <kbd>Opciones 1-4</kbd> · <kbd>0. Salir</kbd> — Interactúa con el MVP utilizando los controles inferiores.
             </p>
 
             <!-- Interfaz Gráfica Java Swing (Visual Teaser) -->
             <div class="card" style="margin-bottom: 40px; padding: 30px; border-left: 4px solid var(--accent-rose); background: linear-gradient(135deg, rgba(79,70,229,0.02) 0%, transparent 100%);">
                 <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                    🖥️ Evolución Visual: Interfaz de Escritorio Java Swing (Dark Mode)
+                    🖥️ Evolución Visual: Interfaz de Escritorio Java Swing (Dark Mode - v1.1.5)
                 </h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
-                    Para maximizar la productividad de los gestores inmobiliarios, rediseñé el sistema CLI original hacia una interfaz gráfica premium de escritorio utilizando <strong>Java Swing</strong>. Cuenta con una paleta Slate-Dark consistente con el portafolio, dashboards financieros interactivos en tiempo real y una estructura optimizada de navegación.
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px;">
+                    La versión <strong>v1.1.5</strong> introduce una interfaz de escritorio premium en <strong>Java Swing</strong> totalmente interactiva basada en una paleta moderna Slate-Dark. Cuenta con navegación lateral, tablas responsivas con anchos optimizados, resaltados de foco en tiempo real y una completa automatización de regulaciones de vivienda de conformidad con la <strong>LAU</strong> y la <strong>Ley 12/2023</strong> de España.
                 </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 15px;">
-                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; text-align: center;">
-                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">📊</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px;">Dashboard Consolidado</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Márgenes de rentabilidad netos por propiedad en tiempo real con alertas fiscales de IGIC e ICAVI.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; margin-top: 15px;">
+                    <!-- Interfaz Premium -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">🎨</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Interfaz Gráfica Premium</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">UI interactiva en Modo Oscuro con barra de navegación lateral, realce visual de foco de campos y tablas de datos auto-ajustables.</p>
                     </div>
-                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; text-align: center;">
-                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">⚖️</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px;">Compliance Automatizado</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Bloqueo visual instantáneo de contratos que superen el índice IRAV para zonas tensionadas.</p>
-                    </div>
-                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; text-align: center;">
+                    <!-- Setup Wizard -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
                         <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">📦</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px;">Wizard Setup (.exe)</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Empaquetamiento nativo optimizado con JRE reducido para ejecución autónoma sin dependencias.</p>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Asistente Windows Setup</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Instalador ejecutable (<code>wizardSetUp.exe</code>) autónomo. Empaqueta un entorno Java Runtime Environment (JRE) reducido, omitiendo instalaciones previas.</p>
+                    </div>
+                    <!-- Compliance Legal -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">⚖️</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Cumplimiento Ley 12/2023</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Motor legal que bloquea de forma automática la formalización de alquileres que excedan el límite mensual del índice oficial IRAV.</p>
+                    </div>
+                    <!-- Ciclo LAU -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">📅</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Ciclo de Vida LAU</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Valida prórrogas tácitas anuales automáticas (tope de 3 años - Art. 10 LAU), rescisión unilateral de inquilino (mín. 6 meses) y duración legal (5 o 7 años).</p>
+                    </div>
+                    <!-- Fiscalidad Canarios -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">🇮🇨</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Optimización Fiscal IGIC</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Aplica automáticamente la exención de impuestos indirectos canarios (IGIC 0%) para arrendamientos residenciales y calcula tasas vacacionales.</p>
+                    </div>
+                    <!-- Depósitos ICAVI -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">🏦</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Fianzas y Depósitos ICAVI</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Validación estricta de fianza de 1 mes (Art. 36 LAU) y garantías adicionales (máx. 2 meses), con registro fiscal de depósitos del Instituto Canario de la Vivienda.</p>
+                    </div>
+                    <!-- Cifrado y Seguridad -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">🔒</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Seguridad AES-GCM</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Cifrado local simétrico AES-256 en modo GCM con derivación de clave PBKDF2 y manejo de credenciales mediante arrays de tipo <code>char[]</code>.</p>
+                    </div>
+                    <!-- Rentabilidad -->
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left;">
+                        <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">📈</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Márgenes de Rentabilidad</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Dashboard financiero integrado con cálculo en tiempo real de ingresos por rentas y liquidaciones restando los gastos de comunidad.</p>
                     </div>
                 </div>
             </div>
@@ -231,7 +293,7 @@
                     <div class="timeline-item completed">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Iteración 2: Interfaz Gráfica (GUI) &amp; Despliegue <span class="status-badge">Completado (v1.1.0-F)</span></h4>
+                            <h4>Iteración 2: Interfaz Gráfica (GUI) &amp; Despliegue <span class="status-badge">Completado (v1.1.5 GUI)</span></h4>
                             <p>Evolución hacia una interfaz de escritorio en <strong>Java Swing</strong> con tema visual Slate-Dark, motor de cumplimiento legal IRAV/ICAVI, adaptación fiscal canaria (IGIC) y distribución mediante instalador nativo para Windows (asistido por IA para el empaquetado con <code>jpackage</code>).</p>
                         </div>
                     </div>
@@ -249,7 +311,7 @@
                     <div class="timeline-item active">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Iteración 4: Persistencia SQL con SQLite <span class="status-badge">Siguiente Paso</span></h4>
+                            <h4>Iteración 4: Persistencia SQL con SQLite <span class="status-badge">Planteado</span></h4>
                             <p>Migración de la serialización binaria de objetos hacia una base de datos local <strong>SQLite</strong> utilizando JDBC para un almacenamiento relacional robusto e histórico. Objetivo vinculado al temario de 2º de DAM.</p>
                         </div>
                     </div>
@@ -328,7 +390,7 @@
                     <p>© 2026 Iriome Naranjo Rodríguez. Todos los derechos reservados.</p>
                     <p class="footer-easter-egg" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px; opacity: 0.75; transition: opacity 0.3s ease;">
                         ¿Quieres escuchar lo que escucho mientras programo? 🎧 
-                        <a href="https://www.youtube.com/watch?v=pq3fC9Oc-uo" target="_blank" rel="noopener noreferrer" style="color: var(--accent-rose); text-decoration: underline; font-weight: 500;">Coding & Focus by Iriome</a>
+                        <a href="https://www.youtube.com/playlist?list=PL2VJPU_YK0GsWpElVDiiEvzj0VpH7Hd2J" target="_blank" rel="noopener noreferrer" style="color: var(--accent-rose); text-decoration: underline; font-weight: 500;">Coding & Focus by Iriome</a>
                     </p>
                 </div>
                 <p class="made-with">Hecho con <span class="heart">❤️</span> y pasión por el backend</p>
