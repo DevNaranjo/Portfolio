@@ -23,7 +23,7 @@
     <meta property="og:title" content="Iriome Naranjo - Desarrollador Backend Java">
     <meta property="og:description"
         content="Portfolio con proyectos reales en producción, simulador interactivo de consola y soluciones de automatización.">
-    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.png">
+    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.webp">
     <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/">
     <meta property="og:type" content="website">
 
@@ -70,14 +70,28 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" id="nav-link-home">Inicio</a></li>
-                <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
+                <li class="dropdown">
+                    <a href="sobre-mi.html" id="nav-link-about" class="dropbtn">Sobre Mí <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="sobre-mi.html#about-section">Mi Historia</a></li>
+                        <li><a href="sobre-mi.html#experience-section">Experiencia y Formación</a></li>
+                        <li><a href="sobre-mi.html#challenges-section">RoadMap</a></li>
+                        <li><a href="sobre-mi.html#availability-calendar">Calendario</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="proyectos.html" id="nav-link-projects" class="dropbtn">Proyectos <span
                             class="arrow">▾</span></a>
                     <ul class="dropdown-content">
-                        <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
-                        <li><a href="proyecto-calculadora.html">Calculadora P&I (Java)</a></li>
-                        <li><a href="proyecto-rpa.html">Automatización RPA (PAD)</a></li>
+                        <li><a href="proyecto-habitly.html">Habitly</a></li>
+                        <li><a href="proyecto-splitit.html">SplitIt</a></li>
+                        <li class="dropdown-submenu">
+                            <span class="submenu-title">Automatización RPA <span class="arrow-right">▸</span></span>
+                            <ul class="dropdown-submenu-content">
+                                <li><a href="proyecto-rpa.html">RPA Soporte (PAD)</a></li>
+                                <li><a href="proyecto-rpa-resumen.html">Resúmenes IA (PAD)</a></li>
+                            </ul>
+                        </li>
                         <li><a href="proyectos.html">Ver todos</a></li>
                     </ul>
                 </li>
@@ -125,7 +139,7 @@
                 <!-- Tarjeta 1: Habitly -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/habitly-preview.png"
+                        <img src="src/assets/projects/habitly-preview.webp"
                             alt="Captura de Habitly - gestor inmobiliario en Java" loading="lazy" width="600"
                             height="338">
                     </div>
@@ -154,15 +168,15 @@
                         <div class="project-card-actions">
                             <a href="proyecto-habitly.html" class="btn btn-primary">Ver Detalles</a>
                             <a href="https://github.com/DevNaranjo/Habitly" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-secondary">GitHub</a>
+                                class="btn btn-secondary">Repositorio GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tarjeta 2: Calculadora de Propinas -->
+                <!-- Tarjeta 2: SplitIt -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/calculator-preview.png" alt="Captura de Calculadora de Propinas"
+                        <img src="src/assets/projects/splitit-preview.webp" alt="Captura de SplitIt"
                             loading="lazy" width="600" height="338">
                     </div>
                     <div class="project-card-content"
@@ -171,7 +185,7 @@
                             style="align-self: flex-start; margin-bottom: 15px;">Completado (MVP)</span>
                         <div class="project-card-header">
                             <span class="project-card-icon">🧮</span>
-                            <h3 class="project-card-title" style="view-transition-name: calculator-title;">Calculadora
+                            <h3 class="project-card-title" style="view-transition-name: splitit-title;">Calculadora
                                 de Propinas</h3>
                         </div>
                         <p class="project-card-desc">
@@ -187,72 +201,38 @@
                             <span class="tag">JUnit 5</span>
                         </div>
                         <div class="project-card-actions">
-                            <a href="proyecto-calculadora.html" class="btn btn-primary">Ver Detalles</a>
-                            <a href="https://github.com/DevNaranjo/Calculadora-Propinas" target="_blank"
-                                rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+                            <a href="proyecto-splitit.html" class="btn btn-primary">Ver Detalles</a>
+                            <a href="https://github.com/DevNaranjo/SplitIt" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-secondary">Repositorio GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tarjeta 3: PAD-AUTO-001 -->
+                <!-- Tarjeta 3: Canary Wine & Guachinches API (Kotlin / Spring Boot) -->
                 <div class="project-card card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
-                        <img src="src/assets/projects/rpa-preview.webp" alt="Diagrama de flujo RPA" loading="lazy"
-                            width="600" height="338">
+                        <img src="src/assets/projects/guachinche-api-preview.webp" alt="Captura de Canary Wine & Guachinches API" loading="lazy" width="600" height="338">
                     </div>
                     <div class="project-card-content"
                         style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed"
-                            style="align-self: flex-start; margin-bottom: 15px;">Noray, 2026</span>
+                        <span class="project-status-badge planned"
+                            style="align-self: flex-start; margin-bottom: 15px;">Próximamente</span>
                         <div class="project-card-header">
-                            <span class="project-card-icon">🤖</span>
-                            <h3 class="project-card-title">FLUJO-PAD-AUTOMÁTICO: RPA Soporte</h3>
+                            <span class="project-card-icon">🍷</span>
+                            <h3 class="project-card-title">Canary Wine &amp; Guachinches API</h3>
                         </div>
                         <p class="project-card-desc">
-                            Flujo RPA end-to-end desarrollado con <strong>Power Automate Desktop</strong> sobre
-                            <strong>Microsoft 365</strong> y <strong>PowerApps</strong>. Automatiza la gestión de
-                            soporte al cliente, filtrando y enviando recordatorios automáticos vía Outlook, eliminando
-                            <strong>25h/semana</strong> de trabajo manual.
+                            API REST premium desarrollada en <strong>Kotlin</strong> y <strong>Spring Boot</strong> con persistencia en <strong>PostgreSQL</strong>. Catalogará bodegas y guachinches de las Islas Canarias, validando su oferta culinaria y vitivinícola mediante un motor estricto de reglas de negocio.
                         </p>
                         <div class="project-card-tags">
-                            <span class="tag">Power Automate</span>
-                            <span class="tag">RPA</span>
-                            <span class="tag">Microsoft 365</span>
-                            <span class="tag">PowerApps Portal</span>
+                            <span class="tag">Kotlin 2.x</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">JUnit 5</span>
+                            <span class="tag">Springdoc OpenAPI (Swagger)</span>
                         </div>
                         <div class="project-card-actions">
-                            <a href="proyecto-rpa.html" class="btn btn-primary">Ver Detalles</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tarjeta 4: PAD-AUTO-002 -->
-                <div class="project-card card" style="padding: 0; overflow: hidden;">
-                    <div class="project-thumbnail">
-                        <img src="src/assets/projects/rpa-resumen-preview.webp" alt="Esquema AI RPA" loading="lazy"
-                            width="600" height="338">
-                    </div>
-                    <div class="project-card-content"
-                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed"
-                            style="align-self: flex-start; margin-bottom: 15px;">Noray, 2026</span>
-                        <div class="project-card-header">
-                            <span class="project-card-icon">🧠</span>
-                            <h3 class="project-card-title">FLUJO-PAD-AUTOMÁTICO: Resúmenes IA</h3>
-                        </div>
-                        <p class="project-card-desc">
-                            Flujo híbrido que extrae semanalmente logs de Teams, los almacena en OneDrive y ejecuta un
-                            bot local en Power Automate Desktop para limpiar el marcado HTML y generar resúmenes
-                            automáticos clasificados por gravedad mediante ChatGPT Enterprise.
-                        </p>
-                        <div class="project-card-tags">
-                            <span class="tag">Power Automate</span>
-                            <span class="tag">RPA / IA</span>
-                            <span class="tag">Microsoft Teams</span>
-                            <span class="tag">ChatGPT Enterprise</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="proyecto-rpa-resumen.html" class="btn btn-primary">Ver Detalles</a>
+                            <button class="btn btn-secondary" style="opacity: 0.6; cursor: not-allowed; width: auto;" disabled>Próximamente</button>
                         </div>
                     </div>
                 </div>

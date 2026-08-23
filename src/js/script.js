@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setupProjectDetailsZoom();
     initConsentManagement();
     setupMobileMenu();
+    
+    // 6. Indicador de Disponibilidad y Calendario
+    initFooterAvailability();
+    initAvailabilityCalendar();
 });
 
 /**
@@ -59,9 +63,8 @@ function setupMobileMenu() {
         // Insertarlo antes de los enlaces
         nav.insertBefore(toggleBtn, navLinks);
         
-        // Obtener elementos del desplegable de proyectos
-        const dropdown = navLinks.querySelector('.dropdown');
-        const dropbtn = navLinks.querySelector('.dropbtn');
+        // Obtener todos los elementos desplegables
+        const dropdowns = navLinks.querySelectorAll('.dropdown');
 
         // Manejar el clic del menú hamburguesa
         toggleBtn.addEventListener('click', (e) => {
@@ -72,16 +75,23 @@ function setupMobileMenu() {
             toggleBtn.setAttribute('aria-label', isActive ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
         });
 
-        // Prevenir navegación del botón principal de Proyectos e interceptarlo en móvil
-        if (dropdown && dropbtn) {
-            dropbtn.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dropdown.classList.toggle('open');
-                }
-            });
-        }
+        // Prevenir navegación de los botones principales desplegables e interceptar en móvil
+        dropdowns.forEach(dropdown => {
+            const dropbtn = dropdown.querySelector('.dropbtn');
+            if (dropbtn) {
+                dropbtn.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Cerrar otros desplegables abiertos
+                        dropdowns.forEach(other => {
+                            if (other !== dropdown) other.classList.remove('open');
+                        });
+                        dropdown.classList.toggle('open');
+                    }
+                });
+            }
+        });
         
         // Cerrar al hacer clic fuera del menú
         document.addEventListener('click', (e) => {
@@ -91,9 +101,7 @@ function setupMobileMenu() {
                 toggleBtn.setAttribute('aria-expanded', 'false');
                 toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
                 
-                if (dropdown) {
-                    dropdown.classList.remove('open');
-                }
+                dropdowns.forEach(d => d.classList.remove('open'));
             }
         });
 
@@ -106,9 +114,25 @@ function setupMobileMenu() {
                 toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
                 toggleBtn.focus();
                 
-                if (dropdown) {
-                    dropdown.classList.remove('open');
-                }
+                dropdowns.forEach(d => d.classList.remove('open'));
+            }
+        });
+
+        // Manejar sub-desplegables en móvil
+        const submenus = navLinks.querySelectorAll('.dropdown-submenu');
+        submenus.forEach(submenu => {
+            const title = submenu.querySelector('.submenu-title');
+            if (title) {
+                title.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        submenus.forEach(other => {
+                            if (other !== submenu) other.classList.remove('open');
+                        });
+                        submenu.classList.toggle('open');
+                    }
+                });
             }
         });
     }
@@ -611,11 +635,11 @@ function setupPrivateTemplateShortcut() {
 
 
 /**
- * Simula el comportamiento de la Calculadora de Propinas.
+ * Simula el comportamiento de SplitIt.
  */
 function runCalculatorSimulation(element) {
     const lines = [
-        `<span style="color: var(--accent-sage)">c:\\Users\\DevNaranjo\\Calculadora-Propinas&gt; java com.rivas.gestion.Main</span>`,
+        `<span style="color: var(--accent-sage)">c:\\Users\\DevNaranjo\\SplitIt&gt; java com.rivas.gestion.Main</span>`,
         `<span style="color: var(--accent-blue)">==================================================</span>`,
         `<span style="color: #FFFFFF; font-weight: bold;">            GRUPO GASTRONÓMICO RIVAS              </span>`,
         `<span style="color: #FFFFFF;">       SISTEMA DE FACTURACIÓN Y ARQUEO            </span>`,
@@ -967,4 +991,251 @@ function openConsentSettingsModal() {
         const analyticsConsent = document.getElementById('chk-analytics-cst').checked;
         saveConsentSetting({ analytics: analyticsConsent });
     });
+}
+
+/**
+ * Devuelve el estado de disponibilidad para un día específico.
+ */
+function getDayAvailabilityStatus(year, month, day) {
+    // 1. No disponible (Red)
+    // 16 y 17 de Julio 2026
+    if (year === 2026 && month === 7 && (day === 16 || day === 17)) {
+        return 'unavailable';
+    }
+    // 15 - 17 Agosto 2026
+    if (year === 2026 && month === 8 && (day >= 15 && day <= 17)) {
+        return 'unavailable';
+    }
+    // 16 - 17 Octubre 2026
+    if (year === 2026 && month === 10 && (day === 16 || day === 17)) {
+        return 'unavailable';
+    }
+    
+    // 2. Posible indisponibilidad (Orange)
+    // 24/07
+    if (year === 2026 && month === 7 && day === 24) {
+        return 'maybe';
+    }
+    
+    // 3. Curso escolar (Yellow)
+    // 2º DAM: Septiembre 2026 - Junio 2027
+    const dateObj = new Date(year, month - 1, day);
+    const damStart = new Date(2026, 8, 1); // 1 Sept 2026
+    const damEnd = new Date(2027, 5, 30);   // 30 Jun 2027
+    if (dateObj >= damStart && dateObj <= damEnd) {
+        return 'school';
+    }
+    
+    // 2º DAW: Septiembre 2027 - Junio 2028
+    const dawStart = new Date(2027, 8, 1); // 1 Sept 2027
+    const dawEnd = new Date(2028, 5, 30);   // 30 Jun 2028
+    if (dateObj >= dawStart && dateObj <= dawEnd) {
+        return 'school';
+    }
+    
+    return 'available';
+}
+
+/**
+ * Inicializa el estado del indicador de disponibilidad en el pie de página global.
+ */
+function initFooterAvailability() {
+    const indicator = document.querySelector('.status-indicator');
+    if (!indicator) return;
+    
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+    
+    const status = getDayAvailabilityStatus(year, month, day);
+    
+    // Limpiar clases previas de estado
+    indicator.classList.remove('status-unavailable', 'status-maybe', 'status-school');
+    
+    if (status === 'unavailable') {
+        indicator.classList.add('status-unavailable');
+        indicator.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">No disponible actualmente<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    } else if (status === 'maybe') {
+        indicator.classList.add('status-maybe');
+        indicator.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">Posible indisponibilidad<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    } else if (status === 'school') {
+        indicator.classList.add('status-school');
+        const isDam = today >= new Date(2026, 8, 1) && today <= new Date(2027, 5, 30);
+        const termLabel = isDam ? '2º DAM' : '2º DAW';
+        indicator.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">Disponible · ${termLabel}<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    } else {
+        // Estado por defecto: Disponible
+        indicator.innerHTML = `
+            <span class="status-dot status-dot-green"></span>
+            <span class="status-text">Disponible para proyectos</span>
+        `;
+    }
+}
+
+/**
+ * Inicializa el selector de años y el renderizador de calendario en sobre-mi.html.
+ */
+function initAvailabilityCalendar() {
+    const calendarTarget = document.getElementById('calendar-render-target');
+    if (!calendarTarget) return;
+    
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    
+    let defaultYear = 2026;
+    
+    const yearButtons = document.querySelectorAll('.calendar-year-selector button');
+    yearButtons.forEach(btn => {
+        const btnYear = parseInt(btn.getAttribute('data-year'), 10);
+        if (btnYear < currentYear) {
+            btn.style.display = 'none'; // Oculta botones de años completamente pasados
+        }
+        btn.addEventListener('click', () => {
+            yearButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const selectedYear = parseInt(btn.getAttribute('data-year'), 10);
+            renderAvailabilityCalendar(selectedYear);
+        });
+    });
+    
+    // Si el año 2026 ya pasó, el año por defecto se actualiza al actual
+    if (currentYear > 2026) {
+        defaultYear = currentYear;
+        const activeBtn = document.querySelector(`.calendar-year-selector button[data-year="${currentYear}"]`);
+        if (activeBtn) {
+            yearButtons.forEach(b => b.classList.remove('active'));
+            activeBtn.classList.add('active');
+        }
+    }
+    
+    renderAvailabilityCalendar(defaultYear);
+    
+    // Configurar filtros de estado
+    const filterButtons = document.querySelectorAll('.calendar-filters .filter-btn');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const selectedFilter = btn.getAttribute('data-filter');
+            if (selectedFilter === 'all') {
+                calendarTarget.removeAttribute('data-active-filter');
+            } else {
+                calendarTarget.setAttribute('data-active-filter', selectedFilter);
+            }
+        });
+    });
+}
+
+/**
+ * Genera la grilla de meses y días para el año indicado, ocultando meses pasados.
+ */
+function renderAvailabilityCalendar(year) {
+    const calendarTarget = document.getElementById('calendar-render-target');
+    if (!calendarTarget) return;
+    
+    calendarTarget.style.opacity = '0';
+    
+    setTimeout(() => {
+        calendarTarget.innerHTML = '';
+        
+        const monthNames = [
+            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 
+            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+        ];
+        
+        const weekdays = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+        
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonthIndex = today.getMonth(); // 0 = Enero, 11 = Diciembre
+        
+        // Determinar el mes de inicio
+        let startMonth = 0;
+        if (year === currentYear) {
+            startMonth = currentMonthIndex; // Oculta meses anteriores de forma dinámica
+        } else if (year < currentYear) {
+            startMonth = 12; // No muestra nada si es un año pasado
+        }
+        
+        for (let month = startMonth; month < 12; month++) {
+            const monthCard = document.createElement('div');
+            monthCard.className = 'calendar-month';
+            
+            const monthHeader = document.createElement('h4');
+            monthHeader.className = 'calendar-month-title';
+            monthHeader.textContent = `${monthNames[month]} ${year}`;
+            monthCard.appendChild(monthHeader);
+            
+            const daysGrid = document.createElement('div');
+            daysGrid.className = 'calendar-days-grid';
+            
+            weekdays.forEach(wd => {
+                const headerCell = document.createElement('span');
+                headerCell.className = 'calendar-day-header';
+                headerCell.textContent = wd;
+                daysGrid.appendChild(headerCell);
+            });
+            
+            const numDays = new Date(year, month + 1, 0).getDate();
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const offset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+            
+            for (let i = 0; i < offset; i++) {
+                const emptyCell = document.createElement('span');
+                emptyCell.className = 'calendar-day empty';
+                daysGrid.appendChild(emptyCell);
+            }
+            
+            for (let day = 1; day <= numDays; day++) {
+                const dayCell = document.createElement('span');
+                dayCell.className = 'calendar-day';
+                dayCell.textContent = day;
+                
+                const status = getDayAvailabilityStatus(year, month + 1, day);
+                dayCell.classList.add(status);
+                
+                if (status === 'unavailable') {
+                    dayCell.setAttribute('title', 'No disponible');
+                } else if (status === 'maybe') {
+                    dayCell.setAttribute('title', 'Posible indisponibilidad');
+                } else if (status === 'school') {
+                    const isDam = new Date(year, month, day) >= new Date(2026, 8, 1) && new Date(year, month, day) <= new Date(2027, 5, 30);
+                    const label = isDam ? 'Periodo Lectivo (2º DAM) - Disponibilidad Parcial' : 'Periodo Lectivo (2º DAW) - Disponibilidad Parcial';
+                    dayCell.setAttribute('title', label);
+                } else {
+                    dayCell.setAttribute('title', 'Disponible para proyectos');
+                }
+                
+                daysGrid.appendChild(dayCell);
+            }
+            
+            monthCard.appendChild(daysGrid);
+            calendarTarget.appendChild(monthCard);
+        }
+        
+        // Mensaje de fallback si no hay meses que mostrar
+        if (calendarTarget.children.length === 0) {
+            const noDataMsg = document.createElement('p');
+            noDataMsg.style.gridColumn = '1 / -1';
+            noDataMsg.style.textAlign = 'center';
+            noDataMsg.style.color = 'var(--text-secondary)';
+            noDataMsg.style.padding = '40px 0';
+            noDataMsg.textContent = 'Este año ya ha finalizado.';
+            calendarTarget.appendChild(noDataMsg);
+        }
+        
+        calendarTarget.style.opacity = '1';
+    }, 150);
 }

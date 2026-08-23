@@ -20,7 +20,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="PAD-AUTO-002: Resúmenes IA · Iriome Naranjo - Desarrollador Backend Java">
     <meta property="og:description" content="Portfolio con proyectos reales en producción, simulador interactivo de consola y soluciones de automatización.">
-    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.png">
+    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.webp">
     <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/proyecto-rpa-resumen.html">
     <meta property="og:type" content="website">
     
@@ -180,13 +180,27 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" id="nav-link-home">Inicio</a></li>
-                <li><a href="sobre-mi.html" id="nav-link-about">Sobre Mí</a></li>
+                <li class="dropdown">
+                    <a href="sobre-mi.html" id="nav-link-about" class="dropbtn">Sobre Mí <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="sobre-mi.html#about-section">Mi Historia</a></li>
+                        <li><a href="sobre-mi.html#experience-section">Experiencia y Formación</a></li>
+                        <li><a href="sobre-mi.html#challenges-section">RoadMap</a></li>
+                        <li><a href="sobre-mi.html#availability-calendar">Calendario</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="proyectos.html" id="nav-link-projects" class="dropbtn active">Proyectos <span class="arrow">▾</span></a>
                     <ul class="dropdown-content">
-                        <li><a href="proyecto-habitly.html">Habitly (Java)</a></li>
-                        <li><a href="proyecto-calculadora.html">Calculadora P&I (Java)</a></li>
-                        <li><a href="proyecto-rpa.html">Automatización RPA (PAD)</a></li>
+                        <li><a href="proyecto-habitly.html">Habitly</a></li>
+                        <li><a href="proyecto-splitit.html">SplitIt</a></li>
+                        <li class="dropdown-submenu">
+                            <span class="submenu-title">Automatización RPA <span class="arrow-right">▸</span></span>
+                            <ul class="dropdown-submenu-content">
+                                <li><a href="proyecto-rpa.html">RPA Soporte (PAD)</a></li>
+                                <li><a href="proyecto-rpa-resumen.html">Resúmenes IA (PAD)</a></li>
+                            </ul>
+                        </li>
                         <li><a href="proyectos.html">Ver todos</a></li>
                     </ul>
                 </li>

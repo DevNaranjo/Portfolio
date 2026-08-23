@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV · Iriome Naranjo - Desarrollador Backend Java</title>
+    <title>CV_Iriome_Naranjo_Backend_Java · Iriome Naranjo</title>
     <meta name="description" content="Desarrollador Backend Java especializado en construir código estructurado y escalable, con experiencia complementaria en automatización de procesos (RPA/PAD).">
 
     <!-- Google Tag Manager -->
@@ -20,7 +20,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="CV · Iriome Naranjo - Desarrollador Backend Java">
     <meta property="og:description" content="Portfolio con proyectos reales en producción, simulador interactivo de consola y soluciones de automatización.">
-    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.png">
+    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/og-preview.webp">
     <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/cv.html">
     <meta property="og:type" content="website">
     
@@ -558,6 +558,19 @@
             color: var(--text-color);
         }
 
+        /* Enlace de proyecto (solo visible en web) */
+        .project-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1.5px dashed var(--primary-color);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .project-link:hover {
+            color: var(--primary-color);
+            border-bottom-style: solid;
+        }
+
         /* Pie de página del CV */
         .cv-footer {
             margin-top: 30px;
@@ -569,6 +582,7 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
         }
+
 
         .footer-email-link {
             display: inline-flex;
@@ -726,6 +740,13 @@
                 gap: 1px !important;
             }
 
+            /* Ocultar subrayado de enlace de proyecto en impresión */
+            .project-link {
+                border-bottom: none !important;
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
             .cv-header {
                 padding-bottom: 8px !important;
                 margin-bottom: 8px !important;
@@ -813,7 +834,7 @@
     <!-- Barra de Controles (No imprimible) -->
     <div class="controls-bar">
         <a href="sobre-mi.html" class="btn-action btn-back">← Volver al Portfolio</a>
-        <button onclick="window.print()" class="btn-action btn-print">🖨️ Imprimir / Guardar PDF</button>
+        <button onclick="printCV()" class="btn-action btn-print">🖨️ Imprimir / Guardar PDF</button>
     </div>
 
     <!-- Botón Flotante de Modo Oscuro (idéntico al de la página principal) -->
@@ -833,7 +854,7 @@
                     <img src="src/assets/profile.webp" alt="Foto de Iriome Naranjo" class="cv-profile-img">
                     <div class="header-main">
                         <h1>Iriome Naranjo Rodríguez</h1>
-                        <div class="subtitle">Desarrollador Backend Java · DAM</div>
+                        <div class="subtitle">Desarrollador Backend Java Junior · RPA &amp; Automatización · DAM en curso</div>
                     </div>
                 </div>
                 <div class="header-contact">
@@ -842,7 +863,6 @@
                     <a href="mailto:inaranjordgz@gmail.com">✉ inaranjordgz@gmail.com</a>
                     <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer">🔗 linkedin.com/in/inaranjorodriguez</a>
                     <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer">🐙 github.com/DevNaranjo</a>
-                    <a href="https://www.instagram.com/devnaranjo25/" target="_blank" rel="noopener noreferrer">📸 instagram.com/devnaranjo25</a>
                     <a href="https://devnaranjo.github.io/Portfolio" target="_blank" rel="noopener noreferrer">🌐 devnaranjo.github.io/Portfolio</a>
                 </div>
             </header>
@@ -851,12 +871,11 @@
             <section class="cv-section">
                 <h2>👤 Perfil Profesional</h2>
                 <p class="profile-desc">
-                    Desarrollador de Aplicaciones Multiplataforma (DAM) especializado en desarrollo backend Java con experiencia complementaria en automatización de procesos empresariales (RPA). Con experiencia real en entornos de consultoría IT, diseño flujos end-to-end con <strong>Power Automate Desktop</strong> sobre ecosistemas <strong>Microsoft 365</strong> y portales <strong>PowerApps</strong>. Actualmente enfocado en profundizar en el desarrollo backend con <strong>Java</strong>, estructuras de datos y buenas prácticas de diseño de software. Mi base en Sistemas Microinformáticos y Redes (SMR) aporta una visión de infraestructura de sistemas. Disponible a jornada completa — estudios DAM compatibles con empleo. Orientado a resultados medibles y entrega bajo metodología MVP.
-
+                    Estudiante de <strong>Desarrollo de Aplicaciones Multiplataforma (DAM)</strong> con especialización y foco técnico en <strong>Desarrollo Backend Java</strong>. Cuento con una sólida base en <strong>Java SE</strong>, <strong>Programación Orientada a Objetos (POO)</strong>, pruebas unitarias con <strong>JUnit 5</strong>, diseño y consulta de bases de datos relacionales (<strong>SQL / PostgreSQL</strong>) y control de versiones con <strong>Git / GitFlow</strong>.<br><br>
+                    Aporto <strong>experiencia laboral en entornos corporativos</strong> en soporte IT e implantación de automatizaciones RPA con <strong>Power Automate Desktop</strong> (Microsoft 365 / PowerApps). Demuestro mis competencias en ingeniería de software a través de proyectos propios como <strong>Habitly</strong> (gestión inmobiliaria modular en Java con GUI Swing y motor normativo) y <strong>SplitIt</strong>.<br><br>
+                    <strong>Disponibilidad para incorporación inmediata</strong> en puestos junior o en prácticas (compatible con formación DAM).
                 </p>
             </section>
-
-
 
             <!-- Experiencia Laboral -->
             <section class="cv-section">
@@ -865,14 +884,14 @@
                     <!-- Noray -->
                     <div class="timeline-item completed">
                         <div class="timeline-header">
-                            <span class="timeline-title">Técnico de Soporte de TI (prácticas)</span>
+                            <span class="timeline-title">Técnico de Soporte de TI &amp; Automatización (Prácticas)</span>
                             <span class="timeline-date completed">Mayo 2026 – Junio 2026</span>
                         </div>
                         <div class="timeline-org">Noray · Las Palmas de Gran Canaria · Prácticas Híbrido</div>
                         <ul class="timeline-bullets">
-                            <li>Logré <strong>eliminar 25+ horas de gestión manual semanal</strong> — medido por la reducción de tiempo invertido en seguimiento de incidencias — diseñando e implementando un flujo de automatización end-to-end con <strong>Power Automate Desktop</strong> que procesa +75 casos diarios en el portal de soporte al cliente (<strong>PowerApps / Microsoft 365</strong>).</li>
-                            <li>Logré <strong>reducir a cero los recordatorios omitidos</strong> a clientes en estado <em>Waiting for details</em> — medido por cobertura del 100% de casos con ≥14 días sin respuesta — automatizando la extracción de datos del portal Noray, el filtrado por estado/fecha y el envío de comunicaciones vía Outlook, integrando <strong>browser automation</strong> con scraping estructurado.</li>
-                            <li>Logré <strong>entregar el flujo en producción dentro del período de prácticas</strong> — medido por validación con el equipo técnico — aplicando metodología iterativa <strong>MVP</strong> con documentación técnica del proceso.</li>
+                            <li>Diseñé e implementé en producción un flujo de automatización end-to-end con <strong>Power Automate Desktop</strong> que procesa <strong>+75 casos diarios</strong> en el portal de soporte al cliente (<strong>PowerApps / Microsoft 365</strong>), logrando <strong>eliminar 25+ horas de gestión manual semanal</strong> en el seguimiento de incidencias.</li>
+                            <li>Automaticé la extracción de datos mediante <strong>browser automation</strong> y scraping estructurado, aplicando filtrado por estado/fecha y envío dinámico de comunicaciones vía Outlook a casos en estado <em>Waiting for details</em> (≥14 días sin respuesta).</li>
+                            <li>Entregué el flujo validado y operativo en producción dentro del período de prácticas, aplicando desarrollo iterativo (<strong>MVP</strong>) y elaborando la documentación técnica del proceso.</li>
                         </ul>
                     </div>
 
@@ -884,7 +903,8 @@
                         </div>
                         <div class="timeline-org">Multiópticas · Las Palmas de Gran Canaria · Jornada Completa Presencial</div>
                         <ul class="timeline-bullets">
-                            <li>Logré <strong>mantener la continuidad operativa de la oficina central sin incidencias críticas</strong> — medido por resolución ágil del 100% de tickets escalados durante el período — gestionando soporte TI integral: diagnóstico de red (<strong>LAN/VLAN, TCP/IP</strong>), mantenimiento correctivo/preventivo y administración de sistemas <strong>Windows/Linux</strong>.</li>
+                            <li>Aseguré la continuidad operativa de los puestos de trabajo en la oficina central, gestionando y resolviendo incidencias de soporte técnico de primer y segundo nivel.</li>
+                            <li>Administré y mantuve la infraestructura local: diagnóstico de conectividad de red (<strong>LAN/VLAN, TCP/IP</strong>), mantenimiento preventivo/correctivo de hardware y administración de puestos <strong>Windows / Linux</strong>.</li>
                         </ul>
                     </div>
 
@@ -896,7 +916,8 @@
                         </div>
                         <div class="timeline-org">Multiópticas · Las Palmas de Gran Canaria · Presencial</div>
                         <ul class="timeline-bullets">
-                            <li>Logré <strong>reducir el tiempo de puesta en marcha de nuevos equipos</strong> — medido por la estandarización del proceso de instalación de SO corporativo — ejecutando el despliegue y configuración de infraestructura de red empresarial y realizando mantenimiento físico preventivo.</li>
+                            <li>Estandaricé y agilicé el aprovisionamiento de equipos, automatizando la configuración inicial del sistema operativo corporativo y la conexión de red (<strong>LAN/VLAN</strong>) para nuevas altas de personal.</li>
+                            <li>Proporcioné soporte presencial a usuarios en resolución de incidencias de software, microinformática, periféricos y sistemas <strong>Windows / Linux</strong>.</li>
                         </ul>
                     </div>
                 </div>
@@ -906,7 +927,7 @@
         <!-- Pie de página del CV -->
         <footer class="cv-footer">
             <span>Iriome Naranjo Rodríguez</span>
-            <span>DAM en curso · compatible con jornada completa · disponibilidad inmediata</span>
+            <span>Disponibilidad inmediata · DAM en curso · Jornada completa</span>
             <span>Currículum Vitae — Página 1 de 2</span>
         </footer>
     </div>
@@ -916,39 +937,38 @@
         <div>
             <!-- Experiencia en Proyectos -->
             <section class="cv-section">
-                <h2>🛠️ Experiencia en Proyectos de Software</h2>
+                <h2>🛠️ Proyectos de Desarrollo de Software</h2>
                 <div class="timeline">
                     <!-- Habitly -->
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <span class="timeline-title">Desarrollador Backend Principal - Habitly (Gestión Inmobiliaria, GUI &amp; Compliance)</span>
-                            <span class="timeline-date">Proyecto Destacado (v1.1.5)</span>
+                            <span class="timeline-title"><a href="https://devnaranjo.github.io/Portfolio/proyecto-habitly.html" target="_blank" rel="noopener noreferrer" class="project-link">Habitly — Software de Gestión Inmobiliaria (Java SE &amp; GUI Swing)</a></span>
+                            <span class="timeline-date">Proyecto Destacado · v1.1.5</span>
                         </div>
                         <p class="timeline-desc">
-                            Aplicación profesional de escritorio en Java (Swing, Modo Oscuro) con motor de cumplimiento legal (LAU / Ley 12/2023) y cifrado de seguridad integrado.
+                            Aplicación de escritorio en Java SE con arquitectura modular por capas, interfaz gráfica Swing (Modo Oscuro), persistencia local y motor de cumplimiento legal.
                         </p>
                         <ul class="timeline-bullets">
-                            <li><strong>[X]</strong> Diseñé una interfaz premium en Java Swing (Modo Oscuro, tablas dinámicas) y empaquetado nativo Windows (<code>wizardSetUp.exe</code>) con JRE reducido.</li>
-                            <li><strong>[X]</strong> Implementé el motor de cumplimiento legal (Ley 12/2023, límites IRAV en zonas tensionadas) y el control de fianzas del ICAVI con exención fiscal del IGIC (0%).</li>
-                            <li><strong>[X]</strong> Aseguré la privacidad mediante cifrado simétrico AES-256-GCM (PBKDF2) y gestión de contraseñas seguras en memoria (<code>char[]</code>).</li>
-                            <li><strong>[X]</strong> Validé la integridad lógica de negocio mediante suite de pruebas unitarias automatizadas con JUnit 5.</li>
+                            <li>Implementé la arquitectura orientada a objetos (POO) estructurada por capas con separación estricta entre lógica de negocio, validaciones y capa de presentación en <strong>Java Swing</strong>.</li>
+                            <li>Desarrollé un motor de validación normativa parametrizable (Ley 12/2023, límites IRAV, control de fianzas ICAVI y régimen fiscal IGIC), incorporando validaciones orientadas al cumplimiento de la legislación aplicable.</li>
+                            <li>Protegí los datos personales con cifrado simétrico <strong>AES-256-GCM</strong> (PBKDF2) y gestión segura de credenciales en memoria (<code>char[]</code>) siguiendo recomendaciones OWASP.</li>
+                            <li>Construí un suite de pruebas unitarias automatizadas con <strong>JUnit 5</strong> para validar el comportamiento determinista de las reglas de cálculo y lógica financiera.</li>
                         </ul>
                     </div>
 
-                    <!-- Calculadora -->
+                    <!-- SplitIt -->
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <span class="timeline-title">Desarrollador Backend - Calculadora de Propinas &amp; División de Cuentas</span>
-                            <span class="timeline-date completed">v1.0.0-CLI</span>
+                            <span class="timeline-title"><a href="https://devnaranjo.github.io/Portfolio/proyecto-splitit.html" target="_blank" rel="noopener noreferrer" class="project-link">SplitIt — Motor de Facturación y División de Cuentas (Java SE)</a></span>
+                            <span class="timeline-date completed">Simulación de Proyecto Real · v1.0.0</span>
                         </div>
                         <p class="timeline-desc">
-                            Aplicación modular en Java SE para el procesamiento de facturas y división de cuentas con precisión aritmética y control de redondeo.
+                            Aplicación CLI modular en Java SE para el desglose y prorrateo de facturas gastronómicas, desarrollada como simulación de un proyecto de un cliente real del sector HORECA.
                         </p>
                         <ul class="timeline-bullets">
-                            <li><strong>[X]</strong> Garanticé precisión aritmética (0.00 € de desviación) mediante BigDecimal y algoritmo de distribución de céntimos.</li>
-                            <li><strong>[X]</strong> Diseñé una arquitectura OOP modular: validación de consola (LectorConsola), ticket (TicketImpresor) y negocio (Ticket).</li>
-                            <li><strong>[X]</strong> Validé la robustez de la lógica de negocio mediante pruebas unitarias automatizadas con JUnit 5.</li>
-                            <li><strong>[X]</strong> Aseguré la trazabilidad y control de versiones con flujo ordenado de ramas en Git/GitHub.</li>
+                            <li>Garanticé precisión aritmética financiera exacta (desviación = <strong>0.00 €</strong>) utilizando <strong>BigDecimal</strong> con redondeo explícito y un algoritmo de compensación residual de céntimos entre comensales.</li>
+                            <li>Diseñé una arquitectura orientada a objetos modular separando captura de datos (<code>LectorConsola</code>), formateo de tickets (<code>TicketImpresor</code>) y lógica de cálculo (<code>Ticket</code>).</li>
+                            <li>Implementé control de calidad integral mediante tests unitarios con <strong>JUnit 5</strong> y control de versiones bajo metodología <strong>GitFlow</strong>.</li>
                         </ul>
                     </div>
                 </div>
@@ -962,11 +982,11 @@
                     <div class="timeline-item">
                         <div class="timeline-header">
                             <span class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</span>
-                            <span class="timeline-date">septiembre 2025 – junio 2027 (En curso)</span>
+                            <span class="timeline-date">Sep 2025 – Jun 2027 · En curso</span>
                         </div>
-                        <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
+                        <div class="timeline-org">IES Lomo de la Herradura · Telde, España</div>
                         <p class="timeline-desc">
-                            Enfoque en programación orientada a objetos (Java), diseño de bases de datos (SQL/NoSQL), calidad de software (JUnit 5) y Git/GitFlow.
+                            Programación orientada a objetos (Java, Kotlin), diseño de bases de datos relacionales (SQL/PostgreSQL), acceso a datos (JDBC, Hibernate), desarrollo de interfaces (Swing), calidad y testing de software (JUnit 5) y control de versiones (Git/GitFlow).
                         </p>
                     </div>
 
@@ -974,11 +994,11 @@
                     <div class="timeline-item completed">
                         <div class="timeline-header">
                             <span class="timeline-title">Técnico en Sistemas Microinformáticos y Redes (SMR)</span>
-                            <span class="timeline-date completed">septiembre 2023 – junio 2025 (Completado)</span>
+                            <span class="timeline-date completed">Sep 2023 – Jun 2025 · Completado</span>
                         </div>
-                        <div class="timeline-org">IES Lomo de la Herradura (Telde, España)</div>
+                        <div class="timeline-org">IES Lomo de la Herradura · Telde, España</div>
                         <p class="timeline-desc">
-                            Administración de sistemas (Windows/Linux), redes locales (VLAN, TCP/IP, Cisco Packet Tracer), virtualización y ciberseguridad.
+                            Administración de sistemas operativos Windows/Linux, infraestructuras de red local (LAN/VLAN, TCP/IP, switches/routers), virtualización, ciberseguridad básica y soporte técnico integral a usuarios.
                         </p>
                     </div>
                 </div>
@@ -988,43 +1008,50 @@
             <section class="cv-section">
                 <h2>💻 Habilidades Técnicas</h2>
                 <div class="skills-grid">
-                    <!-- Desarrollo & Backend -->
+                    <!-- Desarrollo Backend -->
                     <div class="skills-category">
-                        <h3>Desarrollo &amp; Backend</h3>
+                        <h3>Desarrollo Backend</h3>
                         <ul class="skills-list">
-                            <li>Lenguajes: <strong>Java, Python, SQL/NoSQL, Kotlin, JavaScript, HTML5/CSS3, Bash</strong></li>
-                            <li>Bases de Datos &amp; ORM: <strong>PostgreSQL, MySQL, MongoDB</strong></li>
-                            <li>Metodologías: <strong>POO, Estructuras de Datos, Modularidad</strong></li>
+                            <li><strong>Java SE</strong> · POO &amp; Modular</li>
+                            <li><strong>SQL</strong> · <strong>PostgreSQL</strong> · MySQL</li>
+                            <li><strong>JUnit 5</strong> (Testing) · TDD</li>
+                            <li><strong>Git / GitHub / GitFlow</strong></li>
+                            <li>JDBC · Hibernate (fundamentos)</li>
                         </ul>
                     </div>
 
-                    <!-- Redes y Sistemas -->
+                    <!-- Automatización & RPA -->
                     <div class="skills-category">
-                        <h3>Redes &amp; Sistemas</h3>
+                        <h3>Automatización &amp; RPA</h3>
                         <ul class="skills-list">
-                            <li>Redes: <strong>LAN-WAN, VLAN, TCP/IP, Wi-Fi, Cableado Estructurado</strong></li>
-                            <li>Hardware/Sim.: <strong>Cisco Router/Switch, Packet Tracer</strong></li>
-                            <li>Sistemas: <strong>Active Directory, Windows/Linux OS, VM, Soporte</strong></li>
+                            <li><strong>Power Automate Desktop</strong></li>
+                            <li><strong>Browser Automation</strong></li>
+                            <li>Web Scraping estructurado</li>
+                            <li><strong>Microsoft 365</strong> · PowerApps</li>
+                            <li>Optimización de procesos IT</li>
                         </ul>
                     </div>
 
-                    <!-- Herramientas y Automatización -->
+                    <!-- Tecnologías Complementarias -->
                     <div class="skills-category">
-                        <h3>Herramientas &amp; Automatización</h3>
+                        <h3>Complementarias</h3>
                         <ul class="skills-list">
-                            <li>Automatización: <strong>Power Automate Desktop (PAD), RPA, Flujos M365</strong></li>
-                            <li>Herramientas IA: <strong>Gemini, ChatGPT, Claude (Prompting / Asistencia)</strong></li>
-                            <li>Flujos &amp; Git: <strong>Git, GitHub, GitFlow, JUnit 5, Maven, Visual Paradigm</strong></li>
-                            <li>IDEs: <strong>IntelliJ IDEA, VS Code, MS Office</strong></li>
+                            <li><strong>Python</strong> · JavaScript</li>
+                            <li><strong>HTML5 / CSS3</strong></li>
+                            <li><strong>Kotlin v2.2</strong> (bases)</li>
+                            <li>MongoDB · REST (fundamentos)</li>
+                            <li>Bash scripting · Maven</li>
                         </ul>
                     </div>
 
-                    <!-- Soft Skills -->
+                    <!-- Sistemas e Idiomas -->
                     <div class="skills-category">
-                        <h3>Aptitudes Interpersonales</h3>
+                        <h3>Sistemas &amp; Idiomas</h3>
                         <ul class="skills-list">
-                            <li>Productividad: <strong>Gestión del Tiempo, Resol. Problemas</strong></li>
-                            <li>Colaboración: <strong>Trabajo en Equipo, Adaptabilidad, Cliente, MVP</strong></li>
+                            <li>Windows / Linux · Active Directory</li>
+                            <li>Redes LAN/VLAN · TCP/IP</li>
+                            <li><strong>Español</strong>: Nativo</li>
+                            <li><strong>Inglés</strong>: Técnico B1 (documentación)</li>
                         </ul>
                     </div>
                 </div>
@@ -1034,11 +1061,21 @@
         <!-- Pie de página del CV -->
         <footer class="cv-footer">
             <span>Iriome Naranjo Rodríguez</span>
-            <span>DAM en curso · compatible con jornada completa · disponibilidad inmediata</span>
+            <a href="mailto:inaranjordgz@gmail.com" class="footer-email-link">✉ inaranjordgz@gmail.com</a>
             <span>Currículum Vitae — Página 2 de 2</span>
         </footer>
     </div>
 
+    <script>
+        function printCV() {
+            const originalTitle = document.title;
+            document.title = "CV_Iriome_Naranjo_Backend_Java";
+            window.print();
+            setTimeout(function() {
+                document.title = originalTitle;
+            }, 1000);
+        }
+    </script>
     <script src="src/js/script.js"></script>
 </body>
 </html>

@@ -3,108 +3,215 @@
 [![GitHub Pages](https://img.shields.io/badge/Live-devnaranjo.github.io%2FPortfolio-4F46E5?style=flat&logo=github)](https://devnaranjo.github.io/Portfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-inaranjorodriguez-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/inaranjorodriguez)
 
-> Desarrollador de Aplicaciones Multiplataforma (DAM) | Desarrollador Backend Java  
-> Developer of Multiplatform Applications (DAM) | Java Backend Developer
+> Desarrollador Backend Java Junior | Estudiante de DAM  
+> Junior Java Backend Developer | DAM Student
 
 ---
 
 ## 🇪🇸 Español
 
-Portfolio web profesional y personal. Diseñado bajo una estética premium, optimizado para sistemas de cribado curricular (ATS) y desarrollado en HTML5, CSS3 y JavaScript vanilla para garantizar un rendimiento sobresaliente sin dependencias externas.
+## 👋 Sobre el proyecto
 
-### 🗂️ Estructura del Repositorio
+Este repositorio contiene el código fuente de mi portfolio profesional y personal. Como estudiante de **Desarrollo de Aplicaciones Multiplataforma (DAM)**, mi objetivo profesional principal es el **desarrollo Backend en Java**, la arquitectura orientada a objetos modular y la calidad del software mediante pruebas unitarias.
+
+Este espacio reúne mis proyectos propios de ingeniería de software, trayectoria formativa, competencias técnicas y experiencia profesional complementaria en soporte IT y automatización de procesos (RPA).
+
+---
+
+## 🧰 Stack tecnológico
+
+| Área | Tecnologías |
+|---|---|
+| **Backend** | Java · Java SE · Programación Orientada a Objetos (POO) · Arquitectura modular |
+| **Testing** | JUnit 5 · TDD (Test-Driven Development) |
+| **Bases de datos** | PostgreSQL · MongoDB · SQL / NoSQL · JDBC · Hibernate (fundamentos) |
+| **Control de versiones** | Git · GitHub · GitFlow |
+| **Automatización (RPA)** | Power Automate Desktop (PAD) · Microsoft 365 · PowerApps · Outlook API |
+| **Frontend** | HTML5 · CSS3 · JavaScript (Vanilla) |
+| **Sistemas & Complementarias** | Python · Kotlin (bases v2.2) · Bash · Linux · Windows |
+
+---
+
+## 🚀 Proyectos destacados
+
+### 🏠 [Habitly](https://devnaranjo.github.io/Portfolio/proyecto-habitly.html) — Software de Gestión Inmobiliaria
+Aplicación de escritorio en **Java SE** con interfaz gráfica en **Java Swing** (Modo Oscuro) y arquitectura modular por capas. Incluye un motor de validación normativa parametrizable (Ley 12/2023 / LAU, límites IRAV, control de fianzas ICAVI), protección de datos personales mediante cifrado **AES-256-GCM** (PBKDF2) y cobertura de lógica de negocio crítica con pruebas automatizadas en **JUnit 5**. Proyecto propio principal que demuestra capacidades integrales de desarrollo backend y diseño de software.
+
+### 💸 [SplitIt](https://devnaranjo.github.io/Portfolio/proyecto-splitit.html) — Motor de Facturación y Prorrateo
+Herramienta CLI modular en **Java SE** para el desglose y distribución exacta de facturas gastronómicas, desarrollada como simulación de un proyecto de cliente real del sector HORECA. Garantiza precisión matemática (desviación = 0.00 €) mediante el uso estricto de **BigDecimal** y un algoritmo propio de compensación residual de céntimos entre comensales, estructurada con separación de responsabilidades (POO) y validada mediante **JUnit 5** y metodología **GitFlow**. ([Ver repositorio en GitHub](https://github.com/DevNaranjo/SplitIt)).
+
+### 🤖 [Automatización RPA de Incidencias](https://devnaranjo.github.io/Portfolio/proyecto-rpa.html)
+Flujo de automatización end-to-end implementado con **Power Automate Desktop** sobre portales corporativos de soporte (**PowerApps / Microsoft 365**) y Dynamics 365 Business Central. Integra extracción automatizada de datos vía *browser automation*, scraping estructurado, filtrado dinámico por estado/fecha y envío de comunicaciones automáticas por Outlook. Flujo desplegado en producción real que procesa **+75 casos diarios** y permitió eliminar **25+ horas semanales** de gestión manual.
+
+### 🧠 [Generador de Resúmenes de Incidencias con IA](https://devnaranjo.github.io/Portfolio/proyecto-rpa-resumen.html)
+Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Teams**, **OneDrive** y **ChatGPT Enterprise**. Procesa periódicamente registros estructurados de incidencias no resueltas para sintetizar y clasificar resúmenes ejecutivos, facilitando el seguimiento operativo y reduciendo los tiempos de análisis del equipo técnico.
+
+---
+
+## 🗂️ Estructura del Repositorio
 
 | Ruta | Descripción |
 |---|---|
-| `index.html` | Portada principal con propuesta de valor y tarjetas de proyectos destacados. |
-| `sobre-mi.html` | Trayectoria educativa, fortalezas profesionales y desglose de stack técnico (SMR/DAM). |
-| `proyectos.html` | Catálogo de proyectos con filtros de estado y acceso a código fuente. |
-| `proyecto-habitly.html` | Detalle del software de gestión inmobiliaria (v1.1.5 Swing GUI, LAU/Ley 12/2023, JUnit 5, AES-GCM). |
-| `proyecto-calculadora.html` | Detalle del software de división de cuentas (Java 25, `BigDecimal`, compensación de redondeo, roadmap Kotlin) - **Completado (MVP)**. |
-| `proyecto-rpa.html` | Detalle de la automatización RPA de incidencias (Dynamics 365 Business Central, M365, Outlook). |
-| `proyecto-rpa-resumen.html` | Detalle del generador de resúmenes de incidencias semanales con IA (Teams, OneDrive, PAD, ChatGPT Enterprise). |
-| `contacto.html` | Formulario de contacto seguro integrado con Web3Forms y anti-spam. |
-| `privacidad.html` | Página legal de Política de Privacidad de datos (cumplimiento RGPD). |
-| `cv.html` | Currículum interactivo adaptado para lectura digital y optimizado para impresión A4. |
-| `src/assets/` | Recursos gráficos, fotos de perfil, vistas previas de proyectos e icono de marca, junto al PDF del CV. |
-| `src/css/style.css` | Sistema de diseño unificado, variables de tema y responsive layout. |
-| `src/js/script.js` | Motor de UI, simulador de terminal retro, gestión de consentimiento/tema y atajos globales. |
-| `doc/` | Documentos de arquitectura y especificaciones funcionales de los proyectos. |
-| `plantilla_correo.html` | Herramienta local privada de respuesta rápida para Gmail (ignorado en Git). |
+| `index.html` | Portada principal con propuesta de valor, stack técnico y tarjetas de proyectos destacados. |
+| `sobre-mi.html` | Perfil profesional, formación académica (SMR/DAM), metodología y calendario de disponibilidad 2026–2028. |
+| `proyectos.html` | Catálogo completo de proyectos con filtros de estado y enlaces a repositorios de código. |
+| `proyecto-habitly.html` | Ficha técnica de Habitly (Java Swing GUI, validación LAU/Ley 12/2023, JUnit 5, AES-256-GCM). |
+| `proyecto-splitit.html` | Ficha técnica de SplitIt (Java SE, `BigDecimal`, compensación de redondeo, roadmap Kotlin). |
+| `proyecto-rpa.html` | Ficha técnica de la automatización RPA de incidencias (Power Automate Desktop, PowerApps, M365, Outlook). |
+| `proyecto-rpa-resumen.html` | Ficha técnica del generador de resúmenes semanales con IA (Teams, OneDrive, PAD, ChatGPT Enterprise). |
+| `contacto.html` | Formulario de contacto seguro integrado con Web3Forms y verificación anti-spam. |
+| `privacidad.html` | Política de privacidad y tratamiento de datos conforme al RGPD. |
+| `cv.html` | Currículum interactivo web adaptado para lectura digital y optimizado para exportación/impresión A4 en 2 páginas. |
+| `src/assets/` | Recursos visuales, capturas WebP, fotografías de perfil, iconos de marca y PDF descargable (`CV_Iriome_Naranjo_Backend_Java.pdf`). |
+| `src/css/style.css` | Sistema de diseño unificado, paleta de colores, variables CSS y diseño responsive. |
+| `src/js/script.js` | Motor de interfaz, simulador de terminal, calendario dinámico, gestor de temas/consentimiento y atajos de teclado. |
+| `doc/` | Documentación técnica y especificaciones funcionales de los proyectos. |
 
-### 🛠️ Características Principales
+---
 
-| Característica | Detalle |
-|---|---|
-| **Experiencia real en producción** | Incluye flujo RPA en producción (Power Automate Desktop, Microsoft 365, PowerApps) desarrollado en entorno empresarial real. |
-| **Simulador de Terminal Retro** | Simulación fiel en JavaScript de la ejecución y salida real por consola de los desarrollos en Java (Habitly y Calculadora). |
-| **Cumplimiento y Analítica** | Formulario con hCaptcha, Google Tag Manager (GTM) propagado de forma segura, y banner de consentimiento dinámico (Consent Mode v2) optimizado con nomenclatura genérica anti-bloqueo. |
-| **Modo Oscuro por Defecto** | El sitio web carga por defecto en tema oscuro (evaluado en el head sin destellos). Cuenta con un alternador flotante para cambiar a modo claro de forma fluida (0.8s). |
-| **Responsividad Extrema** | Rejillas elásticas en CSS vainilla y adaptaciones móviles (escalado de captcha, word-break automático para URLs extensas y footer en dos columnas). |
-| **Navegación Dinámica de Código** | Logotipo interactivo `Iriome.build(sección)` que actualiza su método según la navegación del usuario. |
-| **Copiado de Contacto y Redes** | Copiado automático de correo y teléfono al portapapeles con toasts interactivos, e integración de enlaces a redes sociales (GitHub, LinkedIn, Instagram). |
-| **Atajo de Trabajo Local** | Acceso al generador corporativo de correo local privado usando el atajo global `Ctrl + Alt + I`. |
-| **Menú Móvil Colapsable** | Navegación responsive mediante un botón hamburguesa generado dinámicamente por JavaScript, con transiciones y animaciones fluidas en CSS. |
-| **Optimización de Assets (WebP)** | Imágenes de proyectos RPA y fotos de perfil comprimidas en formato `.webp` de alta eficiencia (calidad 80%), reduciendo el peso de descarga inicial en más de 2.75 MB. |
+## 🛠️ Características técnicas
+
+### 🎨 UI/UX
+- **Diseño Responsive:** Rejillas CSS fluidas y adaptaciones para dispositivos móviles, tablets y pantallas de escritorio.
+- **Modo Oscuro / Claro:** Carga por defecto en modo oscuro con alternador flotante y transiciones suaves de 0.8s sin parpadeo.
+- **Navegación Multinivel:** Menú desplegable con submenús anidados para agrupar proyectos de automatización RPA, optimizado para hover en PC y toque táctil en móviles.
+- **Calendario Dinámico:** Visualizador de disponibilidad 2026–2028 en `sobre-mi.html` con filtros de estado y pie de página que reacciona en tiempo real a la fecha actual del sistema.
+- **Logotipo Interactivo:** Identificador dinámico `Iriome.build(sección)` que actualiza su parámetro según la página activa.
+
+### ⚙️ JavaScript & Interactividad
+- **Simulador de Terminal:** Emulación en JavaScript de la salida y ejecución por consola de los programas en Java (Habitly y SplitIt).
+- **Copiado Rápido y Toasts:** Copiado de correo y teléfono al portapapeles con notificaciones flotantes interactivas.
+- **Desarrollo Nativo:** Construido con HTML5, CSS3 y JavaScript vanilla, minimizando dependencias externas para garantizar una ejecución ágil y ligera.
+
+### 🔐 Privacidad & Analítica
+- **Formulario Seguro:** Verificación anti-spam mediante hCaptcha e integración con Web3Forms.
+- **Analítica y Cumplimiento:** Integración con Google Tag Manager (GTM) respetando el banner de consentimiento dinámico (Consent Mode v2) y la normativa europea de protección de datos (RGPD).
+
+### ⚡ Rendimiento
+- **Optimización de Assets (WebP):** Imágenes y capturas de proyectos convertidas al formato `.webp` (calidad 80%), reduciendo el peso de descarga inicial en más de 2.75 MB.
+- **Carga Eficiente:** Código modular y tipografías optimizadas para acelerar los tiempos de renderizado.
+
+### 🧩 Herramientas Auxiliares
+- **Generador Local de Correo (`plantilla_correo.html`):** Utilidad local privada para la generación ágil de respuestas formales por correo electrónico (accesible mediante el atajo `Ctrl + Alt + I`, archivo excluido del repositorio público).
+
+---
+
+## 🌐 Portfolio & Contacto
+
+- **Portfolio Web:** [devnaranjo.github.io/Portfolio](https://devnaranjo.github.io/Portfolio)
+- **GitHub:** [github.com/DevNaranjo](https://github.com/DevNaranjo)
+- **LinkedIn:** [linkedin.com/in/inaranjorodriguez](https://linkedin.com/in/inaranjorodriguez)
+- **Email:** [inaranjordgz@gmail.com](mailto:inaranjordgz@gmail.com)
 
 ---
 
 ## 🇬🇧 English
 
-Personal and professional web portfolio. Designed with a premium look and feel, optimized for Applicant Tracking Systems (ATS), and built using native HTML5, CSS3, and JavaScript to guarantee exceptional loading speed with zero dependencies.
+## 👋 About the Project
 
-### 🗂️ Repository Structure
+This repository contains the source code for my personal and professional web portfolio. As a **Multiplatform Application Development (DAM)** student, my core professional focus is **Java Backend Development**, object-oriented software architecture, and quality assurance through automated unit testing.
 
-| Path | Description |
-|---|---|
-| `index.html` | Main home page showcasing the value proposition and featured project cards. |
-| `sobre-mi.html` | Profile, academic background, key strengths, and technical stack (SMR/DAM). |
-| `proyectos.html` | Projects directory with status badges and links to source repositories. |
-| `proyecto-habitly.html` | Details of the real-estate management software (v1.1.5 Swing GUI, LAU/Ley 12/2023, JUnit 5, AES-GCM). |
-| `proyecto-calculadora.html` | Details of the bill-splitter console app (Java 25, `BigDecimal`, rounding compensation, Kotlin roadmap) - **Completed (MVP)**. |
-| `proyecto-rpa.html` | Technical details of the RPA support ticket automation (Dynamics 365 Business Central, Outlook). |
-| `proyecto-rpa-resumen.html` | Technical details of the AI-powered weekly incident summarization flow (Teams, OneDrive, PAD, ChatGPT). |
-| `contacto.html` | Secure contact form integrated with Web3Forms API and anti-spam protection. |
-| `privacidad.html` | Privacy Policy page (fully compliant with GDPR regulations). |
-| `cv.html` | Interactive web CV, designed for digital viewing and optimized for A4 printing. |
-| `src/assets/` | Graphic resources, profile photo, project previews, brand icons, and CV PDF. |
-| `src/css/style.css` | Unified design system, CSS variables, and fully responsive layout. |
-| `src/js/script.js` | UI core engine, retro CLI simulator, consent/theme handling, and global keyboard shortcuts. |
-| `doc/` | Technical documentation and architecture specifications. |
-| `plantilla_correo.html` | Local private tool for generating formal Gmail responses (ignored by Git). |
-
-### 🛠️ Core Features
-
-| Feature | Detail |
-|---|---|
-| **Production Experience** | Includes live RPA flows (Power Automate Desktop, Microsoft 365, PowerApps, ChatGPT Enterprise) deployed in real-world enterprise environments. |
-| **Retro Terminal Simulator** | Faithful JavaScript simulation of actual Java console execution (including the precise rounding-error compensation algorithm designed for Grupo Gastronómico Rivas). |
-| **Consent & Analytics** | Contact form featuring hCaptcha, integrated Google Tag Manager (GTM), and dynamic consent banner (Consent Mode v2) with generic naming. |
-| **Default Dark Theme** | The website loads in dark mode by default (resolved early in the head without flashing). A floating button allows toggling to light mode with a smooth 0.8s transition. |
-| **Fluid Responsiveness** | Elastic CSS grids and mobile fixes (captcha scaling, auto word-break on long links, and 2-column footer layout). |
-| **Dynamic Code Logo** | Interactive logo `Iriome.build(section)` that dynamically updates its parameter based on navigation. |
-| **Contact Copy & Social Links** | Automatic email and phone copy to clipboard with interactive toasts, and integration of key social media links (GitHub, LinkedIn, Instagram). |
-| **Local Workspace Shortcut** | Direct access to the private local Gmail template generator using `Ctrl + Alt + I` shortcut. |
-| **Collapsible Mobile Menu** | Fully responsive navigation using a dynamically generated JavaScript hamburger button with smooth CSS transitions. |
-| **Asset Optimization (WebP)** | Main project previews and profile photos compressed into high-efficiency `.webp` format (80% quality), reducing initial load size by over 2.75 MB. |
+This space showcases my software development projects, academic background, technical skills, and complementary corporate experience in IT support and Robotic Process Automation (RPA).
 
 ---
 
-### 🚀 Últimos Cambios (Fase 16)
-- **Habitly v1.1.5 GUI:** Evolución a interfaz Swing en modo oscuro con barra lateral, motor de cumplimiento legal (Ley 12/2023 y LAU) e instalador nativo.
-- **Modo Oscuro Predeterminado:** Navegación por defecto en tema oscuro.
-- **Responsividad Completa:** Adaptaciones y escalados en móviles (captcha, enlaces largos sin guiones y footer en 2 columnas).
-- **GTM & Consent Mode v2:** Integración segura de Google Tag Manager bajo políticas granulares de privacidad.
-- **Herramientas de IA y PAD:** Integración de logos optimizados WebP para Power Automate Desktop, Gemini, Claude y ChatGPT.
-- **Kotlin (Android):** Anotación de hoja de ruta en la calculadora para portarla a aplicación nativa móvil Android mediante Kotlin.
+## 🧰 Tech Stack
 
-### 🚀 Latest Changes (Phase 16)
-- **Habitly v1.1.5 GUI:** Evolution to Swing GUI in dark mode with side navigation, legal compliance engine (LAU & Ley 12/2023), and native installer.
-- **Default Dark Mode:** Website now preloads in dark theme by default.
-- **Fluid Responsiveness:** Mobile-specific layout improvements (captcha scaling, word-break for long URLs, and 2-column grid footer).
-- **GTM & Consent Mode v2:** Secure Google Tag Manager propagation under granular privacy policies.
-- **AI Tools & PAD:** Added optimized WebP logos for Power Automate Desktop, Gemini, Claude, and ChatGPT.
-- **Kotlin (Android):** Added roadmap note to the calculator for porting it to Android native mobile app using Kotlin.
+| Area | Technologies |
+|---|---|
+| **Backend** | Java · Java SE · Object-Oriented Programming (OOP) · Modular Architecture |
+| **Testing** | JUnit 5 · TDD (Test-Driven Development) |
+| **Databases** | PostgreSQL · MongoDB · SQL / NoSQL · JDBC · Hibernate (foundations) |
+| **Version Control** | Git · GitHub · GitFlow |
+| **Automation (RPA)** | Power Automate Desktop (PAD) · Microsoft 365 · PowerApps · Outlook API |
+| **Frontend** | HTML5 · CSS3 · JavaScript (Vanilla) |
+| **Systems & Additional** | Python · Kotlin (v2.2 foundations) · Bash · Linux · Windows |
+
+---
+
+## 🚀 Featured Projects
+
+### 🏠 [Habitly](https://devnaranjo.github.io/Portfolio/proyecto-habitly.html) — Real Estate Management Software
+Desktop application built with **Java SE** and a **Java Swing** GUI (Dark Mode) following a layered modular architecture. It features a configurable regulatory compliance engine (Law 12/2023 / LAU, IRAV limits, deposit control), personal data protection via **AES-256-GCM** encryption (PBKDF2), and extensive test coverage of critical business logic using **JUnit 5**. A flagship software project highlighting core backend and software design capabilities.
+
+### 💸 [SplitIt](https://devnaranjo.github.io/Portfolio/proyecto-splitit.html) — Bill Splitting & Invoicing Engine
+Modular CLI application in **Java SE** designed for parsing and evenly distributing restaurant bills, developed as a simulated real-world client project for the hospitality sector. It guarantees zero rounding deviation (0.00 € error) through strict **BigDecimal** arithmetic and a custom penny-distribution algorithm, structured with OOP separation of concerns and validated with **JUnit 5** and **GitFlow**. ([View repository on GitHub](https://github.com/DevNaranjo/SplitIt)).
+
+### 🤖 [RPA Incident Support Automation](https://devnaranjo.github.io/Portfolio/proyecto-rpa.html)
+End-to-end automation workflow developed with **Power Automate Desktop** across customer support portals (**PowerApps / Microsoft 365**) and Dynamics 365 Business Central. Integrates automated browser data extraction, structured scraping, state/date filtering, and dynamic Outlook communications. Live production flow processing **+75 daily tickets** and saving **25+ weekly hours** of manual administrative effort.
+
+### 🧠 [AI-Powered Incident Summary Generator](https://devnaranjo.github.io/Portfolio/proyecto-rpa-resumen.html)
+Automated flow built with **Power Automate Desktop** integrated with **Microsoft Teams**, **OneDrive**, and **ChatGPT Enterprise**. Periodically analyzes structured logs of unresolved tickets to synthesize and classify executive summaries, streamlining operational follow-up and reducing analysis overhead for technical teams.
+
+---
+
+## 🗂️ Repository Structure
+
+| Path | Description |
+|---|---|
+| `index.html` | Main landing page highlighting value proposition, tech stack, and featured project cards. |
+| `sobre-mi.html` | Profile, academic background (SMR/DAM), methodology, and 2026–2028 availability calendar. |
+| `proyectos.html` | Full project catalog with category filters and links to source code repositories. |
+| `proyecto-habitly.html` | Technical breakdown of Habitly (Java Swing GUI, LAU compliance, JUnit 5, AES-256-GCM). |
+| `proyecto-splitit.html` | Technical breakdown of SplitIt (Java SE, `BigDecimal`, rounding compensation, Kotlin roadmap). |
+| `proyecto-rpa.html` | Technical details of the RPA ticket automation (Power Automate Desktop, PowerApps, M365, Outlook). |
+| `proyecto-rpa-resumen.html` | Technical details of the AI-powered weekly summary flow (Teams, OneDrive, PAD, ChatGPT Enterprise). |
+| `contacto.html` | Secure contact form with Web3Forms API and anti-spam verification. |
+| `privacidad.html` | Privacy Policy page in compliance with GDPR regulations. |
+| `cv.html` | Interactive web CV designed for digital review and optimized for 2-page A4 printing. |
+| `src/assets/` | Visual assets, WebP project previews, profile photos, brand icons, and CV PDF (`CV_Iriome_Naranjo_Backend_Java.pdf`). |
+| `src/css/style.css` | Unified design system, color palette, CSS custom properties, and responsive styles. |
+| `src/js/script.js` | UI engine, CLI terminal simulator, dynamic calendar, theme/consent handlers, and keyboard shortcuts. |
+| `doc/` | Technical documentation and functional specifications. |
+
+---
+
+## 🛠️ Technical Features
+
+### 🎨 UI/UX
+- **Fluid Responsiveness:** Elastic CSS grids and tailored layouts for mobile phones, tablets, and desktop displays.
+- **Dark / Light Theme:** Default dark mode load with a smooth floating toggle and 0.8s flicker-free transition.
+- **Multilevel Navigation:** Dropdown menu with nested submenus to organize RPA automation projects, supporting desktop hover and touch toggle on mobile.
+- **Dynamic Calendar:** 2026–2028 availability viewer on `sobre-mi.html` with state filters and real-time reactive footer status.
+- **Interactive Code Logo:** Dynamic `Iriome.build(section)` logo updating its parameter based on the active page.
+
+### ⚙️ JavaScript & Interactivity
+- **CLI Terminal Simulator:** JavaScript simulation reproducing console output and user interactions of Java developments (Habitly and SplitIt).
+- **Quick Copy & Toasts:** Automatic copy of email and phone to clipboard with non-intrusive interactive toast notifications.
+- **Native Implementation:** Built entirely with native HTML5, CSS3, and vanilla JavaScript, minimizing external dependencies for fast, lightweight performance.
+
+### 🔐 Privacy & Analytics
+- **Secure Form:** Anti-spam verification using hCaptcha and Web3Forms integration.
+- **Analytics & Compliance:** Integrated Google Tag Manager (GTM) with dynamic consent management (Consent Mode v2) adhering to GDPR guidelines.
+
+### ⚡ Performance
+- **Asset Optimization (WebP):** Images and project previews converted to `.webp` format (80% quality), saving over 2.75 MB in initial page payload.
+- **Efficient Loading:** Modular codebase and optimized local web fonts for immediate rendering.
+
+### 🧩 Auxiliary Tools
+- **Local Mail Generator (`plantilla_correo.html`):** Private utility for generating formal email responses (accessible via shortcut `Ctrl + Alt + I`, excluded from the public repository).
+
+---
+
+## 🌐 Links & Contact
+
+- **Portfolio Web:** [devnaranjo.github.io/Portfolio](https://devnaranjo.github.io/Portfolio)
+- **GitHub:** [github.com/DevNaranjo](https://github.com/DevNaranjo)
+- **LinkedIn:** [linkedin.com/in/inaranjorodriguez](https://linkedin.com/in/inaranjorodriguez)
+- **Email:** [inaranjordgz@gmail.com](mailto:inaranjordgz@gmail.com)
+
+---
+
+## 📌 Historial reciente / Recent Changelog
+
+### Agosto 2026 / August 2026
+- **Reposicionamiento CV (Backend Java Junior):** Adaptación integral de `cv.html` para enfocarlo a puestos de Desarrollador Backend Java Junior / Prácticas, presentando la experiencia en soporte IT y automatización RPA como valor complementario y reforzando los proyectos propios de software (*Tailored `cv.html` for Junior Java Backend Developer roles, framing IT support and RPA automation as valuable enterprise assets while highlighting custom software projects*).
+- **Estandarización de Descarga PDF:** Nomenclatura oficial configurada como `CV_Iriome_Naranjo_Backend_Java.pdf` para descarga directa e impresión a PDF (*Standardized export and download filename to `CV_Iriome_Naranjo_Backend_Java.pdf`*).
+- **Rebranding SplitIt:** Migración del motor de cálculo financiero en Java a la marca **SplitIt**, con actualización de assets WebP, tarjeta de justificación de marca y enlaces al repositorio en GitHub (`github.com/DevNaranjo/SplitIt`) (*Full migration of the Java financial engine to the **SplitIt** brand, including updated WebP assets, brand rationale card, and official GitHub repository links*).
+- **Calendario de Disponibilidad 2026–2028:** Implementación de calendario interactivo en `sobre-mi.html` con filtros de estado por CSS, paleta lavanda para periodos lectivos (2º DAM / 2º DAW) y pie de página dinámico reactivo en tiempo real (*Interactive availability calendar component on `sobre-mi.html` with CSS state filters, lavender palette for academic terms, and real-time reactive footer status*).
+- **Submenú Multinivel:** Agrupación ordenada de proyectos de automatización RPA mediante un subdesplegable interactivo para móvil y escritorio (*Nested dropdown submenus grouping RPA projects optimized for both desktop hover and mobile touch screens*).
+- **Hoja de Ruta 2026:** Conclusión del reto de *Inmersión en Kotlin v2.2* (bases asentadas) y calendarización de *Canary Wine & Guachinches API* para Septiembre - Noviembre 2026 (*Marked Kotlin v2.2 Foundations as completed and scheduled Canary Wine & Guachinches API for September - November 2026*).
+- **Optimizaciones UI/UX:** Eliminación de sufijos redundantes en menús, eliminación de notas no técnicas y perfeccionamiento de responsividad en formularios y menús colapsables (*Streamlined navigation labels, removed non-technical notes, and enhanced mobile responsiveness across forms and menus*).
 
 ---
 
