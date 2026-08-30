@@ -1017,10 +1017,10 @@ function getDayAvailabilityStatus(year, month, day) {
         return 'maybe';
     }
     
-    // 3. Curso escolar (Yellow)
-    // 2º DAM: Septiembre 2026 - Junio 2027
+    // 3. Curso escolar / Periodo lectivo (Disponibilidad Parcial)
+    // 2º DAM: Desde el 16 de Septiembre 2026 hasta Junio 2027
     const dateObj = new Date(year, month - 1, day);
-    const damStart = new Date(2026, 8, 1); // 1 Sept 2026
+    const damStart = new Date(2026, 8, 16); // 16 Sept 2026 (Parcialmente disponible a partir del 16)
     const damEnd = new Date(2027, 5, 30);   // 30 Jun 2027
     if (dateObj >= damStart && dateObj <= damEnd) {
         return 'school';
@@ -1067,7 +1067,7 @@ function initFooterAvailability() {
         `;
     } else if (status === 'school') {
         indicator.classList.add('status-school');
-        const isDam = today >= new Date(2026, 8, 1) && today <= new Date(2027, 5, 30);
+        const isDam = today >= new Date(2026, 8, 16) && today <= new Date(2027, 5, 30);
         const termLabel = isDam ? '2º DAM' : '2º DAW';
         indicator.innerHTML = `
             <span class="status-dot"></span>

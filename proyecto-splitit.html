@@ -46,6 +46,10 @@
             }
         })();
     </script>
+        <!-- Tipografías de Software Engineering: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
 </head>
@@ -148,6 +152,39 @@
             <p class="terminal-hint" style="margin-top: -20px; margin-bottom: 40px;">
                 <kbd>Simular Cuenta</kbd> · <kbd>Reiniciar</kbd> — Haz clic en los botones de control inferiores para interactuar con la consola.
             </p>
+
+            <!-- Diagrama de Arquitectura de Precisión Decimal -->
+            <div class="card" style="margin-top: 20px; margin-bottom: 40px; padding: 35px; border: 1px solid var(--border-glass);">
+                <h3 style="font-family: var(--font-sans); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; color: var(--text-primary);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Pipeline de Precisión Decimal &amp; Arqueo Cero
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 25px; line-height: 1.6;">
+                    Flujo de ejecución desacoplado que garantiza la exactitud en el centimaje mediante tipos monetarios seguros y algoritmos de balanceo:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #06B6D4; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #06B6D4; font-weight: 600; text-transform: uppercase;">1. Captura &amp; Sanitización</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">LectorConsola.java</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Validación de tipos, rangos positivos y manejo robusto de excepciones ante entradas no numéricas.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #6366F1; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818CF8; font-weight: 600; text-transform: uppercase;">2. Motor Financiero</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Ticket.java (BigDecimal)</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Cálculo de impuestos (IVA/IGIC) y porcentajes de propina sin pérdida de precisión de punto flotante.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #10B981; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34D399; font-weight: 600; text-transform: uppercase;">3. Balanceo de Céntimos</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Penny Distribution</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Algoritmo compensador que asigna el remanente (+0.01 €) asegurando que el total cuadre al milímetro.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #F59E0B; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #FBBF24; font-weight: 600; text-transform: uppercase;">4. Suite de Cobertura</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">TicketTest.java</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Tests JUnit 5 para escenarios extremos: divisiones periódicas, 1 a 200 comensales y propinas límite.</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- Metodología STAR -->
             <div class="star-container" id="star-breakdown">

@@ -46,6 +46,10 @@
             }
         })();
     </script>
+        <!-- Tipografías de Software Engineering: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
 </head>
@@ -220,6 +224,39 @@
                         <span style="font-size: 1.75rem; display: block; margin-bottom: 8px;">📈</span>
                         <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Márgenes de Rentabilidad</h4>
                         <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Dashboard financiero integrado con cálculo en tiempo real de ingresos por rentas y liquidaciones restando los gastos de comunidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagrama de Arquitectura de Software -->
+            <div class="card" style="margin-top: 40px; padding: 35px; border: 1px solid var(--border-glass);">
+                <h3 style="font-family: var(--font-sans); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; color: var(--text-primary);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    Arquitectura del Sistema (Capas Desacopladas POO)
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 25px; line-height: 1.6;">
+                    Estructura modular dividida en capas independientes que garantiza la separación de responsabilidades, extensibilidad y testabilidad unitaria aislada con JUnit 5:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #06B6D4; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #06B6D4; font-weight: 600; text-transform: uppercase;">1. Capa Presentación</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Java Swing GUI / CLI</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Vistas interactivas, renderizado de tablas, control de foco y formularios con validación reactiva.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #6366F1; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818CF8; font-weight: 600; text-transform: uppercase;">2. Lógica de Negocio</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Core Services &amp; Rules</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Motores de validación legal (LAU / IRAV), cálculo de rentas y algoritmos de balance financiero.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #10B981; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34D399; font-weight: 600; text-transform: uppercase;">3. Seguridad &amp; Datos</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Crypto &amp; Storage</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Cifrado simétrico AES-256-GCM, derivación PBKDF2 y persistencia atómica estructurada.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #F59E0B; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #FBBF24; font-weight: 600; text-transform: uppercase;">4. Suite de Calidad</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">JUnit 5 Test Engine</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Batería de pruebas automatizadas para asegurar cobertura de contratos, fechas y liquidaciones.</p>
                     </div>
                 </div>
             </div>
