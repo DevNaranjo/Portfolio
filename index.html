@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com;">
     <title>Inicio · Iriome Naranjo - Desarrollador Backend Java</title>
     <meta name="description"
         content="Desarrollador Backend Java especializado en construir código estructurado y escalable, con experiencia complementaria en automatización de procesos (RPA/PAD).">
@@ -55,7 +56,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
+    <link rel="icon" type="image/webp" href="src/assets/logo.webp">
 </head>
 
 
@@ -115,14 +116,14 @@
                 <div class="hero-text-col">
                     <span class="hero-tag">
                         <span class="hero-status-dot"></span>
-                        <span>• Junior Backend Developer • Java &amp; Spring Boot</span>
+                        <span>Junior Backend Developer · Java 21 · Clean Architecture · JUnit 5</span>
                     </span>
                     <h1 class="title-large" style="margin-bottom: 8px;">
                         Código estructurado.<br>
-                        <span class="hero-title-accent">Arquitectura sólida y escalable.</span>
+                        <span class="hero-title-accent">Lógica de negocio robusta y testeada.</span>
                     </h1>
                     <p>
-                        Desarrollador Backend enfocado en Java, diseño orientado a objetos y buenas prácticas de ingeniería de software. Experiencia práctica en automatización (RPA), bases de datos y testing con JUnit 5.
+                        Desarrollador Backend enfocado en Java SE, Clean Architecture y rigor en pruebas automatizadas con JUnit 5. Experiencia práctica en consultoría IT, diseño de bases de datos relacionales y automatización de procesos (RPA).
                     </p>
                     <div class="hero-buttons">
                         <a href="proyectos.html" class="btn hero-btn-primary" id="hero-btn-projects">
@@ -175,12 +176,13 @@
                         <div class="hero-code-block">
                             <div class="code-line"><span class="code-ln">1</span><span><span class="code-comment">// Profile &amp; Core Architecture</span></span></div>
                             <div class="code-line"><span class="code-ln">2</span><span><span class="code-type">Stack</span> stack = <span class="code-type">Stack</span>.<span class="code-method">builder</span>()</span></div>
-                            <div class="code-line"><span class="code-ln">3</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">language</span>(<span class="code-string">"Java 21"</span>)</span></div>
-                            <div class="code-line"><span class="code-ln">4</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">framework</span>(<span class="code-string">"Spring Boot"</span>)</span></div>
+                            <div class="code-line"><span class="code-ln">3</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">core</span>(<span class="code-string">"Java 21 SE / POO"</span>)</span></div>
+                            <div class="code-line"><span class="code-ln">4</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">testing</span>(<span class="code-string">"JUnit 5"</span>)</span></div>
                             <div class="code-line"><span class="code-ln">5</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">database</span>(<span class="code-string">"PostgreSQL"</span>)</span></div>
-                            <div class="code-line"><span class="code-ln">6</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">build</span>();</span></div>
-                            <div class="code-line"><span class="code-ln">7</span><span></span></div>
-                            <div class="code-line"><span class="code-ln">8</span><span><span class="code-type">String</span> estado = <span class="code-string">"Disponibilidad Inmediata (DAM)"</span>;</span></div>
+                            <div class="code-line"><span class="code-ln">6</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">roadmap</span>(<span class="code-string">"Spring Boot"</span>)</span></div>
+                            <div class="code-line"><span class="code-ln">7</span><span>&nbsp;&nbsp;&nbsp;&nbsp;.<span class="code-method">build</span>();</span></div>
+                            <div class="code-line"><span class="code-ln">8</span><span></span></div>
+                            <div class="code-line"><span class="code-ln">9</span><span><span class="code-type">String</span> estado = <span class="code-string">"Disponibilidad Inmediata (DAM)"</span>;</span></div>
                         </div>
                     </div>
                 </div>
@@ -223,10 +225,8 @@
                                 height="338">
                         </div>
                     </div>
-                    <div class="project-card-content"
-                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed"
-                            style="align-self: flex-start; margin-bottom: 15px;">v1.1.5 Stable</span>
+                    <div class="project-card-content">
+                        <span class="project-status-badge completed">v1.1.5 Stable</span>
                         <div class="project-card-header">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                             <h3 class="project-card-title" style="view-transition-name: habitly-title;">Habitly: Inmobiliaria &amp; Legal</h3>
@@ -268,10 +268,8 @@
                                 loading="lazy" width="600" height="338">
                         </div>
                     </div>
-                    <div class="project-card-content"
-                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge completed"
-                            style="align-self: flex-start; margin-bottom: 15px;">MVP Producción</span>
+                    <div class="project-card-content">
+                        <span class="project-status-badge completed">MVP Producción</span>
                         <div class="project-card-header">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
                             <h3 class="project-card-title" style="view-transition-name: splitit-title;">SplitIt: División Financiera</h3>
@@ -299,7 +297,7 @@
 
 
                 <!-- Tarjeta 3: Canary Wine & Guachinches API -->
-                <div class="project-card card" style="padding: 0; overflow: hidden;">
+                <div class="project-card card roadmap-card" style="padding: 0; overflow: hidden;">
                     <div class="project-thumbnail">
                         <div class="project-thumbnail-bar">
                             <div class="project-thumbnail-dots">
@@ -313,10 +311,8 @@
                             <img src="src/assets/projects/guachinche-api-preview.webp" alt="Captura de Canary Wine & Guachinches API" loading="lazy" width="600" height="338">
                         </div>
                     </div>
-                    <div class="project-card-content"
-                        style="padding: 25px 30px 30px; display: flex; flex-direction: column; height: 100%; flex-grow: 1;">
-                        <span class="project-status-badge planned"
-                            style="align-self: flex-start; margin-bottom: 15px;">En Roadmap</span>
+                    <div class="project-card-content">
+                        <span class="project-status-badge planned">En Roadmap</span>
                         <div class="project-card-header">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-4 8H9L5 3z"/></svg>
                             <h3 class="project-card-title">Canary Wine &amp; Guachinches API</h3>
@@ -380,14 +376,14 @@
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                         </svg>
                     </a>
-                    <a href="tel:+34627328887" aria-label="Teléfono" id="footer-phone">
+                    <a href="#" data-contact="phone" aria-label="Teléfono" id="footer-phone">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
                                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                     </a>
-                    <a href="mailto:inaranjordgz@gmail.com" aria-label="Email (Gmail)">
+                    <a href="#" data-contact="email" aria-label="Email (Gmail)">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -416,7 +412,7 @@
                 <h4>Estado Actual</h4>
                 <div class="status-indicator">
                     <span class="status-dot-green"></span>
-                    <span class="status-text">Disponible para proyectos</span>
+                    <span class="status-text">Disponible (DAM / Prácticas)</span>
                 </div>
                 <p class="status-location">📍 Las Palmas de Gran Canaria, España</p>
                 <p class="status-quote">"Convirtiendo café en código estructurado."</p>

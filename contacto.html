@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://js.hcaptcha.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com https://*.hcaptcha.com; frame-src https://*.hcaptcha.com;">
     <title>Contacto · Iriome Naranjo - Desarrollador Backend Java</title>
     <meta name="description" content="Desarrollador Backend Java especializado en construir código estructurado y escalable, con experiencia complementaria en automatización de procesos (RPA/PAD).">
 
@@ -51,7 +52,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="icon" type="image/jpeg" href="src/assets/logo.jpg">
+    <link rel="icon" type="image/webp" href="src/assets/logo.webp">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -112,19 +113,19 @@
                     </p>
                       <div class="contact-list">
                         <!-- Correo -->
-                        <a href="mailto:inaranjordgz@gmail.com" class="contact-link" id="contact-mail">
+                        <a href="#" data-contact="email" class="contact-link" id="contact-mail">
                             <div class="contact-icon-wrapper">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                             </div>
-                            <span>inaranjordgz@gmail.com</span>
+                            <span data-contact-text="email"></span>
                         </a>
 
                         <!-- Teléfono -->
-                        <a href="tel:+34627328887" class="contact-link" id="contact-phone">
+                        <a href="#" data-contact="phone" class="contact-link" id="contact-phone">
                             <div class="contact-icon-wrapper">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             </div>
-                            <span>+34 627 328 887</span>
+                            <span data-contact-text="phone"></span>
                         </a>
                         
                         <!-- LinkedIn -->
@@ -192,7 +193,7 @@
                         
                         <!-- Primera Capa de Información RGPD -->
                         <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; margin-top: 5px; border-top: 1px solid var(--border-color); padding-top: 10px;">
-                            <strong>Información básica sobre protección de datos:</strong> El responsable es Iriome Naranjo. La finalidad es responder y gestionar tu solicitud de contacto. Los datos se envían a través de Web3Forms como procesador seguro y se conservarán por un plazo de 12 meses. Puedes ejercer tus derechos de acceso, rectificación y supresión escribiendo a <a href="mailto:inaranjordgz@gmail.com" style="color: var(--accent-rose); text-decoration: underline;">inaranjordgz@gmail.com</a>.
+                            <strong>Información básica sobre protección de datos:</strong> El responsable es Iriome Naranjo. La finalidad es responder y gestionar tu solicitud de contacto. Los datos se envían a través de Web3Forms como procesador seguro y se conservarán por un plazo de 12 meses. Puedes ejercer tus derechos de acceso, rectificación y supresión escribiendo a <a href="#" data-contact="email" style="color: var(--accent-rose); text-decoration: underline;"><span data-contact-text="email"></span></a>.
                         </div>
                         
                         <button type="submit" class="btn btn-primary" id="btn-submit-contact">Enviar Mensaje</button>
@@ -211,7 +212,9 @@
             <!-- Columna 1: Marca y Redes -->
             <div class="footer-brand">
                 <div class="logo">
-                    <span class="logo-code">iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
+                    <span class="logo-code">iriome<span class="logo-dot">.</span><span
+                            class="logo-method">build</span><span class="logo-parentheses">(</span><span
+                            class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
                 </div>
                 <p class="footer-brand-desc">Iriome Naranjo · Desarrollador Java. Diseñando software con código limpio.</p>
                 <div class="footer-socials">
@@ -224,10 +227,10 @@
                     <a href="https://www.instagram.com/devnaranjo25/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </a>
-                    <a href="tel:+34627328887" aria-label="Teléfono" id="footer-phone">
+                    <a href="#" data-contact="phone" aria-label="Teléfono" id="footer-phone">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </a>
-                    <a href="mailto:inaranjordgz@gmail.com" aria-label="Email (Gmail)">
+                    <a href="#" data-contact="email" aria-label="Email (Gmail)">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     </a>
                 </div>
@@ -252,7 +255,7 @@
                 <h4>Estado Actual</h4>
                 <div class="status-indicator">
                     <span class="status-dot-green"></span>
-                    <span class="status-text">Disponible para proyectos</span>
+                    <span class="status-text">Disponible (DAM / Prácticas)</span>
                 </div>
                 <p class="status-location">📍 Las Palmas de Gran Canaria, España</p>
                 <p class="status-quote">"Convirtiendo café en código estructurado."</p>

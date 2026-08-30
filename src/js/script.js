@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Navegación Activa Dinámica
+    // 1. Navegación Activa Dinámica & Accesibilidad
     const currentPath = window.location.pathname;
     const pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1);
     
@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const isProjectDetail = pageName.startsWith('proyecto-') && linkPath === 'proyectos.html';
         if (pageName === linkPath || (pageName === '' && linkPath === 'index.html') || isProjectDetail) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
         } else {
             link.classList.remove('active');
+            link.removeAttribute('aria-current');
         }
     });
 
@@ -25,9 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         runCalculatorSimulation(calculatorTerminal);
     }
 
-    // 3. Copiado de Correo y Teléfono al Portapapeles
-    setupEmailCopy();
-    setupPhoneCopy();
+    // 3. Sistema de Protección de Datos de Contacto (Anti-Scraping / PII)
+    initProtectedContacts();
 
     // 4. Formulario de Contacto Animado e Interactivo
     setupContactForm();
@@ -411,47 +412,81 @@ function showToast(htmlContent) {
 }
 
 /**
- * Gestiona el copiado del correo al portapapeles para evitar problemas con clientes de mail locales.
+ * Helper y gestor de ofuscación de datos personales de contacto (Anti-Scraping / RGPD)
  */
-function setupEmailCopy() {
-    // Buscar cualquier enlace de correo
-    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-    if (emailLinks.length === 0) return;
+const ProtectedContact = {
+    _u: 'aW5hcmFuam9yZGd6',
+    _d: 'Z21haWwuY29t',
+    _t: 'KzM0IDYyNyAzMjggODg3',
+    _tr: 'KzM0NjI3MzI4ODg3',
+    getEmail() {
+        try {
+            return atob(this._u) + '@' + atob(this._d);
+        } catch (e) {
+            return 'inaranjordgz@gmail.com';
+        }
+    },
+    getPhone() {
+        try {
+            return atob(this._t);
+        } catch (e) {
+            return '+34 627 328 887';
+        }
+    },
+    getPhoneRaw() {
+        try {
+            return atob(this._tr);
+        } catch (e) {
+            return '+34627328887';
+        }
+    }
+};
 
-    emailLinks.forEach(link => {
+/**
+ * Inicializa y protege los elementos de contacto en el DOM.
+ * Rellena textos visibles e intercepta clics para copiar al portapapeles sin exponer datos en el HTML estático.
+ */
+function initProtectedContacts() {
+    const email = ProtectedContact.getEmail();
+    const phone = ProtectedContact.getPhone();
+    const phoneRaw = ProtectedContact.getPhoneRaw();
+
+    // Rellenar spans de texto seguro
+    document.querySelectorAll('[data-contact-text="email"]').forEach(el => {
+        el.textContent = email;
+    });
+    document.querySelectorAll('[data-contact-text="phone"]').forEach(el => {
+        el.textContent = phone;
+    });
+
+    // Gestionar enlaces de email protegidos
+    document.querySelectorAll('a[data-contact="email"], a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('mouseenter', () => link.setAttribute('href', `mailto:${email}`));
+        link.addEventListener('focus', () => link.setAttribute('href', `mailto:${email}`));
+        
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Evitar abrir aplicaciones de correo locales
-            const emailAddress = "inaranjordgz@gmail.com";
-
-            // Usar la función robusta de copiado
-            copyTextToClipboard(emailAddress).then(() => {
-                showToast('<span>✉</span> ¡Correo copiado al portapapeles!');
+            e.preventDefault();
+            copyTextToClipboard(email).then(() => {
+                showToast('<span style="font-size: 1.15rem;">✉️</span> <span>¡Correo copiado al portapapeles!</span>');
             }).catch(err => {
                 console.error('Error al copiar correo: ', err);
-                // Fallback: abrir el mailto tradicional si falla el portapapeles
-                window.location.href = `mailto:${emailAddress}`;
+                window.location.href = `mailto:${email}`;
             });
         });
     });
-}
 
-/**
- * Gestiona el copiado del teléfono al portapapeles.
- */
-function setupPhoneCopy() {
-    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-    if (phoneLinks.length === 0) return;
+    // Gestionar enlaces de teléfono protegidos
+    document.querySelectorAll('a[data-contact="phone"], a[href^="tel:"]').forEach(link => {
+        link.addEventListener('mouseenter', () => link.setAttribute('href', `tel:${phoneRaw}`));
+        link.addEventListener('focus', () => link.setAttribute('href', `tel:${phoneRaw}`));
 
-    phoneLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const phoneNumber = "+34 627 328 887";
-
-            copyTextToClipboard(phoneNumber).then(() => {
-                showToast('<span>📞</span> ¡Teléfono copiado al portapapeles!');
+            copyTextToClipboard(phone).then(() => {
+                showToast('<span style="font-size: 1.15rem;">📞</span> <span>¡Teléfono copiado al portapapeles!</span>');
             }).catch(err => {
                 console.error('Error al copiar teléfono: ', err);
-                window.location.href = `tel:+34627328887`;
+                window.location.href = `tel:${phoneRaw}`;
             });
         });
     });
@@ -1054,10 +1089,10 @@ function getDayAvailabilityStatus(year, month, day) {
     }
     
     // 3. Curso escolar / Periodo lectivo (Disponibilidad Parcial)
-    // 2º DAM: Desde el 16 de Septiembre 2026 hasta Junio 2027
+    // 2º DAM: Desde el 16 de Septiembre 2026 hasta el 31 de Mayo 2027 (Junio 2027 = Total Disponibilidad / Graduación)
     const dateObj = new Date(year, month - 1, day);
-    const damStart = new Date(2026, 8, 16); // 16 Sept 2026 (Parcialmente disponible a partir del 16)
-    const damEnd = new Date(2027, 5, 30);   // 30 Jun 2027
+    const damStart = new Date(2026, 8, 16); // 16 Sept 2026
+    const damEnd = new Date(2027, 4, 31);   // 31 May 2027 (Junio queda 100% disponible)
     if (dateObj >= damStart && dateObj <= damEnd) {
         return 'school';
     }
@@ -1103,7 +1138,7 @@ function initFooterAvailability() {
         `;
     } else if (status === 'school') {
         indicator.classList.add('status-school');
-        const isDam = today >= new Date(2026, 8, 16) && today <= new Date(2027, 5, 30);
+        const isDam = today >= new Date(2026, 8, 16) && today <= new Date(2027, 4, 31);
         const termLabel = isDam ? '2º DAM' : '2º DAW';
         indicator.innerHTML = `
             <span class="status-dot"></span>
