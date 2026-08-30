@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -101,24 +101,69 @@
     <!-- Contenido -->
     <main class="container">
         <section id="about-section">
-            <h1 class="title-medium">Quién soy y cómo trabajo</h1>
+            <!-- Fila Superior: Título (Izq) y Botón Lo Esencial (Dch) centrados sobre sus respectivas columnas -->
+            <div class="about-top-bar">
+                <div class="about-title-wrap">
+                    <h1 class="title-medium" style="margin-bottom: 0;">Quién soy y cómo trabajo</h1>
+                </div>
+                <div class="about-essential-wrap">
+                    <button id="btn-toggle-essential" class="btn-essential" aria-expanded="false" aria-controls="essential-summary-box">
+                        <span>Lo esencial 🔍</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Caja Desplegable con Resumen Ejecutivo de Toda la Página -->
+            <div id="essential-summary-box" class="essential-summary-card" style="display: none;">
+                <div class="essential-summary-header">
+                    <div class="essential-title-wrap">
+                        <span class="essential-badge">⚡ Resumen Ejecutivo</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin: 6px 0 0; color: var(--text-primary);">Perfil Express ⚡</h3>
+                    </div>
+                    <button id="btn-close-essential" class="essential-close-btn" aria-label="Cerrar resumen">✕</button>
+                </div>
+                <div class="essential-grid">
+                    <!-- Bloque 1: Perfil y Enfoque -->
+                    <div class="essential-col">
+                        <h4 class="essential-col-title">👤 Perfil &amp; Especialidad</h4>
+                        <p class="essential-text">
+                            Desarrollador enfocado en <strong>Backend Java (Java 21, Spring Boot)</strong>, diseño de arquitectura desacoplada por capas (POO), criptografía y testing automatizado con <strong>JUnit 5</strong>. Estudiante de 2º de DAM (Grado Superior).
+                        </p>
+                    </div>
+
+                    <!-- Bloque 2: Experiencia y Resultados -->
+                    <div class="essential-col">
+                        <h4 class="essential-col-title">💼 Experiencia Clave (11 Meses)</h4>
+                        <ul class="essential-list">
+                            <li><strong>Noray (RPA):</strong> Ahorro de <strong>25h/sem</strong> automatizando +75 casos diarios con Power Automate Desktop, PowerApps e IA.</li>
+                            <li><strong>Multiópticas (Soporte TI):</strong> Mantenimiento de redes VLAN, resolución remota/presencial e implantación de SO.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloque 3: Formación y Roadmap -->
+                    <div class="essential-col">
+                        <h4 class="essential-col-title">🎓 Formación &amp; Habilidades</h4>
+                        <ul class="essential-list">
+                            <li><strong>Titulaciones:</strong> Técnico SMR (Completado) + Técnico Superior DAM (En curso).</li>
+                            <li><strong>Stack:</strong> Java, SQL/PostgreSQL, Git, Power Automate, HTML5/CSS3.</li>
+                            <li><strong>Disponibilidad:</strong> Parcial lectiva por las tardes (Septiembre 2026 - Junio 2027) con incorporación a prácticas en Febrero/Marzo 2027.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             
             <div class="about-grid">
-                <!-- Historia -->
+                <!-- Historia (Columna Izquierda Superior) -->
                 <div class="story-text">
                     <p>
                         ¡Hola! Soy <strong>Iriome</strong>, estudiante de primer año de <strong>Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>. Desde muy joven descubrí mi vocación por la informática, impulsado por una profunda curiosidad técnica. Esta pasión me ha llevado a enfocarme en el <strong>desarrollo backend</strong>, la <strong>arquitectura de software</strong>, y actualmente me encuentro ampliando mis competencias en el diseño de software estructurado y soluciones orientadas a objetos.
                         <br><br>
                         Durante mi formación, he demostrado una <strong>alta velocidad de aprendizaje y resiliencia técnica</strong>. Al enfrentarme al ecosistema de <strong>Java</strong>, logré comprender, dominar e implementar conceptos avanzados de <strong>Programación Orientada a Objetos (POO)</strong> y testing unitario robusto. Ahora estoy dirigiendo este aprendizaje hacia la optimización de algoritmos y el diseño de bases de datos relacionales.
-                        <br>
                     </p>
-                    
-                    <div class="story-highlight">
-                        "Mi metodología se centra en la estructura, la planificación lógica y la entrega de software de calidad. Para mí, el código debe funcionar con absoluta precisión, orden y puntualidad."
-                    </div>
                 </div>
+
+                <!-- Tarjeta de Perfil (Columna Derecha) -->
                 <div class="sidebar-column">
-                    <!-- Tarjeta de Perfil -->
                     <div class="card profile-card" id="profile-card">
                         <div class="profile-img-container">
                             <img src="src/assets/profile.webp" alt="Foto de Iriome Naranjo" class="profile-img" onerror="this.src='src/assets/logo.webp'; this.style.opacity='0.7';">
@@ -131,6 +176,13 @@
                              <a href="src/assets/cv-iriome-naranjo.pdf" download="CV_Iriome_Naranjo_Backend_Java.pdf" class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px; width: 100%; box-sizing: border-box; text-align: center; display: block;">Descargar CV (PDF)</a>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Cita / Metodología (Fila Inferior Izquierda / Ancho Completo Alineado) -->
+            <div class="story-highlight-box">
+                <div class="story-highlight">
+                    "Mi metodología se centra en la estructura, la planificación lógica y la entrega de software de calidad. Para mí, el código debe funcionar con absoluta precisión, orden y puntualidad."
                 </div>
             </div>
 

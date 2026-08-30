@@ -43,7 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Indicador de Disponibilidad y Calendario
     initFooterAvailability();
     initAvailabilityCalendar();
+
+    // 7. Resumen Ejecutivo 'Lo Esencial 🔍' (sobre-mi.html)
+    setupEssentialSummary();
 });
+
 
 /**
  * Configura el menú de navegación móvil colapsable (hamburguesa).
@@ -616,11 +620,12 @@ function setupThemeToggle() {
             clearTimeout(transitionTimeout);
         }
 
-        // Remover la clase después de que la transición (0.8s) se complete
+        // Remover la clase después de que la transición (0.5s) se complete
         transitionTimeout = setTimeout(() => {
             document.documentElement.classList.remove('theme-transitioning');
-        }, 800);
+        }, 500);
     });
+
 
 }
 
@@ -789,13 +794,44 @@ function setupProjectDetailsZoom() {
                     mainContainer.classList.add('page-zoom-exit');
                 }
                 
-                // Navegar una vez finalice la animación
+                // Navegar una vez finalice la animación (0.4s sincronizado)
                 setTimeout(() => {
                     window.location.href = href;
-                }, 450);
+                }, 400);
             }
         });
     });
+
+    // Easter egg: Click en el botón amarillo de la ventana para abrir "Ver Detalles"
+    const yellowDots = document.querySelectorAll('.project-thumbnail-dot.yellow');
+    yellowDots.forEach(dot => {
+        dot.setAttribute('title', 'Ver detalles del proyecto (Easter Egg)');
+        dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = dot.closest('.project-card');
+            if (!card) return;
+            const detailLink = card.querySelector('.project-card-actions a.btn-primary');
+            if (detailLink) {
+                detailLink.click();
+            }
+        });
+    });
+
+    // Easter egg en la ventana IDE del inicio: Click en el botón amarillo para abrir "Sobre Mí"
+    const ideYellowDot = document.querySelector('.hero-ide-header .ide-dot.yellow');
+    if (ideYellowDot) {
+        ideYellowDot.setAttribute('title', 'Conocer a Iriome (Sobre Mí)');
+        ideYellowDot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const mainContainer = document.querySelector('main');
+            if (mainContainer) {
+                mainContainer.classList.add('page-zoom-exit');
+            }
+            setTimeout(() => {
+                window.location.href = 'sobre-mi.html';
+            }, 400);
+        });
+    }
 }
 
 /**
@@ -1239,3 +1275,42 @@ function renderAvailabilityCalendar(year) {
         calendarTarget.style.opacity = '1';
     }, 150);
 }
+
+/**
+ * Controla el botón y la tarjeta interactiva de 'Lo Esencial 🔍' en sobre-mi.html
+ */
+function setupEssentialSummary() {
+    const toggleBtn = document.getElementById('btn-toggle-essential');
+    const summaryBox = document.getElementById('essential-summary-box');
+    const closeBtn = document.getElementById('btn-close-essential');
+
+    if (!toggleBtn || !summaryBox) return;
+
+    function openSummary() {
+        summaryBox.style.display = 'block';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        toggleBtn.style.borderColor = 'var(--accent-cyan)';
+        toggleBtn.style.color = '#FFFFFF';
+        summaryBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function closeSummary() {
+        summaryBox.style.display = 'none';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.style.borderColor = '';
+        toggleBtn.style.color = '';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const isVisible = summaryBox.style.display !== 'none';
+        if (isVisible) {
+            closeSummary();
+        } else {
+            openSummary();
+        }
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSummary);
+    }
+}
