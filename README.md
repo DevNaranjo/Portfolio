@@ -71,25 +71,28 @@ Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Team
 
 ## 🛠️ Características técnicas
 
-### 🎨 UI/UX
-- **Diseño Responsive:** Rejillas CSS fluidas y adaptaciones para dispositivos móviles, tablets y pantallas de escritorio.
-- **Modo Oscuro / Claro:** Carga por defecto en modo oscuro con alternador flotante y transiciones suaves de 0.8s sin parpadeo.
+### 🎨 UI/UX & Accesibilidad
+- **Diseño Responsive & Accesible:** Rejillas CSS fluidas, adaptaciones móviles con áreas táctiles conformes a WCAG 2.2 (`min-height: 44px`) y atributos semánticos `aria-current="page"`.
+- **Modo Oscuro / Claro:** Carga por defecto en modo oscuro con alternador flotante y transiciones suaves de 0.5s en sincronía con el sistema.
 - **Navegación Multinivel:** Menú desplegable con submenús anidados para agrupar proyectos de automatización RPA, optimizado para hover en PC y toque táctil en móviles.
 - **Calendario Dinámico:** Visualizador de disponibilidad 2026–2028 en `sobre-mi.html` con filtros de estado y pie de página que reacciona en tiempo real a la fecha actual del sistema.
 - **Logotipo Interactivo:** Identificador dinámico `Iriome.build(sección)` que actualiza su parámetro según la página activa.
+- **CV Interactivo & Exportación (`cv.html`):** Vista web adaptada con descarga directa en PDF y exportación milimétrica a formato A4 de 2 páginas vía `@media print`.
 
 ### ⚙️ JavaScript & Interactividad
 - **Simulador de Terminal:** Emulación en JavaScript de la salida y ejecución por consola de los programas en Java (Habitly y SplitIt).
 - **Copiado Rápido y Toasts:** Copiado de correo y teléfono al portapapeles con notificaciones flotantes interactivas.
-- **Desarrollo Nativo:** Construido con HTML5, CSS3 y JavaScript vanilla, minimizando dependencias externas para garantizar una ejecución ágil y ligera.
+- **Desarrollo Nativo:** Construido con HTML5, CSS3 y JavaScript vanilla sin dependencias externas pesadas, garantizando una puntuación de rendimiento óptima.
 
-### 🔐 Privacidad & Analítica
+### 🔐 Ciberseguridad & Privacidad (RGPD)
+- **Protección Anti-Scraping para Datos Personales (PII):** Los correos y teléfonos se almacenan codificados en Base64 y se decodifican dinámicamente en tiempo de ejecución, impidiendo su extracción por spambots.
+- **Content Security Policy (CSP):** Cabeceras meta en todas las páginas restringiendo orígenes legítimos para scripts, estilos, conexiones y fuentes.
 - **Formulario Seguro:** Verificación anti-spam mediante hCaptcha e integración con Web3Forms.
-- **Analítica y Cumplimiento:** Integración con Google Tag Manager (GTM) respetando el banner de consentimiento dinámico (Consent Mode v2) y la normativa europea de protección de datos (RGPD).
+- **Analítica y Cumplimiento:** Integración con Google Tag Manager (GTM) respetando el banner de consentimiento dinámico (Consent Mode v2 con denegación por defecto) y la normativa europea de protección de datos (RGPD).
 
 ### ⚡ Rendimiento
 - **Optimización de Assets (WebP):** Imágenes y capturas de proyectos convertidas al formato `.webp` (calidad 80%), reduciendo el peso de descarga inicial en más de 2.75 MB.
-- **Carga Eficiente:** Código modular y tipografías optimizadas para acelerar los tiempos de renderizado.
+- **Carga Eficiente:** Código modular y tipografías optimizadas (`Plus Jakarta Sans` y `JetBrains Mono`).
 
 ### 🧩 Herramientas Auxiliares
 - **Generador Local de Correo (`plantilla_correo.html`):** Utilidad local privada para la generación ágil de respuestas formales por correo electrónico (accesible mediante el atajo `Ctrl + Alt + I`, archivo excluido del repositorio público).

@@ -616,14 +616,14 @@ function setupContactForm() {
                         `;
                     }, 300);
                 } else {
-                    console.log(jsonRes);
-                    throw new Error(jsonRes.message || 'Error en el servidor.');
+                    throw new Error(jsonRes.message || 'Error en el servidor de recepción.');
                 }
             })
             .catch(error => {
                 console.error(error);
                 submitBtn.classList.remove('btn-loading');
-                alert('Hubo un error al enviar el formulario: ' + error.message + '\nPor favor, escribe directamente a inaranjordgz@gmail.com.');
+                const contactEmail = typeof ProtectedContact !== 'undefined' ? ProtectedContact.getEmail() : 'contacto';
+                alert('Hubo un error al enviar el formulario: ' + error.message + '\nPor favor, utiliza los enlaces de contacto del pie de página o escribe a: ' + contactEmail);
             });
         }
     });
@@ -631,6 +631,7 @@ function setupContactForm() {
 
 /**
  * Configura el botón flotante de alternancia de tema claro/oscuro.
+ * Guarda la preferencia en localStorage para recordarla entre visitas sin parpadeos.
  */
 function setupThemeToggle() {
     const toggleBtn = document.getElementById('theme-toggle');
@@ -639,7 +640,7 @@ function setupThemeToggle() {
     let transitionTimeout;
 
     toggleBtn.addEventListener('click', () => {
-        // Añadir clase temporal para transición suave y gradual
+        // Añadimos una clase temporal para que la transición de colores dure exactamente 0.5s
         document.documentElement.classList.add('theme-transitioning');
         
         const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -650,20 +651,22 @@ function setupThemeToggle() {
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
 
-        // Limpiar el timeout anterior si el usuario hace clic rápidamente
+        // Limpiamos el timeout previo si el usuario hace clics rápidos seguidos
         if (transitionTimeout) {
             clearTimeout(transitionTimeout);
         }
 
-        // Remover la clase después de que la transición (0.5s) se complete
+        // Retiramos la clase de animación una vez completada la transición
         transitionTimeout = setTimeout(() => {
             document.documentElement.classList.remove('theme-transitioning');
         }, 500);
     });
-
-
 }
 
+/**
+ * Atajo de teclado para entorno local de desarrollo (Ctrl + Alt + I).
+ * Permite acceder rápidamente al generador de respuestas formales durante el trabajo diario.
+ */
 function setupPrivateTemplateShortcut() {
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.altKey && e.code === 'KeyI') {

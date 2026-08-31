@@ -85,4 +85,6 @@ plantilla_correo.html
 __pycache__/
 *.pyc
 implementationPlan.md
+implementationPlan.pdf
+Verification.md
 Github.md

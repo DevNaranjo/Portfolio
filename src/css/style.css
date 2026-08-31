@@ -1852,7 +1852,10 @@ h1, h2, h3, h4 {
     }
     
     .nav-links .dropdown-content li a {
-        padding: 8px 24px;
+        padding: 10px 24px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
     
     .nav-links .dropdown:hover .dropdown-content,
