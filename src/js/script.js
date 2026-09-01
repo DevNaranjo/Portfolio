@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 7. Resumen Ejecutivo 'Lo Esencial 🔍' (sobre-mi.html)
     setupEssentialSummary();
+
+    // 8. Simulador Interactivo de Marcador Android (El Piedrero)
+    initElPiedreroSimulator();
 });
 
 
@@ -1351,4 +1354,244 @@ function setupEssentialSummary() {
     if (closeBtn) {
         closeBtn.addEventListener('click', closeSummary);
     }
+}
+
+/**
+ * Simulador Interactivo de Marcador Android "El Piedrero" (Ronda Canaria)
+ * Basado en la arquitectura real de Ronda_Android (Jetpack Compose, 11 malas, 10 buenas, 21 victoria, audios y cantos).
+ */
+function initElPiedreroSimulator() {
+    const previewContainer = document.getElementById('interactive-game-preview');
+    if (!previewContainer) return;
+
+    // Estado local reactivo de la partida
+    const state = {
+        activeTeam: 'A',
+        scoreA: 0,
+        scoreB: 0,
+        inBuenasA: false,
+        inBuenasB: false,
+        gameFinished: false
+    };
+
+    const audioMap = {
+        ronda: 'src/assets/audio/Ronda.mp3',
+        parranda: 'src/assets/audio/Parranda.mp3',
+        caracol: 'src/assets/audio/Caracol.mp3',
+        caracolillo: 'src/assets/audio/Caracolillo.mp3',
+        majo: 'src/assets/audio/Majo.mp3',
+        limpio: 'src/assets/audio/Limpio.mp3',
+        majoylimpio: 'src/assets/audio/Majo-y-limpio.mp3',
+        buenas: 'src/assets/audio/Buenas.mp3'
+    };
+
+    const currentAudio = new Audio();
+
+    function playAudio(cantoKey) {
+        const src = audioMap[cantoKey];
+        if (!src) return;
+        try {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio.src = src;
+            currentAudio.play().catch(() => {
+                // Autoplay policy fallback: audio muted or user hasn't interacted with page
+            });
+        } catch (e) {
+            console.warn('Audio play error:', e);
+        }
+    }
+
+    // Elementos del DOM
+    const scoreAEl = document.getElementById('team-a-score');
+    const scoreBEl = document.getElementById('team-b-score');
+    const statusAEl = document.getElementById('team-a-status');
+    const statusBEl = document.getElementById('team-b-status');
+    const cardA = document.getElementById('card-team-a');
+    const cardB = document.getElementById('card-team-b');
+    const btnSelectA = document.getElementById('btn-select-team-a');
+    const btnSelectB = document.getElementById('btn-select-team-b');
+    const announcementBox = document.getElementById('demo-announcement');
+    const announcementIcon = document.getElementById('demo-announcement-icon');
+    const announcementText = document.getElementById('demo-announcement-text');
+    const btnReset = document.getElementById('btn-reset-demo');
+
+    function announce(icon, text, isSpecial = false) {
+        if (!announcementText) return;
+        announcementIcon.textContent = icon;
+        announcementText.textContent = text;
+        if (isSpecial) {
+            announcementBox.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(16, 185, 129, 0.2) 100%)';
+            announcementBox.style.borderColor = '#F59E0B';
+            announcementText.style.color = '#FDE68A';
+        } else {
+            announcementBox.style.background = 'rgba(6, 182, 212, 0.1)';
+            announcementBox.style.borderColor = 'rgba(6, 182, 212, 0.25)';
+            announcementText.style.color = '#E2E8F0';
+        }
+    }
+
+    function updateUI() {
+        // Puntuaciones
+        if (scoreAEl) scoreAEl.textContent = state.scoreA;
+        if (scoreBEl) scoreBEl.textContent = state.scoreB;
+
+        // Estado Malas / Buenas Equipo A
+        if (statusAEl) {
+            if (state.scoreA >= 11) {
+                const buenas = Math.min(10, state.scoreA - 11);
+                statusAEl.textContent = `🌟 Buenas (${buenas}/10)`;
+                statusAEl.style.background = 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)';
+                statusAEl.style.color = '#000';
+            } else {
+                statusAEl.textContent = `Malas (${state.scoreA}/11)`;
+                statusAEl.style.background = 'rgba(255,255,255,0.1)';
+                statusAEl.style.color = '#94A3B8';
+            }
+        }
+
+        // Estado Malas / Buenas Equipo B
+        if (statusBEl) {
+            if (state.scoreB >= 11) {
+                const buenas = Math.min(10, state.scoreB - 11);
+                statusBEl.textContent = `🌟 Buenas (${buenas}/10)`;
+                statusBEl.style.background = 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)';
+                statusBEl.style.color = '#000';
+            } else {
+                statusBEl.textContent = `Malas (${state.scoreB}/11)`;
+                statusBEl.style.background = 'rgba(255,255,255,0.1)';
+                statusBEl.style.color = '#94A3B8';
+            }
+        }
+
+        // Selección visual de equipo activo
+        if (state.activeTeam === 'A') {
+            cardA.style.borderColor = '#10B981';
+            cardA.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.3)';
+            cardB.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+            cardB.style.boxShadow = 'none';
+
+            btnSelectA.style.background = '#10B981';
+            btnSelectA.style.color = '#000';
+            btnSelectA.style.borderColor = '#10B981';
+
+            btnSelectB.style.background = 'transparent';
+            btnSelectB.style.color = '#94A3B8';
+            btnSelectB.style.borderColor = 'rgba(255,255,255,0.2)';
+        } else {
+            cardB.style.borderColor = '#818CF8';
+            cardB.style.boxShadow = '0 0 15px rgba(99, 102, 241, 0.35)';
+            cardA.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+            cardA.style.boxShadow = 'none';
+
+            btnSelectB.style.background = '#6366F1';
+            btnSelectB.style.color = '#FFF';
+            btnSelectB.style.borderColor = '#6366F1';
+
+            btnSelectA.style.background = 'transparent';
+            btnSelectA.style.color = '#94A3B8';
+            btnSelectA.style.borderColor = 'rgba(255,255,255,0.2)';
+        }
+    }
+
+    function addPoints(team, points, cantoKey = null, cantoName = '') {
+        if (state.gameFinished) {
+            announce('⚠️', 'Partida finalizada. Pulsa "Reiniciar Partida" para comenzar una nueva.');
+            return;
+        }
+
+        const currentScore = team === 'A' ? state.scoreA : state.scoreB;
+        const newScore = Math.min(21, Math.max(0, currentScore + points));
+        const teamName = team === 'A' ? 'Equipo A' : 'Equipo B';
+
+        // Check if passing to Buenas
+        const wasInBuenas = currentScore >= 11;
+        const nowInBuenas = newScore >= 11;
+
+        if (team === 'A') state.scoreA = newScore;
+        else state.scoreB = newScore;
+
+        if (cantoKey) {
+            playAudio(cantoKey);
+        }
+
+        // Celebrar si pasa a Buenas
+        if (!wasInBuenas && nowInBuenas && newScore < 21) {
+            setTimeout(() => playAudio('buenas'), 450);
+            announce('🌟', `¡${teamName} pasa a BUENAS! Entrando en las 10 definitivas.`, true);
+        } else if (newScore >= 21) {
+            state.gameFinished = true;
+            announce('🏆', `¡${teamName} HA GANADO LA PARTIDA! (21 piedras completadas)`, true);
+        } else if (cantoName) {
+            announce('📢', `${teamName} canta ${cantoName} (+${points} ${points > 1 ? 'piedras' : 'piedra'})`);
+        } else {
+            announce('📳', `Ajuste manual: ${teamName} ahora tiene ${newScore} piedras`);
+        }
+
+        updateUI();
+    }
+
+    // Eventos selector de equipo
+    if (btnSelectA) btnSelectA.addEventListener('click', () => { state.activeTeam = 'A'; updateUI(); });
+    if (btnSelectB) btnSelectB.addEventListener('click', () => { state.activeTeam = 'B'; updateUI(); });
+    if (cardA) cardA.addEventListener('click', (e) => {
+        if (e.target.closest('.btn-score-adjust')) return;
+        state.activeTeam = 'A';
+        updateUI();
+    });
+    if (cardB) cardB.addEventListener('click', (e) => {
+        if (e.target.closest('.btn-score-adjust')) return;
+        state.activeTeam = 'B';
+        updateUI();
+    });
+
+    // Eventos botones ajuste (+ / -)
+    previewContainer.querySelectorAll('.btn-score-adjust').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const team = btn.dataset.team;
+            const delta = parseInt(btn.dataset.delta, 10);
+            addPoints(team, delta, null, '');
+        });
+    });
+
+    // Eventos botones de cantos tradicionales
+    previewContainer.querySelectorAll('.btn-canto-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const canto = btn.dataset.canto;
+            const points = parseInt(btn.dataset.points, 10);
+            const cantoName = btn.querySelector('span') ? btn.querySelector('span').textContent.trim() : btn.textContent.trim();
+            addPoints(state.activeTeam, points, canto, cantoName);
+        });
+    });
+
+    // Evento reiniciar
+    function resetSimulation() {
+        state.scoreA = 0;
+        state.scoreB = 0;
+        state.gameFinished = false;
+        announce('🔄', 'Marcador reseteado a 0 piedras. ¡A jugar!');
+        updateUI();
+    }
+
+    if (btnReset) {
+        btnReset.addEventListener('click', resetSimulation);
+    }
+
+    const btnResetBottom = document.getElementById('btn-reset-demo-bottom');
+    if (btnResetBottom) {
+        btnResetBottom.addEventListener('click', resetSimulation);
+        btnResetBottom.addEventListener('mouseenter', () => {
+            btnResetBottom.style.background = 'rgba(239, 68, 68, 0.25)';
+            btnResetBottom.style.borderColor = '#EF4444';
+            btnResetBottom.style.color = '#FFFFFF';
+        });
+        btnResetBottom.addEventListener('mouseleave', () => {
+            btnResetBottom.style.background = 'rgba(239, 68, 68, 0.12)';
+            btnResetBottom.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+            btnResetBottom.style.color = '#FCA5A5';
+        });
+    }
+
+    updateUI();
 }

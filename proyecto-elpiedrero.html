@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; media-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com;">
+    <title>El Piedrero · Marcador Android Ronda Canaria | Iriome Naranjo</title>
+    <meta name="description" content="Marcador nativo Android en Kotlin y Jetpack Compose para la tradicional Ronda Canaria. Sincronización multijugador offline por Sockets TCP y arquitectura limpia.">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KGFHGSRH');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="El Piedrero · Marcador Android Ronda Canaria | Iriome Naranjo">
+    <meta property="og:description" content="Marcador nativo Android offline en Kotlin y Jetpack Compose con sincronización multijugador por Sockets TCP y desarrollo asistido por IA.">
+    <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/projects/elpiedrero-preview.webp">
+    <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/proyecto-elpiedrero.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://devnaranjo.github.io/Portfolio/proyecto-elpiedrero.html">
+
+        <!-- Google Consent Mode v2 -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+    </script>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme !== 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+        <!-- Tipografías de Software Engineering: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/webp" href="src/assets/logo.webp">
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGFHGSRH" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Menú de Navegación -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="src/assets/logo.webp" alt="Logo de Iriome.build" class="nav-logo-img">
+                <span class="logo-code">Iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">elpiedrero</span><span class="logo-parentheses">)</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-link-home">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="sobre-mi.html" id="nav-link-about" class="dropbtn">Sobre Mí <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="sobre-mi.html#about-section">Mi Historia</a></li>
+                        <li><a href="sobre-mi.html#experience-section">Experiencia y Formación</a></li>
+                        <li><a href="sobre-mi.html#challenges-section">RoadMap</a></li>
+                        <li><a href="sobre-mi.html#availability-calendar">Calendario</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="proyectos.html" id="nav-link-projects" class="dropbtn active">Proyectos <span class="arrow">▾</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="proyecto-habitly.html">Habitly</a></li>
+                        <li><a href="proyecto-splitit.html">SplitIt</a></li>
+                        <li class="dropdown-submenu">
+                            <span class="submenu-title">Automatización RPA <span class="arrow-right">▸</span></span>
+                            <ul class="dropdown-submenu-content">
+                                <li><a href="proyecto-rpa.html">RPA Soporte (PAD)</a></li>
+                                <li><a href="proyecto-rpa-resumen.html">Resúmenes IA (PAD)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="proyectos.html">Ver todos</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" id="nav-link-contact">Contacto</a></li>
+                <li><a href="cv.html" id="nav-link-cv" class="nav-cv-btn">CV</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="container">
+        <section id="projects-section">
+            <div style="margin-bottom: 30px;">
+                <a href="proyectos.html" style="color: var(--accent-rose); font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                    ← Volver a Mis Proyectos
+                </a>
+            </div>
+
+            <!-- Ficha de Cabecera del Proyecto -->
+            <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.0)</h1>
+                    <div class="project-meta">
+                        <span class="tag">Android</span>
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">JetpackCompose</span>
+                        <span class="tag">CleanArchitecture</span>
+                        <span class="tag">SocketsTCP</span>
+                        <span class="tag">CameraX</span>
+                        <span class="tag">OpenSource</span>
+                    </div>
+                    <div style="margin-top: 15px; display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+                        <span>🎉 <strong>Fase MVP (1.0) · Open Source:</strong> Versión inicial operativa publicada bajo licencia MIT en GitHub con binario APK compilado listo para instalar.</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://github.com/DevNaranjo/El-Piedrero" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        Ver en GitHub
+                    </a>
+
+                    <a href="https://github.com/DevNaranjo/El-Piedrero/raw/main/ElPiedrero.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; color: #FFFFFF;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar APK (v1.0)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ventana Curiosa: Origen del Nombre -->
+            <div class="card" id="naming-curiosity-box" style="margin-top: 25px; margin-bottom: 35px; padding: 22px 28px; border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid var(--accent-sage); background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%); border-radius: 14px; position: relative; overflow: hidden;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.2rem;">💡</span>
+                    <h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 700; margin: 0; color: var(--accent-sage); letter-spacing: 0.3px;">
+                        ¿De dónde sale el nombre «El Piedrero»?
+                    </h3>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.93rem; line-height: 1.65; margin: 0;">
+                    En la <strong>Ronda Canaria</strong>, los puntos se contabilizan con <em>piedras</em> físicas sobre la mesa. El encargado de gestionarlas — sumar malas, pasar a buenas y cantar la victoria — se llama coloquialmente <strong>el piedrero</strong>. La app toma ese nombre para ser el <strong>«piedrero digital»</strong> de cada partida.
+                </p>
+            </div>
+
+            <!-- SIMULADOR / VISTA PREVIA INTERACTIVA DE LA APLICACIÓN ANDROID -->
+            <div class="card" id="interactive-game-preview" style="margin-top: 20px; margin-bottom: 40px; padding: 30px; border: 1px solid rgba(16, 185, 129, 0.25); background: linear-gradient(180deg, rgba(17, 24, 39, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #10B981; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">🎮 Demo Interactiva en Vivo</span>
+                        <h3 style="font-family: var(--font-sans); font-size: 1.35rem; font-weight: 700; margin: 4px 0 0 0; color: #F8FAFC; display: flex; align-items: center; gap: 10px;">
+                            <span>Vista Previa: ¿Cómo se juega con El Piedrero?</span>
+                        </h3>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="demo-sound-badge" style="font-size: 0.8rem; background: rgba(16, 185, 129, 0.15); color: #34D399; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">🔊 Audio Real Activo</span>
+                        <button id="btn-reset-demo" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.82rem; border-radius: 20px; width: auto;" title="Reiniciar tanteo a 0 piedras">
+                            🔄 Reiniciar Partida
+                        </button>
+                    </div>
+                </div>
+
+                <p style="color: #94A3B8; font-size: 0.92rem; line-height: 1.6; margin-top: 0; margin-bottom: 25px;">
+                    Experimenta en tiempo real la interfaz reactiva desarrollada en <strong>Jetpack Compose (Material 3)</strong>: selecciona para qué equipo cantar, pulsa sobre cualquiera de las jugadas tradicionales para sumar piedras y escuchar la locución folclórica original, o simula el paso a <em>¡Buenas!</em> y la victoria al alcanzar las 21 piedras.
+                </p>
+
+                <!-- Marco del Teléfono Móvil / Marcador -->
+                <div style="max-width: 540px; margin: 0 auto; background: #0B0F19; border-radius: 28px; border: 2px solid #1F2937; padding: 18px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); position: relative;">
+                    <!-- Barra de Estado Superior de la App Android -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(16, 185, 129, 0.12); padding: 10px 14px; border-radius: 12px; margin-bottom: 14px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.2rem;">🃏</span>
+                            <div>
+                                <div style="font-size: 0.9rem; font-weight: 700; color: #F8FAFC;">El Piedrero</div>
+                                <div style="font-size: 0.72rem; color: #94A3B8;">Partida Local · Mesa Central</div>
+                            </div>
+                        </div>
+                        <span style="font-size: 0.72rem; background: #10B981; color: #022c22; font-weight: 700; padding: 3px 8px; border-radius: 6px;">21 PIEDRAS</span>
+                    </div>
+
+                    <!-- Notificación Sonora / Estado de Jugada Cantada -->
+                    <div id="demo-announcement" style="min-height: 38px; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 10px; padding: 8px 12px; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 14px; transition: all 0.3s ease;">
+                        <span id="demo-announcement-icon" style="font-size: 1.05rem;">🎲</span>
+                        <span id="demo-announcement-text" style="font-size: 0.85rem; color: #E2E8F0; font-weight: 600;">Haz clic en cualquier jugada para cantar y sumar piedras</span>
+                    </div>
+
+                    <!-- Tarjetas de Tanteo (Equipo A vs Equipo B) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <!-- Tarjeta Equipo A -->
+                        <div id="card-team-a" style="background: rgba(16, 185, 129, 0.08); border: 2px solid #10B981; border-radius: 16px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <span style="font-size: 0.95rem; font-weight: 800; color: #34D399;">Equipo A</span>
+                                <span id="team-a-status" style="font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #94A3B8;">Malas (0/11)</span>
+                            </div>
+                            <div id="team-a-score" style="font-size: 2.75rem; font-weight: 900; color: #F8FAFC; line-height: 1.1; margin: 4px 0;">0</div>
+                            <div style="font-size: 0.75rem; color: #64748B; margin-bottom: 10px;">Piedras / 21</div>
+                            <div style="display: flex; justify-content: center; gap: 8px;">
+                                <button class="btn-score-adjust" data-team="A" data-delta="-1" style="width: 34px; height: 34px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: #FFF; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">-</button>
+                                <button class="btn-score-adjust" data-team="A" data-delta="1" style="width: 34px; height: 34px; border-radius: 8px; border: none; background: #10B981; color: #000; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Equipo B -->
+                        <div id="card-team-b" style="background: rgba(99, 102, 241, 0.08); border: 2px solid rgba(99, 102, 241, 0.4); border-radius: 16px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <span style="font-size: 0.95rem; font-weight: 800; color: #818CF8;">Equipo B</span>
+                                <span id="team-b-status" style="font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #94A3B8;">Malas (0/11)</span>
+                            </div>
+                            <div id="team-b-score" style="font-size: 2.75rem; font-weight: 900; color: #F8FAFC; line-height: 1.1; margin: 4px 0;">0</div>
+                            <div style="font-size: 0.75rem; color: #64748B; margin-bottom: 10px;">Piedras / 21</div>
+                            <div style="display: flex; justify-content: center; gap: 8px;">
+                                <button class="btn-score-adjust" data-team="B" data-delta="-1" style="width: 34px; height: 34px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: #FFF; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">-</button>
+                                <button class="btn-score-adjust" data-team="B" data-delta="1" style="width: 34px; height: 34px; border-radius: 8px; border: none; background: #6366F1; color: #FFF; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selector de Equipo para Cantar -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding: 0 4px;">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: #94A3B8;">Cantar jugada para:</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button id="btn-select-team-a" class="btn-team-picker active" style="padding: 4px 12px; font-size: 0.78rem; font-weight: 700; border-radius: 12px; cursor: pointer; border: 1px solid #10B981; background: #10B981; color: #000;">Equipo A</button>
+                            <button id="btn-select-team-b" class="btn-team-picker" style="padding: 4px 12px; font-size: 0.78rem; font-weight: 700; border-radius: 12px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #94A3B8;">Equipo B</button>
+                        </div>
+                    </div>
+
+                    <!-- Botonera de Cantos Tradicionales con Audios -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <button class="btn-canto-trigger" data-canto="ronda" data-points="1" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Ronda</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+1</span>
+                            </button>
+                            <button class="btn-canto-trigger" data-canto="parranda" data-points="3" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Parranda</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+3</span>
+                            </button>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <button class="btn-canto-trigger" data-canto="caracol" data-points="4" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Caracol</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+4</span>
+                            </button>
+                            <button class="btn-canto-trigger" data-canto="caracolillo" data-points="5" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Caracolillo</span> <span style="background: rgba(245,158,11,0.2); color: #FBBF24; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+5</span>
+                            </button>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 8px;">
+                            <button class="btn-canto-trigger" data-canto="majo" data-points="1" style="padding: 9px 6px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-align: center;">
+                                Majo (+1)
+                            </button>
+                            <button class="btn-canto-trigger" data-canto="limpio" data-points="1" style="padding: 9px 6px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-align: center;">
+                                Limpiar (+1)
+                            </button>
+                            <button class="btn-canto-trigger" data-canto="majoylimpio" data-points="2" style="padding: 9px 6px; border-radius: 12px; border: 1px solid #6366F1; background: rgba(99,102,241,0.2); color: #C7D2FE; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-align: center;">
+                                Majo y Limpio (+2)
+                            </button>
+                        </div>
+
+                        <!-- Botón Principal de Reiniciar Simulación -->
+                        <div style="margin-top: 4px;">
+                            <button id="btn-reset-demo-bottom" class="btn-reset-action" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.12); color: #FCA5A5; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                                Reiniciar Simulación (0 Piedras)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 18px; display: flex; justify-content: center; gap: 20px; font-size: 0.82rem; color: #94A3B8; text-align: center; flex-wrap: wrap;">
+                    <span>🪨 <strong>11 Malas</strong>: Inicio de tanteo</span>
+                    <span>🌟 <strong>10 Buenas</strong>: A partir de la 11ª piedra</span>
+                    <span>🏆 <strong>21 Piedras</strong>: Fin de partida</span>
+                </div>
+            </div>
+
+            <!-- Diagrama de Arquitectura Técnica y Sockets -->
+            <div class="card" style="margin-top: 20px; margin-bottom: 40px; padding: 35px; border: 1px solid var(--border-glass);">
+                <h3 style="font-family: var(--font-sans); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; color: var(--text-primary);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    Arquitectura del Sistema: MVI Reactivo &amp; Red Sockets TCP Offline
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 25px; line-height: 1.6;">
+                    Estructura desacoplada bajo <strong>Clean Architecture</strong> combinando interfaz declarativa reactiva con un protocolo de comunicación en red local de baja latencia:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #10B981; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34D399; font-weight: 600; text-transform: uppercase;">1. UI Reactiva / Presentación</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Jetpack Compose &amp; MVI</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Material 3, diseño accesible con alto contraste táctil para personas mayores y flujo unidireccional con <code>StateFlow</code>.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #06B6D4; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #06B6D4; font-weight: 600; text-transform: uppercase;">2. Sincronización Local</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Sockets TCP &amp; NDJSON</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Servidor/cliente ligero por socket en red local (LAN/Wi-Fi Direct). Emparejamiento por QR en menos de 1 segundo sin configurar IPs.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #6366F1; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818CF8; font-weight: 600; text-transform: uppercase;">3. Blindaje &amp; Rendimiento</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">CameraX &amp; Anti-DoS</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Reutilización de buffers a 60 FPS sin pausas de Garbage Collection, límite de 32 KB por trama y validación autoritaria en el Host.</p>
+                    </div>
+                    <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #F59E0B; padding: 18px; border-radius: 10px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #FBBF24; font-weight: 600; text-transform: uppercase;">4. Suite CI/CD &amp; Reglas</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">JUnit &amp; GitHub Actions</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Batería de pruebas unitarias sobre reglas de tanteo tradicional y compilación desatendida del APK Release en runners Ubuntu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metodología STAR -->
+            <div class="star-container" id="star-breakdown">
+                <!-- Situation -->
+                <div class="star-section">
+                    <div class="star-letter">S</div>
+                    <h3>Situación</h3>
+                    <p>
+                        Todas las tardes dedico horas a compartir partidas de la tradicional <strong>Ronda</strong> con mi abuelo. Durante la intensidad de las rondas, los cantos simultáneos y los lances del juego, con frecuencia surgían confusiones en el recuento exacto de piedras y judías sobre la mesa. Existía la necesidad de disponer de una herramienta tecnológica de consulta inmediata que actuase como <strong>soporte y juez secundario</strong>, sin alterar en ningún momento la valiosa tradición física de jugar con las piezas reales.
+                    </p>
+                </div>
+
+                <!-- Task -->
+                <div class="star-section">
+                    <div class="star-letter">T</div>
+                    <h3>Tarea</h3>
+                    <p>
+                        El desafío planteado fue bidireccional y de alta exigencia:
+                        <br><br><strong>1. Usabilidad y Sincronización Offline:</strong> Diseñar una aplicación móvil Android nativa, completamente accesible para personas mayores, 100% offline (sin dependencia de cobertura móvil ni servidores externos) y capaz de sincronizar el marcador en tiempo real entre múltiples dispositivos alrededor del tablero.
+                        <br><br><strong>2. Eficiencia de Ingeniería Asistida por IA:</strong> Demostrar cómo, empleando herramientas de Inteligencia Artificial guiadas por un riguroso criterio de arquitectura de software, es viable concebir, programar, blindar y empaquetar un <strong>MVP v1.0 plenamente operativo en menos de 24 horas</strong>, sentando bases sólidas para su evolución continua.
+                    </p>
+                </div>
+
+                <!-- Action -->
+                <div class="star-section">
+                    <div class="star-letter">A</div>
+                    <h3>Acción</h3>
+                    <p>
+                        Para materializar el proyecto bajo estándares profesionales de ingeniería de software, desarrollé los siguientes módulos técnicos:
+                        <br><br>
+                        <strong>1. Arquitectura Limpia &amp; UI Declarativa Reactiva:</strong> Construcción nativa en <strong>Kotlin</strong> y <strong>Jetpack Compose</strong> (Material 3) bajo patrones <strong>Clean Architecture</strong> y <strong>MVI/MVVM</strong> reactivo. La capa de presentación consume estados inmutables expuestos mediante <code>StateFlow</code> y <code>Coroutines</code>, logrando una interfaz táctil de botones grandes y feedback visual de alto contraste diseñada para personas mayores.
+                        <br><br>
+                        <strong>2. Sincronización Multijugador Offline vía Sockets TCP (NDJSON):</strong> Implementé una arquitectura cliente/servidor ligera sobre <strong>Sockets TCP</strong> en red de área local que intercambia mensajes delimitados por saltos de línea (NDJSON). La vinculación entre dispositivos se realiza de forma instantánea en menos de 1 segundo mediante el escaneo de un código QR dinámico generado localmente, eliminando por completo la introducción manual de direcciones IP.
+                        <br><br>
+                        <strong>3. Optimización de Memoria y Rendimiento a 60 FPS:</strong> En el módulo de escaneo de cámara con <strong>CameraX</strong> y ZXing, implementé una reutilización estricta de búferes de bytes (evitando la instanciación cíclica de objetos) para erradicar las pausas del <em>Garbage Collector</em>. La renderización del código QR se optimizó mediante llamadas JNI en bloque, manteniendo una tasa constante de 60 FPS.
+                        <br><br>
+                        <strong>4. Seguridad, Integridad y Protección Anti-Trampas:</strong> El dispositivo anfitrión (Host) actúa como autoridad central validando nominalmente cada puntuación recibida antes de propagarla a los clientes. Asimismo, blindé los flujos de lectura de sockets con un límite estricto de 32 KB por trama para neutralizar posibles ataques de desbordamiento de búfer o denegación de servicio (DoS) local.
+                        <br><br>
+                        <strong>5. Inmersión Cultural y Persistencia Rotativa:</strong> Diseñé un sistema de efectos de sonido nativo que reproduce locuciones tradicionales para cada jugada de la baraja española (<em>Ronda, Parranda, Caracol, Caracolillo, Majo, Limpiar, Majo y Limpio</em>), complementado con un almacenamiento local seguro que mantiene un historial rotativo de las últimas 30 partidas disputadas.
+                        <br><br>
+                        <strong>6. Calidad de Software &amp; Pipeline DevOps CI/CD:</strong> Cobertura de las reglas de tanteo mediante pruebas unitarias con <strong>JUnit</strong> y despliegue de un flujo automatizado de integración continua en <strong>GitHub Actions</strong> (runner Ubuntu) para compilar y validar de manera desatendida el APK Release.
+                    </p>
+                </div>
+
+                <!-- Result -->
+                <div class="star-section">
+                    <div class="star-letter">R</div>
+                    <h3>Resultado</h3>
+                    <p>
+                        <strong>• Entrega Récord en &lt;24 Horas:</strong> Concepción, desarrollo, testeo y empaquetado del MVP v1.0 completados en una única jornada gracias a la supervisión estratégica de herramientas de IA aplicada con rigor ingenieril.
+                        <br><br><strong>• Impacto Real Inmediato:</strong> La aplicación es utilizada a diario en las partidas de las tardes con mi abuelo como juez de apoyo infalible, eliminando discusiones sobre el recuento de piedras malas y buenas y preservando intacta la diversión del juego presencial.
+                        <br><br><strong>• Publicación Open Source de Calidad:</strong> Código fuente liberado abiertamente en GitHub bajo <strong>Licencia MIT</strong>, con binario APK compilado de compatibilidad universal (incluyendo capas MIUI/HyperOS), documentación bilingüe (ES/EN) y directrices claras de contribución para la comunidad de desarrolladores.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ficha de Características Destacadas -->
+            <div class="card" style="margin-top: 40px; padding: 30px; border-left: 4px solid var(--accent-cyan); background: linear-gradient(135deg, rgba(6,182,212,0.03) 0%, transparent 100%);">
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    ⚡ Aspectos Destacados de Ingeniería Móvil
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 18px; margin-top: 15px;">
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📶</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Zero-Config Networking</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Sincronización P2P en red local mediante QR. Sin requerir conexión a Internet, cuentas de usuario ni registro en la nube.</p>
+                    </div>
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🔊</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Audios Tradicionales</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Banco sonoro adaptado a cada lance del juego tradicional para confirmación inmediata sin apartar la mirada de la mesa.</p>
+                    </div>
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🛡️</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Validación Autoritaria</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Protección contra trampas y límites estrictos de payload en Sockets para mantener la estabilidad del nodo Host.</p>
+                    </div>
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🤖</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Ingeniería Acelerada con IA</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Ejemplo práctico de desarrollo ágil con IA donde el criterio de arquitectura y testing garantiza código limpio y mantenible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap (Hoja de Ruta) del Proyecto -->
+            <div class="roadmap" id="project-roadmap" style="margin-top: 40px;">
+                <h3>🗺️ Estado y Hoja de Ruta del Proyecto</h3>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
+                    Planificación de versiones y evolución multiplataforma para El Piedrero.
+                </p>
+                
+                <div class="timeline">
+                    <!-- Iteración 1 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Versión MVP (1.0) <span class="status-badge">Completada</span></h4>
+                            <p>Desarrollo y lanzamiento inicial del marcador nativo Android en <strong>Kotlin</strong> y <strong>Jetpack Compose</strong>. Incluye soporte de mesa local (1 dispositivo), multijugador offline por <strong>Sockets TCP</strong> en red local con vinculación rápida mediante código QR (CameraX), reproducción de locuciones de cantos tradicionales y persistencia de historial de 30 partidas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Iteración 2 -->
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Versión 1.1: Refactorización Visual &amp; UX <span class="status-badge">En Planificación</span></h4>
+                            <p>Actualización enfocada en optimizar y pulir la interfaz gráfica del marcador: animaciones más fluidas en la transición de piedras malas a buenas, mejoras de accesibilidad táctil para personas mayores, microinteracciones hápticas avanzadas y personalización de temas y avatares de equipo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Iteración 3 -->
+                    <div class="timeline-item planned">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Futura Expansión: Compatibilidad para iOS <span class="status-badge">Próximamente</span></h4>
+                            <p>Investigación y desarrollo para portar la aplicación al ecosistema de Apple mediante <strong>Compose Multiplatform</strong> o <strong>Kotlin Multiplatform (KMP)</strong>, permitiendo que usuarios de iPhone y iPad puedan unirse a la misma mesa de juego en red local compartiendo la sincronización de piedras por Sockets TCP.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Volver a Proyectos -->
+            <div class="back-to-projects" style="margin-top: 40px; text-align: center;">
+                <a href="proyectos.html" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Volver al Catálogo de Proyectos
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Columna 1: Marca y Redes -->
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-code">iriome<span class="logo-dot">.</span><span class="logo-method">build</span><span class="logo-parentheses">(</span><span class="logo-parameter">"🚀"</span><span class="logo-parentheses">)</span></span>
+                </div>
+                <p class="footer-brand-desc">Iriome Naranjo · Desarrollador Java &amp; Android. Diseñando software con código limpio.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/DevNaranjo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/devnaranjo25/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" data-contact="phone" aria-label="Teléfono" id="footer-phone">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
+                    <a href="#" data-contact="email" aria-label="Email (Gmail)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Columna 2: Navegación -->
+            <div class="footer-nav">
+                <h4>Navegación</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="privacidad.html">Privacidad</a></li>
+                    <li><a href="politica-cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna 3: Estado y Disponibilidad -->
+            <div class="footer-status">
+                <h4>Estado Actual</h4>
+                <div class="status-indicator">
+                    <span class="status-dot-green"></span>
+                    <span class="status-text">Disponible para proyectos</span>
+                </div>
+                <p class="status-location">📍 Las Palmas de Gran Canaria, España</p>
+                <p class="status-quote">"Diseñando tecnología útil con propósito e identidad."</p>
+            </div>
+        </div>
+        
+        <!-- Línea de copyright inferior -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <div class="footer-copyright-info">
+                    <p>© 2026 Iriome Naranjo Rodríguez. Todos los derechos reservados.</p>
+                    <p class="footer-easter-egg" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px; opacity: 0.75; transition: opacity 0.3s ease;">
+                        ¿Quieres escuchar lo que escucho mientras programo? 🎧 
+                        <a href="https://www.youtube.com/playlist?list=PL2VJPU_YK0GsWpElVDiiEvzj0VpH7Hd2J" target="_blank" rel="noopener noreferrer" style="color: var(--accent-rose); text-decoration: underline; font-weight: 500;">Coding & Focus by Iriome</a>
+                    </p>
+                </div>
+                <p class="made-with">Hecho con <span class="heart">❤️</span> y pasión por el código</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de Modo Oscuro -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema visual claro y oscuro">
+        <!-- Sun Icon (SVG) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (SVG) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>

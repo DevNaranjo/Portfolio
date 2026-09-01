@@ -34,6 +34,9 @@ Este espacio reúne mis proyectos propios de ingeniería de software, trayectori
 
 ## 🚀 Proyectos destacados
 
+### 🃏 [El Piedrero](https://devnaranjo.github.io/Portfolio/proyecto-elpiedrero.html) — Marcador Android para Ronda Canaria
+Aplicación móvil nativa en **Kotlin** y **Jetpack Compose** (Material 3) diseñada bajo **Clean Architecture** y arquitectura reactiva MVI con `StateFlow`. Dispone de sincronización multijugador offline en tiempo real mediante **Sockets TCP** (protocolo NDJSON) y vinculación P2P instantánea por escaneo de código QR (CameraX / ZXing) en red local sin servidores ni Internet. Concebida, blindada y empaquetada en un MVP v1.0 en **menos de 24 horas** mediante ingeniería asistida por Inteligencia Artificial. Publicada como proyecto Open Source bajo **Licencia MIT**. ([Ver repositorio en GitHub](https://github.com/DevNaranjo/El-Piedrero)).
+
 ### 🏠 [Habitly](https://devnaranjo.github.io/Portfolio/proyecto-habitly.html) — Software de Gestión Inmobiliaria
 Aplicación de escritorio en **Java SE** con interfaz gráfica en **Java Swing** (Modo Oscuro) y arquitectura modular por capas. Incluye un motor de validación normativa parametrizable (Ley 12/2023 / LAU, límites IRAV, control de fianzas ICAVI), protección de datos personales mediante cifrado **AES-256-GCM** (PBKDF2) y cobertura de lógica de negocio crítica con pruebas automatizadas en **JUnit 5**. Proyecto propio principal que demuestra capacidades integrales de desarrollo backend y diseño de software.
 
@@ -55,6 +58,7 @@ Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Team
 | `index.html` | Portada principal con propuesta de valor, stack técnico y tarjetas de proyectos destacados. |
 | `sobre-mi.html` | Perfil profesional, formación académica (SMR/DAM), metodología y calendario de disponibilidad 2026–2028. |
 | `proyectos.html` | Catálogo completo de proyectos con filtros de estado y enlaces a repositorios de código. |
+| `proyecto-elpiedrero.html` | Ficha técnica de El Piedrero (Android nativo, Kotlin, Jetpack Compose, Sockets TCP, QR, IA). |
 | `proyecto-habitly.html` | Ficha técnica de Habitly (Java Swing GUI, validación LAU/Ley 12/2023, JUnit 5, AES-256-GCM). |
 | `proyecto-splitit.html` | Ficha técnica de SplitIt (Java SE, `BigDecimal`, compensación de redondeo, roadmap Kotlin). |
 | `proyecto-rpa.html` | Ficha técnica de la automatización RPA de incidencias (Power Automate Desktop, PowerApps, M365, Outlook). |
@@ -134,6 +138,9 @@ This space showcases my software development projects, academic background, tech
 
 ## 🚀 Featured Projects
 
+### 🃏 [El Piedrero](https://devnaranjo.github.io/Portfolio/proyecto-elpiedrero.html) — Android Scorer for Canarian Ronda
+Native Android mobile app developed in **Kotlin** and **Jetpack Compose** (Material 3) built with **Clean Architecture** and reactive MVI with `StateFlow`. Features real-time offline multiplayer synchronization via local **TCP Sockets** (NDJSON) and instant QR-based P2P pairing (CameraX / ZXing) with zero configuration or cloud dependencies. Conceived, hardened, and packaged as a v1.0 MVP in **under 24 hours** using AI-assisted engineering practices. Published as Open Source under the **MIT License**. ([View repository on GitHub](https://github.com/DevNaranjo/El-Piedrero)).
+
 ### 🏠 [Habitly](https://devnaranjo.github.io/Portfolio/proyecto-habitly.html) — Real Estate Management Software
 Desktop application built with **Java SE** and a **Java Swing** GUI (Dark Mode) following a layered modular architecture. It features a configurable regulatory compliance engine (Law 12/2023 / LAU, IRAV limits, deposit control), personal data protection via **AES-256-GCM** encryption (PBKDF2), and extensive test coverage of critical business logic using **JUnit 5**. A flagship software project highlighting core backend and software design capabilities.
 
@@ -155,6 +162,7 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 | `index.html` | Main landing page highlighting value proposition, tech stack, and featured project cards. |
 | `sobre-mi.html` | Profile, academic background (SMR/DAM), methodology, and 2026–2028 availability calendar. |
 | `proyectos.html` | Full project catalog with category filters and links to source code repositories. |
+| `proyecto-elpiedrero.html` | Technical breakdown of El Piedrero (Native Android, Kotlin, Jetpack Compose, TCP Sockets, QR, AI). |
 | `proyecto-habitly.html` | Technical breakdown of Habitly (Java Swing GUI, LAU compliance, JUnit 5, AES-256-GCM). |
 | `proyecto-splitit.html` | Technical breakdown of SplitIt (Java SE, `BigDecimal`, rounding compensation, Kotlin roadmap). |
 | `proyecto-rpa.html` | Technical details of the RPA ticket automation (Power Automate Desktop, PowerApps, M365, Outlook). |
@@ -219,7 +227,13 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 - **Easter Eggs en Ventanas y Consolas:** Al pulsar el botón amarillo (`●`) de las barras de ventana en tarjetas de proyectos se dispara la navegación interactiva a la ficha técnica, y en la ventana del Hero redirige con efecto de zoom a `sobre-mi.html` (*Interactive yellow dot window buttons acting as direct navigation easter eggs across project cards and hero IDE*).
 - **Estandarización de Animaciones & Justificación Global:** Sincronización milimétrica de todas las transiciones por categorías (`0.2s` interactivos, `0.3s` componentes, `0.4s` zoom de página, `0.5s` cambio de tema) (*Standardized animation tokens across CSS/JS and global justified text alignment*).
 
+### Septiembre 2026 / September 2026
+- **Nuevo Proyecto: «El Piedrero» (Android MVP v1.0 · Open Source):** Incorporación de la ficha técnica completa `proyecto-elpiedrero.html` con metodología STAR, diagrama de arquitectura (Kotlin, Jetpack Compose, Sockets TCP, CameraX), simulador interactivo de partida con audios reales de cantos tradicionales de la Ronda Canaria y roadmap de 3 fases (MVP completado → v1.1 UX → Kotlin Multiplatform iOS) (*Added full technical case study page for El Piedrero with STAR methodology, architecture diagram, live interactive game simulator with real folclore audio cues, and 3-phase roadmap*).
+- **Categoría «📱 Aplicaciones Móviles» en `proyectos.html`:** Reestructuración del catálogo de proyectos en subapartados por tecnología: `💻 Desarrollos de Software (Java)` y `📱 Aplicaciones Móviles`, con la tarjeta de El Piedrero (badge `Fase MVP (1.0)`) en la nueva categoría (*Reorganized project catalog into tech subcategories; added dedicated Mobile Apps section*).
+- **Simulador Interactivo Android (El Piedrero):** Marco visual en `proyecto-elpiedrero.html` que emula el marcador nativo Jetpack Compose/Material 3 con selección de equipos, botonera de cantos (+1 Ronda, +3 Parranda, +4 Caracol, +5 Caracolillo, Majo, Limpiar, Majo y Limpio), reproducción de audios MP3 originales, detección de paso a «¡Buenas!» y botón de reinicio (*Interactive Android scoreboard simulator with real audio playback and full game mechanics*).
+- **Ventanas Curiosas (Naming Boxes) en los 3 proyectos:** Conversión del acordeón de Habitly a tarjeta fija estilo SplitIt; actualización del título y texto de El Piedrero al origen etimológico del nombre (3 líneas, conciso); coherencia visual `💡` en las tres fichas (*Unified naming curiosity boxes across all three project pages with fixed card format and concise copy*).
+- **Badge `Fase MVP (1.0)` y enlaces APK:** Añadido el badge de estado y el botón de descarga directa del APK compilado en todos los puntos de acceso de El Piedrero (`index.html`, `cv.html`, `sobre-mi.html`, `proyectos.html`, `proyecto-elpiedrero.html`) (*Added MVP badge and direct APK download button across all El Piedrero entry points*).
+
 ---
 
 *Desarrollado con orden y pasión por el código. / Built with order and passion for code.* 🚀
-
