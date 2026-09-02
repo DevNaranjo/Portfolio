@@ -1382,7 +1382,9 @@ function initElPiedreroSimulator() {
         majo: 'src/assets/audio/Majo.mp3',
         limpio: 'src/assets/audio/Limpio.mp3',
         majoylimpio: 'src/assets/audio/Majo-y-limpio.mp3',
-        buenas: 'src/assets/audio/Buenas.mp3'
+        contramajo: 'src/assets/audio/Contra-majo.mp3',
+        buenas: 'src/assets/audio/Buenas.mp3',
+        victoria: 'src/assets/audio/Victoria.mp3'
     };
 
     const currentAudio = new Audio();
@@ -1521,6 +1523,7 @@ function initElPiedreroSimulator() {
             announce('🌟', `¡${teamName} pasa a BUENAS! Entrando en las 10 definitivas.`, true);
         } else if (newScore >= 21) {
             state.gameFinished = true;
+            setTimeout(() => playAudio('victoria'), 200);
             announce('🏆', `¡${teamName} HA GANADO LA PARTIDA! (21 piedras completadas)`, true);
         } else if (cantoName) {
             announce('📢', `${teamName} canta ${cantoName} (+${points} ${points > 1 ? 'piedras' : 'piedra'})`);
@@ -1560,7 +1563,9 @@ function initElPiedreroSimulator() {
         btn.addEventListener('click', () => {
             const canto = btn.dataset.canto;
             const points = parseInt(btn.dataset.points, 10);
-            const cantoName = btn.querySelector('span') ? btn.querySelector('span').textContent.trim() : btn.textContent.trim();
+            const rawName = btn.querySelector('span') ? btn.querySelector('span').textContent.trim() : btn.textContent.trim();
+            // Limpiar cualquier residuo de puntuación entre paréntesis como (+1) o (+2)
+            const cantoName = rawName.replace(/\s*\(\+\d+\)\s*$/, '').trim();
             addPoints(state.activeTeam, points, canto, cantoName);
         });
     });

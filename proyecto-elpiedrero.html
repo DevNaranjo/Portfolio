@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; media-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com;">
-    <title>El Piedrero · Marcador Android Ronda Canaria | Iriome Naranjo</title>
-    <meta name="description" content="Marcador nativo Android en Kotlin y Jetpack Compose para la tradicional Ronda Canaria. Sincronización multijugador offline por Sockets TCP y arquitectura limpia.">
+    <title>El Piedrero · Marcador Android Ronda | Iriome Naranjo</title>
+    <meta name="description" content="Marcador nativo Android en Kotlin y Jetpack Compose para la tradicional Ronda. Sincronización multijugador offline por Sockets TCP y arquitectura limpia.">
 
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -19,7 +19,7 @@
     <!-- End Google Tag Manager -->
     
     <!-- Open Graph -->
-    <meta property="og:title" content="El Piedrero · Marcador Android Ronda Canaria | Iriome Naranjo">
+    <meta property="og:title" content="El Piedrero · Marcador Android Ronda | Iriome Naranjo">
     <meta property="og:description" content="Marcador nativo Android offline en Kotlin y Jetpack Compose con sincronización multijugador por Sockets TCP y desarrollo asistido por IA.">
     <meta property="og:image" content="https://devnaranjo.github.io/Portfolio/src/assets/projects/elpiedrero-preview.webp">
     <meta property="og:url" content="https://devnaranjo.github.io/Portfolio/proyecto-elpiedrero.html">
@@ -111,18 +111,19 @@
             <!-- Ficha de Cabecera del Proyecto -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.0)</h1>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.0.02092026.2)</h1>
                     <div class="project-meta">
                         <span class="tag">Android</span>
                         <span class="tag">Kotlin</span>
                         <span class="tag">JetpackCompose</span>
                         <span class="tag">CleanArchitecture</span>
                         <span class="tag">SocketsTCP</span>
+                        <span class="tag">AES-256-GCM</span>
                         <span class="tag">CameraX</span>
                         <span class="tag">OpenSource</span>
                     </div>
                     <div style="margin-top: 15px; display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
-                        <span>🎉 <strong>Fase MVP (1.0) · Open Source:</strong> Versión inicial operativa publicada bajo licencia MIT en GitHub con binario APK compilado listo para instalar.</span>
+                        <span>🎉 <strong>Versión v1.0.02092026.2 · Open Source:</strong> Release firmado oficial con cifrado AES-256-GCM, streaming Zero-Disk-IO, audio paralelo y touch targets accesibles de 48 dp.</span>
                     </div>
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -133,7 +134,7 @@
 
                     <a href="https://github.com/DevNaranjo/El-Piedrero/raw/main/ElPiedrero.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; color: #FFFFFF;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Descargar APK (v1.0)
+                        Descargar APK (v1.0.02092026.2)
                     </a>
                 </div>
             </div>
@@ -147,7 +148,7 @@
                     </h3>
                 </div>
                 <p style="color: var(--text-secondary); font-size: 0.93rem; line-height: 1.65; margin: 0;">
-                    En la <strong>Ronda Canaria</strong>, los puntos se contabilizan con <em>piedras</em> físicas sobre la mesa. El encargado de gestionarlas — sumar malas, pasar a buenas y cantar la victoria — se llama coloquialmente <strong>el piedrero</strong>. La app toma ese nombre para ser el <strong>«piedrero digital»</strong> de cada partida.
+                    El nombre proviene de la jerga tradicional de la <strong>Ronda</strong>: en la mesa, los puntos no se anotan en papel, sino que se contabilizan apilando <em>piedras</em> físicas (o judías). Al encargado oficial de custodiar el tanteo, sumar las malas, pasar a buenas y cantar la victoria se le llama coloquialmente <strong>el piedrero</strong>. La app nace para actuar como ese <strong>«piedrero digital»</strong> de apoyo.
                 </p>
             </div>
 
@@ -232,8 +233,9 @@
                         </div>
                     </div>
 
-                    <!-- Botonera de Cantos Tradicionales con Audios -->
+                    <!-- Botonera de Cantos Tradicionales con Audios (10 Jugadas Oficiales) -->
                     <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Fila 1: Cantos de mano -->
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                             <button class="btn-canto-trigger" data-canto="ronda" data-points="1" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
                                 <span>Ronda</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+1</span>
@@ -243,24 +245,33 @@
                             </button>
                         </div>
 
+                        <!-- Fila 2: Cantos mayores de mano -->
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                             <button class="btn-canto-trigger" data-canto="caracol" data-points="4" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
                                 <span>Caracol</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+4</span>
                             </button>
                             <button class="btn-canto-trigger" data-canto="caracolillo" data-points="5" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                                <span>Caracolillo</span> <span style="background: rgba(245,158,11,0.2); color: #FBBF24; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+5</span>
+                                <span>Caracolillo</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+5</span>
                             </button>
                         </div>
 
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 8px;">
-                            <button class="btn-canto-trigger" data-canto="majo" data-points="1" style="padding: 9px 6px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-align: center;">
-                                Majo (+1)
+                        <!-- Fila 3: Jugadas de mesa simples -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <button class="btn-canto-trigger" data-canto="majo" data-points="1" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Majo</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+1</span>
                             </button>
-                            <button class="btn-canto-trigger" data-canto="limpio" data-points="1" style="padding: 9px 6px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-align: center;">
-                                Limpiar (+1)
+                            <button class="btn-canto-trigger" data-canto="limpio" data-points="1" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Limpiar</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+1</span>
                             </button>
-                            <button class="btn-canto-trigger" data-canto="majoylimpio" data-points="2" style="padding: 9px 6px; border-radius: 12px; border: 1px solid #6366F1; background: rgba(99,102,241,0.2); color: #C7D2FE; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-align: center;">
-                                Majo y Limpio (+2)
+                        </div>
+
+                        <!-- Fila 4: Jugadas de mesa dobles -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <button class="btn-canto-trigger" data-canto="majoylimpio" data-points="2" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Majo y Limpio</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+2</span>
+                            </button>
+                            <button class="btn-canto-trigger" data-canto="contramajo" data-points="2" style="padding: 10px; border-radius: 12px; border: 1px solid #1F2937; background: #1E293B; color: #F8FAFC; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Contramajo</span> <span style="background: rgba(16,185,129,0.2); color: #34D399; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem;">+2</span>
                             </button>
                         </div>
 
@@ -268,7 +279,7 @@
                         <div style="margin-top: 4px;">
                             <button id="btn-reset-demo-bottom" class="btn-reset-action" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.12); color: #FCA5A5; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease;">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                                Reiniciar Simulación (0 Piedras)
+                                Reiniciar Simulación
                             </button>
                         </div>
                     </div>
@@ -292,24 +303,24 @@
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
                     <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #10B981; padding: 18px; border-radius: 10px;">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34D399; font-weight: 600; text-transform: uppercase;">1. UI Reactiva / Presentación</span>
-                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Jetpack Compose &amp; MVI</h4>
-                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Material 3, diseño accesible con alto contraste táctil para personas mayores y flujo unidireccional con <code>StateFlow</code>.</p>
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34D399; font-weight: 600; text-transform: uppercase;">1. UI Accesible / MVI</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Jetpack Compose Material 3</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Touch targets ergonómicos de 48 dp para personas mayores, cuadrícula simétrica 5x2 y estados reactivos con <code>StateFlow</code>.</p>
                     </div>
                     <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #06B6D4; padding: 18px; border-radius: 10px;">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #06B6D4; font-weight: 600; text-transform: uppercase;">2. Sincronización Local</span>
-                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Sockets TCP &amp; NDJSON</h4>
-                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Servidor/cliente ligero por socket en red local (LAN/Wi-Fi Direct). Emparejamiento por QR en menos de 1 segundo sin configurar IPs.</p>
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #06B6D4; font-weight: 600; text-transform: uppercase;">2. Red Segura E2E</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Sockets TCP &amp; AES-256-GCM</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Cifrado simétrico de 256 bits y token de sala por QR. Tráfico en claro deshabilitado y control de mesa autoritario en el Host.</p>
                     </div>
                     <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #6366F1; padding: 18px; border-radius: 10px;">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818CF8; font-weight: 600; text-transform: uppercase;">3. Blindaje &amp; Rendimiento</span>
-                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">CameraX &amp; Anti-DoS</h4>
-                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Reutilización de buffers a 60 FPS sin pausas de Garbage Collection, límite de 32 KB por trama y validación autoritaria en el Host.</p>
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818CF8; font-weight: 600; text-transform: uppercase;">3. Rendimiento &amp; Audio</span>
+                        <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">Zero-Disk-IO &amp; CameraX</h4>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Streaming de audio directo de assets sin copias a disco, canales de sonido paralelos y búferes reciclados a 60 FPS.</p>
                     </div>
                     <div style="background: #111827; border: 1px solid #1F2937; border-top: 3px solid #F59E0B; padding: 18px; border-radius: 10px;">
                         <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #FBBF24; font-weight: 600; text-transform: uppercase;">4. Suite CI/CD &amp; Reglas</span>
                         <h4 style="font-size: 0.95rem; margin: 6px 0; color: #F8FAFC;">JUnit &amp; GitHub Actions</h4>
-                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Batería de pruebas unitarias sobre reglas de tanteo tradicional y compilación desatendida del APK Release en runners Ubuntu.</p>
+                        <p style="font-size: 0.8rem; color: #94A3B8; margin: 0; line-height: 1.5;">Batería de pruebas unitarias sobre reglas tradicionales (suplente en tríos) y compilación Release firmada en runners CI.</p>
                     </div>
                 </div>
             </div>
@@ -343,17 +354,17 @@
                     <p>
                         Para materializar el proyecto bajo estándares profesionales de ingeniería de software, desarrollé los siguientes módulos técnicos:
                         <br><br>
-                        <strong>1. Arquitectura Limpia &amp; UI Declarativa Reactiva:</strong> Construcción nativa en <strong>Kotlin</strong> y <strong>Jetpack Compose</strong> (Material 3) bajo patrones <strong>Clean Architecture</strong> y <strong>MVI/MVVM</strong> reactivo. La capa de presentación consume estados inmutables expuestos mediante <code>StateFlow</code> y <code>Coroutines</code>, logrando una interfaz táctil de botones grandes y feedback visual de alto contraste diseñada para personas mayores.
+                        <strong>1. Arquitectura Limpia &amp; UI Declarativa Accesible:</strong> Construcción nativa en <strong>Kotlin</strong> y <strong>Jetpack Compose</strong> (Material 3) bajo patrones <strong>Clean Architecture</strong> y <strong>MVI/MVVM</strong> reactivo. La capa de presentación consume estados inmutables expuestos mediante <code>StateFlow</code> y <code>Coroutines</code>. La interfaz integra touch targets ergonómicos de 48 dp (cumplimiento WCAG), cuadrícula simétrica 5x2 y feedback visual de alto contraste adaptado para personas mayores.
                         <br><br>
-                        <strong>2. Sincronización Multijugador Offline vía Sockets TCP (NDJSON):</strong> Implementé una arquitectura cliente/servidor ligera sobre <strong>Sockets TCP</strong> en red de área local que intercambia mensajes delimitados por saltos de línea (NDJSON). La vinculación entre dispositivos se realiza de forma instantánea en menos de 1 segundo mediante el escaneo de un código QR dinámico generado localmente, eliminando por completo la introducción manual de direcciones IP.
+                        <strong>2. Sincronización Multijugador Offline &amp; Cifrado AES-256-GCM:</strong> Implementé una arquitectura cliente/servidor ligera sobre <strong>Sockets TCP</strong> en red de área local que intercambia mensajes delimitados por saltos de línea (NDJSON). Toda la comunicación viaja cifrada de extremo a extremo mediante <strong>AES-256-GCM</strong> con clave simétrica aleatoria transferida al escanear el código QR dinámico del Host en &lt;1 segundo, sin teclear IPs ni requerir Internet.
                         <br><br>
-                        <strong>3. Optimización de Memoria y Rendimiento a 60 FPS:</strong> En el módulo de escaneo de cámara con <strong>CameraX</strong> y ZXing, implementé una reutilización estricta de búferes de bytes (evitando la instanciación cíclica de objetos) para erradicar las pausas del <em>Garbage Collector</em>. La renderización del código QR se optimizó mediante llamadas JNI en bloque, manteniendo una tasa constante de 60 FPS.
+                        <strong>3. Optimización de Memoria, Audio Zero-Disk-IO y 60 FPS:</strong> En el módulo de cámara con <strong>CameraX</strong> y ZXing implementé reutilización estricta de búferes de bytes evitando pausas del <em>Garbage Collector</em>. El motor sonoro reproduce los audios por streaming directo desde descriptores de assets nativos (<strong>Zero-Disk-IO</strong>), desacoplando el canal de efectos para que sumar piedras no corte el audio de «¡Buenas!».
                         <br><br>
-                        <strong>4. Seguridad, Integridad y Protección Anti-Trampas:</strong> El dispositivo anfitrión (Host) actúa como autoridad central validando nominalmente cada puntuación recibida antes de propagarla a los clientes. Asimismo, blindé los flujos de lectura de sockets con un límite estricto de 32 KB por trama para neutralizar posibles ataques de desbordamiento de búfer o denegación de servicio (DoS) local.
+                        <strong>4. Blindaje de Red, Autoridad del Host y Ciclo de Vida:</strong> El anfitrión actúa como nodo autoritario descartando peticiones remotas no autorizadas y permitiendo desconexiones limpias individuales sin tumbar la partida. Se deshabilitó el tráfico en claro (<code>cleartextTrafficPermitted="false"</code>), se aplicó límite de 32 KB por trama anti-DoS y se garantizó el cierre de sockets y cancelación de corrutinas en <code>ViewModel.onCleared()</code>.
                         <br><br>
-                        <strong>5. Inmersión Cultural y Persistencia Rotativa:</strong> Diseñé un sistema de efectos de sonido nativo que reproduce locuciones tradicionales para cada jugada de la baraja española (<em>Ronda, Parranda, Caracol, Caracolillo, Majo, Limpiar, Majo y Limpio</em>), complementado con un almacenamiento local seguro que mantiene un historial rotativo de las últimas 30 partidas disputadas.
+                        <strong>5. Reglas Tradicionales Avanzadas y Persistencia Rotativa:</strong> Soporte dinámico para partidas de 2, 3 y 4 jugadores (con regla de suplente temporal en tríos que se bloquea en 3 capas al cantar la primera piedra), banco sonoro completo y base de datos local que almacena un historial rotativo de las últimas 30 partidas.
                         <br><br>
-                        <strong>6. Calidad de Software &amp; Pipeline DevOps CI/CD:</strong> Cobertura de las reglas de tanteo mediante pruebas unitarias con <strong>JUnit</strong> y despliegue de un flujo automatizado de integración continua en <strong>GitHub Actions</strong> (runner Ubuntu) para compilar y validar de manera desatendida el APK Release.
+                        <strong>6. Calidad de Software &amp; Pipeline CI/CD:</strong> Batería de pruebas unitarias sobre reglas tradicionales y criptografía (<code>RondaCipherTest.kt</code>, <code>TeamScoreTest.kt</code>), con flujo automatizado en <strong>GitHub Actions</strong> que genera binarios APK Release firmados y verificados con certificado digital oficial.
                     </p>
                 </div>
 
@@ -364,7 +375,7 @@
                     <p>
                         <strong>• Entrega Récord en &lt;24 Horas:</strong> Concepción, desarrollo, testeo y empaquetado del MVP v1.0 completados en una única jornada gracias a la supervisión estratégica de herramientas de IA aplicada con rigor ingenieril.
                         <br><br><strong>• Impacto Real Inmediato:</strong> La aplicación es utilizada a diario en las partidas de las tardes con mi abuelo como juez de apoyo infalible, eliminando discusiones sobre el recuento de piedras malas y buenas y preservando intacta la diversión del juego presencial.
-                        <br><br><strong>• Publicación Open Source de Calidad:</strong> Código fuente liberado abiertamente en GitHub bajo <strong>Licencia MIT</strong>, con binario APK compilado de compatibilidad universal (incluyendo capas MIUI/HyperOS), documentación bilingüe (ES/EN) y directrices claras de contribución para la comunidad de desarrolladores.
+                        <br><br><strong>• Publicación Open Source &amp; Binario Release Oficial:</strong> Código fuente liberado abiertamente en GitHub bajo <strong>Licencia MIT</strong>, con binario APK compilado en modo Release oficial firmado con certificado propio de DevNaranjo (compatibilidad universal garantizada en Xiaomi, MIUI y HyperOS), documentación bilingüe (ES/EN) y directrices de contribución comunitaria.
                     </p>
                 </div>
             </div>
@@ -372,28 +383,28 @@
             <!-- Ficha de Características Destacadas -->
             <div class="card" style="margin-top: 40px; padding: 30px; border-left: 4px solid var(--accent-cyan); background: linear-gradient(135deg, rgba(6,182,212,0.03) 0%, transparent 100%);">
                 <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                    ⚡ Aspectos Destacados de Ingeniería Móvil
+                    ⚡ Aspectos Destacados de Ingeniería Móvil (v1.0.02092026.2)
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 18px; margin-top: 15px;">
                     <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
-                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📶</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Zero-Config Networking</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Sincronización P2P en red local mediante QR. Sin requerir conexión a Internet, cuentas de usuario ni registro en la nube.</p>
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🔒</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Cifrado AES-256-GCM</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Criptografía simétrica de extremo a extremo en red local con clave aleatoria compartida por QR y tráfico en claro bloqueado.</p>
                     </div>
                     <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
-                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🔊</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Audios Tradicionales</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Banco sonoro adaptado a cada lance del juego tradicional para confirmación inmediata sin apartar la mirada de la mesa.</p>
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">♿</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Accesibilidad &amp; 48 dp</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Touch targets ergonómicos de 48 dp en controles de tanteo y cuadrícula simétrica 5x2 pensada para personas mayores.</p>
+                    </div>
+                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
+                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">⚡</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Audio Zero-Disk-IO</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Streaming directo de descriptores sin escrituras a flash y reproducción de efectos concurrente sin cortar el audio de Buenas.</p>
                     </div>
                     <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
                         <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🛡️</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Validación Autoritaria</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Protección contra trampas y límites estrictos de payload en Sockets para mantener la estabilidad del nodo Host.</p>
-                    </div>
-                    <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
-                        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🤖</span>
-                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Ingeniería Acelerada con IA</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Ejemplo práctico de desarrollo ágil con IA donde el criterio de arquitectura y testing garantiza código limpio y mantenible.</p>
+                        <h4 style="font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 5px; font-weight: 700; color: var(--text-primary);">Nodo Host Autoritario</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Protección DoS de 32 KB por trama, descarte de peticiones no autorizadas y desconexión individual limpia sin cerrar partida.</p>
                     </div>
                 </div>
             </div>
