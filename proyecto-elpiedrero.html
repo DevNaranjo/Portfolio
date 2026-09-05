@@ -82,14 +82,8 @@
                     <a href="proyectos.html" id="nav-link-projects" class="dropbtn active">Proyectos <span class="arrow">▾</span></a>
                     <ul class="dropdown-content">
                         <li><a href="proyecto-habitly.html">Habitly</a></li>
-                        <li><a href="proyecto-splitit.html">SplitIt</a></li>
-                        <li class="dropdown-submenu">
-                            <span class="submenu-title">Automatización RPA <span class="arrow-right">▸</span></span>
-                            <ul class="dropdown-submenu-content">
-                                <li><a href="proyecto-rpa.html">RPA Soporte (PAD)</a></li>
-                                <li><a href="proyecto-rpa-resumen.html">Resúmenes IA (PAD)</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="proyecto-splitit.html">Split It</a></li>
+                        <li><a href="proyecto-elpiedrero.html">El Piedrero</a></li>
                         <li><a href="proyectos.html">Ver todos</a></li>
                     </ul>
                 </li>
@@ -111,7 +105,7 @@
             <!-- Ficha de Cabecera del Proyecto -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.0.5)</h1>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.0-stable)</h1>
                     <div class="project-meta">
                         <span class="tag">Android</span>
                         <span class="tag">Kotlin</span>
@@ -123,8 +117,8 @@
                         <span class="tag">WCAG-AAA</span>
                         <span class="tag">OpenSource</span>
                     </div>
-                    <div style="margin-top: 15px; display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
-                        <span>🎉 <strong>🃏 El Piedrero — v1.0.5 (04/09/2026 - Patch 1) — 🪨:</strong> Transmisión TV Cast, persistencia con <code>singleTask</code>, música folclórica CC0 aleatoria, reconexión de 5 min y recuento seguro de 40 cartas.</span>
+                    <div style="margin-top: 15px; display: inline-flex; align-items: center; gap: 8px; background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+                        <span>📢 <strong>Nota informativa:</strong> Versión oficial estable (v1.0-stable) para Android, totalmente operativa de forma offline en red local sin servidores ni Internet. El desarrollo continúa activo (<a href="#project-roadmap" style="color: var(--accent-rose); text-decoration: underline;">ver hoja de ruta</a>).</span>
                     </div>
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -138,9 +132,9 @@
                         Releases
                     </a>
 
-                    <a href="https://github.com/DevNaranjo/El-Piedrero/releases/download/v1.0.5/ElPiedrero_v1.0.5.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; color: #FFFFFF;">
+                    <a href="https://github.com/DevNaranjo/El-Piedrero/releases/download/v1.0-stable/El-Piedrero-v1.0-stable.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btn-download-apk" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; color: #FFFFFF;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Descargar APK (v1.0.5)
+                        Descargar APK (v1.0-stable)
                     </a>
                 </div>
             </div>
@@ -389,7 +383,7 @@
             <!-- Ficha de Características Destacadas -->
             <div class="card" style="margin-top: 40px; padding: 30px; border-left: 4px solid var(--accent-cyan); background: linear-gradient(135deg, rgba(6,182,212,0.03) 0%, transparent 100%);">
                 <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                    ⚡ Aspectos Destacados de Ingeniería Móvil (v1.0.5)
+                    ⚡ Aspectos Destacados de Ingeniería Móvil (v1.0-stable)
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 18px; margin-top: 15px;">
                     <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
@@ -423,16 +417,37 @@
                 </p>
                 
                 <div class="timeline">
-                    <!-- Iteración 1 -->
+                    <!-- Iteración 1: Fase MVP (Prototipo Inicial) -->
                     <div class="timeline-item completed">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Versión MVP (1.0) <span class="status-badge">Completada</span></h4>
-                            <p>Desarrollo y lanzamiento inicial del marcador nativo Android en <strong>Kotlin</strong> y <strong>Jetpack Compose</strong>. Incluye soporte de mesa local (1 dispositivo), multijugador offline por <strong>Sockets TCP</strong> en red local con vinculación rápida mediante código QR (CameraX), reproducción de locuciones de cantos tradicionales y persistencia de historial de 30 partidas.</p>
+                            <h4>Fase MVP: Prototipo Funcional Inicial <span class="status-badge">Completada</span></h4>
+                            <p>
+                                Concepción y desarrollo del primer prototipo funcional en ~24 horas asistido por IA el 01/09/2026. Estableció los cimientos del marcador nativo Android en <strong>Kotlin</strong> y <strong>Jetpack Compose (Material 3)</strong> bajo patrón reactivo MVI: soporte para mesa local (1 dispositivo), sincronización multijugador preliminar por <strong>Sockets TCP</strong> en red local con emparejamiento rápido mediante código QR (CameraX / ZXing), registro de cantos tradicionales con audios folclóricos y guardado local de las últimas 30 partidas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Iteración 2: Versión 1.0 (Lanzamiento Oficial Estable) -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Versión Oficial 1.0 (Estable) <span class="status-badge">Lanzamiento Oficial</span></h4>
+                            <p>
+                                Consolidación y endurecimiento de la aplicación a nivel de producción tras sucesivas iteraciones de optimización y parches de estabilidad (v1.0.x):
+                            </p>
+                            <ul style="margin: 8px 0 12px 18px; padding: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                                <li><strong>Seguridad Criptográfica LAN:</strong> Cifrado de extremo a extremo <strong>AES-256-GCM</strong> en sockets TCP, validación autoritaria del Host y protección anti-replay con números de secuencia monótona.</li>
+                                <li><strong>Modo TV Cast:</strong> Transmisión de pantalla en tiempo real a Smart TVs y proyectores (<code>TvCastDialog</code>) para torneos y tabernas.</li>
+                                <li><strong>Banda Sonora IA &amp; AudioFocus:</strong> 6 temas instrumentales folclóricos canarios generados por IA libres de SGAE (CC0), streaming Zero-Disk-IO y atenuación sonora inteligente (<em>ducking</em>).</li>
+                                <li><strong>Accesibilidad Universal (WCAG 2.1 AA/AAA):</strong> Touch targets de 48×48 dp, contrastes reforzados >10:1 y soporte TalkBack en español.</li>
+                                <li><strong>Ciclo de Vida &amp; Resiliencia:</strong> Gestión <code>singleTask</code>, desvinculación limpia de cámara (<code>unbindAll</code>), servicio <code>AppCleanupService</code>, ventana de reconexión de 5 min y recuento estricto de 40 cartas.</li>
+                                <li><strong>DevSecOps &amp; Distribución:</strong> Compilación optimizada con <strong>R8</strong> (8.2 MB), firma Release oficial (MIUI/HyperOS) y botón de descarga directa de APK con historial de versiones en GitHub Releases.</li>
+                            </ul>
                         </div>
                     </div>
                     
-                    <!-- Iteración 2 -->
+                    <!-- Iteración 3: Versión 1.1 -->
                     <div class="timeline-item active">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
@@ -441,7 +456,7 @@
                         </div>
                     </div>
 
-                    <!-- Iteración 3 -->
+                    <!-- Iteración 4: Expansión iOS -->
                     <div class="timeline-item planned">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">

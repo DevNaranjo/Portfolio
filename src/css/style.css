@@ -2213,16 +2213,45 @@ code {
 
 .project-card-actions {
     display: flex;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 0;
 }
 
 .project-card-actions .btn {
-    flex: 1;
-    padding: 10px 16px;
+    flex: 1 1 calc(50% - 10px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 12px;
     font-size: 0.85rem;
     border-radius: 20px;
+    white-space: nowrap;
+    text-decoration: none;
 }
+
+.project-card-actions .btn-full {
+    flex: 1 1 100%;
+}
+
+.btn-releases {
+    background: #FFFF5C;
+    border: 1px solid #E6E648;
+    color: #0F172A !important;
+    font-weight: 700;
+    box-shadow: 0 3px 12px rgba(255, 255, 92, 0.25);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.btn-releases:hover {
+    background: #ffff42;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255, 255, 92, 0.4);
+    color: #0F172A !important;
+}
+
 
 
 

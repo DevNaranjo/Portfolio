@@ -681,11 +681,11 @@ function setupPrivateTemplateShortcut() {
 
 
 /**
- * Simula el comportamiento de SplitIt.
+ * Simula el comportamiento de Split It.
  */
 function runCalculatorSimulation(element) {
     const lines = [
-        `<span style="color: var(--accent-sage)">c:\\Users\\DevNaranjo\\SplitIt&gt; java com.rivas.gestion.Main</span>`,
+        `<span style="color: var(--accent-sage)">c:\\Users\\DevNaranjo\\Split-It&gt; java com.rivas.gestion.Main</span>`,
         `<span style="color: var(--accent-blue)">==================================================</span>`,
         `<span style="color: #FFFFFF; font-weight: bold;">            GRUPO GASTRONÓMICO RIVAS              </span>`,
         `<span style="color: #FFFFFF;">       SISTEMA DE FACTURACIÓN Y ARQUEO            </span>`,
