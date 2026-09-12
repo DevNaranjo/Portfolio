@@ -1087,36 +1087,6 @@ function initElPiedreroSimulator() {
         gameFinished: false
     };
 
-    const audioMap = {
-        ronda: 'src/assets/audio/Ronda.mp3',
-        parranda: 'src/assets/audio/Parranda.mp3',
-        caracol: 'src/assets/audio/Caracol.mp3',
-        caracolillo: 'src/assets/audio/Caracolillo.mp3',
-        majo: 'src/assets/audio/Majo.mp3',
-        limpio: 'src/assets/audio/Limpio.mp3',
-        majoylimpio: 'src/assets/audio/Majo-y-limpio.mp3',
-        contramajo: 'src/assets/audio/Contra-majo.mp3',
-        buenas: 'src/assets/audio/Buenas.mp3',
-        victoria: 'src/assets/audio/Victoria.mp3'
-    };
-
-    const currentAudio = new Audio();
-
-    function playAudio(cantoKey) {
-        const src = audioMap[cantoKey];
-        if (!src) return;
-        try {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-            currentAudio.src = src;
-            currentAudio.play().catch(() => {
-                // Autoplay policy fallback: audio muted or user hasn't interacted with page
-            });
-        } catch (e) {
-            console.warn('Audio play error:', e);
-        }
-    }
-
     // Elementos del DOM
     const scoreAEl = document.getElementById('team-a-score');
     const scoreBEl = document.getElementById('team-b-score');
@@ -1226,17 +1196,11 @@ function initElPiedreroSimulator() {
         if (team === 'A') state.scoreA = newScore;
         else state.scoreB = newScore;
 
-        if (cantoKey) {
-            playAudio(cantoKey);
-        }
-
         // Celebrar si pasa a Buenas
         if (!wasInBuenas && nowInBuenas && newScore < 21) {
-            setTimeout(() => playAudio('buenas'), 450);
             announce('🌟', `¡${teamName} pasa a BUENAS! Entrando en las 10 definitivas.`, true);
         } else if (newScore >= 21) {
             state.gameFinished = true;
-            setTimeout(() => playAudio('victoria'), 200);
             announce('🏆', `¡${teamName} HA GANADO LA PARTIDA! (21 piedras completadas)`, true);
         } else if (cantoName) {
             announce('📢', `${teamName} canta ${cantoName} (+${points} ${points > 1 ? 'piedras' : 'piedra'})`);
@@ -1363,7 +1327,7 @@ function initElPiedreroCarousel() {
             version: "v1.1-Beta",
             step: "Paso 4 de 7",
             desc: "Marcador táctil central diseñado bajo arquitectura reactiva <strong>MVI</strong>. Muestra el estado del reparto en curso (<em>Mano / Reparto 1 de 6</em>), tanteo en tiempo real con transición dinámica de <strong>Malas a Buenas</strong> (0/11 a 21 piedras) y botonera de cantos folclóricos (Ronda, Parranda, Caracol, Caracolillo, Majo, Limpio...).",
-            features: ["🌟 Malas a Buenas (21 piedras)", "🎵 Cantos con Audio Real", "🔄 Tanteo MVI Reactivo"],
+            features: ["🌟 Malas a Buenas (21 piedras)", "🃏 10 Cantos Oficiales", "🔄 Tanteo MVI Reactivo"],
             origImg: "src/assets/projects/elpiedrero/v1.1-04-interfaz-partida.png"
         },
         {
