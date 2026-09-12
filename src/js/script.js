@@ -36,20 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Configuración de Modo Oscuro (Alternancia y Persistencia)
     setupThemeToggle();
 
-    setupPrivateTemplateShortcut();
     setupProjectDetailsZoom();
     initConsentManagement();
     setupMobileMenu();
     
-    // 6. Indicador de Disponibilidad y Calendario
+    // 6. Indicador de Disponibilidad Global
     initFooterAvailability();
-    initAvailabilityCalendar();
-
-    // 7. Resumen Ejecutivo 'Lo Esencial 🔍' (sobre-mi.html)
-    setupEssentialSummary();
 
     // 8. Simulador Interactivo de Marcador Android (El Piedrero)
     initElPiedreroSimulator();
+
+    // 9. Carrusel de Capturas de Pantalla Móvil v1.1-Beta (El Piedrero)
+    initElPiedreroCarousel();
 });
 
 
@@ -666,19 +664,6 @@ function setupThemeToggle() {
     });
 }
 
-/**
- * Atajo de teclado para entorno local de desarrollo (Ctrl + Alt + I).
- * Permite acceder rápidamente al generador de respuestas formales durante el trabajo diario.
- */
-function setupPrivateTemplateShortcut() {
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.altKey && e.code === 'KeyI') {
-            e.preventDefault();
-            window.location.href = 'plantilla_correo.html';
-        }
-    });
-}
-
 
 /**
  * Simula el comportamiento de Split It.
@@ -1071,289 +1056,17 @@ function openConsentSettingsModal() {
 }
 
 /**
- * Devuelve el estado de disponibilidad para un día específico.
- */
-function getDayAvailabilityStatus(year, month, day) {
-    // 1. No disponible (Red)
-    // 16 y 17 de Julio 2026
-    if (year === 2026 && month === 7 && (day === 16 || day === 17)) {
-        return 'unavailable';
-    }
-    // 15 - 17 Agosto 2026
-    if (year === 2026 && month === 8 && (day >= 15 && day <= 17)) {
-        return 'unavailable';
-    }
-    // 16 - 17 Octubre 2026
-    if (year === 2026 && month === 10 && (day === 16 || day === 17)) {
-        return 'unavailable';
-    }
-    
-    // 2. Posible indisponibilidad (Orange)
-    // 24/07
-    if (year === 2026 && month === 7 && day === 24) {
-        return 'maybe';
-    }
-    
-    // 3. Curso escolar / Periodo lectivo (Disponibilidad Parcial)
-    // 2º DAM: Desde el 16 de Septiembre 2026 hasta el 31 de Mayo 2027 (Junio 2027 = Total Disponibilidad / Graduación)
-    const dateObj = new Date(year, month - 1, day);
-    const damStart = new Date(2026, 8, 16); // 16 Sept 2026
-    const damEnd = new Date(2027, 4, 31);   // 31 May 2027 (Junio queda 100% disponible)
-    if (dateObj >= damStart && dateObj <= damEnd) {
-        return 'school';
-    }
-    
-    // 2º DAW: Septiembre 2027 - Junio 2028
-    const dawStart = new Date(2027, 8, 1); // 1 Sept 2027
-    const dawEnd = new Date(2028, 5, 30);   // 30 Jun 2028
-    if (dateObj >= dawStart && dateObj <= dawEnd) {
-        return 'school';
-    }
-    
-    return 'available';
-}
-
-/**
  * Inicializa el estado del indicador de disponibilidad en el pie de página global.
  */
 function initFooterAvailability() {
     const indicator = document.querySelector('.status-indicator');
     if (!indicator) return;
     
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-    
-    const status = getDayAvailabilityStatus(year, month, day);
-    
-    // Limpiar clases previas de estado
     indicator.classList.remove('status-unavailable', 'status-maybe', 'status-school');
-    
-    if (status === 'unavailable') {
-        indicator.classList.add('status-unavailable');
-        indicator.innerHTML = `
-            <span class="status-dot"></span>
-            <span class="status-text">No disponible actualmente<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
-        `;
-    } else if (status === 'maybe') {
-        indicator.classList.add('status-maybe');
-        indicator.innerHTML = `
-            <span class="status-dot"></span>
-            <span class="status-text">Posible indisponibilidad<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
-        `;
-    } else if (status === 'school') {
-        indicator.classList.add('status-school');
-        const isDam = today >= new Date(2026, 8, 16) && today <= new Date(2027, 4, 31);
-        const termLabel = isDam ? '2º DAM' : '2º DAW';
-        indicator.innerHTML = `
-            <span class="status-dot"></span>
-            <span class="status-text">Disponible · ${termLabel}<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
-        `;
-    } else {
-        // Estado por defecto: Disponible
-        indicator.innerHTML = `
-            <span class="status-dot status-dot-green"></span>
-            <span class="status-text">Disponible para proyectos</span>
-        `;
-    }
-}
-
-/**
- * Inicializa el selector de años y el renderizador de calendario en sobre-mi.html.
- */
-function initAvailabilityCalendar() {
-    const calendarTarget = document.getElementById('calendar-render-target');
-    if (!calendarTarget) return;
-    
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    
-    let defaultYear = 2026;
-    
-    const yearButtons = document.querySelectorAll('.calendar-year-selector button');
-    yearButtons.forEach(btn => {
-        const btnYear = parseInt(btn.getAttribute('data-year'), 10);
-        if (btnYear < currentYear) {
-            btn.style.display = 'none'; // Oculta botones de años completamente pasados
-        }
-        btn.addEventListener('click', () => {
-            yearButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const selectedYear = parseInt(btn.getAttribute('data-year'), 10);
-            renderAvailabilityCalendar(selectedYear);
-        });
-    });
-    
-    // Si el año 2026 ya pasó, el año por defecto se actualiza al actual
-    if (currentYear > 2026) {
-        defaultYear = currentYear;
-        const activeBtn = document.querySelector(`.calendar-year-selector button[data-year="${currentYear}"]`);
-        if (activeBtn) {
-            yearButtons.forEach(b => b.classList.remove('active'));
-            activeBtn.classList.add('active');
-        }
-    }
-    
-    renderAvailabilityCalendar(defaultYear);
-    
-    // Configurar filtros de estado
-    const filterButtons = document.querySelectorAll('.calendar-filters .filter-btn');
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const selectedFilter = btn.getAttribute('data-filter');
-            if (selectedFilter === 'all') {
-                calendarTarget.removeAttribute('data-active-filter');
-            } else {
-                calendarTarget.setAttribute('data-active-filter', selectedFilter);
-            }
-        });
-    });
-}
-
-/**
- * Genera la grilla de meses y días para el año indicado, ocultando meses pasados.
- */
-function renderAvailabilityCalendar(year) {
-    const calendarTarget = document.getElementById('calendar-render-target');
-    if (!calendarTarget) return;
-    
-    calendarTarget.style.opacity = '0';
-    
-    setTimeout(() => {
-        calendarTarget.innerHTML = '';
-        
-        const monthNames = [
-            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 
-            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-        ];
-        
-        const weekdays = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
-        
-        const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonthIndex = today.getMonth(); // 0 = Enero, 11 = Diciembre
-        
-        // Determinar el mes de inicio
-        let startMonth = 0;
-        if (year === currentYear) {
-            startMonth = currentMonthIndex; // Oculta meses anteriores de forma dinámica
-        } else if (year < currentYear) {
-            startMonth = 12; // No muestra nada si es un año pasado
-        }
-        
-        for (let month = startMonth; month < 12; month++) {
-            const monthCard = document.createElement('div');
-            monthCard.className = 'calendar-month';
-            
-            const monthHeader = document.createElement('h4');
-            monthHeader.className = 'calendar-month-title';
-            monthHeader.textContent = `${monthNames[month]} ${year}`;
-            monthCard.appendChild(monthHeader);
-            
-            const daysGrid = document.createElement('div');
-            daysGrid.className = 'calendar-days-grid';
-            
-            weekdays.forEach(wd => {
-                const headerCell = document.createElement('span');
-                headerCell.className = 'calendar-day-header';
-                headerCell.textContent = wd;
-                daysGrid.appendChild(headerCell);
-            });
-            
-            const numDays = new Date(year, month + 1, 0).getDate();
-            const firstDayIndex = new Date(year, month, 1).getDay();
-            const offset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
-            
-            for (let i = 0; i < offset; i++) {
-                const emptyCell = document.createElement('span');
-                emptyCell.className = 'calendar-day empty';
-                daysGrid.appendChild(emptyCell);
-            }
-            
-            for (let day = 1; day <= numDays; day++) {
-                const dayCell = document.createElement('span');
-                dayCell.className = 'calendar-day';
-                dayCell.textContent = day;
-                
-                const status = getDayAvailabilityStatus(year, month + 1, day);
-                dayCell.classList.add(status);
-                
-                if (status === 'unavailable') {
-                    dayCell.setAttribute('title', 'No disponible');
-                } else if (status === 'maybe') {
-                    dayCell.setAttribute('title', 'Posible indisponibilidad');
-                } else if (status === 'school') {
-                    const isDam = new Date(year, month, day) >= new Date(2026, 8, 1) && new Date(year, month, day) <= new Date(2027, 5, 30);
-                    const label = isDam ? 'Periodo Lectivo (2º DAM) - Disponibilidad Parcial' : 'Periodo Lectivo (2º DAW) - Disponibilidad Parcial';
-                    dayCell.setAttribute('title', label);
-                } else {
-                    dayCell.setAttribute('title', 'Disponible para proyectos');
-                }
-                
-                daysGrid.appendChild(dayCell);
-            }
-            
-            monthCard.appendChild(daysGrid);
-            calendarTarget.appendChild(monthCard);
-        }
-        
-        // Mensaje de fallback si no hay meses que mostrar
-        if (calendarTarget.children.length === 0) {
-            const noDataMsg = document.createElement('p');
-            noDataMsg.style.gridColumn = '1 / -1';
-            noDataMsg.style.textAlign = 'center';
-            noDataMsg.style.color = 'var(--text-secondary)';
-            noDataMsg.style.padding = '40px 0';
-            noDataMsg.textContent = 'Este año ya ha finalizado.';
-            calendarTarget.appendChild(noDataMsg);
-        }
-        
-        calendarTarget.style.opacity = '1';
-    }, 150);
-}
-
-/**
- * Controla el botón y la tarjeta interactiva de 'Lo Esencial 🔍' en sobre-mi.html
- */
-function setupEssentialSummary() {
-    const toggleBtn = document.getElementById('btn-toggle-essential');
-    const summaryBox = document.getElementById('essential-summary-box');
-    const closeBtn = document.getElementById('btn-close-essential');
-
-    if (!toggleBtn || !summaryBox) return;
-
-    function openSummary() {
-        summaryBox.style.display = 'block';
-        toggleBtn.setAttribute('aria-expanded', 'true');
-        toggleBtn.style.borderColor = 'var(--accent-cyan)';
-        toggleBtn.style.color = '#FFFFFF';
-        summaryBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function closeSummary() {
-        summaryBox.style.display = 'none';
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        toggleBtn.style.borderColor = '';
-        toggleBtn.style.color = '';
-    }
-
-    toggleBtn.addEventListener('click', () => {
-        const isVisible = summaryBox.style.display !== 'none';
-        if (isVisible) {
-            closeSummary();
-        } else {
-            openSummary();
-        }
-    });
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeSummary);
-    }
+    indicator.innerHTML = `
+        <span class="status-dot status-dot-green"></span>
+        <span class="status-text">Disponible (DAM / Prácticas)</span>
+    `;
 }
 
 /**
@@ -1599,4 +1312,203 @@ function initElPiedreroSimulator() {
     }
 
     updateUI();
+}
+
+/**
+ * Carrusel de Capturas de Pantalla Móvil para El Piedrero (v1.1-Beta)
+ */
+function initElPiedreroCarousel() {
+    const carouselSection = document.getElementById('piedrero-carousel');
+    if (!carouselSection) return;
+
+    const slides = carouselSection.querySelectorAll('.carousel-slide');
+    const dots = carouselSection.querySelectorAll('.carousel-dot');
+    const thumbBtns = carouselSection.querySelectorAll('.thumb-btn');
+    const prevBtn = document.getElementById('carousel-btn-prev');
+    const nextBtn = document.getElementById('carousel-btn-next');
+    const counterEl = document.getElementById('carousel-counter');
+    const badgeEl = document.getElementById('carousel-slide-badge');
+    const titleEl = document.getElementById('carousel-slide-title');
+    const descEl = document.getElementById('carousel-slide-desc');
+    const featuresContainer = document.getElementById('carousel-slide-features');
+    const zoomLink = document.getElementById('carousel-zoom-link');
+
+    const slidesData = [
+        {
+            title: "Pantalla Principal",
+            version: "v1.1-Beta",
+            step: "Paso 1 de 7",
+            desc: "Menú inicial de bienvenida con selector directo de modalidades: <strong>Partida Local</strong> (un solo teléfono en el centro de la mesa) o <strong>Partida Multijugador</strong> (sincronización en red local por Sockets TCP y código QR), acceso directo al <strong>Historial de Partidas</strong> (últimas 30), Privacidad 100% offline y Licencias Open Source.",
+            features: ["📴 100% Offline", "📱 Material 3", "⚡ Sockets TCP & QR"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-01-pantalla-principal.png"
+        },
+        {
+            title: "Menú de Configuración de Partida Local",
+            version: "v1.1-Beta",
+            step: "Paso 2 de 7",
+            desc: "Modal intuitivo previo al inicio del juego para configurar la <strong>capacidad de la mesa</strong> (2 jugadores 1v1 mano a mano, 3 en trío, 4 en parejas 2x2, 6 3x2 u 8 4x2) y personalizar los <strong>nombres de los jugadores</strong> antes de dar comienzo a la partida.",
+            features: ["👥 2 a 8 Jugadores", "🎯 Modos 1v1, Trío y Parejas", "✏️ Nombres Editables"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-02-configuracion-local.png"
+        },
+        {
+            title: "Pantalla de Cartas a la Mesa",
+            version: "v1.1-Beta",
+            step: "Paso 3 de 7",
+            desc: "Asistente visual exclusivo para el repartidor durante el 1.er reparto. Permite marcar con un solo toque las cartas tradicionales repartidas que coincidan con el orden de salida (+1 a +4 piedras) e integra el conmutador interactivo de validación reglamentaria <strong>«¿Bien dada?»</strong> (+1 piedra adicional).",
+            features: ["🃏 4 Cartas Tradicionales", "🪨 +1 a +4 Piedras Automáticas", "⚖️ Validación «¿Bien dada?»"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-03-cartas-a-la-mesa.png"
+        },
+        {
+            title: "Interfaz Principal de una Partida",
+            version: "v1.1-Beta",
+            step: "Paso 4 de 7",
+            desc: "Marcador táctil central diseñado bajo arquitectura reactiva <strong>MVI</strong>. Muestra el estado del reparto en curso (<em>Mano / Reparto 1 de 6</em>), tanteo en tiempo real con transición dinámica de <strong>Malas a Buenas</strong> (0/11 a 21 piedras) y botonera de cantos folclóricos (Ronda, Parranda, Caracol, Caracolillo, Majo, Limpio...).",
+            features: ["🌟 Malas a Buenas (21 piedras)", "🎵 Cantos con Audio Real", "🔄 Tanteo MVI Reactivo"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-04-interfaz-partida.png"
+        },
+        {
+            title: "Pantalla de Registro de Partida",
+            version: "v1.1-Beta",
+            step: "Paso 5 de 7",
+            desc: "Panel desplegable de trazabilidad cronológica con el desglose detallado de todos los movimientos y piedras anotadas en cada reparto. Incorpora control de seguridad con el botón <strong>«Deshacer Último»</strong> para revertir cualquier anotación involuntaria al instante sin perder la integridad del tanteo.",
+            features: ["📜 Historial de Movimientos", "↩️ Botón Deshacer Inmediato", "🛡️ Integridad de Tanteo"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-05-registro-partida.png"
+        },
+        {
+            title: "Pantalla de Victoria",
+            version: "v1.1-Beta",
+            step: "Paso 6 de 7",
+            desc: "Modal de fin de partida que se despliega automáticamente al alcanzar las <strong>10 Buenas (21 piedras totales)</strong>. Proclama al ganador, actualiza el <strong>marcador acumulado de victorias</strong> (head-to-head), indica a quién le tocará repartir en el siguiente encuentro e integra opciones para <em>Siguiente Partida</em>, <em>Deshacer última jugada</em>, <em>Volver al Menú</em> o <em>Reiniciar a 0</em>.",
+            features: ["🏆 10 Buenas (21 piedras)", "📊 Historial Head-to-Head", "🔄 Siguiente Partida / Deshacer"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-06-pantalla-victoria.png"
+        },
+        {
+            title: "Pantalla Principal en Modo Oscuro",
+            version: "v1.1-Beta",
+            step: "Paso 7 de 7",
+            desc: "Soporte nativo integral de <strong>Tema Oscuro (Dark Mode)</strong> bajo directrices de Material Design 3. Diseñado específicamente para reducir la fatiga visual en partidas nocturnas y maximizar el ahorro de batería en pantallas OLED/AMOLED con un contraste y tipografía impecables.",
+            features: ["🌙 Modo Oscuro Nativo", "🔋 Eficiencia OLED / AMOLED", "👁️ Confort Visual Nocturno"],
+            origImg: "src/assets/projects/elpiedrero/v1.1-07-pantalla-principal-dark.png"
+        }
+    ];
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+
+        // Actualizar diapositivas
+        slides.forEach((slide, idx) => {
+            if (idx === currentIndex) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        // Actualizar dots
+        dots.forEach((dot, idx) => {
+            if (idx === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+
+        // Actualizar miniaturas y centrar miniatura activa en móviles
+        thumbBtns.forEach((btn, idx) => {
+            if (idx === currentIndex) {
+                btn.classList.add('active');
+                if (btn.scrollIntoView) {
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Actualizar contador
+        if (counterEl) {
+            counterEl.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        }
+
+        // Actualizar textos y badges
+        const data = slidesData[currentIndex];
+        if (data) {
+            if (badgeEl) badgeEl.textContent = `${data.step} · ${data.version}`;
+            if (titleEl) titleEl.textContent = data.title;
+            if (descEl) descEl.innerHTML = data.desc;
+            if (featuresContainer) {
+                featuresContainer.innerHTML = data.features.map(f => `<span class="feature-chip">${f}</span>`).join('');
+            }
+            if (zoomLink && data.origImg) {
+                zoomLink.href = data.origImg;
+            }
+        }
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    }
+
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => goToSlide(idx));
+    });
+
+    thumbBtns.forEach((btn, idx) => {
+        btn.addEventListener('click', () => goToSlide(idx));
+    });
+
+    // Soporte táctil / Swipe para móviles (Google Pixel / Samsung Galaxy / Android gestures)
+    const phoneMockup = carouselSection.querySelector('.android-mockup, .phone-mockup');
+    if (phoneMockup) {
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        phoneMockup.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        phoneMockup.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            // Solo si el gesto es predominantemente horizontal para no interferir con scroll vertical
+            if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                if (diffX > 0) {
+                    goToSlide(currentIndex + 1);
+                } else {
+                    goToSlide(currentIndex - 1);
+                }
+            }
+        }
+    }
+
+    // Navegación por teclado (Flechas Izquierda / Derecha)
+    carouselSection.setAttribute('tabindex', '0');
+    carouselSection.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            goToSlide(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+            goToSlide(currentIndex + 1);
+        }
+    });
+
+    // Inicializar primera diapositiva
+    goToSlide(0);
 }

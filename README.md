@@ -56,7 +56,7 @@ Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Team
 | Ruta | Descripción |
 |---|---|
 | `index.html` | Portada principal con propuesta de valor, stack técnico y tarjetas de proyectos destacados. |
-| `sobre-mi.html` | Perfil profesional, formación académica (SMR/DAM), metodología y calendario de disponibilidad 2026–2028. |
+| `sobre-mi.html` | Perfil profesional, formación académica (SMR/DAM), metodología y sección ejecutiva de disponibilidad y compatibilidad laboral (DAM / Prácticas). |
 | `proyectos.html` | Catálogo completo de proyectos con filtros de estado y enlaces a repositorios de código. |
 | `proyecto-elpiedrero.html` | Ficha técnica de El Piedrero (Android nativo, Kotlin, Jetpack Compose, Sockets TCP, QR, IA). |
 | `proyecto-habitly.html` | Ficha técnica de Habitly (Java Swing GUI, validación LAU/Ley 12/2023, JUnit 5, AES-256-GCM). |
@@ -68,7 +68,7 @@ Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Team
 | `cv.html` | Currículum interactivo web adaptado para lectura digital y optimizado para exportación/impresión A4 en 2 páginas. |
 | `src/assets/` | Recursos visuales, capturas WebP, fotografías de perfil, iconos de marca y PDF descargable (`CV_Iriome_Naranjo_Backend_Java.pdf`). |
 | `src/css/style.css` | Sistema de diseño unificado, paleta de colores, variables CSS y diseño responsive. |
-| `src/js/script.js` | Motor de interfaz, simulador de terminal, calendario dinámico, gestor de temas/consentimiento y atajos de teclado. |
+| `src/js/script.js` | Motor de interfaz, simulador de terminal interactivo, gestor de temas y control de consentimiento RGPD. |
 | `doc/` | Documentación técnica y especificaciones funcionales de los proyectos. |
 
 ---
@@ -76,10 +76,10 @@ Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Team
 ## 🛠️ Características técnicas
 
 ### 🎨 UI/UX & Accesibilidad
-- **Diseño Responsive & Accesible:** Rejillas CSS fluidas, adaptaciones móviles con áreas táctiles conformes a WCAG 2.2 (`min-height: 44px`) y atributos semánticos `aria-current="page"`.
+- **Diseño Responsive & Accesible:** Rejillas CSS fluidas, adaptaciones móviles con áreas táctiles conformes a WCAG 2.2 (`min-height: 44px`), ratios de contraste de color verificados (`--text-muted`) y atributos semánticos `aria-current="page"`.
 - **Modo Oscuro / Claro:** Carga por defecto en modo oscuro con alternador flotante y transiciones suaves de 0.5s en sincronía con el sistema.
 - **Navegación de Proyectos:** Menú desplegable con acceso directo a las tres aplicaciones destacadas (Habitly, Split It y El Piedrero) y enlace al catálogo completo.
-- **Calendario Dinámico:** Visualizador de disponibilidad 2026–2028 en `sobre-mi.html` con filtros de estado y pie de página que reacciona en tiempo real a la fecha actual del sistema.
+- **Disponibilidad Ejecutiva:** Resumen estructurado de disponibilidad e incorporación inmediata en `sobre-mi.html` (compatibilidad con jornada DAM / Prácticas) y estado reactivo en pie de página.
 - **Logotipo Interactivo:** Identificador dinámico `Iriome.build(sección)` que actualiza su parámetro según la página activa.
 - **CV Interactivo & Exportación (`cv.html`):** Vista web adaptada con descarga directa en PDF y exportación milimétrica a formato A4 de 2 páginas vía `@media print`.
 
@@ -92,14 +92,11 @@ Flujo automatizado con **Power Automate Desktop** integrado con **Microsoft Team
 - **Protección Anti-Scraping para Datos Personales (PII):** Los correos y teléfonos se almacenan codificados en Base64 y se decodifican dinámicamente en tiempo de ejecución, impidiendo su extracción por spambots.
 - **Content Security Policy (CSP):** Cabeceras meta en todas las páginas restringiendo orígenes legítimos para scripts, estilos, conexiones y fuentes.
 - **Formulario Seguro:** Verificación anti-spam mediante hCaptcha e integración con Web3Forms.
-- **Analítica y Cumplimiento:** Integración con Google Tag Manager (GTM) respetando el banner de consentimiento dinámico (Consent Mode v2 con denegación por defecto) y la normativa europea de protección de datos (RGPD).
+- **Analítica y Cumplimiento RGPD:** Integración con Google Tag Manager (GTM) con ejecución estricta previa de Google Consent Mode v2 (`gtag('consent', 'default', ... denied)`) en todas las páginas, garantizando el cumplimiento normativo antes de cualquier disparo de etiquetas.
 
 ### ⚡ Rendimiento
 - **Optimización de Assets (WebP):** Imágenes y capturas de proyectos convertidas al formato `.webp` (calidad 80%), reduciendo el peso de descarga inicial en más de 2.75 MB.
-- **Carga Eficiente:** Código modular y tipografías optimizadas (`Plus Jakarta Sans` y `JetBrains Mono`).
-
-### 🧩 Herramientas Auxiliares
-- **Generador Local de Correo (`plantilla_correo.html`):** Utilidad local privada para la generación ágil de respuestas formales por correo electrónico (accesible mediante el atajo `Ctrl + Alt + I`, archivo excluido del repositorio público).
+- **Carga Eficiente & Saneamiento:** Código modular nativo, tipografías optimizadas (`Plus Jakarta Sans` y `JetBrains Mono`) y purga de assets huérfanos (eliminación de fuentes locales no utilizadas y ficheros de audio innecesarios).
 
 ---
 
@@ -160,7 +157,7 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 | Path | Description |
 |---|---|
 | `index.html` | Main landing page highlighting value proposition, tech stack, and featured project cards. |
-| `sobre-mi.html` | Profile, academic background (SMR/DAM), methodology, and 2026–2028 availability calendar. |
+| `sobre-mi.html` | Profile, academic background (SMR/DAM), methodology, and executive availability/work compatibility section (DAM / Internship). |
 | `proyectos.html` | Full project catalog with category filters and links to source code repositories. |
 | `proyecto-elpiedrero.html` | Technical breakdown of El Piedrero (Native Android, Kotlin, Jetpack Compose, TCP Sockets, QR, AI). |
 | `proyecto-habitly.html` | Technical breakdown of Habitly (Java Swing GUI, LAU compliance, JUnit 5, AES-256-GCM). |
@@ -172,18 +169,18 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 | `cv.html` | Interactive web CV designed for digital review and optimized for 2-page A4 printing. |
 | `src/assets/` | Visual assets, WebP project previews, profile photos, brand icons, and CV PDF (`CV_Iriome_Naranjo_Backend_Java.pdf`). |
 | `src/css/style.css` | Unified design system, color palette, CSS custom properties, and responsive styles. |
-| `src/js/script.js` | UI engine, CLI terminal simulator, dynamic calendar, theme/consent handlers, and keyboard shortcuts. |
+| `src/js/script.js` | UI engine, CLI terminal simulator, theme management, and GDPR consent handlers. |
 | `doc/` | Technical documentation and functional specifications. |
 
 ---
 
 ## 🛠️ Technical Features
 
-### 🎨 UI/UX
-- **Fluid Responsiveness:** Elastic CSS grids and tailored layouts for mobile phones, tablets, and desktop displays.
+### 🎨 UI/UX & Accessibility
+- **Fluid Responsiveness & Accessibility:** Elastic CSS grids, WCAG 2.2 touch targets (`min-height: 44px`), verified contrast ratios (`--text-muted`), and semantic `aria-current="page"` attributes.
 - **Dark / Light Theme:** Default dark mode load with a smooth floating toggle and 0.8s flicker-free transition.
 - **Project Navigation:** Clean dropdown menu with direct links to the three featured applications (Habitly, Split It, and El Piedrero) and full catalog access.
-- **Dynamic Calendar:** 2026–2028 availability viewer on `sobre-mi.html` with state filters and real-time reactive footer status.
+- **Executive Availability:** Clear availability and immediate onboarding overview on `sobre-mi.html` (DAM / Internship compatibility) with reactive status in the footer.
 - **Interactive Code Logo:** Dynamic `Iriome.build(section)` logo updating its parameter based on the active page.
 
 ### ⚙️ JavaScript & Interactivity
@@ -193,14 +190,11 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 
 ### 🔐 Privacy & Analytics
 - **Secure Form:** Anti-spam verification using hCaptcha and Web3Forms integration.
-- **Analytics & Compliance:** Integrated Google Tag Manager (GTM) with dynamic consent management (Consent Mode v2) adhering to GDPR guidelines.
+- **Analytics & GDPR Compliance:** Integrated Google Tag Manager (GTM) with strict prior execution of Google Consent Mode v2 (`gtag('consent', 'default', ... denied)`) across all pages, adhering to GDPR guidelines before any tags fire.
 
 ### ⚡ Performance
 - **Asset Optimization (WebP):** Images and project previews converted to `.webp` format (80% quality), saving over 2.75 MB in initial page payload.
-- **Efficient Loading:** Modular codebase and optimized local web fonts for immediate rendering.
-
-### 🧩 Auxiliary Tools
-- **Local Mail Generator (`plantilla_correo.html`):** Private utility for generating formal email responses (accessible via shortcut `Ctrl + Alt + I`, excluded from the public repository).
+- **Efficient Loading & Cleanup:** Modular native codebase, optimized web fonts (`Plus Jakarta Sans` & `JetBrains Mono`), and purge of orphan assets (removal of unused local font files and obsolete audio files).
 
 ---
 
@@ -236,7 +230,7 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 - **Actualización «El Piedrero» (v1.0.03092026.2 · QR & UI Polishing):** Optimización del escaneo QR con liberación inmediata del hardware de cámara (`unbindAll`), pantalla de sincronización de sala (`ConnectionLoadingView`) y error amigable sin fugas de IP/puertos, corrección de ergonomía táctil en estado «En Buenas» (≥44 dp), sincronización dinámica de volumen de sintetizador y háptico, ofuscación R8 (8.2 MB), protección anti-replay LAN y enlace directo al binario oficial `ElPiedrero_v1.0.03.092026.2.apk` (*Release v1.0.03092026.2: camera hardware release upon QR scan, friendly connection status screen without IP leak, ergonomic scoreboard layout in Buenas, volume sync, and direct official APK release link*).
 - **Actualización «El Piedrero» (v1.0.02092026.2):** Cifrado de red local **AES-256-GCM**, touch targets accesibles de 48 dp (WCAG), streaming de audio Zero-Disk-IO, canales sonoros paralelos, firma Release oficial y audio de victoria integrado en el simulador web (*Upgraded El Piedrero to v1.0.02092026.2: AES-256-GCM encryption, 48 dp touch targets, Zero-Disk-IO audio streaming, and official signed release build*).
 - **Badge `Fase MVP (1.0)` y enlaces APK:** Añadido el badge de estado y el botón de descarga directa del APK compilado en todos los puntos de acceso de El Piedrero (`index.html`, `cv.html`, `sobre-mi.html`, `proyectos.html`, `proyecto-elpiedrero.html`) (*Added MVP badge and direct APK download button across all El Piedrero entry points*).
-- **Ajuste de Roadmap «Canary Wine & Guachinches API»:** Reprogramación del periodo de desarrollo activo de la API REST a **Octubre 2026 – Enero 2027** en `sobre-mi.html`, actualizando la cabecera del roadmap a 2026 – 2027 (*Rescheduled Canary Wine & Guachinches API development timeline to October 2026 – January 2027 in `sobre-mi.html`*).
+- **Ajuste de Roadmap «Canary Wine & Guachinches API»:** Reprogramación del periodo de desarrollo activo de la API REST a **Septiembre 2026 – Enero 2027** en `sobre-mi.html`, actualizando la cabecera del roadmap a 2026 – 2027 (*Rescheduled Canary Wine & Guachinches API development timeline to September 2026 – January 2027 in `sobre-mi.html`*).
 - **Hoja de Ruta Oficial «El Piedrero» (MVP inicial vs v1.0 Estable):** Reestructuración del roadmap en `proyecto-elpiedrero.html` para desacoplar el prototipo inicial MVP (commit `fe10dbf`, 01/09/2026) del hito de la **Versión Oficial 1.0 Estable**, documentando todas las capacidades consolidadas en producción (cifrado AES-256-GCM, TV Cast, accesibilidad WCAG AAA, ciclo de vida robusto y audio inteligente) (*Restructured El Piedrero project roadmap distinguishing the initial MVP commit from the official stable v1.0 milestone and its production architecture*).
 - **Menú Desplegable & Nota Informativa Unificada:** Reemplazo del submenú de automatizaciones RPA por acceso directo a «El Piedrero» en el desplegable de navegación de las 12 páginas, e igualación cromática índigo de la nota informativa en `proyecto-elpiedrero.html` (*Replaced RPA submenu in project navigation dropdown across all 12 pages with direct link to El Piedrero; aligned nota informativa styling*).
 - **Renombramiento Oficial «Split It» & Repositorio «Split-It»:** Actualización de la identidad de marca del proyecto de facturación a **Split It** (con espacio) y sincronización de los enlaces de código fuente al repositorio oficial **Split-It** en GitHub (*Official rebranding to Split It and repository URL updated to Split-It on GitHub*).
@@ -245,6 +239,14 @@ Automated flow built with **Power Automate Desktop** integrated with **Microsoft
 - **El Piedrero — v1.0.1 (05/09/2026 - Parche de Estabilidad y Accesibilidad):** Actualización oficial a la versión de mantenimiento `v1.0.1` (`versionCode = 2`) con el binario oficial `El_Piedrero_v1.0.1.apk`. Incorpora selector dinámico de tamaño de fuente en ajustes (Normal, Grande +12%, Extra +25%), diálogo inicial de 4 cartas («Cartas a la Mesa») exclusivo para el repartidor en multijugador, prioridad sonora ininterrumpida para *¡Buenas!* y *¡Últimas!*, botón para deshacer la última jugada directamente desde la ventana de victoria y bloqueo estricto con candado 🔒 del equipo rival en red local (*Maintenance release v1.0.1: dynamic font scaling accessibility options, dealer-exclusive 4-card table deal dialog, protected audio queue priority for Buenas and Últimas, undo option on victory screen, strict rival lock in LAN multiplayer, and official signed binary `El_Piedrero_v1.0.1.apk`*).
 - **El Piedrero — v1.0.2 (08/09/2026 - Parche de Accesibilidad, Bufos y Sincronización Multijugador):** Actualización oficial a la versión de mantenimiento `v1.0.2` (`versionCode = 3`) con el binario oficial `El_Piedrero_v1.0.2.apk`. Introduce pantalla interactiva de espera multijugador durante el reparto inicial de 4 cartas con descarte automático sincronizado, botones contextuales de bonificación por «bufos» (+1 en Ronda/Parranda; +2 en Caracol/Caracolillo) con vigencia estricta de reparto, miniventana flotante de recordatorio de reparto tras 1 min, protección adaptativa en dos líneas para tipografías extra grandes (+25%) y transición formal de la **v1.1 a Desarrollo Activo** (*Maintenance release v1.0.2: multiplayer waiting screen during initial deal with synchronized auto-dismiss, contextual bufo bonus buttons, 1-minute floating deal reminder dialog, 2-line layout protection for extra large fonts, official binary `El_Piedrero_v1.0.2.apk`, and v1.1 status updated to Active Development*).
 - **El Piedrero — v1.0.3 (10/09/2026 - Parche de Resiliencia Acústica, Streaming Kernel TV Cast y Calibración de Reparto):** Actualización oficial a la versión de mantenimiento `v1.0.3` (`versionCode = 4`) con el binario oficial `El_Piedrero_v1.0.3.apk`. Erradica cierres inesperados al finalizar pistas BGM mediante callbacks nativos atómicos thread-safe sobre `MediaPlayer`, optimiza la acústica de transmisión a Smart TVs en Miracast mediante streaming desacoplado de la JVM por `FileDescriptor` del kernel Linux con búfer elástico de 2–4 s (inmune a pausas del Garbage Collector y saturación en `AudioFlinger`), incorpora pantalla de espera interactiva en recuento con barra de progreso y calibrador del recordatorio de reparto (30s por defecto, ajustable o desactivable desde Accesibilidad), manteniendo la **v1.1 en Desarrollo Activo** (*Maintenance release v1.0.3: thread-safe native system callbacks eliminating BGM completion crashes, low-latency TV Cast audio streaming decoupled from JVM via Linux kernel FileDescriptor with 2-4s elastic buffer preventing AudioFlinger saturation, interactive recount waiting screen with progress bar, configurable deal reminder timer, official signed binary `El_Piedrero_v1.0.3.apk`, and active development status for v1.1*).
+- **El Piedrero — v1.1-Beta (12/09/2026 - Actualización Pre-Lanzamiento v1.1-Beta: Rediseño Visual Material 3, Selector de Mesa, Asistente de Reparto y Modo Oscuro):** Actualización a la versión pre-lanzamiento `v1.1-Beta` (en desarrollo activo) con disponibilidad dual de binarios (`El_Piedrero_v1.1-Beta.apk` para pruebas y `El_Piedrero_v1.0.3.apk` como release estable). Incorpora la refactorización visual completa de la interfaz en Jetpack Compose (Material 3) bajo arquitectura reactiva MVI: selector rápido de modalidades (Partida Local en un solo teléfono o Multijugador Sockets TCP/QR), configuración interactiva de mesa (2 a 8 jugadores: 1v1, 3 en trío, 2x2, 3x2 y 4x2) con personalización de nombres, asistente táctil de primer reparto («Cartas a la Mesa» con switch de validación reglamentaria «¿Bien dada?»), trazabilidad cronológica con botón «Deshacer Último», pantalla de victoria a las 10 Buenas (21 piedras) con historial head-to-head, carrusel interactivo en el portfolio con chasis Android nativo responsivo y soporte integral para Tema Oscuro (*Pre-release update v1.1-Beta in active development with dual binary distribution: `El_Piedrero_v1.1-Beta.apk` for early testing and `El_Piedrero_v1.0.3.apk` as official stable release. Comprehensive Material 3 UI refactor under MVI architecture, local/multiplayer modal selector, 2-to-8 player table configuration, initial deal table assistant with '¿Bien dada?' rule validator, chronological action log with instant undo, 21-stone victory screen with head-to-head match history, native responsive Android mockup gallery carousel, and dark theme support*).
+- **Auditoría Técnica Integral & Optimización para Reclutamiento Backend (12/09/2026 - DAM / Junior-Mid):** Refactorización profunda orientada a estándares profesionales de la industria, directrices de accesibilidad y privacidad:
+  - **Saneamiento RGPD & Privacidad:** Reordenación de Google Consent Mode v2 estrictamente previo a Google Tag Manager en las 13 páginas HTML, desvinculación de redes sociales personales no profesionales (Instagram) y eliminación de atajos de teclado a utilidades privadas en JavaScript (`script.js`).
+  - **Deprecación del Calendario Trienal:** Sustitución del widget de calendario 2026–2028 por tarjetas ejecutivas directas de Disponibilidad e Incorporación (modalidad presencial/híbrida en Tenerife y remota, compatibilidad horaria DAM/prácticas).
+  - **Accesibilidad WCAG 2.2 AA:** Ajuste de ratio de contraste para `--text-muted` (`#475569` en tema claro / `#94A3B8` en modo oscuro), indicadores de foco visibles con anillo cian para navegación mediante teclado (`:focus-visible`) y áreas táctiles mínimas de 44px para dispositivos móviles.
+  - **Purga de Assets Huérfanos:** Eliminación de fuentes locales redundantes (`lora-*`, `outfit-*`) y pistas de audio MP3 no referenciadas en el repositorio web, reduciendo significativamente el peso total.
+  - **Consolidación del CV (`cv.html`):** Unificación de la experiencia en soporte IT a una única entrada concisa como Técnico de Soporte de TI & Infraestructura, eliminando dispersión y situando el foco principal en proyectos de ingeniería de software (Habitly, Split It, El Piedrero).
+  (*Comprehensive technical audit & backend recruitment optimization: strict Google Consent Mode v2 execution order prior to GTM across all 13 HTML pages, Instagram personal links removal, deprecated 3-year calendar replaced by executive availability cards, WCAG 2.2 AA contrast & touch target fixes, orphan font/audio assets purged, and CV IT support experience consolidated.*)
 
 
 ---

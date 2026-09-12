@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; media-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com;">
     <title>El Piedrero · Marcador Android Ronda | Iriome Naranjo</title>
-    <meta name="description" content="Marcador nativo Android en Kotlin y Jetpack Compose para la tradicional Ronda. Sincronización multijugador offline por Sockets TCP y arquitectura limpia.">
+    <meta name="description" content="Marcador nativo Android en Kotlin y Jetpack Compose para la tradicional Ronda. Sincronización multijugador offline por Sockets TCP y arquitectura limpia."><!-- Google Consent Mode v2 -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+    </script>
 
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -27,18 +37,6 @@
     
     <!-- Canonical -->
     <link rel="canonical" href="https://devnaranjo.github.io/Portfolio/proyecto-elpiedrero.html">
-
-        <!-- Google Consent Mode v2 -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-        });
-    </script>
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme');
@@ -75,7 +73,7 @@
                         <li><a href="sobre-mi.html#about-section">Mi Historia</a></li>
                         <li><a href="sobre-mi.html#experience-section">Experiencia y Formación</a></li>
                         <li><a href="sobre-mi.html#challenges-section">RoadMap</a></li>
-                        <li><a href="sobre-mi.html#availability-calendar">Calendario</a></li>
+                        <li><a href="sobre-mi.html#availability-section">Disponibilidad</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -105,7 +103,7 @@
             <!-- Ficha de Cabecera del Proyecto -->
             <div class="project-header" id="star-project-card" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.0.3)</h1>
+                    <h1 class="project-card-title" style="font-size: 2.25rem; font-family: var(--font-serif); font-weight: 700; color: var(--text-primary); view-transition-name: elpiedrero-title;">El Piedrero (v1.1-Beta)</h1>
                     <div class="project-meta">
                         <span class="tag">Android</span>
                         <span class="tag">Kotlin</span>
@@ -118,10 +116,10 @@
                         <span class="tag">OpenSource</span>
                     </div>
                     <div style="margin-top: 15px; display: inline-flex; align-items: center; gap: 8px; background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
-                        <span>📢 <strong>Nota informativa:</strong> Versión oficial estable (v1.0.3) para Android, totalmente operativa de forma offline en red local sin servidores ni Internet. La próxima <strong>versión 1.1 (Refactorización Visual &amp; UX)</strong> se encuentra actualmente en desarrollo activo (<a href="#project-roadmap" style="color: var(--accent-rose); text-decoration: underline;">ver hoja de ruta</a>).</span>
+                        <span>📢 <strong>Nota informativa:</strong> La aplicación cuenta con acceso a la versión pre-lanzamiento <strong>v1.1-Beta</strong> para pruebas, manteniendo simultáneamente la descarga del binario oficial estable <strong>v1.0.3</strong>. Todas las novedades de la v1.1 ya pueden explorarse en la <a href="#elpiedrero-gallery" style="color: var(--accent-cyan); text-decoration: underline; font-weight: 600;">galería interactiva</a> y en la <a href="#project-roadmap" style="color: var(--accent-rose); text-decoration: underline;">hoja de ruta</a>.</span>
                     </div>
                 </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                     <a href="https://github.com/DevNaranjo/El-Piedrero" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         Ver en GitHub
@@ -132,9 +130,14 @@
                         Releases
                     </a>
 
-                    <a href="https://github.com/DevNaranjo/El-Piedrero/releases/download/v1.0.3/El_Piedrero_v1.0.3.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btn-download-apk" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; color: #FFFFFF;">
+                    <a href="https://github.com/DevNaranjo/El-Piedrero/releases/download/v1.0.3/El_Piedrero_v1.0.3.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btn-download-apk-stable" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; color: #FFFFFF; font-weight: 600; text-decoration: none; transition: var(--transition-smooth);">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Descargar APK (v1.0.3)
+                        Descargar APK Estable (v1.0.3)
+                    </a>
+
+                    <a href="https://github.com/DevNaranjo/El-Piedrero/releases/download/v1.1-Beta/El_Piedrero_v1.1-Beta.apk" target="_blank" rel="noopener noreferrer" class="btn" id="btn-download-apk-beta" style="display: inline-flex; align-items: center; gap: 8px; width: auto; font-size: 0.9rem; padding: 10px 20px; border-radius: 30px; background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%); border: none; color: #FFFFFF; font-weight: 700; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.35); text-decoration: none; transition: var(--transition-smooth);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar APK Beta (v1.1-Beta)
                     </a>
                 </div>
             </div>
@@ -150,6 +153,150 @@
                 <p style="color: var(--text-secondary); font-size: 0.93rem; line-height: 1.65; margin: 0;">
                     El nombre proviene de la jerga tradicional de la <strong>Ronda</strong>: en la mesa, los puntos no se anotan en papel, sino que se contabilizan apilando <em>piedras</em> físicas (o judías). Al encargado oficial de custodiar el tanteo, sumar las malas, pasar a buenas y cantar la victoria se le llama coloquialmente <strong>el piedrero</strong>. La app nace para actuar como ese <strong>«piedrero digital»</strong> de apoyo.
                 </p>
+            </div>
+
+            <!-- GALERÍA / CARRUSEL DE CAPTURAS: EL PIEDRERO v1.1-Beta -->
+            <div class="card elpiedrero-gallery-card" id="elpiedrero-gallery">
+                <div class="gallery-header">
+                    <div>
+                        <span class="gallery-tag">📱 Galería Oficial de la Aplicación</span>
+                        <h3 class="gallery-title">
+                            <span>Capturas de Pantalla</span>
+                            <span class="gallery-version-badge">v1.1-Beta</span>
+                        </h3>
+                    </div>
+                    <div>
+                        <span class="gallery-dev-pill">🚧 v1.1 en Desarrollo</span>
+                    </div>
+                </div>
+                <p class="gallery-subtitle">
+                    Explora las pantallas reales de la futura versión <strong>v1.1-Beta</strong> de <em>El Piedrero</em>. Diseñada en Android con Material 3, arquitectura reactiva MVI y soporte multijugador local mediante Sockets TCP.
+                </p>
+
+                <div class="carousel-container" id="piedrero-carousel">
+                    <!-- Columna Izquierda: Mockup de Teléfono Android con Carrusel -->
+                    <div class="carousel-phone-wrapper">
+                        <div class="android-mockup phone-mockup" id="android-phone-mockup">
+                            <!-- Altavoz superior en bisel (micro-slit) -->
+                            <div class="android-speaker-slit" aria-hidden="true"></div>
+
+                            <!-- Cámara frontal Android Punch-Hole (Infinity-O) centrada -->
+                            <div class="android-punchhole" aria-hidden="true" title="Cámara Frontal Android">
+                                <span class="android-lens-reflection"></span>
+                            </div>
+
+                            <!-- Píldora de navegación por gestos inferior Android Material 3 -->
+                            <div class="android-gesture-pill" aria-hidden="true"></div>
+
+                            <div class="carousel-track-wrapper">
+                                <div class="carousel-track" id="carousel-track">
+                                    <div class="carousel-slide active" data-index="0">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-01-pantalla-principal.png" alt="El Piedrero v1.1-Beta - Pantalla Principal" loading="lazy" width="400" height="818">
+                                    </div>
+                                    <div class="carousel-slide" data-index="1">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-02-configuracion-local.png" alt="El Piedrero v1.1-Beta - Menú de Configuración de Partida Local" loading="lazy" width="400" height="818">
+                                    </div>
+                                    <div class="carousel-slide" data-index="2">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-03-cartas-a-la-mesa.png" alt="El Piedrero v1.1-Beta - Pantalla de Cartas a la Mesa" loading="lazy" width="400" height="818">
+                                    </div>
+                                    <div class="carousel-slide" data-index="3">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-04-interfaz-partida.png" alt="El Piedrero v1.1-Beta - Interfaz Principal de una Partida" loading="lazy" width="400" height="818">
+                                    </div>
+                                    <div class="carousel-slide" data-index="4">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-05-registro-partida.png" alt="El Piedrero v1.1-Beta - Pantalla de Registro de Partida" loading="lazy" width="400" height="818">
+                                    </div>
+                                    <div class="carousel-slide" data-index="5">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-06-pantalla-victoria.png" alt="El Piedrero v1.1-Beta - Pantalla de Victoria" loading="lazy" width="400" height="818">
+                                    </div>
+                                    <div class="carousel-slide" data-index="6">
+                                        <img src="src/assets/projects/elpiedrero/v1.1-07-pantalla-principal-dark.png" alt="El Piedrero v1.1-Beta - Pantalla Principal en Modo Oscuro" loading="lazy" width="400" height="818">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de Controles Ergonómica: Fuera de pantalla, 100% amigable para móvil -->
+                        <div class="carousel-nav-toolbar">
+                            <button class="carousel-nav-arrow prev" id="carousel-btn-prev" aria-label="Pantalla anterior" title="Pantalla anterior">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+
+                            <div class="carousel-nav-center">
+                                <span class="carousel-counter" id="carousel-counter">1 / 7</span>
+                                <div class="carousel-dots" id="carousel-dots">
+                                    <button class="carousel-dot active" data-index="0" aria-label="Ir a diapositiva 1"></button>
+                                    <button class="carousel-dot" data-index="1" aria-label="Ir a diapositiva 2"></button>
+                                    <button class="carousel-dot" data-index="2" aria-label="Ir a diapositiva 3"></button>
+                                    <button class="carousel-dot" data-index="3" aria-label="Ir a diapositiva 4"></button>
+                                    <button class="carousel-dot" data-index="4" aria-label="Ir a diapositiva 5"></button>
+                                    <button class="carousel-dot" data-index="5" aria-label="Ir a diapositiva 6"></button>
+                                    <button class="carousel-dot" data-index="6" aria-label="Ir a diapositiva 7"></button>
+                                </div>
+                            </div>
+
+                            <button class="carousel-nav-arrow next" id="carousel-btn-next" aria-label="Pantalla siguiente" title="Pantalla siguiente">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Tarjeta de Información Dinámica y Tira de Miniaturas -->
+                    <div class="carousel-details-panel">
+                        <div class="carousel-info-box" id="carousel-info-box">
+                            <span class="carousel-slide-badge" id="carousel-slide-badge">Paso 1 de 7 · v1.1-Beta</span>
+                            <h4 class="carousel-slide-title" id="carousel-slide-title">Pantalla Principal</h4>
+                            <p class="carousel-slide-desc" id="carousel-slide-desc">
+                                Menú inicial de bienvenida con selector directo de modalidades: <strong>Partida Local</strong> (un solo teléfono en el centro de la mesa) o <strong>Partida Multijugador</strong> (sincronización en red local por Sockets TCP y código QR), acceso directo al <strong>Historial de Partidas</strong> (últimas 30), Privacidad 100% offline y Licencias Open Source.
+                            </p>
+                            <div class="carousel-slide-features" id="carousel-slide-features">
+                                <span class="feature-chip">📴 100% Offline</span>
+                                <span class="feature-chip">📱 Material 3</span>
+                                <span class="feature-chip">⚡ Sockets TCP & QR</span>
+                            </div>
+
+                            <div class="carousel-zoom-wrapper">
+                                <a id="carousel-zoom-link" href="src/assets/projects/elpiedrero/v1.1-01-pantalla-principal.png" target="_blank" rel="noopener noreferrer" class="carousel-zoom-link" title="Abrir captura original en tamaño real (400x818 sin compresión)">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                                    <span>Ver captura original (100% resolución)</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Miniaturas rápidas para saltar directamente a cualquier pantalla -->
+                        <div class="carousel-thumbnails-section">
+                            <div class="carousel-thumbnails" id="carousel-thumbnails">
+                                <button class="thumb-btn active" data-index="0" title="Pantalla Principal (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-01-pantalla-principal.png" alt="Miniatura Pantalla Principal" loading="lazy">
+                                    <span>Principal</span>
+                                </button>
+                                <button class="thumb-btn" data-index="1" title="Menú de Configuración Local (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-02-configuracion-local.png" alt="Miniatura Configuración Local" loading="lazy">
+                                    <span>Config.</span>
+                                </button>
+                                <button class="thumb-btn" data-index="2" title="Cartas a la Mesa (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-03-cartas-a-la-mesa.png" alt="Miniatura Cartas a la Mesa" loading="lazy">
+                                    <span>Cartas</span>
+                                </button>
+                                <button class="thumb-btn" data-index="3" title="Interfaz Principal (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-04-interfaz-partida.png" alt="Miniatura Interfaz Partida" loading="lazy">
+                                    <span>En Juego</span>
+                                </button>
+                                <button class="thumb-btn" data-index="4" title="Registro de Partida (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-05-registro-partida.png" alt="Miniatura Registro Partida" loading="lazy">
+                                    <span>Registro</span>
+                                </button>
+                                <button class="thumb-btn" data-index="5" title="Pantalla de Victoria (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-06-pantalla-victoria.png" alt="Miniatura Pantalla de Victoria" loading="lazy">
+                                    <span>Victoria</span>
+                                </button>
+                                <button class="thumb-btn" data-index="6" title="Pantalla Principal en Modo Oscuro (v1.1-Beta)">
+                                    <img src="src/assets/projects/elpiedrero/v1.1-07-pantalla-principal-dark.png" alt="Miniatura Modo Oscuro" loading="lazy">
+                                    <span>Oscuro</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- SIMULADOR / VISTA PREVIA INTERACTIVA DE LA APLICACIÓN ANDROID -->
@@ -383,7 +530,7 @@
             <!-- Ficha de Características Destacadas -->
             <div class="card" style="margin-top: 40px; padding: 30px; border-left: 4px solid var(--accent-cyan); background: linear-gradient(135deg, rgba(6,182,212,0.03) 0%, transparent 100%);">
                 <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                    ⚡ Aspectos Destacados de Ingeniería Móvil (v1.0.3)
+                    ⚡ Aspectos Destacados de Ingeniería Móvil (v1.0.3 Estable · v1.1-Beta)
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 18px; margin-top: 15px;">
                     <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px;">
@@ -449,12 +596,22 @@
                         </div>
                     </div>
                     
-                    <!-- Iteración 3: Versión 1.1 -->
+                    <!-- Iteración 3: Versión 1.1-Beta -->
                     <div class="timeline-item active">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <h4>Versión 1.1: Refactorización Visual &amp; UX <span class="status-badge">En Desarrollo</span></h4>
-                            <p>Actualización actualmente en desarrollo activo enfocada en optimizar y pulir la interfaz gráfica del marcador: animaciones fluidas en la transición de piedras malas a buenas, mejoras de accesibilidad táctil para personas mayores, microinteracciones hápticas avanzadas y personalización de temas y avatares de equipo.</p>
+                            <h4>Versión 1.1: Refactorización Visual &amp; UX (v1.1-Beta) <span class="status-badge">En Desarrollo (Beta)</span></h4>
+                            <p>Actualización en fase activa de desarrollo y pruebas pre-lanzamiento que consolida la nueva experiencia visual y ergonómica de la aplicación:</p>
+                            <ul style="margin: 8px 0 12px 18px; padding: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                                <li><strong>Selector de Modalidades Directo:</strong> Pantalla inicial intuitiva con acceso inmediato a Partida Local (un teléfono en el centro de la mesa) o Partida Multijugador (red local por Sockets TCP y código QR).</li>
+                                <li><strong>Configuración Flexible de Mesa (2 a 8 Jugadores):</strong> Configuración interactiva de la mesa (1v1 mano a mano, 3 en trío, 4 en parejas 2x2, 6 en 3x2 u 8 en 4x2) y personalización completa de los nombres de los participantes.</li>
+                                <li><strong>Asistente Táctil de Primer Reparto:</strong> Pantalla «Cartas a la Mesa» para contabilizar rápidamente cartas tradicionales repartidas (+1 a +4 piedras) e interruptor de validación reglamentaria «¿Bien dada?».</li>
+                                <li><strong>Marcador Reactivo MVI:</strong> Rediseño visual del tanteo de Malas a Buenas (21 piedras) con transiciones suaves y botonera para los cantos folclóricos canarios.</li>
+                                <li><strong>Trazabilidad y Botón Deshacer Inmediato:</strong> Registro cronológico detallado de jugadas con reversión instantánea de anotaciones involuntarias.</li>
+                                <li><strong>Pantalla de Victoria y Head-to-Head:</strong> Modal de proclamación del ganador a las 10 Buenas (21 piedras) con marcador acumulado entre contrincantes.</li>
+                                <li><strong>Tema Oscuro Integral (Material 3):</strong> Soporte de alto contraste especialmente calibrado para partidas nocturnas y máxima eficiencia energética en pantallas OLED/AMOLED.</li>
+                                <li><strong>Distribución Anticipada del APK (v1.1-Beta):</strong> Acceso de prueba directa al binario compilado <code>El_Piedrero_v1.1-Beta.apk</code> disponible a través de GitHub Releases para testeo de nuevas características previo al lanzamiento general.</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -494,9 +651,6 @@
                     </a>
                     <a href="https://linkedin.com/in/inaranjorodriguez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/devnaranjo25/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </a>
                     <a href="#" data-contact="phone" aria-label="Teléfono" id="footer-phone">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
