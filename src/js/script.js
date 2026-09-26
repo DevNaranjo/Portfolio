@@ -40,13 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initConsentManagement();
     setupMobileMenu();
     
-    // 6. Indicador de Disponibilidad Global
+    // 6. Indicador de Disponibilidad Global y Calendario
     initFooterAvailability();
+    initAvailabilityCalendar();
 
     // 8. Simulador Interactivo de Marcador Android (El Piedrero)
     initElPiedreroSimulator();
 
-    // 9. Carrusel de Capturas de Pantalla Móvil v1.1-Beta (El Piedrero)
+    // 9. Carrusel de Capturas de Pantalla Móvil v1.1-Beta.2 (El Piedrero)
     initElPiedreroCarousel();
 });
 
@@ -1056,17 +1057,441 @@ function openConsentSettingsModal() {
 }
 
 /**
+ * Determina el estado de disponibilidad para un día específico (2026 - 2028).
+ * Estados: 'available' (verde), 'unavailable' (rojo), 'maybe' (naranja), 'school' (lila).
+ */
+function getDayAvailabilityStatus(year, month, day) {
+    // 1. Periodos No Disponibles (Rojo)
+    // 16 y 17 de Julio 2026 (pasado)
+    if (year === 2026 && month === 7 && (day === 16 || day === 17)) {
+        return 'unavailable';
+    }
+    // 15 - 17 Agosto 2026 (pasado)
+    if (year === 2026 && month === 8 && (day >= 15 && day <= 17)) {
+        return 'unavailable';
+    }
+    // 16 - 17 Octubre 2026
+    if (year === 2026 && month === 10 && (day === 16 || day === 17)) {
+        return 'unavailable';
+    }
+
+    // Indisponibilidad solicitada: Del 8 de febrero al 31 de mayo (2027 y 2028)
+    if ((year === 2027 || year === 2028) && (
+        (month === 2 && day >= 8) ||
+        (month === 3) ||
+        (month === 4) ||
+        (month === 5 && day <= 31)
+    )) {
+        return 'unavailable';
+    }
+
+    // 2. Posible indisponibilidad (Naranja)
+    // 24 de Julio 2026 (pasado)
+    if (year === 2026 && month === 7 && day === 24) {
+        return 'maybe';
+    }
+
+    // 3. Curso escolar / Periodo lectivo (Disponibilidad Parcial)
+    // 2º DAM: Desde el 16 de Septiembre 2026 hasta el 31 de Mayo 2027
+    // (Nota: del 8 feb al 31 may 2027 queda clasificado como 'unavailable' por la regla anterior)
+    const dateObj = new Date(year, month - 1, day);
+    const damStart = new Date(2026, 8, 16); // 16 Sept 2026
+    const damEnd = new Date(2027, 4, 31);   // 31 May 2027
+    if (dateObj >= damStart && dateObj <= damEnd) {
+        return 'school';
+    }
+
+    // 2º DAW: Septiembre 2027 - Junio 2028
+    const dawStart = new Date(2027, 8, 1); // 1 Sept 2027
+    const dawEnd = new Date(2028, 5, 30);   // 30 Jun 2028
+    if (dateObj >= dawStart && dateObj <= dawEnd) {
+        return 'school';
+    }
+
+    return 'available';
+}
+
+/**
+ * Inicializa el selector de años y el renderizador de calendario en sobre-mi.html bajo demanda (Lazy Loading).
+ */
+function initAvailabilityCalendar() {
+    const calendarSection = document.getElementById('availability-calendar');
+    if (!calendarSection) return;
+
+    const toggleBtn = document.getElementById('calendar-toggle-btn');
+    const collapsibleBody = document.getElementById('calendar-collapsible-body');
+    const calendarTarget = document.getElementById('calendar-render-target');
+    if (!toggleBtn || !collapsibleBody || !calendarTarget) return;
+
+    const toggleBadgeText = toggleBtn.querySelector('.toggle-text');
+
+    let isRendered = false;
+    let currentSelectedYear = 2026;
+    let currentSelectedQuarter = 'all';
+
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    if (currentYear > 2026) {
+        currentSelectedYear = currentYear;
+    }
+
+    function updateQuarterButtonsState() {
+        const quarterButtons = document.querySelectorAll('.calendar-quarter-selector .quarter-btn');
+        quarterButtons.forEach(qBtn => {
+            const qVal = qBtn.getAttribute('data-quarter');
+            if (qVal === 'all') return;
+            const qNum = parseInt(qVal, 10);
+            if (currentSelectedYear === currentYear) {
+                const qEndMonth = qNum * 3 - 1;
+                if (qEndMonth < today.getMonth()) {
+                    qBtn.classList.add('quarter-past');
+                    qBtn.setAttribute('title', 'Trimestre finalizado');
+                } else {
+                    qBtn.classList.remove('quarter-past');
+                    qBtn.removeAttribute('title');
+                }
+            } else if (currentSelectedYear < currentYear) {
+                qBtn.classList.add('quarter-past');
+            } else {
+                qBtn.classList.remove('quarter-past');
+                qBtn.removeAttribute('title');
+            }
+        });
+    }
+
+    function setupCalendarControls() {
+        // Selector de año
+        const yearButtons = document.querySelectorAll('.calendar-year-selector button');
+        yearButtons.forEach(btn => {
+            const btnYear = parseInt(btn.getAttribute('data-year'), 10);
+            if (btnYear < currentYear) {
+                btn.style.display = 'none'; // Oculta botones de años completamente pasados
+            }
+            btn.addEventListener('click', () => {
+                yearButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                currentSelectedYear = parseInt(btn.getAttribute('data-year'), 10);
+                updateQuarterButtonsState();
+                renderAvailabilityCalendar(currentSelectedYear, currentSelectedQuarter);
+            });
+        });
+
+        if (currentYear > 2026) {
+            const activeBtn = document.querySelector(`.calendar-year-selector button[data-year="${currentYear}"]`);
+            if (activeBtn) {
+                yearButtons.forEach(b => b.classList.remove('active'));
+                activeBtn.classList.add('active');
+            }
+        }
+
+        // Selector de trimestre
+        const quarterButtons = document.querySelectorAll('.calendar-quarter-selector .quarter-btn');
+        quarterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                quarterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                currentSelectedQuarter = btn.getAttribute('data-quarter');
+                renderAvailabilityCalendar(currentSelectedYear, currentSelectedQuarter);
+            });
+        });
+
+        updateQuarterButtonsState();
+
+        // Configurar filtros de estado
+        const filterButtons = document.querySelectorAll('.calendar-filters .filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const selectedFilter = btn.getAttribute('data-filter');
+                if (selectedFilter === 'all') {
+                    calendarTarget.removeAttribute('data-active-filter');
+                } else {
+                    calendarTarget.setAttribute('data-active-filter', selectedFilter);
+                }
+            });
+        });
+    }
+
+    function openCalendar(shouldScroll = false) {
+        collapsibleBody.style.display = 'block';
+        toggleBtn.classList.add('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        if (toggleBadgeText) toggleBadgeText.textContent = 'Ocultar Calendario';
+
+        if (!isRendered) {
+            setupCalendarControls();
+            renderAvailabilityCalendar(currentSelectedYear, currentSelectedQuarter);
+            isRendered = true;
+        }
+
+        if (shouldScroll) {
+            setTimeout(() => {
+                calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+
+    function closeCalendar() {
+        collapsibleBody.style.display = 'none';
+        toggleBtn.classList.remove('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        if (toggleBadgeText) toggleBadgeText.textContent = 'Ver Calendario';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.classList.contains('is-open');
+        if (isOpen) {
+            closeCalendar();
+        } else {
+            openCalendar();
+        }
+    });
+
+    // Interceptar cualquier enlace o botón que apunte a #availability-calendar (cabecera, navbar, botones)
+    document.querySelectorAll('a[href*="#availability-calendar"], .btn-header-calendar').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const isSobreMiPage = window.location.pathname.includes('sobre-mi.html') || document.getElementById('availability-calendar');
+            if (isSobreMiPage) {
+                e.preventDefault();
+                history.pushState(null, '', '#availability-calendar');
+                openCalendar(true);
+            }
+        });
+    });
+
+    // Si el usuario llega directamente con el hash #availability-calendar (o hace clic en el enlace del footer)
+    if (window.location.hash === '#availability-calendar') {
+        setTimeout(() => {
+            openCalendar(true);
+        }, 150);
+    }
+
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#availability-calendar') {
+            openCalendar(true);
+        }
+    });
+}
+
+/**
+ * Genera una tarjeta de mes individual para el año y mes especificados.
+ */
+function createMonthCard(year, month) {
+    const monthNames = [
+        'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+        'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+
+    const weekdays = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+
+    const monthCard = document.createElement('div');
+    monthCard.className = 'calendar-month';
+
+    const monthHeader = document.createElement('h4');
+    monthHeader.className = 'calendar-month-title';
+    monthHeader.textContent = `${monthNames[month]} ${year}`;
+    monthCard.appendChild(monthHeader);
+
+    const daysGrid = document.createElement('div');
+    daysGrid.className = 'calendar-days-grid';
+
+    weekdays.forEach(wd => {
+        const headerCell = document.createElement('span');
+        headerCell.className = 'calendar-day-header';
+        headerCell.textContent = wd;
+        daysGrid.appendChild(headerCell);
+    });
+
+    const numDays = new Date(year, month + 1, 0).getDate();
+    const firstDayIndex = new Date(year, month, 1).getDay();
+    const offset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+
+    for (let i = 0; i < offset; i++) {
+        const emptyCell = document.createElement('span');
+        emptyCell.className = 'calendar-day empty';
+        daysGrid.appendChild(emptyCell);
+    }
+
+    for (let day = 1; day <= numDays; day++) {
+        const dayCell = document.createElement('span');
+        dayCell.className = 'calendar-day';
+        dayCell.textContent = day;
+
+        const status = getDayAvailabilityStatus(year, month + 1, day);
+        dayCell.classList.add(status);
+
+        if (status === 'unavailable') {
+            if ((month + 1 === 2 && day >= 8) || (month + 1 === 3) || (month + 1 === 4) || (month + 1 === 5)) {
+                dayCell.setAttribute('title', 'No disponible (Periodo de indisponibilidad: 8 feb – 31 may)');
+            } else {
+                dayCell.setAttribute('title', 'No disponible');
+            }
+        } else if (status === 'maybe') {
+            dayCell.setAttribute('title', 'Posible indisponibilidad');
+        } else if (status === 'school') {
+            const isDam = new Date(year, month, day) >= new Date(2026, 8, 1) && new Date(year, month, day) <= new Date(2027, 5, 30);
+            const label = isDam ? 'Periodo Lectivo (2º DAM) - Disponibilidad Parcial' : 'Periodo Lectivo (2º DAW) - Disponibilidad Parcial';
+            dayCell.setAttribute('title', label);
+        } else {
+            dayCell.setAttribute('title', 'Disponible para proyectos');
+        }
+
+        daysGrid.appendChild(dayCell);
+    }
+
+    monthCard.appendChild(daysGrid);
+    return monthCard;
+}
+
+/**
+ * Genera la grilla de trimestres y meses para el año indicado, con opción de filtro trimestral.
+ */
+function renderAvailabilityCalendar(year, selectedQuarter = 'all') {
+    const calendarTarget = document.getElementById('calendar-render-target');
+    if (!calendarTarget) return;
+
+    calendarTarget.style.opacity = '0';
+
+    setTimeout(() => {
+        calendarTarget.innerHTML = '';
+
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonthIndex = today.getMonth(); // 0 = Enero, 11 = Diciembre
+
+        const quarterDefs = [
+            { num: 1, name: '1.er Trimestre', code: 'T1', range: 'Enero – Marzo', months: [0, 1, 2] },
+            { num: 2, name: '2.º Trimestre', code: 'T2', range: 'Abril – Junio', months: [3, 4, 5] },
+            { num: 3, name: '3.er Trimestre', code: 'T3', range: 'Julio – Septiembre', months: [6, 7, 8] },
+            { num: 4, name: '4.º Trimestre', code: 'T4', range: 'Octubre – Diciembre', months: [9, 10, 11] }
+        ];
+
+        let renderedQuarterCount = 0;
+
+        quarterDefs.forEach(q => {
+            // Filtrar si el usuario seleccionó un trimestre específico
+            if (selectedQuarter !== 'all' && String(q.num) !== String(selectedQuarter)) {
+                return;
+            }
+
+            // Determinar qué meses de este trimestre se muestran
+            const visibleMonths = q.months.filter(m => {
+                if (year < currentYear) return false;
+                if (year === currentYear) return m >= currentMonthIndex;
+                return true;
+            });
+
+            // Si no hay meses en este trimestre para el año seleccionado
+            if (visibleMonths.length === 0) {
+                if (selectedQuarter === String(q.num)) {
+                    const emptyCard = document.createElement('div');
+                    emptyCard.className = 'calendar-quarter-card';
+                    emptyCard.style.textAlign = 'center';
+                    emptyCard.style.padding = '40px 20px';
+                    emptyCard.innerHTML = `
+                        <h4 style="color: var(--text-primary); margin-bottom: 8px;">${q.name} (${year}) · ${q.range}</h4>
+                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem;">
+                            Este trimestre ya ha finalizado. Consulta los trimestres activos o el año 2027/2028.
+                        </p>
+                    `;
+                    calendarTarget.appendChild(emptyCard);
+                    renderedQuarterCount++;
+                }
+                return;
+            }
+
+            renderedQuarterCount++;
+
+            // Crear tarjeta contenedora del trimestre
+            const quarterCard = document.createElement('div');
+            quarterCard.className = 'calendar-quarter-card';
+            quarterCard.setAttribute('data-quarter', q.num);
+
+            const quarterHeader = document.createElement('div');
+            quarterHeader.className = 'calendar-quarter-header';
+            quarterHeader.innerHTML = `
+                <div class="quarter-header-info">
+                    <span class="quarter-badge">${q.code}</span>
+                    <div class="quarter-titles">
+                        <h4 class="quarter-main-title">${q.name} · ${year}</h4>
+                        <span class="quarter-subtitle">${q.range}</span>
+                    </div>
+                </div>
+                <span class="quarter-count-badge">${visibleMonths.length} ${visibleMonths.length === 1 ? 'mes' : 'meses'}</span>
+            `;
+            quarterCard.appendChild(quarterHeader);
+
+            const monthsGrid = document.createElement('div');
+            monthsGrid.className = 'calendar-quarter-months-grid';
+
+            visibleMonths.forEach(month => {
+                const monthCard = createMonthCard(year, month);
+                monthsGrid.appendChild(monthCard);
+            });
+
+            quarterCard.appendChild(monthsGrid);
+            calendarTarget.appendChild(quarterCard);
+        });
+
+        // Mensaje de fallback si no hay meses que mostrar
+        if (renderedQuarterCount === 0) {
+            const noDataMsg = document.createElement('p');
+            noDataMsg.style.textAlign = 'center';
+            noDataMsg.style.color = 'var(--text-secondary)';
+            noDataMsg.style.padding = '40px 0';
+            noDataMsg.textContent = 'Este año ya ha finalizado.';
+            calendarTarget.appendChild(noDataMsg);
+        }
+
+        calendarTarget.style.opacity = '1';
+    }, 150);
+}
+
+/**
  * Inicializa el estado del indicador de disponibilidad en el pie de página global.
  */
 function initFooterAvailability() {
     const indicator = document.querySelector('.status-indicator');
     if (!indicator) return;
-    
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    const status = getDayAvailabilityStatus(year, month, day);
+
+    // Limpiar clases previas de estado
     indicator.classList.remove('status-unavailable', 'status-maybe', 'status-school');
-    indicator.innerHTML = `
-        <span class="status-dot status-dot-green"></span>
-        <span class="status-text">Disponible (DAM / Prácticas)</span>
-    `;
+
+    if (status === 'unavailable') {
+        indicator.classList.add('status-unavailable');
+        indicator.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">No disponible actualmente<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    } else if (status === 'maybe') {
+        indicator.classList.add('status-maybe');
+        indicator.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">Posible indisponibilidad<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    } else if (status === 'school') {
+        indicator.classList.add('status-school');
+        indicator.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">Disponible (DAM / Prácticas)<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    } else {
+        indicator.innerHTML = `
+            <span class="status-dot status-dot-green"></span>
+            <span class="status-text">Disponible para Proyectos<br><a href="sobre-mi.html#availability-calendar" class="status-calendar-link">(ver calendario)</a></span>
+        `;
+    }
 }
 
 /**
@@ -1279,7 +1704,7 @@ function initElPiedreroSimulator() {
 }
 
 /**
- * Carrusel de Capturas de Pantalla Móvil para El Piedrero (v1.1-Beta)
+ * Carrusel de Capturas de Pantalla Móvil para El Piedrero (v1.1-Beta.2)
  */
 function initElPiedreroCarousel() {
     const carouselSection = document.getElementById('piedrero-carousel');
@@ -1300,7 +1725,7 @@ function initElPiedreroCarousel() {
     const slidesData = [
         {
             title: "Pantalla Principal",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 1 de 7",
             desc: "Menú inicial de bienvenida con selector directo de modalidades: <strong>Partida Local</strong> (un solo teléfono en el centro de la mesa) o <strong>Partida Multijugador</strong> (sincronización en red local por Sockets TCP y código QR), acceso directo al <strong>Historial de Partidas</strong> (últimas 30), Privacidad 100% offline y Licencias Open Source.",
             features: ["📴 100% Offline", "📱 Material 3", "⚡ Sockets TCP & QR"],
@@ -1308,7 +1733,7 @@ function initElPiedreroCarousel() {
         },
         {
             title: "Menú de Configuración de Partida Local",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 2 de 7",
             desc: "Modal intuitivo previo al inicio del juego para configurar la <strong>capacidad de la mesa</strong> (2 jugadores 1v1 mano a mano, 3 en trío, 4 en parejas 2x2, 6 3x2 u 8 4x2) y personalizar los <strong>nombres de los jugadores</strong> antes de dar comienzo a la partida.",
             features: ["👥 2 a 8 Jugadores", "🎯 Modos 1v1, Trío y Parejas", "✏️ Nombres Editables"],
@@ -1316,7 +1741,7 @@ function initElPiedreroCarousel() {
         },
         {
             title: "Pantalla de Cartas a la Mesa",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 3 de 7",
             desc: "Asistente visual exclusivo para el repartidor durante el 1.er reparto. Permite marcar con un solo toque las cartas tradicionales repartidas que coincidan con el orden de salida (+1 a +4 piedras) e integra el conmutador interactivo de validación reglamentaria <strong>«¿Bien dada?»</strong> (+1 piedra adicional).",
             features: ["🃏 4 Cartas Tradicionales", "🪨 +1 a +4 Piedras Automáticas", "⚖️ Validación «¿Bien dada?»"],
@@ -1324,7 +1749,7 @@ function initElPiedreroCarousel() {
         },
         {
             title: "Interfaz Principal de una Partida",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 4 de 7",
             desc: "Marcador táctil central diseñado bajo arquitectura reactiva <strong>MVI</strong>. Muestra el estado del reparto en curso (<em>Mano / Reparto 1 de 6</em>), tanteo en tiempo real con transición dinámica de <strong>Malas a Buenas</strong> (0/11 a 21 piedras) y botonera de cantos folclóricos (Ronda, Parranda, Caracol, Caracolillo, Majo, Limpio...).",
             features: ["🌟 Malas a Buenas (21 piedras)", "🃏 10 Cantos Oficiales", "🔄 Tanteo MVI Reactivo"],
@@ -1332,7 +1757,7 @@ function initElPiedreroCarousel() {
         },
         {
             title: "Pantalla de Registro de Partida",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 5 de 7",
             desc: "Panel desplegable de trazabilidad cronológica con el desglose detallado de todos los movimientos y piedras anotadas en cada reparto. Incorpora control de seguridad con el botón <strong>«Deshacer Último»</strong> para revertir cualquier anotación involuntaria al instante sin perder la integridad del tanteo.",
             features: ["📜 Historial de Movimientos", "↩️ Botón Deshacer Inmediato", "🛡️ Integridad de Tanteo"],
@@ -1340,7 +1765,7 @@ function initElPiedreroCarousel() {
         },
         {
             title: "Pantalla de Victoria",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 6 de 7",
             desc: "Modal de fin de partida que se despliega automáticamente al alcanzar las <strong>10 Buenas (21 piedras totales)</strong>. Proclama al ganador, actualiza el <strong>marcador acumulado de victorias</strong> (head-to-head), indica a quién le tocará repartir en el siguiente encuentro e integra opciones para <em>Siguiente Partida</em>, <em>Deshacer última jugada</em>, <em>Volver al Menú</em> o <em>Reiniciar a 0</em>.",
             features: ["🏆 10 Buenas (21 piedras)", "📊 Historial Head-to-Head", "🔄 Siguiente Partida / Deshacer"],
@@ -1348,7 +1773,7 @@ function initElPiedreroCarousel() {
         },
         {
             title: "Pantalla Principal en Modo Oscuro",
-            version: "v1.1-Beta",
+            version: "v1.1-Beta.2",
             step: "Paso 7 de 7",
             desc: "Soporte nativo integral de <strong>Tema Oscuro (Dark Mode)</strong> bajo directrices de Material Design 3. Diseñado específicamente para reducir la fatiga visual en partidas nocturnas y maximizar el ahorro de batería en pantallas OLED/AMOLED con un contraste y tipografía impecables.",
             features: ["🌙 Modo Oscuro Nativo", "🔋 Eficiencia OLED / AMOLED", "👁️ Confort Visual Nocturno"],

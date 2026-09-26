@@ -1346,6 +1346,34 @@ h1, h2, h3, h4 {
     margin-bottom: 50px;
 }
 
+.project-header-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+@media (max-width: 580px) {
+    .project-header-actions {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .project-header-actions .btn {
+        flex: 1 1 calc(50% - 12px);
+        min-width: 140px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 440px) {
+    .project-header-actions .btn {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
 .project-meta {
     display: flex;
     flex-wrap: wrap;
@@ -2920,6 +2948,18 @@ code {
     color: var(--accent-rose);
 }
 
+.skill-level-upcoming {
+    background-color: rgba(8, 145, 178, 0.08);
+    color: var(--accent-cyan);
+    border: 1px dashed rgba(8, 145, 178, 0.35);
+    padding: 1px 7px;
+}
+
+[data-theme="dark"] .skill-level-upcoming {
+    background-color: rgba(6, 182, 212, 0.12);
+    border-color: rgba(6, 182, 212, 0.4);
+}
+
 /* Invertir logos oscuros en tema oscuro para legibilidad */
 [data-theme="dark"] .icon-invert-dark {
     filter: invert(1) brightness(2);
@@ -3029,11 +3069,293 @@ code {
    Sección: Calendario de Disponibilidad
    ========================================================================== */
 
+/* Botón Desplegable del Calendario (Lazy / Ahorro de Recursos) */
+.calendar-toggle-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: var(--transition-smooth);
+    font-family: inherit;
+    color: inherit;
+}
+
+.calendar-toggle-btn:hover {
+    border-color: var(--accent-rose);
+    background: rgba(79, 70, 229, 0.04);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.calendar-toggle-btn.is-open {
+    border-color: var(--accent-rose);
+    background: rgba(79, 70, 229, 0.03);
+}
+
+.calendar-toggle-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.calendar-toggle-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-toggle-headings {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.calendar-toggle-title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.calendar-toggle-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.calendar-toggle-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent-rose);
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+
+.calendar-toggle-btn:hover .calendar-toggle-badge {
+    border-color: var(--accent-rose);
+    background: var(--accent-rose);
+    color: #ffffff;
+}
+
+.calendar-toggle-arrow {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.calendar-toggle-btn.is-open .calendar-toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.calendar-collapsible-body {
+    animation: fadeInCalendar 0.3s ease forwards;
+}
+
+@keyframes fadeInCalendar {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .calendar-toggle-btn {
+        padding: 14px 16px;
+        flex-wrap: wrap;
+    }
+    .calendar-toggle-headings {
+        flex: 1 1 100%;
+        margin-top: 4px;
+    }
+    .calendar-toggle-title {
+        font-size: 1rem;
+    }
+    .calendar-toggle-subtitle {
+        font-size: 0.8rem;
+    }
+    .calendar-toggle-badge {
+        margin-top: 4px;
+        font-size: 0.78rem;
+        padding: 5px 12px;
+    }
+}
+
+/* Tarjeta de Trimestre (Vista Trimestral) */
+.calendar-quarter-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-smooth);
+}
+
+.calendar-quarter-card:hover {
+    border-color: rgba(79, 70, 229, 0.3);
+}
+
+.calendar-quarter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.quarter-header-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.quarter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-cyan) 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 8px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+
+.quarter-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.quarter-main-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.quarter-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.quarter-count-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-rose);
+    background: rgba(79, 70, 229, 0.08);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+/* Grid de meses dentro de cada trimestre */
+.calendar-quarter-months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Selector de Trimestres */
+.calendar-quarter-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.calendar-quarter-selector .selector-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-right: 4px;
+}
+
+.quarter-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: inherit;
+}
+
+.quarter-btn:hover {
+    border-color: var(--accent-rose);
+    color: var(--text-primary);
+    background: rgba(79, 70, 229, 0.04);
+}
+
+.quarter-btn.active {
+    background: var(--accent-rose);
+    border-color: var(--accent-rose);
+    color: #ffffff;
+    box-shadow: var(--shadow-subtle);
+}
+
+.quarter-btn.quarter-past {
+    opacity: 0.45;
+}
+
+/* Botón de acceso rápido a calendario en cabecera */
+.btn-header-calendar {
+    transition: var(--transition-smooth);
+}
+.btn-header-calendar:hover {
+    border-color: var(--accent-rose);
+    color: var(--accent-rose);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+    .calendar-quarter-card {
+        padding: 16px;
+    }
+    .calendar-quarter-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .calendar-quarter-months-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Grid de los meses */
 .calendar-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 30px;
     margin-top: 20px;
     transition: opacity 0.3s ease;
 }
@@ -3482,9 +3804,9 @@ code {
 
 .carousel-container {
     display: grid;
-    grid-template-columns: 310px 1fr;
-    gap: 35px;
-    align-items: start;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    align-items: stretch;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -3506,11 +3828,11 @@ code {
 .phone-mockup {
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 250px;
     aspect-ratio: 400 / 818;
     margin: 0 auto;
     background: #0B0F19;
-    border-radius: 32px;
+    border-radius: 30px;
     border: 4px solid #2D3748;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55),
                 0 0 0 1px rgba(255, 255, 255, 0.08),
@@ -3626,9 +3948,9 @@ code {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-top: 16px;
+    margin-top: 14px;
     width: 100%;
-    max-width: 280px;
+    max-width: 250px;
 }
 
 .carousel-nav-arrow {
@@ -3707,8 +4029,8 @@ code {
 .carousel-details-panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    justify-content: center;
+    gap: 16px;
+    justify-content: space-between;
     min-width: 0;
     max-width: 100%;
     box-sizing: border-box;
@@ -3718,7 +4040,7 @@ code {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 24px;
+    padding: 22px 24px;
     box-shadow: var(--shadow-subtle);
     border-left: 4px solid var(--accent-cyan);
     transition: var(--transition-smooth);
@@ -3818,13 +4140,35 @@ code {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    padding: 16px;
+    padding: 14px;
 }
 
 .carousel-thumbnails {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
     gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 4px;
+}
+
+.carousel-thumbnails::-webkit-scrollbar {
+    height: 5px;
+}
+
+.carousel-thumbnails::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.carousel-thumbnails::-webkit-scrollbar-thumb {
+    background: rgba(6, 182, 212, 0.3);
+    border-radius: 4px;
+}
+
+.carousel-thumbnails::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
 }
 
 .thumb-btn {
@@ -3839,6 +4183,10 @@ code {
     align-items: center;
     gap: 6px;
     transition: var(--transition-fast);
+    flex: 1 1 0px;
+    min-width: 62px;
+    max-width: 105px;
+    scroll-snap-align: center;
 }
 
 .thumb-btn img {
@@ -3856,6 +4204,7 @@ code {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    display: block;
 }
 
 .thumb-btn:hover {
@@ -3877,12 +4226,79 @@ code {
 /* ========================================================================== */
 /* Adaptación Responsive para Móviles y Tablets                               */
 /* ========================================================================== */
-@media (max-width: 880px) {
+
+/* Dispositivos Medianos, Pantallas Divididas e iPad Horizontal (769px a 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
     .elpiedrero-gallery-card {
-        padding: 20px 14px;
+        padding: 24px 20px;
+        border-radius: 18px;
+    }
+
+    .carousel-container {
+        grid-template-columns: 220px 1fr;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .android-mockup,
+    .phone-mockup {
+        max-width: 215px;
+        border-radius: 26px;
+    }
+
+    .carousel-nav-toolbar {
+        max-width: 215px;
+        margin-top: 12px;
+        gap: 8px;
+    }
+
+    .carousel-nav-arrow {
+        width: 38px;
+        height: 38px;
+    }
+
+    .carousel-details-panel {
+        gap: 14px;
+        justify-content: space-between;
+    }
+
+    .carousel-info-box {
+        padding: 18px 20px;
+    }
+
+    .carousel-slide-title {
+        font-size: 1.18rem;
+    }
+
+    .carousel-slide-desc {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 12px;
+    }
+
+    .carousel-thumbnails-section {
+        padding: 12px;
+    }
+
+    .thumb-btn {
+        flex: 1 1 0px;
+        min-width: 58px;
+        max-width: 90px;
+        padding: 5px 3px;
+    }
+
+    .thumb-btn span {
+        font-size: 0.64rem;
+    }
+}
+
+/* Tablets Verticales y Móviles Grandes (<= 768px) */
+@media (max-width: 768px) {
+    .elpiedrero-gallery-card {
+        padding: 20px 16px;
         margin-top: 20px;
         margin-bottom: 25px;
-        border-radius: 16px;
+        border-radius: 18px;
         box-sizing: border-box;
         max-width: 100%;
     }
@@ -3905,26 +4321,33 @@ code {
 
     .carousel-container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 22px;
+        justify-items: center;
+    }
+
+    .carousel-phone-wrapper {
+        width: 100%;
+        align-items: center;
     }
 
     .android-mockup,
     .phone-mockup {
-        max-width: 205px;
+        max-width: 210px;
         border-radius: 26px;
     }
 
     .carousel-nav-toolbar {
-        max-width: 205px;
+        max-width: 210px;
         margin-top: 12px;
     }
 
     .carousel-details-panel {
-        gap: 14px;
+        width: 100%;
+        gap: 16px;
     }
 
     .carousel-info-box {
-        padding: 16px;
+        padding: 18px 16px;
         border-radius: 14px;
     }
 
@@ -3950,32 +4373,32 @@ code {
         padding: 8px 12px;
     }
 
-
     .carousel-thumbnails-section {
-        padding: 12px;
+        padding: 12px 10px;
     }
 
     .carousel-thumbnails {
         display: flex;
         overflow-x: auto;
         gap: 8px;
-        padding-bottom: 8px;
+        padding-bottom: 6px;
         scrollbar-width: thin;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
     }
 
     .thumb-btn {
-        flex: 0 0 64px;
+        flex: 0 0 66px;
         scroll-snap-align: center;
-        padding: 4px 2px;
+        padding: 5px 3px;
     }
 
     .thumb-btn span {
-        font-size: 0.62rem;
+        font-size: 0.64rem;
     }
 }
 
+/* Móviles Pequeños (<= 480px) */
 @media (max-width: 480px) {
     .elpiedrero-gallery-card {
         padding: 14px 10px;
@@ -4003,8 +4426,8 @@ code {
 
     .android-mockup,
     .phone-mockup {
-        max-width: 185px;
-        border-radius: 22px;
+        max-width: 180px;
+        border-radius: 20px;
         border-width: 3px;
     }
 
@@ -4027,7 +4450,7 @@ code {
     }
 
     .carousel-nav-toolbar {
-        max-width: 185px;
+        max-width: 180px;
         gap: 8px;
         margin-top: 10px;
     }
@@ -4091,11 +4514,11 @@ code {
     }
 
     .thumb-btn {
-        flex: 0 0 52px;
+        flex: 0 0 54px;
         padding: 3px 2px;
     }
 
     .thumb-btn span {
-        font-size: 0.58rem;
+        font-size: 0.6rem;
     }
 }
